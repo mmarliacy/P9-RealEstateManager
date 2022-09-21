@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         this.configureTextViewQuantity();
     }
 
+    //ok
     private void configureTextViewMain(){
         this.textViewMain.setTextSize(15);
         this.textViewMain.setText("Le premier bien immobilier enregistré vaut ");
