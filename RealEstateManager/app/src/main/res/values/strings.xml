@@ -1,3 +1,37 @@
 <resources>
+    // ---------------------:: BY UTILITY ::----------------------
     <string name="app_name">Real Estate Manager</string>
+    <string name="first_property_worth">Le prix du premier bien immobilier vaut</string>
+    // ---------------------:: BY TYPE OF WIDGETS ::----------------------
+
+    <!--:: Titles ::-->
+
+
+
+    <!--:: Content Descriptions / Image Views ::-->
+
+
+    <!--:: Text Views ::-->
+
+
+    <!--:: Text Input Layouts ::-->
+
+
+    <!--:: Buttons ::-->
+
+
+    <!--:: Floating Action Buttons ::-->
+
+
+    <!--:: Switch Buttons ::-->
+
+
+    <!--:: Bottom Navigation Menu ::-->
+
+
+    <!--:: Navigation Drawer Menu ::-->
+
+
+    <!--:: Toolbar Menu ::-->
+
 </resources>

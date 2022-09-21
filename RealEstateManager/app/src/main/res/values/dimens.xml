@@ -1,0 +1,59 @@
+<resources>
+    ------------------------------------------------------------------------------------------------
+    -------------------------------------*** PORTRAIT MODE ***--------------------------------------
+    ------------------------------------------------------------------------------------------------
+    //-- LAYOUT NAME -->>
+    ---** Composite name (ex : Floating Action Btn) **---
+    Id --> Widget id
+    <dimen name="margin_fab">16dip</dimen>
+    --------------------------------
+    --------------------------------
+    //-- MYREU ITEM -->>
+    ---** ImageView **---
+    Id --> icon_room
+    <dimen name="marginStartLeft_item_icon_room">10dip</dimen>
+
+    ---** LinearLayout **---
+    Id --> item_meeting
+    <dimen name="marginStartLeft_item_meeting">10dip</dimen>
+
+    ---** TextView **---
+    Id --> Widget id
+    <dimen name="height_item_meeting">25dip</dimen>
+
+
+    ---** ImageButton **---
+    Id --> deleteBtn
+    <dimen name="delete_button_width">30dip</dimen>
+    --------------------------------
+    --------------------------------
+
+    ------------------------------------------------------------------------------------------------
+    -------------------------------------*** LANDSCAPE MODE ***-------------------------------------
+    ------------------------------------------------------------------------------------------------
+    //-- LAYOUT NAME -->>
+    ---** Composite name (ex : Floating Action Btn) **---
+    Id --> Widget id
+    <dimen name="margin_fa">16dip</dimen>
+    --------------------------------
+    --------------------------------
+    //-- MYREU ITEM -->>
+    ---** ImageView **---
+    Id --> icon_room
+    <dimen name="marginStartLeft_item_icon_roo">10dip</dimen>
+
+    ---** LinearLayout **---
+    Id --> item_meeting
+    <dimen name="marginStartLeft_item_meet">10dip</dimen>
+
+    ---** TextView **---
+    Id --> Widget id
+    <dimen name="height_item_meet">25dip</dimen>
+
+
+    ---** ImageButton **---
+    Id --> deleteBtn
+    <dimen name="delete_button_wid">30dip</dimen>
+    --------------------------------
+    --------------------------------
+</resources>
