@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/round_local_atm_20.xml" value="0.229" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/round_roofing_24.xml" value="0.214" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/shape.xml" value="0.22" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/font/arima_madurai_extrabold.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/activity_second.xml" value="0.1109375" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_property.xml" value="0.4" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/property_item.xml" value="0.25" />
       </map>
     </option>
   </component>

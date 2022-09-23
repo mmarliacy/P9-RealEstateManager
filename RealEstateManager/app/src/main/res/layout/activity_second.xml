@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.openclassrooms.realestatemanager.SecondActivity">
+    tools:context="com.openclassrooms.realestatemanager.view.activities.SecondActivity">
 
 
     <LinearLayout
@@ -17,7 +17,6 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/activity_second_activity_text_view_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ma super activité numéro 2"/>

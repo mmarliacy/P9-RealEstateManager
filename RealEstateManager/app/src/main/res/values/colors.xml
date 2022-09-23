@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--:: App colors ::-->
-    <color name="colorPrimary">#31A8DD</color>
-    <color name="colorPrimaryDark">#F5CC14</color>
-    <color name="colorAccent">#FF5722</color>
-    <color name="colorMain">#F86C3F</color>
+    <color name="colorPrimary">#118997</color>
+    <color name="colorPrimaryDark">#036368</color>
+    <color name="colorAccent">#50d2e6</color>
+    <color name="colorMain">#2b6de0</color>
     <color name="orange_peach">#F68E6D</color>
     <color name="clear_orange_peach">#FFEDD6</color>
     <color name="red">#DD2121</color>

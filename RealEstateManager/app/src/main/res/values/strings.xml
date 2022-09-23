@@ -1,7 +1,8 @@
 <resources>
     // ---------------------:: BY UTILITY ::----------------------
     <string name="app_name">Real Estate Manager</string>
-    <string name="first_property_worth">Le prix du premier bien immobilier vaut</string>
+    <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
+    <string name="property_name">L\'anglaise</string>
     // ---------------------:: BY TYPE OF WIDGETS ::----------------------
 
     <!--:: Titles ::-->
