@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/amita</item>
         <item>@font/arima_madurai_extrabold</item>
+        <item>@font/asap</item>
+        <item>@font/asap_italic</item>
+        <item>@font/bellota</item>
         <item>@font/cormorant_light</item>
         <item>@font/spectral_extralight_italic</item>
+        <item>@font/spectral_light_italic</item>
     </array>
 </resources>

@@ -1,13 +1,48 @@
-<resources><![CDATA[
+<resources>
     ------------------------------------------------------------------------------------------------
     -------------------------------------*** PORTRAIT MODE ***--------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- LAYOUT NAME -->>
-    ---** Composite name (ex : Floating Action Btn) **---
-    Id --> Widget id
 
+    //-- item_property -->>
+
+    ---** Cardview **---
+    Id --> item_cardview
+    <dimen name="ic_height">100dip</dimen>
+    <dimen name="ic_elevation">10dip</dimen>
+    <dimen name="ic_margin">10dip</dimen>
+    <dimen name="ic_cornerRadius">15dip</dimen>
+
+    ---** Image View **---
+    Id --> prop_photo
+    <dimen name="pp_width">120dip</dimen>
     --------------------------------
+    Id --> availability_icon
+    <dimen name="ai_width">30dip</dimen>
+    <dimen name="ai_height">30dip</dimen>
+    <dimen name="ai_marginTop">10dip</dimen>
+    <dimen name="ai_marginRight">10dip</dimen>
+
+    ---** TextView **---
+    Id --> prop_name
+    <dimen name="pn_marginLeft">10dip</dimen>
+    <dimen name="pn_textSize">20sp</dimen>
     --------------------------------
+    Id --> prop_place
+    <dimen name="ppl_marginLeft">10dip</dimen>
+    <dimen name="ppl_textSize">15sp</dimen>
+    --------------------------------
+    Id --> prop_cost
+    <dimen name="pc_marginRight">10dip</dimen>
+    <dimen name="pc_marginBottom">10dip</dimen>
+    <dimen name="pc_textSize">20sp</dimen>
+    ---** View **---
+    Id --> line
+    <dimen name="line_width">0.5dip</dimen>
+    <dimen name="line_height">30dip</dimen>
+    <dimen name="line_marginRight">10dip</dimen>
+    <dimen name="line_marginBottom">10dip</dimen>
+    ------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------
     //-- MYREU ITEM -->>
     ---** ImageView **---
     Id --> icon_room
@@ -19,7 +54,6 @@
 
     ---** TextView **---
     Id --> Widget id
-
 
 
     ---** ImageButton **---
@@ -50,9 +84,9 @@
     Id --> Widget id
 
 
-
     ---** ImageButton **---
     Id --> deleteBtn
     --------------------------------
     --------------------------------
-]]></resources>
+
+</resources>

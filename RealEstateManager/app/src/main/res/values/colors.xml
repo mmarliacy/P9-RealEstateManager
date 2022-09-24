@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#118997</color>
     <color name="colorPrimaryDark">#036368</color>
-    <color name="colorAccent">#50d2e6</color>
+    <color name="colorAccent">#00c8e0</color>
     <color name="colorMain">#2b6de0</color>
     <color name="orange_peach">#F68E6D</color>
     <color name="clear_orange_peach">#FFEDD6</color>
@@ -10,10 +10,11 @@
     <color name="colorMenu">#FFFFFF</color>
     <color name="chain_grey">#718093</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="light_grey">#ecf0f1</color>
+    <color name="light_grey">#f0f0f0</color>
     <color name="green">#4CAF50</color>
     <color name="yellow">#FFEB3B</color>
     <color name="black">#FF000000</color>
+    <color name="lollipop_pink">#f182d3</color>
 
     <!--:: Different colors ::-->
     <color name="purple_200">#FFBB86FC</color>

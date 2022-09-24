@@ -1,18 +1,40 @@
 <resources>
     // ---------------------:: BY UTILITY ::----------------------
-    <string name="app_name">Real Estate Manager</string>
-    <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
-    <string name="property_name">L\'anglaise</string>
+    <string name="dummy_text">dzaujjipdzaojoibhodzanxoibcuhiaiozbqsoniohcqsoihuobcsdnioqnosucxcioni
+        osqcnhioqhqcsoheozcbiosnqobncouiqsbubqduybcaqiiohcenuvbzudsjkbdscuibcqsjbkceaquiqbsjbuqocbs
+        jbjkqsbcuebjbkqshbcsuonjkqsbdhiazjqsdbjksqbdhbscoejqbsbckjhqsbhkdjqsbcjknqsjbhqsjbchqksjcbj
+        qsbnjbqsjbcnbsqbhjbqhschkqcjsbhkjbqscjkbqcsjkqsbcjkbqcshjbcqs</string>
+
     // ---------------------:: BY TYPE OF WIDGETS ::----------------------
 
     <!--:: Titles ::-->
-
-
+    <string name="app_name">Real Estate Manager</string>
+    <string name="description_title">Description</string>
+    <string name="around_title">Around</string>
 
     <!--:: Content Descriptions / Image Views ::-->
 
 
     <!--:: Text Views ::-->
+    <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
+    <string name="property_name">L\'anglaise</string>
+    <string name="property_cost">122 000 $</string>
+    <string name="seller_name">Par Christophe Duchamps</string>
+    <string name="property_status">Available</string>
+    <string name="property_properties">House - 4P - 125 m²</string>
+    <string name="property_city">Long Island</string>
+    <string name="property_description">In a suburban area sought after for its calm and proximity to all shops, kindergartens, primary schools and college.
+                                        Detached house built on a total cellar converted into a laundry area, storage space, game room and others, a toilet.
+                                        On the ground floor, entrance, hallway, kitchen open to living room of 40 m² with fireplace, shower room with wc, 1 bedroom of 13 m².
+                                        Upstairs, large hallway with cupboards, 2 bedrooms of 17 and 21 m² on the ground, 1 wc.
+                                        Large garage for 2 vehicles, permanent outbuildings at the bottom of the garden that can be fitted out according to your wishes.
+                                        Double glazing, new boiler.
+                                        All on a plot of 195 m².
+    </string>
+    <string name="location_of_property_title">Location of property</string>
+    <string name="property_for_sale_since_title">For sale since</string>
+    <string name="property_sold_since_title">Sold since</string>
+    <string name="property_sold_since">--</string>
 
 
     <!--:: Text Input Layouts ::-->
