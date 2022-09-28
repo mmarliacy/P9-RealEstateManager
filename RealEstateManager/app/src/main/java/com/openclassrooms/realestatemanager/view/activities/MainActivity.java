@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -19,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewQuantity;
     Toolbar fToolbar;
 
-    @SuppressLint("UseSupportActionBar")
+    @SuppressLint({"UseSupportActionBar", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.real_estate_sheet_layout);
+        setContentView(R.layout.add_property_layout);
 
-        fToolbar = findViewById(R.id.sheet_toolbar);
+        fToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(fToolbar);
         this.textViewMain = findViewById(R.id.activity_main_activity_text_view_main);
         this.textViewQuantity = findViewById(R.id.activity_main_activity_text_view_quantity);

@@ -18,9 +18,9 @@
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/ctl_height"
-            app:collapsedTitleTextAppearance="@style/AppTheme.NoActionBar"
+            app:collapsedTitleTextAppearance="@style/AppTheme.Sheet.NoActionBar"
             app:contentScrim="@color/colorPrimary"
-            app:expandedTitleTextAppearance="@style/AppTheme.NoActionBar"
+            app:expandedTitleTextAppearance="@style/AppTheme.Sheet.NoActionBar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/property_name"
             app:toolbarId="@id/sheet_toolbar">

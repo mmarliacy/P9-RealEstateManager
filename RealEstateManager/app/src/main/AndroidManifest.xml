@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.openclassrooms.realestatemanager.view.activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar.Bridge"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

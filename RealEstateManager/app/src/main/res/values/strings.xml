@@ -14,6 +14,9 @@
     <string name="location_of_property_title">Location of property</string>
     <string name="property_for_sale_since_title">For sale</string>
     <string name="property_sold_since_title">Sold</string>
+    <string name="add_property_layout_title">Describe the lot</string>
+    <string name="add_lot_property_name_title">Property name</string>
+    <string name="add_lot_property_type_title">Property type</string>
 
     <!--:: Content Descriptions / Image Views ::-->
     <string name="content_description_prop_photos">View pager introducing property photos</string>
@@ -42,9 +45,12 @@
     <string name="interest_name">Shop Store</string>
 
 
-
-    <!--:: Text Input Layouts ::-->
-
+    <!--:: Hint ::-->
+    <string name="hint_property_name_input">Example : The sweetest house</string>
+    <string name="hint_property_type_input">House, Apartment, Castle, Room…</string>
+    <string name="hint_property_land_area_input">...m²</string>
+    <string name="add_lot_property_total_land_area_title">Total land area</string>
+    <string name="add_lot_property_total_rooms_title">Total Rooms</string>
 
     <!--:: Buttons ::-->
 
