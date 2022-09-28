@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.real_estate_sheet_layout);
 
-        fToolbar = findViewById(R.id.toolbar);
+        fToolbar = findViewById(R.id.sheet_toolbar);
         setSupportActionBar(fToolbar);
         this.textViewMain = findViewById(R.id.activity_main_activity_text_view_main);
         this.textViewQuantity = findViewById(R.id.activity_main_activity_text_view_quantity);

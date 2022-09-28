@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="10dip"
-    android:layout_margin="10dp"
-    >
+    android:id="@+id/container_interest_item"
+    android:layout_width="@dimen/cii_width"
+    android:layout_height="@dimen/cii_height"
+    android:layout_margin="@dimen/cii_margin"
+    app:cardCornerRadius="@dimen/cii_cardCornerRadius"
+    app:cardElevation="@dimen/cii_cardElevation">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/item_interest_shape">
+        android:background="@drawable/item_interest_shape"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/baseline_shopping_cart_24"
+            android:id="@+id/interest_icon"
+            android:layout_width="@dimen/ii_width"
+            android:layout_height="@dimen/ii_height"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="@dimen/ii_marginTop"
+            android:src="@drawable/baseline_shopping_cart_24"
+            android:contentDescription="@string/content_description_icon_interest" />
 
         <TextView
+            android:id="@+id/interest_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shop Store"
-            android:fontFamily="@font/arima_madurai_extrabold"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/black"/>
+            android:fontFamily="@font/arima_madurai_extrabold"
+            android:text="@string/interest_name"
+            android:textSize="@dimen/in_textSize"
+            android:textColor="@color/black" />
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

@@ -3,7 +3,7 @@
     -------------------------------------*** PORTRAIT MODE ***--------------------------------------
     ------------------------------------------------------------------------------------------------
 
-    //-- item_property -->>
+    //-- ITEM_PROPERTY -->>
 
     ---** Cardview **---
     Id --> item_cardview
@@ -17,9 +17,9 @@
     <dimen name="pp_width">120dip</dimen>
     --------------------------------
     Id --> availability_icon
-    <dimen name="ai_width">30dip</dimen>
-    <dimen name="ai_height">30dip</dimen>
-    <dimen name="ai_marginTop">10dip</dimen>
+    <dimen name="ai_width">20dip</dimen>
+    <dimen name="ai_height">20dip</dimen>
+    <dimen name="ai_marginTop">40dip</dimen>
     <dimen name="ai_marginRight">10dip</dimen>
 
     ---** TextView **---
@@ -35,6 +35,7 @@
     <dimen name="pc_marginRight">10dip</dimen>
     <dimen name="pc_marginBottom">10dip</dimen>
     <dimen name="pc_textSize">20sp</dimen>
+
     ---** View **---
     Id --> line
     <dimen name="line_width">0.5dip</dimen>
@@ -43,24 +44,98 @@
     <dimen name="line_marginBottom">10dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- MYREU ITEM -->>
-    ---** ImageView **---
-    Id --> icon_room
+    //-- REAL_ESTATE_SHEET_LAYOUT -->>
 
-
-    ---** LinearLayout **---
-    Id --> item_meeting
-
+    ---** Collapsing Toolbar Layout **---
+    Id -->collapsing_toolbar_layout
+    <dimen name="ctl_height">300dip</dimen>
 
     ---** TextView **---
-    Id --> Widget id
-
-
-    ---** ImageButton **---
-    Id --> deleteBtn
-
+    Id --> seller_name
+    <dimen name="sn_marginEnd">10dip</dimen>
+    <dimen name="sn_textSize">20sp</dimen>
     --------------------------------
+    Id --> sheet_prop_cost
+    <dimen name="spc_marginEnd">10dip</dimen>
+    <dimen name="spc_textSize">30sp</dimen>
     --------------------------------
+    Id --> sheet_prop_status
+    <dimen name="sps_marginEnd">10dip</dimen>
+    <dimen name="sps_textSize">15sp</dimen>
+    --------------------------------
+    Id --> sheet_prop_properties
+    <dimen name="spp_marginStart">10dip</dimen>
+    <dimen name="spp_textSize">20sp</dimen>
+    --------------------------------
+    Id --> sheet_prop_address
+    <dimen name="spa_marginStart">10dip</dimen>
+    <dimen name="spa_textSize">20sp</dimen>
+    --------------------------------
+    Id --> sheet_prop_description_title
+    <dimen name="spdt_marginStart">10dip</dimen>
+    <dimen name="spdt_marginTop">20dip</dimen>
+    <dimen name="spdt_textSize">20sp</dimen>
+    --------------------------------
+    Id --> sheet_prop_description
+    <dimen name="spd_margin">15dip</dimen>
+    <dimen name="spd_textSize">18sp</dimen>
+    --------------------------------
+    Id --> sheet_prop_around_title
+    <dimen name="spat_marginStart">10dip</dimen>
+    <dimen name="spat_marginTop">20dip</dimen>
+    <dimen name="spat_textSize">20sp</dimen>
+    --------------------------------
+    Id --> sheet_location_property_title
+    <dimen name="slpt_marginStart">10dip</dimen>
+    <dimen name="slpt_marginTop">20dip</dimen>
+    <dimen name="slpt_textSize">20sp</dimen>
+    --------------------------------
+    Id --> property_for_sale_since_title
+    <dimen name="pfsst_marginTop">10dip</dimen>
+    <dimen name="pfsst_textSize">20sp</dimen>
+    --------------------------------
+    Id --> property_for_sale_since
+    <dimen name="pfss_marginTop">10dip</dimen>
+    <dimen name="pfss_textSize">18sp</dimen>
+    --------------------------------
+    Id --> property_sold_since_title
+    <dimen name="psst_marginTop">10dip</dimen>
+    <dimen name="psst_textSize">20sp</dimen>
+    --------------------------------
+    Id --> property_sold_since
+    <dimen name="pss_marginTop">10dip</dimen>
+    <dimen name="pss_textSize">18sp</dimen>
+
+    ---** LinearLayout **---
+    Id --> container_duration_sale
+    <dimen name="cds_marginTop">10dip</dimen>
+    --------------------------------
+    Id --> container_for_sale_since
+    <dimen name="cfss_marginStart">10dip</dimen>
+    --------------------------------
+    Id --> container_sold_out_since
+    <dimen name="csos_marginStart">10dip</dimen>
+    ------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------
+    //-- ITEM_INTEREST_LIST -->>
+
+    ---** Cardview **---
+    Id --> container_interest_item
+    <dimen name="cii_width">100dip</dimen>
+    <dimen name="cii_height">100dip</dimen>
+    <dimen name="cii_margin">10dip</dimen>
+    <dimen name="cii_cardCornerRadius">15dip</dimen>
+    <dimen name="cii_cardElevation">10dip</dimen>
+
+    ---** Imageview **---
+    Id --> interest_icon
+    <dimen name="ii_width">40dip</dimen>
+    <dimen name="ii_height">40dip</dimen>
+    <dimen name="ii_marginTop">20dip</dimen>
+
+    ---** TextView **---
+    Id --> interest_name
+    <dimen name="in_textSize">15sp</dimen>
 
     ------------------------------------------------------------------------------------------------
     -------------------------------------*** LANDSCAPE MODE ***-------------------------------------

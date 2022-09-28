@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -26,28 +27,30 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:src="@drawable/a1"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:contentDescription="@string/content_description_main_picture_property_item" />
 
             <TextView
                 android:id="@+id/prop_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/pn_marginLeft"
-                android:layout_toRightOf="@+id/prop_photo"
+                android:layout_marginStart="@dimen/pn_marginLeft"
+                android:layout_toEndOf="@+id/prop_photo"
                 android:fontFamily="@font/aref_regular"
                 android:text="@string/property_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/pn_textSize" />
+                android:textSize="@dimen/pn_textSize"
+                tools:ignore="RelativeOverlap" />
 
             <TextView
                 android:id="@+id/prop_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/prop_name"
-                android:layout_marginLeft="@dimen/ppl_marginLeft"
-                android:layout_toRightOf="@+id/prop_photo"
+                android:layout_marginStart="@dimen/ppl_marginLeft"
+                android:layout_toEndOf="@+id/prop_photo"
                 android:fontFamily="@font/spectral_extralight_italic"
-                android:text="@string/property_city"
+                android:text="@string/property_address"
                 android:textColor="@color/black"
                 android:textSize="@dimen/ppl_textSize" />
 
@@ -56,28 +59,29 @@
                 android:layout_width="@dimen/line_width"
                 android:layout_height="@dimen/line_height"
                 android:layout_alignParentBottom="true"
-                android:layout_marginRight="@dimen/line_marginRight"
+                android:layout_marginEnd="@dimen/line_marginRight"
                 android:layout_marginBottom="@dimen/line_marginBottom"
-                android:layout_toLeftOf="@id/prop_cost"
+                android:layout_toStartOf="@id/prop_cost"
                 android:background="@color/chain_grey" />
 
             <ImageView
                 android:id="@+id/availability_icon"
                 android:layout_width="@dimen/ai_width"
                 android:layout_height="@dimen/ai_height"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/ai_marginTop"
-                android:layout_marginRight="@dimen/ai_marginRight"
+                android:layout_marginEnd="@dimen/ai_marginRight"
                 android:backgroundTintMode="@color/black"
-                android:src="@drawable/round_roofing_24" />
+                android:src="@drawable/round_roofing_24"
+                android:contentDescription="@string/content_description_icon_item_property" />
 
             <TextView
                 android:id="@+id/prop_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginRight="@dimen/pc_marginRight"
+                android:layout_marginEnd="@dimen/pc_marginRight"
                 android:layout_marginBottom="@dimen/pc_marginBottom"
                 android:fontFamily="@font/aref_bold"
                 android:text="@string/property_cost"

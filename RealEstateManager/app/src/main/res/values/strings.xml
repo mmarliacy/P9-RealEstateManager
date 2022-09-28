@@ -11,9 +11,15 @@
     <string name="app_name">Real Estate Manager</string>
     <string name="description_title">Description</string>
     <string name="around_title">Around</string>
+    <string name="location_of_property_title">Location of property</string>
+    <string name="property_for_sale_since_title">For sale</string>
+    <string name="property_sold_since_title">Sold</string>
 
     <!--:: Content Descriptions / Image Views ::-->
-
+    <string name="content_description_prop_photos">View pager introducing property photos</string>
+    <string name="content_description_icon_interest">Icon representing interest</string>
+    <string name="content_description_icon_item_property">Icon that gives availability of property according to its color</string>
+    <string name="content_description_main_picture_property_item">Main picture property</string>
 
     <!--:: Text Views ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -22,7 +28,7 @@
     <string name="seller_name">Par Christophe Duchamps</string>
     <string name="property_status">Available</string>
     <string name="property_properties">House - 4P - 125 m²</string>
-    <string name="property_city">Long Island</string>
+    <string name="property_address">Long Island</string>
     <string name="property_description">In a suburban area sought after for its calm and proximity to all shops, kindergartens, primary schools and college.
                                         Detached house built on a total cellar converted into a laundry area, storage space, game room and others, a toilet.
                                         On the ground floor, entrance, hallway, kitchen open to living room of 40 m² with fireplace, shower room with wc, 1 bedroom of 13 m².
@@ -31,10 +37,10 @@
                                         Double glazing, new boiler.
                                         All on a plot of 195 m².
     </string>
-    <string name="location_of_property_title">Location of property</string>
-    <string name="property_for_sale_since_title">For sale since</string>
-    <string name="property_sold_since_title">Sold since</string>
     <string name="property_sold_since">--</string>
+    <string name="on_sale_date">24/06/2022</string>
+    <string name="interest_name">Shop Store</string>
+
 
 
     <!--:: Text Input Layouts ::-->

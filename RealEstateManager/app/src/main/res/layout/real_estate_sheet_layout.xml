@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:fitsSystemWindows="true">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -15,272 +15,266 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/ctl_height"
+            app:collapsedTitleTextAppearance="@style/AppTheme.NoActionBar"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleTextAppearance="@style/AppTheme.NoActionBar"
-            app:collapsedTitleTextAppearance="@style/AppTheme.NoActionBar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/property_name"
-            app:toolbarId="@id/toolbar">
+            app:toolbarId="@id/sheet_toolbar">
 
             <ImageView
+                android:id="@+id/sheet_prop_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/a1"
-                app:layout_collapseMode="parallax" />
+                app:layout_collapseMode="parallax"
+                android:contentDescription="@string/content_description_prop_photos" />
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/sheet_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
     </com.google.android.material.appbar.AppBarLayout>
+
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/seller_name"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/spectral_light_italic"
-            android:text="@string/seller_name"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/sheet_prop_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/seller_name"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/aref_bold"
-            android:text="@string/property_cost"
-            android:textColor="@color/black"
-            android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/sheet_prop_status"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sheet_prop_cost"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="10dp"
-            android:fontFamily="@font/asap"
-            android:text="@string/property_status"
-            android:textColor="@color/green"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/sheet_prop_properties"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sheet_prop_status"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/asap"
-            android:text="@string/property_properties"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/sheet_prop_city"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sheet_prop_properties"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:fontFamily="@font/spectral_light_italic"
-            android:text="@string/property_city"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/sheet_prop_description_title"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sheet_prop_city"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/asap"
-            android:text="@string/description_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/sheet_prop_description"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sheet_prop_description_title"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/asap"
-            android:text="@string/property_description"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/sheet_prop_around_title"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/sheet_prop_description"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/asap"
-            android:text="@string/around_title"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/container_list_interest"
+        <RelativeLayout
+            android:id="@+id/container_sheet_description"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/sheet_prop_around_title">
+            android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <TextView
+                android:id="@+id/seller_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/sn_marginEnd"
+                android:fontFamily="@font/spectral_light_italic"
+                android:text="@string/seller_name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sn_textSize" />
+
+            <TextView
+                android:id="@+id/sheet_prop_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/seller_name"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/spc_marginEnd"
+                android:fontFamily="@font/asap"
+                android:text="@string/property_cost"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spc_textSize" />
+
+            <TextView
+                android:id="@+id/sheet_prop_status"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sheet_prop_cost"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/sps_marginEnd"
+                android:fontFamily="@font/asap"
+                android:text="@string/property_status"
+                android:textColor="@color/green"
+                android:textSize="@dimen/sps_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sheet_prop_properties"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sheet_prop_status"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/spp_marginStart"
+                android:fontFamily="@font/asap"
+                android:text="@string/property_properties"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spp_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sheet_prop_address"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sheet_prop_properties"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/spa_marginStart"
+                android:fontFamily="@font/asap_italic"
+                android:text="@string/property_address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spa_textSize"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/sheet_prop_description_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sheet_prop_address"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/spdt_marginStart"
+                android:layout_marginTop="@dimen/spdt_marginTop"
+                android:fontFamily="@font/asap"
+                android:text="@string/description_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spdt_textSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sheet_prop_description"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sheet_prop_description_title"
+                android:layout_alignParentStart="true"
+                android:layout_margin="@dimen/spd_margin"
+                android:fontFamily="@font/asap"
+                android:text="@string/property_description"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spd_textSize" />
+
+            <TextView
+                android:id="@+id/sheet_prop_around_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/sheet_prop_description"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/spat_marginStart"
+                android:layout_marginTop="@dimen/spat_marginTop"
+                android:fontFamily="@font/asap"
+                android:text="@string/around_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/spat_textSize"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/container_list_interest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:listitem="@layout/item_interest_list"
-                tools:itemCount="1"
-                />
-        </LinearLayout>
+                android:layout_below="@id/sheet_prop_around_title">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_interest_list" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/sheet_location_property_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/container_list_interest"
-            android:text="@string/location_of_property_title"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/asap"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-
-            />
-
-        <!--:: Need to add : MAPS STATIC API ::-->
-        <LinearLayout
-            android:id="@+id/container_static_maps"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/sheet_location_property_title"
-            android:background="@drawable/long_island"
-            android:orientation="horizontal">
-        </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:layout_below="@id/container_static_maps"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/property_for_sale_since_title"
+                android:id="@+id/sheet_location_property_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dip"
-                android:drawableTop="@drawable/round_roofing_24"
+                android:layout_below="@id/container_list_interest"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/slpt_marginStart"
+                android:layout_marginTop="@dimen/slpt_marginTop"
                 android:fontFamily="@font/asap"
-                android:text="@string/property_for_sale_since_title"
+                android:text="@string/location_of_property_title"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="@dimen/slpt_textSize"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/property_for_sale_since"
-                android:layout_width="wrap_content"
+            <!--:: Need to add : MAPS STATIC API ::-->
+            <LinearLayout
+                android:id="@+id/container_static_maps"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@+id/sheet_location_property_title"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/long_island"
+                android:orientation="horizontal">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_duration_sale"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dip"
-                android:fontFamily="@font/asap"
-                android:text="24/06/2022"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_below="@id/container_static_maps"
+                android:layout_marginTop="@dimen/cds_marginTop"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/container_for_sale_since"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cfss_marginStart"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/property_for_sale_since_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/pfsst_marginTop"
+                        android:fontFamily="@font/asap"
+                        android:text="@string/property_for_sale_since_title"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/pfsst_textSize"
+                        android:textStyle="bold"
+                        app:drawableTopCompat="@drawable/round_roofing_24" />
 
-            <TextView
-                android:id="@+id/property_sold_since_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:text="@string/property_sold_since_title"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/asap"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:drawableTop="@drawable/ic_baseline_sell_24"/>
+                    <TextView
+                        android:id="@+id/property_for_sale_since"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/pfss_marginTop"
+                        android:fontFamily="@font/asap"
+                        android:text="@string/on_sale_date"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/pfss_textSize"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/property_sold_since"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/property_sold_since"
-                android:textStyle="bold"
-                android:fontFamily="@font/asap"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
+                <LinearLayout
+                    android:id="@+id/container_sold_out_since"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/csos_marginStart"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/property_sold_since_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/psst_marginTop"
+                        android:fontFamily="@font/asap"
+                        android:text="@string/property_sold_since_title"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/psst_textSize"
+                        android:textStyle="bold"
+                        app:drawableTopCompat="@drawable/ic_baseline_sell_24" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/property_sold_since"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/pss_marginTop"
+                        android:fontFamily="@font/asap"
+                        android:text="@string/property_sold_since"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/pss_textSize"
+                        android:textStyle="bold" />
 
-
-
-    </RelativeLayout>
-
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
