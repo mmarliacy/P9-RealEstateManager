@@ -11,16 +11,13 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/ctl_height"
-            app:collapsedTitleTextAppearance="@style/AppTheme.Sheet.NoActionBar"
-            app:contentScrim="@color/colorPrimary"
-            app:expandedTitleTextAppearance="@style/AppTheme.Sheet.NoActionBar"
+            android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/property_name"
             app:toolbarId="@id/sheet_toolbar">
@@ -39,6 +36,7 @@
                 android:id="@+id/sheet_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>

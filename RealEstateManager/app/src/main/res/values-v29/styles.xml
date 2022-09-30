@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomCollapsingActionBar" parent="Theme.MaterialComponents">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="contentScrim">@color/primary</item>
+        <item name="scrimBackground">@color/primary_dark</item>
+        <item name="statusBarScrim">@color/primary_dark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:enforceStatusBarContrast">true</item>
+        <item name="expandedTitleTextColor">@color/primary</item>
+        <item name="collapsedTitleTextColor">@color/white</item>
+
+    </style>
+</resources>

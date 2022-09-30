@@ -1,37 +1,66 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <!-- PRIMARY THEME :: HOME SCREEN (RECYCLERVIEW) LAYOUT -->
+    <style name="Theme.Primary.RealEstateManager" parent="Theme.MaterialComponents.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary</item>
     </style>
-
-
-    <style name="AppTheme.Sheet.NoActionBar" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
+    //-------------------------------------------------------------------------------------------------->>
+    <!-- SECONDARY THEME :: ADD PROPERTY // PROPERTY SHEET // LAYOUTS  -->
+    <style name="Theme.Secondary.RealEstateManager" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+    //-------------------------------------------------------------------------------------------------->>
+    <!-- COMPONENT :: ACTIONBAR STYLE -->
+    <style name="CustomCollapsingActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="contentScrim">@color/accent</item>
+    </style>
+    //-------------------------------------------------------------------------------------------------->>
+    <!-- COMPONENT :: COLLAPSE ACTIONBAR TITLE  -->
+    <style name="CollapseTitleTextAppearanceActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:fontFamily">@font/asap_italic</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
     </style>
-
-
-    <style name="AddLot.AppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="windowActionBar">false</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+    //-------------------------------------------------------------------------------------------------->>
+    <!-- COMPONENT :: EXPANDED ACTIONBAR TITLE  -->
+    <style name="ExpandedTitleTextAppearanceActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:fontFamily">@font/asap</item>
         <item name="android:textSize">30sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/primary</item>
         <item name="android:textStyle">bold</item>
-
-
     </style>
-    <!-- STYLE SIGN-IN BUTTON -->
 
-
+    //-------------------------------------------------------------------------------------------------->>
+    <!-- COMPONENT :: TEXT INPUT LAYOUT  -->
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:fontFamily">@font/asap</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="android:textColorHint">@color/accent</item>
+        <item name="startIconTint">@color/primary</item>
+    </style>
 </resources>

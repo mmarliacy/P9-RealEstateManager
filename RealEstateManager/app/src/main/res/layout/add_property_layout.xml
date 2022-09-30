@@ -6,40 +6,42 @@
     android:background="@color/white"
     android:fitsSystemWindows="true">
 
-
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             android:background="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.DayNight"
-            >
+            android:theme="@style/CustomCollapsingActionBar">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:collapsedTitleTextAppearance="@style/AddLot.AppTheme.NoActionBar"
-                app:expandedTitleTextAppearance="@style/AddLot.AppTheme.NoActionBar"
+                app:statusBarScrim="@color/primary"
+                app:collapsedTitleTextAppearance="@style/CollapseTitleTextAppearanceActionBar"
+                app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearanceActionBar"
                 app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
                 app:toolbarId="@id/toolbar">
 
-
                 <LinearLayout
+                    android:id="@+id/container_give_space"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="150dp"
                     android:fitsSystemWindows="true"
-                    android:elevation="10dp" />
+                    android:elevation="10dp"
+                    android:orientation="vertical"/>
+
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
                     app:layout_collapseMode="pin"
-                    app:titleTextColor="@color/colorPrimaryDark"
+                    app:titleTextColor="@color/primary_dark"
                     app:title="@string/add_property_layout_title" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -71,15 +73,12 @@
                 android:layout_margin="10dp"
                 android:hint="@string/hint_property_name_input"
                 app:startIconDrawable="@drawable/round_roofing_24"
-                android:theme="@style/AppTheme"
-                android:background="@color/light_grey"
-                app:startIconTint="@color/colorAccent">
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                 />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -104,15 +103,12 @@
                 android:layout_margin="10dp"
                 android:hint="@string/hint_property_type_input"
                 app:startIconDrawable="@drawable/ic_lots"
-                android:theme="@style/AppTheme"
-                android:background="@color/light_grey"
-                app:startIconTint="@color/colorAccent">
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
 
             <com.google.android.material.textfield.TextInputEditText
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -138,16 +134,12 @@
                 android:layout_margin="10dp"
                 android:hint="@string/hint_property_land_area_input"
                 app:startIconDrawable="@drawable/ic_baseline_landscape_24"
-                android:theme="@style/AppTheme"
-                android:background="@color/light_grey"
-                app:startIconTint="@color/colorAccent">
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    />
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -165,25 +157,271 @@
                 android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/container_total_rooms"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_below="@id/form_property_total_rooms_title"
-                android:layout_marginStart="100dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 app:cardCornerRadius="15dp"
                 android:elevation="10dp"
-                android:background="@drawable/shape">
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/item_interest_shape">
+                    <TextView
+                        android:id="@+id/form_total_rooms_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/form_total_rooms_number_count"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/rooms_indication_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rooms_indicator_title"
+                android:layout_toEndOf="@id/container_total_rooms"
+                android:layout_below="@id/form_property_total_rooms_title"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:layout_marginStart="20dp"/>
+
+            <Button
+                android:id="@+id/button_more_total_rooms"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_property_total_rooms_title"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/rooms_indication_title"
+                android:backgroundTint="@color/green"
+                android:elevation="10dp"
+                android:text="@string/form_add_rooms_sign"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button_less_total_rooms"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_property_total_rooms_title"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/button_more_total_rooms"
+                android:backgroundTint="@color/red"
+                android:elevation="10dp"
+                android:text="@string/form_remove_rooms_sign"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/form_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/container_total_rooms"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/add_lot_property_address_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/form_address_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_address_title"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/hint_property_address_input"
+                app:startIconDrawable="@drawable/ic_baseline_map_24"
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/form_around_property_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/form_address_input"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/add_lot_around_property_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_form_list_interest"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/primary_light"
+                android:layout_below="@id/form_around_property_title">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@string/chip_group_indicator"
+                    android:textSize="30sp"
                     android:gravity="center"
-                    android:text="1"
-                    android:textColor="@color/black"
-                    android:textSize="25sp" />
-            </androidx.cardview.widget.CardView>
+                    android:textColor="@color/black"/>
+            </com.google.android.material.chip.ChipGroup>
 
+            <TextView
+                android:id="@+id/form_for_sale_since_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chip_group_form_list_interest"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/add_lot_for_sale_since_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/form_for_sale_since_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chip_group_form_list_interest"
+                android:layout_toEndOf="@id/form_for_sale_since_title"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/hint_form_for_sale_since"
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                app:startIconDrawable="@drawable/ic_baseline_event_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/form_sold_out_since_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_for_sale_since_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/add_lot_sold_out_since_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/form_sold_out_since_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_for_sale_since_input"
+                android:layout_toEndOf="@id/form_sold_out_since_title"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/hint_form_sol_out_since"
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                app:startIconDrawable="@drawable/ic_baseline_event_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/form_property_description_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/form_sold_out_since_title"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/add_lot_property_description_title"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/form_property_description_input"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/form_property_description_title"
+                android:layout_margin="10dp"
+                android:hint="@string/hint_tell_me_more_about_it_description_property"
+                style="@style/CustomTextInputLayout"
+                app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:gravity="top"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/form_confirm_adding"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/form_property_description_input"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/stop_adding_shape"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_close_24"
+                android:contentDescription="@string/content_description_stop_adding_sign" />
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/form_property_description_input"
+                android:layout_toStartOf="@id/form_confirm_adding"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/adding_shape"
+                android:scaleType="fitCenter"
+                android:minWidth="100dp"
+                android:minHeight="100dp"
+                android:src="@drawable/ic_baseline_arrow_forward_24"
+                android:layout_marginBottom="50dp"
+                android:contentDescription="@string/content_description_form_confirm_adding" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

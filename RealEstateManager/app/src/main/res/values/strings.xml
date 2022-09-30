@@ -5,6 +5,9 @@
         jbjkqsbcuebjbkqshbcsuonjkqsbdhiazjqsdbjksqbdhbscoejqbsbckjhqsbhkdjqsbcjknqsjbhqsjbchqksjcbj
         qsbnjbqsjbcnbsqbhjbqhschkqcjsbhkjbqscjkbqcsjkqsbcjkbqcshjbcqs</string>
 
+
+    <!--:: Other indicators ::-->
+    <string name="chip_group_indicator">ChipGroup</string>
     // ---------------------:: BY TYPE OF WIDGETS ::----------------------
 
     <!--:: Titles ::-->
@@ -17,12 +20,22 @@
     <string name="add_property_layout_title">Describe the lot</string>
     <string name="add_lot_property_name_title">Property name</string>
     <string name="add_lot_property_type_title">Property type</string>
+    <string name="add_lot_property_total_land_area_title">Total land area</string>
+    <string name="add_lot_property_total_rooms_title">Total Rooms</string>
+    <string name="add_lot_property_address_title">Address</string>
+    <string name="add_lot_around_property_title">Around property</string>
+    <string name="add_lot_for_sale_since_title">For sale since</string>
+    <string name="add_lot_sold_out_since_title">Sold out since</string>
+    <string name="rooms_indicator_title">room(s)</string>
+    <string name="add_lot_property_description_title">Description</string>
 
     <!--:: Content Descriptions / Image Views ::-->
     <string name="content_description_prop_photos">View pager introducing property photos</string>
     <string name="content_description_icon_interest">Icon representing interest</string>
     <string name="content_description_icon_item_property">Icon that gives availability of property according to its color</string>
     <string name="content_description_main_picture_property_item">Main picture property</string>
+    <string name="content_description_form_confirm_adding">Confirm adding sign</string>
+    <string name="content_description_stop_adding_sign">Stop adding sign</string>
 
     <!--:: Text Views ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -43,17 +56,22 @@
     <string name="property_sold_since">--</string>
     <string name="on_sale_date">24/06/2022</string>
     <string name="interest_name">Shop Store</string>
+    <string name="form_total_rooms_number_count">1</string>
+
 
 
     <!--:: Hint ::-->
     <string name="hint_property_name_input">Example : The sweetest house</string>
     <string name="hint_property_type_input">House, Apartment, Castle, Room…</string>
-    <string name="hint_property_land_area_input">...m²</string>
-    <string name="add_lot_property_total_land_area_title">Total land area</string>
-    <string name="add_lot_property_total_rooms_title">Total Rooms</string>
+    <string name="hint_property_land_area_input">…m²</string>
+    <string name="hint_property_address_input">2250 N Ocean Ave, Farmingville, États-Unis</string>
+    <string name="hint_form_for_sale_since">Since..</string>
+    <string name="hint_form_sol_out_since">Since..</string>
+    <string name="hint_tell_me_more_about_it_description_property">Tell more about it…</string>
 
     <!--:: Buttons ::-->
-
+    <string name="form_add_rooms_sign">+</string>
+    <string name="form_remove_rooms_sign">-</string>
 
     <!--:: Floating Action Buttons ::-->
 

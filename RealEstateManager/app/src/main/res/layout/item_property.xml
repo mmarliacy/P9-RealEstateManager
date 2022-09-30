@@ -85,7 +85,7 @@
                 android:layout_marginBottom="@dimen/pc_marginBottom"
                 android:fontFamily="@font/aref_bold"
                 android:text="@string/property_cost"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/primary"
                 android:textSize="@dimen/pc_textSize" />
 
         </RelativeLayout>

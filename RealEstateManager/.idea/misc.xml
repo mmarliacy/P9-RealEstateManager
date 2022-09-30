@@ -3,20 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable-hdpi/adding_shape.xml" value="0.202" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable-mdpi/item_interest_shape.xml" value="0.1885" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/baseline_shopping_cart_24.xml" value="0.2515" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_add_location_24.xml" value="0.237" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_event_24.xml" value="0.237" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_landscape_24.xml" value="0.155" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.155" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/round_local_atm_20.xml" value="0.229" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/round_roofing_24.xml" value="0.214" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/shape.xml" value="0.22" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/stop_adding_shape.xml" value="0.202" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/font/arima_madurai_extrabold.xml" value="0.14114583333333333" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/font/asap.xml" value="0.28125" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/activity_second.xml" value="0.1109375" />
-        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/add_property_layout.xml" value="0.45343367826904984" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/add_property_layout.xml" value="0.264" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_interest_list.xml" value="0.4" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_property.xml" value="0.4" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/property_item.xml" value="0.25" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/real_estate_sheet_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/test.xml" value="0.2" />
       </map>
     </option>
   </component>
