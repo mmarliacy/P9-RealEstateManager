@@ -8,9 +8,10 @@
 
     <!--:: Other indicators ::-->
     <string name="chip_group_indicator">ChipGroup</string>
-    // ---------------------:: BY TYPE OF WIDGETS ::----------------------
 
-    <!--:: Titles ::-->
+    // ---------------------:: BY TYPE OF WIDGETS AND FUNCTIONS ::----------------------
+
+    <!--:: Text Views / Titles / No Editable ::-->
     <string name="app_name">Real Estate Manager</string>
     <string name="description_title">Description</string>
     <string name="around_title">Around</string>
@@ -29,19 +30,11 @@
     <string name="rooms_indicator_title">room(s)</string>
     <string name="add_lot_property_description_title">Description</string>
 
-    <!--:: Content Descriptions / Image Views ::-->
-    <string name="content_description_prop_photos">View pager introducing property photos</string>
-    <string name="content_description_icon_interest">Icon representing interest</string>
-    <string name="content_description_icon_item_property">Icon that gives availability of property according to its color</string>
-    <string name="content_description_main_picture_property_item">Main picture property</string>
-    <string name="content_description_form_confirm_adding">Confirm adding sign</string>
-    <string name="content_description_stop_adding_sign">Stop adding sign</string>
-
-    <!--:: Text Views ::-->
+    <!--:: Text Views / Editable ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
     <string name="property_name">L\'anglaise</string>
     <string name="property_cost">122 000 $</string>
-    <string name="seller_name">Par Christophe Duchamps</string>
+    <string name="seller_name">By Christophe Duchamps</string>
     <string name="property_status">Available</string>
     <string name="property_properties">House - 4P - 125 m²</string>
     <string name="property_address">Long Island</string>
@@ -58,13 +51,20 @@
     <string name="interest_name">Shop Store</string>
     <string name="form_total_rooms_number_count">1</string>
 
-
+    <!--:: Content Descriptions / Image Views ::-->
+    <string name="content_description_prop_photos">View pager introducing property photos</string>
+    <string name="content_description_icon_interest">Icon representing interest</string>
+    <string name="content_description_icon_item_property">Icon that gives availability of property according to its color</string>
+    <string name="content_description_main_picture_property_item">Main picture property</string>
+    <string name="content_description_form_confirm_adding">Confirm adding sign</string>
+    <string name="content_description_stop_adding_sign">Cancel adding sign</string>
+    <string name="content_description_add_new_property_button">Add new property button</string>
 
     <!--:: Hint ::-->
-    <string name="hint_property_name_input">Example : The sweetest house</string>
-    <string name="hint_property_type_input">House, Apartment, Castle, Room…</string>
-    <string name="hint_property_land_area_input">…m²</string>
-    <string name="hint_property_address_input">2250 N Ocean Ave, Farmingville, États-Unis</string>
+    <string name="hint_property_name_input">My name is…</string>
+    <string name="hint_property_type_input">My type is…</string>
+    <string name="hint_property_land_area_input">The living area is…</string>
+    <string name="hint_property_address_input">Here is …</string>
     <string name="hint_form_for_sale_since">Since..</string>
     <string name="hint_form_sol_out_since">Since..</string>
     <string name="hint_tell_me_more_about_it_description_property">Tell more about it…</string>
@@ -73,18 +73,15 @@
     <string name="form_add_rooms_sign">+</string>
     <string name="form_remove_rooms_sign">-</string>
 
+    <!--:: HelperText ::-->
+    <string name="helperText_property_name_input">Example : The sweetest house</string>
+    <string name="helperText_property_type_input">Example : House, Apartment, Castle, Room…</string>
+    <string name="helperText_property_land_area_input">Living area in square meters</string>
+    <string name="helperText_property_address_input">Example: 2250 N Ocean Ave, Farmingville, États-Unis</string>
+
     <!--:: Floating Action Buttons ::-->
-
-
     <!--:: Switch Buttons ::-->
-
-
     <!--:: Bottom Navigation Menu ::-->
-
-
     <!--:: Navigation Drawer Menu ::-->
-
-
     <!--:: Toolbar Menu ::-->
-
 </resources>

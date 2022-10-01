@@ -9,10 +9,10 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/item_cardview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ic_height"
-        android:layout_margin="@dimen/ic_margin"
-        app:cardCornerRadius="@dimen/ic_cornerRadius"
-        app:cardElevation="@dimen/ic_elevation">
+        android:layout_height="@dimen/ic_height_land"
+        android:layout_margin="@dimen/ic_margin_land"
+        app:cardCornerRadius="@dimen/ic_cornerRadius_land"
+        app:cardElevation="@dimen/ic_elevation_land">
 
         <RelativeLayout
             android:id="@+id/item_container"
@@ -23,7 +23,7 @@
 
             <ImageView
                 android:id="@+id/prop_photo"
-                android:layout_width="@dimen/pp_width"
+                android:layout_width="@dimen/pp_width_land"
                 android:layout_height="match_parent"
                 android:layout_alignParentStart="true"
                 android:contentDescription="@string/content_description_main_picture_property_item"
@@ -35,12 +35,12 @@
                 android:id="@+id/prop_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/pn_marginLeft"
+                android:layout_marginStart="@dimen/pn_marginLeft_land"
                 android:layout_toEndOf="@+id/prop_photo"
                 android:fontFamily="@font/aref_regular"
                 android:text="@string/property_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/pn_textSize"
+                android:textSize="@dimen/pn_textSize_land"
                 tools:ignore="RelativeOverlap" />
 
             <TextView
@@ -48,30 +48,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/prop_name"
-                android:layout_marginStart="@dimen/ppl_marginLeft"
+                android:layout_marginStart="@dimen/ppl_marginLeft_land"
                 android:layout_toEndOf="@+id/prop_photo"
                 android:fontFamily="@font/spectral_extralight_italic"
                 android:text="@string/property_address"
                 android:textColor="@color/black"
-                android:textSize="@dimen/ppl_textSize" />
+                android:textSize="@dimen/ppl_textSize_land" />
 
             <View
                 android:id="@+id/line"
-                android:layout_width="@dimen/line_width"
-                android:layout_height="@dimen/line_height"
+                android:layout_width="@dimen/line_width_land"
+                android:layout_height="@dimen/line_height_land"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="@dimen/line_marginRight"
-                android:layout_marginBottom="@dimen/line_marginBottom"
+                android:layout_marginEnd="@dimen/line_marginRight_land"
+                android:layout_marginBottom="@dimen/line_marginBottom_land"
                 android:layout_toStartOf="@id/prop_cost"
                 android:background="@color/chain_grey" />
 
             <ImageView
                 android:id="@+id/availability_icon"
-                android:layout_width="@dimen/ai_width"
-                android:layout_height="@dimen/ai_height"
+                android:layout_width="@dimen/ai_width_land"
+                android:layout_height="@dimen/ai_height_land"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/ai_marginTop"
-                android:layout_marginEnd="@dimen/ai_marginRight"
+                android:layout_marginTop="@dimen/ai_marginTop_land"
+                android:layout_marginEnd="@dimen/ai_marginRight_land"
                 android:backgroundTintMode="@color/black"
                 android:src="@drawable/round_roofing_24"
                 android:contentDescription="@string/content_description_icon_item_property" />
@@ -82,12 +82,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginEnd="@dimen/pc_marginRight"
-                android:layout_marginBottom="@dimen/pc_marginBottom"
+                android:layout_marginEnd="@dimen/pc_marginRight_land"
+                android:layout_marginBottom="@dimen/pc_marginBottom_land"
                 android:fontFamily="@font/aref_bold"
                 android:text="@string/property_cost"
                 android:textColor="@color/primary_dark"
-                android:textSize="@dimen/pc_textSize" />
+                android:textSize="@dimen/pc_textSize_land" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

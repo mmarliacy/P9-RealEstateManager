@@ -19,7 +19,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ctl_height"
+            android:layout_height="@dimen/ctl_height_land"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="@string/property_name"
@@ -65,11 +65,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/sn_marginEnd"
+                android:layout_marginEnd="@dimen/sn_marginEnd_land"
                 android:fontFamily="@font/spectral_light_italic"
                 android:text="@string/seller_name"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sn_textSize" />
+                android:textSize="@dimen/sn_textSize_land" />
 
             <TextView
                 android:id="@+id/sheet_prop_cost"
@@ -77,11 +77,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/seller_name"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/spc_marginEnd"
+                android:layout_marginEnd="@dimen/spc_marginEnd_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/property_cost"
                 android:textColor="@color/black"
-                android:textSize="@dimen/spc_textSize" />
+                android:textSize="@dimen/spc_textSize_land" />
 
             <TextView
                 android:id="@+id/sheet_prop_status"
@@ -89,11 +89,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/sheet_prop_cost"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/sps_marginEnd"
+                android:layout_marginEnd="@dimen/sps_marginEnd_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/property_status"
                 android:textColor="@color/grass_green"
-                android:textSize="@dimen/sps_textSize"
+                android:textSize="@dimen/sps_textSize_land"
                 android:textStyle="bold" />
 
             <TextView
@@ -102,11 +102,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/sheet_prop_status"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/spp_marginStart"
+                android:layout_marginStart="@dimen/spp_marginStart_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/property_properties"
                 android:textColor="@color/black"
-                android:textSize="@dimen/spp_textSize"
+                android:textSize="@dimen/spp_textSize_land"
                 android:textStyle="bold" />
 
             <TextView
@@ -115,11 +115,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/sheet_prop_properties"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/spa_marginStart"
+                android:layout_marginStart="@dimen/spa_marginStart_land"
                 android:fontFamily="@font/asap_italic"
                 android:text="@string/property_address"
                 android:textColor="@color/black"
-                android:textSize="@dimen/spa_textSize"
+                android:textSize="@dimen/spa_textSize_land"
                 android:textStyle="normal" />
 
             <TextView
@@ -128,12 +128,12 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/sheet_prop_address"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/spdt_marginStart"
-                android:layout_marginTop="@dimen/spdt_marginTop"
+                android:layout_marginStart="@dimen/spdt_marginStart_land"
+                android:layout_marginTop="@dimen/spdt_marginTop_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/description_title"
                 android:textColor="@color/black"
-                android:textSize="@dimen/spdt_textSize"
+                android:textSize="@dimen/spdt_textSize_land"
                 android:textStyle="bold" />
 
             <TextView
@@ -142,11 +142,11 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/sheet_prop_description_title"
                 android:layout_alignParentStart="true"
-                android:layout_margin="@dimen/spd_margin"
+                android:layout_margin="@dimen/spd_margin_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/property_description"
                 android:textColor="@color/black"
-                android:textSize="@dimen/spd_textSize" />
+                android:textSize="@dimen/spd_textSize_land" />
 
             <TextView
                 android:id="@+id/sheet_prop_around_title"
@@ -154,12 +154,12 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/sheet_prop_description"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/spat_marginStart"
-                android:layout_marginTop="@dimen/spat_marginTop"
+                android:layout_marginStart="@dimen/spat_marginStart_land"
+                android:layout_marginTop="@dimen/spat_marginTop_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/around_title"
                 android:textColor="@color/black"
-                android:textSize="@dimen/spat_textSize"
+                android:textSize="@dimen/spat_textSize_land"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -168,6 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/sheet_prop_around_title"
                 android:orientation="horizontal">
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
@@ -183,12 +184,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/container_list_interest"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/slpt_marginStart"
-                android:layout_marginTop="@dimen/slpt_marginTop"
+                android:layout_marginStart="@dimen/slpt_marginStart_land"
+                android:layout_marginTop="@dimen/slpt_marginTop_land"
                 android:fontFamily="@font/asap"
                 android:text="@string/location_of_property_title"
                 android:textColor="@color/black"
-                android:textSize="@dimen/slpt_textSize"
+                android:textSize="@dimen/slpt_textSize_land"
                 android:textStyle="bold" />
 
             <!--:: Need to add : MAPS STATIC API ::-->
@@ -207,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/container_static_maps"
-                android:layout_marginTop="@dimen/cds_marginTop"
+                android:layout_marginTop="@dimen/cds_marginTop_land"
                 android:orientation="horizontal"
                 android:baselineAligned="false">
 
@@ -215,7 +216,7 @@
                     android:id="@+id/container_for_sale_since"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/cfss_marginStart"
+                    android:layout_marginStart="@dimen/cfss_marginStart_land"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -224,11 +225,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/pfsst_marginTop"
+                        android:layout_marginTop="@dimen/pfsst_marginTop_land"
                         android:fontFamily="@font/asap"
                         android:text="@string/property_for_sale_since_title"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/pfsst_textSize"
+                        android:textSize="@dimen/pfsst_textSize_land"
                         android:textStyle="bold"
                         app:drawableTopCompat="@drawable/round_roofing_24" />
 
@@ -237,11 +238,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/pfss_marginTop"
+                        android:layout_marginTop="@dimen/pfss_marginTop_land"
                         android:fontFamily="@font/asap"
                         android:text="@string/on_sale_date"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/pfss_textSize"
+                        android:textSize="@dimen/pfss_textSize_land"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -249,7 +250,7 @@
                     android:id="@+id/container_sold_out_since"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/csos_marginStart"
+                    android:layout_marginStart="@dimen/csos_marginStart_land"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -258,11 +259,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/psst_marginTop"
+                        android:layout_marginTop="@dimen/psst_marginTop_land"
                         android:fontFamily="@font/asap"
                         android:text="@string/property_sold_since_title"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/psst_textSize"
+                        android:textSize="@dimen/psst_textSize_land"
                         android:textStyle="bold"
                         app:drawableTopCompat="@drawable/ic_baseline_sell_24" />
 
@@ -271,11 +272,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/pss_marginTop"
+                        android:layout_marginTop="@dimen/pss_marginTop_land"
                         android:fontFamily="@font/asap"
                         android:text="@string/property_sold_since"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/pss_textSize"
+                        android:textSize="@dimen/pss_textSize_land"
                         android:textStyle="bold" />
 
                 </LinearLayout>
