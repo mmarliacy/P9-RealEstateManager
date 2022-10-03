@@ -3,13 +3,31 @@ package com.openclassrooms.realestatemanager.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
 import java.util.Date;
 import java.util.List;
 
-/** This model class implement Parcelable */
+/**
+ * This model class implement Parcelable
+ */
+@Entity(tableName = "property_table", foreignKeys = @ForeignKey(
+        entity = UserModel.class,
+        parentColumns = "id",
+        childColumns = "userId",
+        onDelete = ForeignKey.CASCADE)
+)
 public class PropertyModel implements Parcelable {
 
-    private String name,type,address,description;
+    @PrimaryKey(autoGenerate = true)
+    private long id;
+    @ColumnInfo(name = "userId", index = true)
+    private long userId;
+
+    private String name, type, address, description;
     private int totalLeavingArea;
     private int rooms;
     private int[] photoProperty;
@@ -17,30 +35,51 @@ public class PropertyModel implements Parcelable {
     private Date onSaleDate;
     private Date soldDate;
 
-    /** Empty Constructor */
+    /**
+     * Empty Constructor
+     */
     public PropertyModel() {
     }
 
     /**
      * Constructor
      */
-    public PropertyModel(String pName, String pType, int pTotalLeavingArea, int pRooms,
-                         int[] pPhotoProperty, String pAddress, List<String> pPropertyInterest,
-                         Date pOnSaleDate, Date pSoldDate, String pDescription) {
+    public PropertyModel(long pUserId, String pName, String pType, String pAddress,
+                         String pDescription, int pTotalLeavingArea, int pRooms,
+                         int[] pPhotoProperty, List<String> pPropertyInterest,
+                         Date pOnSaleDate, Date pSoldDate) {
+        userId = pUserId;
         name = pName;
         type = pType;
+        address = pAddress;
+        description = pDescription;
         totalLeavingArea = pTotalLeavingArea;
         rooms = pRooms;
         photoProperty = pPhotoProperty;
-        address = pAddress;
         propertyInterest = pPropertyInterest;
         onSaleDate = pOnSaleDate;
         soldDate = pSoldDate;
-        description = pDescription;}
+    }
 
     /**
      * Getters & Setters
      */
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long pId) {
+        id = pId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long pUserId) {
+        userId = pUserId;
+    }
+
     public String getName() {
         return name;
     }
@@ -124,7 +163,6 @@ public class PropertyModel implements Parcelable {
     /**
      * PARCELABLE IMPLEMENTATION
      */
-
     @Override
     public int describeContents() {
         return 0;
@@ -132,6 +170,7 @@ public class PropertyModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel pParcel, int pI) {
+        pParcel.writeLong(id);
         pParcel.writeString(name);
         pParcel.writeString(type);
         pParcel.writeString(address);
@@ -143,6 +182,7 @@ public class PropertyModel implements Parcelable {
     }
 
     protected PropertyModel(Parcel in) {
+        id = in.readInt();
         name = in.readString();
         type = in.readString();
         address = in.readString();
