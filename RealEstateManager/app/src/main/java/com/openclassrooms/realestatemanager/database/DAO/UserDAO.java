@@ -1,6 +1,6 @@
 package com.openclassrooms.realestatemanager.database.DAO;
 
-import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -9,6 +9,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 
 import java.util.List;
 
+@Dao
 public interface UserDAO {
 
     @Insert
@@ -18,5 +19,5 @@ public interface UserDAO {
     void deleteUser(UserModel user);
 
     @Query("SELECT * FROM user_table")
-    LiveData<List<UserModel>> getUsers();
+    List<UserModel> getUsers();
 }

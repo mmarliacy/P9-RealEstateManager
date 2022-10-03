@@ -1,6 +1,5 @@
 package com.openclassrooms.realestatemanager.repositories;
 
-import androidx.lifecycle.LiveData;
 
 import com.openclassrooms.realestatemanager.database.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.UserModel;
@@ -19,7 +18,7 @@ public class UserRepository {
     }
 
     // -- QUERY :: GET ALL USERS -->
-    public LiveData<List<UserModel>> getAllUsers(){
+    public List<UserModel> getAllUsers(){
         return this.userDAO.getUsers();
     }
 

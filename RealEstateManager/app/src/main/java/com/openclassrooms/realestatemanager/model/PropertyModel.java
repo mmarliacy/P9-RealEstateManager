@@ -30,7 +30,7 @@ public class PropertyModel implements Parcelable {
     private String name, type, address, description;
     private int totalLeavingArea;
     private int rooms;
-    private int[] photoProperty;
+    private List<String> photoProperty;
     private List<String> propertyInterest;
     private Date onSaleDate;
     private Date soldDate;
@@ -44,10 +44,11 @@ public class PropertyModel implements Parcelable {
     /**
      * Constructor
      */
-    public PropertyModel(long pUserId, String pName, String pType, String pAddress,
-                         String pDescription, int pTotalLeavingArea, int pRooms,
-                         int[] pPhotoProperty, List<String> pPropertyInterest,
-                         Date pOnSaleDate, Date pSoldDate) {
+    public PropertyModel(long pId, long pUserId, String pName, String pType,
+                         String pAddress, String pDescription, int pTotalLeavingArea,
+                         int pRooms, List<String> pPhotoProperty,
+                         List<String> pPropertyInterest, Date pOnSaleDate, Date pSoldDate) {
+        id = pId;
         userId = pUserId;
         name = pName;
         type = pType;
@@ -112,11 +113,11 @@ public class PropertyModel implements Parcelable {
         rooms = pRooms;
     }
 
-    public int[] getPhotoProperty() {
+    public List<String> getPhotoProperty() {
         return photoProperty;
     }
 
-    public void setPhotoProperty(int[] pPhotoProperty) {
+    public void setPhotoProperty(List<String> pPhotoProperty) {
         photoProperty = pPhotoProperty;
     }
 
@@ -163,33 +164,17 @@ public class PropertyModel implements Parcelable {
     /**
      * PARCELABLE IMPLEMENTATION
      */
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel pParcel, int pI) {
-        pParcel.writeLong(id);
-        pParcel.writeString(name);
-        pParcel.writeString(type);
-        pParcel.writeString(address);
-        pParcel.writeString(description);
-        pParcel.writeInt(totalLeavingArea);
-        pParcel.writeInt(rooms);
-        pParcel.writeIntArray(photoProperty);
-        pParcel.writeStringList(propertyInterest);
-    }
 
     protected PropertyModel(Parcel in) {
-        id = in.readInt();
+        id = in.readLong();
+        userId = in.readLong();
         name = in.readString();
         type = in.readString();
         address = in.readString();
         description = in.readString();
         totalLeavingArea = in.readInt();
         rooms = in.readInt();
-        photoProperty = in.createIntArray();
+        photoProperty = in.createStringArrayList();
         propertyInterest = in.createStringArrayList();
     }
 
@@ -204,4 +189,24 @@ public class PropertyModel implements Parcelable {
             return new PropertyModel[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel pParcel, int pI) {
+        pParcel.writeLong(id);
+        pParcel.writeLong(userId);
+        pParcel.writeString(name);
+        pParcel.writeString(type);
+        pParcel.writeString(address);
+        pParcel.writeString(description);
+        pParcel.writeInt(totalLeavingArea);
+        pParcel.writeInt(rooms);
+        pParcel.writeStringList(photoProperty);
+        pParcel.writeStringList(propertyInterest);
+    }
+
 }

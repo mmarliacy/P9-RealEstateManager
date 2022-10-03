@@ -2,13 +2,13 @@ package com.openclassrooms.realestatemanager.database;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.openclassrooms.realestatemanager.database.DAO.PropertyDAO;
@@ -19,6 +19,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 import java.util.List;
 
 @Database(entities = {UserModel.class, PropertyModel.class}, version = 1, exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class RemDatabase extends RoomDatabase {
 
     // 1 -- DATABASE INSTANCE -->
@@ -31,12 +32,15 @@ public abstract class RemDatabase extends RoomDatabase {
     // 3 -- SINGLETON PATTERN -->
     public static RemDatabase getInstance(Context context) {
         if (instance == null) {
-            instance = Room.databaseBuilder(
-                            context.getApplicationContext(),
-                            RemDatabase.class,
-                            "database").
-                    addCallback(propertiesCallBack()).
-                    build();
+            synchronized (RemDatabase.class) {
+                instance = Room.databaseBuilder(
+                                context.getApplicationContext(),
+                                RemDatabase.class,
+                                "database").
+                        addCallback(propertiesCallBack()).
+                        allowMainThreadQueries().
+                        build();
+            }
         }
         return instance;
     }
