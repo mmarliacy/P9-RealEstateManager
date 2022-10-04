@@ -1,19 +1,19 @@
-package com.openclassrooms.realestatemanager.repositories;
+package com.openclassrooms.realestatemanager.local.repositories;
 
 
-import com.openclassrooms.realestatemanager.database.DAO.UserDAO;
+import com.openclassrooms.realestatemanager.local.database.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.UserModel;
 
 import java.util.List;
 
-public class UserRepository {
+public class LocalUserRepository {
 
     private final UserDAO userDAO;
 
     /**
      * Constructor
      */
-    public UserRepository(UserDAO userDAO) {
+    public LocalUserRepository(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 

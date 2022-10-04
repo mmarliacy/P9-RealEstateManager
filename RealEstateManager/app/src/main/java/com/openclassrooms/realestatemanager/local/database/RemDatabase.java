@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.database;
+package com.openclassrooms.realestatemanager.local.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,8 +11,8 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.openclassrooms.realestatemanager.database.DAO.PropertyDAO;
-import com.openclassrooms.realestatemanager.database.DAO.UserDAO;
+import com.openclassrooms.realestatemanager.local.database.DAO.PropertyDAO;
+import com.openclassrooms.realestatemanager.local.database.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
 

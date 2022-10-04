@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.database.DAO;
+package com.openclassrooms.realestatemanager.local.database.DAO;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

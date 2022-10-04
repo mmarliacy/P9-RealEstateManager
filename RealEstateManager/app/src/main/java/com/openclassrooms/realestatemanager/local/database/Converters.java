@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.database;
+package com.openclassrooms.realestatemanager.local.database;
 
 import androidx.room.TypeConverter;
 

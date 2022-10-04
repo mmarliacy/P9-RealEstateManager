@@ -1,21 +1,21 @@
-package com.openclassrooms.realestatemanager.viewmodel;
+package com.openclassrooms.realestatemanager.local.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
-import com.openclassrooms.realestatemanager.repositories.PropertyRepository;
-import com.openclassrooms.realestatemanager.repositories.UserRepository;
+import com.openclassrooms.realestatemanager.local.repositories.LocalPropertyRepository;
+import com.openclassrooms.realestatemanager.local.repositories.LocalUserRepository;
 
 import java.util.List;
 import java.util.concurrent.Executor;
 
-public class PropertyViewModel extends ViewModel {
+public class LocalPropertyViewModel extends ViewModel {
 
     // 1 -- REPOSITORIES & EXECUTOR -->
-    private final PropertyRepository fPropertyRepository;
-    private final UserRepository fUserRepository;
+    private final LocalPropertyRepository fPropertyRepository;
+    private final LocalUserRepository fUserRepository;
     private final Executor fExecutor;
 
     // 2 -- DATA -->
@@ -25,7 +25,7 @@ public class PropertyViewModel extends ViewModel {
     /**
      * Constructor
      */
-    public PropertyViewModel(PropertyRepository pPropertyRepository, UserRepository pUserRepository, Executor pExecutor) {
+    public LocalPropertyViewModel(LocalPropertyRepository pPropertyRepository, LocalUserRepository pUserRepository, Executor pExecutor) {
         fPropertyRepository = pPropertyRepository;
         fUserRepository = pUserRepository;
         fExecutor = pExecutor;
