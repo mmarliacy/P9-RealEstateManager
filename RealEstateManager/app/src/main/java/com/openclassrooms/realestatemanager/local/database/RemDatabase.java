@@ -2,6 +2,7 @@ package com.openclassrooms.realestatemanager.local.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -16,9 +17,12 @@ import com.openclassrooms.realestatemanager.local.database.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Arrays;
 import java.util.List;
 
-@Database(entities = {UserModel.class, PropertyModel.class}, version = 1, exportSchema = false)
+@Database(entities = {UserModel.class, PropertyModel.class}, version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class RemDatabase extends RoomDatabase {
 
@@ -38,34 +42,65 @@ public abstract class RemDatabase extends RoomDatabase {
                                 RemDatabase.class,
                                 "database").
                         addCallback(propertiesCallBack()).
-                        allowMainThreadQueries().
+                        fallbackToDestructiveMigration().
                         build();
             }
         }
         return instance;
     }
 
-    // 4 -- CALLBACK -->
+    // 4 -- Create Callback -->
     private static Callback propertiesCallBack() {
         return new Callback() {
             @Override
             public void onCreate(@NonNull SupportSQLiteDatabase db) {
                 super.onCreate(db);
+                //--:: /!\ Prepopulate methods don't work in onCreate method ::--
+                Log.d("DATABASE : " ,"prepopulateDatabase(db) has been called successfully ");
+            }
+
+            @Override
+            public void onOpen(@NonNull @NotNull SupportSQLiteDatabase db) {
+                super.onOpen(db);
+                prepopulateDatabaseWithUsers(db);
                 prepopulateDatabase(db);
+                Log.i("CALLBACK : ", "CALLBACK has been called");
             }
         };
     }
 
-    // 5 -- Insert Content Values in table -->
-    private static void prepopulateDatabase(SupportSQLiteDatabase db) {
-        List<UserModel> userList = UserModel.DUMMY_USERS;
-        for (UserModel users : userList) {
+    // 5 -- Insert Content Values in table : DUMMY_USERS -->
+    private static void prepopulateDatabaseWithUsers(SupportSQLiteDatabase db){
+        List<UserModel> usersList = UserModel.FAKE_USERS;
+        for (UserModel user : usersList){
             ContentValues usersValues = new ContentValues();
-            usersValues.put("id", users.getId());
-            usersValues.put("name", users.getName());
-            usersValues.put("mail", users.getMail());
-            usersValues.put("photo", users.getPhoto());
+            usersValues.put("id", user.getId());
+            usersValues.put("name", user.getName());
+            usersValues.put("mail", user.getMail());
+            usersValues.put("photo", user.getPhoto());
             db.insert("user_table", OnConflictStrategy.IGNORE, usersValues);
+        }
+    }
+
+    // 6 -- Insert Content Values in table : DUMMY_PROPERTIES -->
+    private static void prepopulateDatabase(SupportSQLiteDatabase db) {
+        List<PropertyModel> propertyList = PropertyModel.DUMMY_PROPERTIES;
+        for (PropertyModel properties : propertyList) {
+            ContentValues propertiesValues = new ContentValues();
+            propertiesValues.put("id", properties.getId());
+            propertiesValues.put("userId", properties.getUserId());
+            propertiesValues.put("name", properties.getName());
+            propertiesValues.put("type", properties.getType());
+            propertiesValues.put("address", properties.getAddress());
+            propertiesValues.put("description", properties.getDescription());
+            propertiesValues.put("total_living_area", properties.getTotalLeavingArea());
+            propertiesValues.put("room_number", properties.getRooms());
+            propertiesValues.put("price", properties.getPrice());
+            propertiesValues.put("photos_list", String.valueOf(properties.getPhotoProperty()));
+            propertiesValues.put("interest_list", String.valueOf(properties.getPropertyInterest()));
+            propertiesValues.put("on_sale_date", properties.getOnSaleDate());
+            propertiesValues.put("sold_date", properties.getSoldDate());
+            db.insert("property_table", OnConflictStrategy.IGNORE, propertiesValues);
         }
     }
 }

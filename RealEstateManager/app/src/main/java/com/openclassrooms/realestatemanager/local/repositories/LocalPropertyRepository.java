@@ -9,14 +9,18 @@ import java.util.List;
 
 public class LocalPropertyRepository {
 
+    //-----------
+    // VARIABLES
+    //-----------
     private final PropertyDAO propertyDAO;
 
-    /**
-     * Constructor
-     */
+    /** CONSTRUCTOR */
     public LocalPropertyRepository(PropertyDAO pPropertyDAO) {
-        propertyDAO = pPropertyDAO;
+        this.propertyDAO = pPropertyDAO;
     }
+
+    // 1 -- QUERIES : -->
+    //-----------------------
 
     // -- QUERY :: GET ALL PROPERTIES -->
     public LiveData<List<PropertyModel>> getAllProperties() {
@@ -28,6 +32,8 @@ public class LocalPropertyRepository {
         return this.propertyDAO.getAllPropertiesByUser(userId);
     }
 
+    // 2 -- CREATE - UPDATE - DELETE -->
+    //------------------------------------
     // -- INSERT :: PROPERTY -->
     public void addProperty(PropertyModel property) {
         this.propertyDAO.insertProperty(property);

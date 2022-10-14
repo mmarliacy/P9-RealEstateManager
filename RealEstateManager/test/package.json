@@ -1,0 +1,11 @@
+{
+  "name": "firebase_unit_test",
+  "version": "1.0.0",
+  "description": "Tests for firebase database",
+  "main": "test.java",
+  "scripts": {
+    "test": "mockito --exit"
+  },
+  "author": "Mélanie Marliacy",
+  "license": "ISC"
+}

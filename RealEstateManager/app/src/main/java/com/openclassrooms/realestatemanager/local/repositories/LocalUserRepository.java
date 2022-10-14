@@ -8,20 +8,25 @@ import java.util.List;
 
 public class LocalUserRepository {
 
+    //-----------
+    // VARIABLES
+    //-----------
     private final UserDAO userDAO;
 
-    /**
-     * Constructor
-     */
+    /** CONSTRUCTOR */
     public LocalUserRepository(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
+    // 1 -- QUERIES : -->
+    //-----------------------
     // -- QUERY :: GET ALL USERS -->
     public List<UserModel> getAllUsers(){
         return this.userDAO.getUsers();
     }
 
+    // 2 -- CREATE - UPDATE - DELETE -->
+    //------------------------------------
     // -- INSERT :: USER -->
     public void createUser(UserModel user){
         this.userDAO.insertUser(user);

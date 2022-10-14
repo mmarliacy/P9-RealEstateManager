@@ -2,29 +2,25 @@ package com.openclassrooms.realestatemanager.firebase.factory;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-
-import com.openclassrooms.realestatemanager.firebase.repositories.FirebasePropertyRepository;
-import com.openclassrooms.realestatemanager.firebase.repositories.FirebaseUserRepository;
+import com.openclassrooms.realestatemanager.firebase.helperRepositories.FirebasePropertyHelper;
+import com.openclassrooms.realestatemanager.firebase.helperRepositories.FirebaseUserHelper;
 import com.openclassrooms.realestatemanager.firebase.viewmodel.FirebaseViewModel;
-import com.openclassrooms.realestatemanager.local.viewmodel.LocalPropertyViewModel;
-
 import org.jetbrains.annotations.NotNull;
-
-import java.util.concurrent.Executor;
 
 public class FirebaseViewModelFactory implements ViewModelProvider.Factory {
 
-    //-- REPOSITORIES & EXECUTOR -->
-    private final FirebasePropertyRepository fFirebasePropertyRepository;
-    private final FirebaseUserRepository fFirebaseUserRepository;
+    // 1 -- REPOSITORIES & EXECUTOR -->
+    private final FirebasePropertyHelper fFirebasePropertyRepository;
+    private final FirebaseUserHelper fFirebaseUserRepository;
 
-    public FirebaseViewModelFactory(FirebasePropertyRepository pFirebasePropertyRepository,
-                                    FirebaseUserRepository pFirebaseUserRepository) {
+    /** CONSTRUCTOR */
+    public FirebaseViewModelFactory(FirebasePropertyHelper pFirebasePropertyRepository,
+                                    FirebaseUserHelper pFirebaseUserRepository) {
         fFirebasePropertyRepository = pFirebasePropertyRepository;
         fFirebaseUserRepository = pFirebaseUserRepository;
     }
 
-    //-- UNIQUE INSTANCE OF VIEW MODEL -->
+    // 2 -- UNIQUE INSTANCE OF FIREBASE VIEW MODEL -->
     @NotNull
     public <T extends ViewModel> T create(Class<T>  modelClass){
         if(modelClass.isAssignableFrom(FirebaseViewModel.class)){
@@ -32,6 +28,4 @@ public class FirebaseViewModelFactory implements ViewModelProvider.Factory {
         }
         throw new IllegalArgumentException("Unknown ViewModel Class");
     }
-
-
 }

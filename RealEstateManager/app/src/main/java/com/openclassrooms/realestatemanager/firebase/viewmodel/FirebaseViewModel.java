@@ -4,97 +4,77 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.openclassrooms.realestatemanager.firebase.repositories.FirebasePropertyRepository;
-import com.openclassrooms.realestatemanager.firebase.repositories.FirebaseUserRepository;
+import com.google.firebase.auth.FirebaseUser;
+import com.openclassrooms.realestatemanager.firebase.helperRepositories.FirebasePropertyHelper;
+import com.openclassrooms.realestatemanager.firebase.helperRepositories.FirebaseUserHelper;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
-import com.openclassrooms.realestatemanager.model.UserModel;
 
 import java.util.List;
-import java.util.concurrent.Executor;
 
 public class FirebaseViewModel extends ViewModel {
 
-    //-- REPOSITORIES & EXECUTOR -->
-    private final FirebasePropertyRepository fFirebasePropertyRepository;
-    private final FirebaseUserRepository fFirebaseUserRepository;
+    // 1 -- REPOSITORIES -->
+    private final FirebasePropertyHelper fFirebasePropertyRepository;
+    private final FirebaseUserHelper fFirebaseUserRepository;
 
-    /**
-     * Constructor
-     */
-    public FirebaseViewModel(FirebasePropertyRepository pFirebasePropertyRepository,
-                                    FirebaseUserRepository pFirebaseUserRepository) {
+
+    // 2 -- DATA -->
+    LiveData<List<PropertyModel>> propertiesList;
+    FirebaseUser user;
+
+
+    /** CONSTRUCTOR */
+    public FirebaseViewModel(FirebasePropertyHelper pFirebasePropertyRepository, FirebaseUserHelper pFirebaseUserRepository) {
         fFirebasePropertyRepository = pFirebasePropertyRepository;
         fFirebaseUserRepository = pFirebaseUserRepository;
     }
 
-    // 2 -- DATA -->
-    Task<QuerySnapshot> allProperties;
-    List<UserModel> allUsers;
-
-    // 3 -- GET FIRST DATA -->
-    public void initPropertiesList() {
-        if (allProperties == null) {
-            allProperties= fFirebasePropertyRepository.getAllProperties();
+    // 3 -- GET LAST DATA -->
+    // -- PROPERTIES -->
+    public void retrieveAllProperties(){
+            propertiesList = fFirebasePropertyRepository.getPropertiesData();
+    }
+    // -- CONNECTED USER-->
+    public void retrieveUserConnected(){
+        if(user == null){
+            user = fFirebaseUserRepository.getUser();
         }
     }
 
-    //-------------------------------------
-    // 4 -- METHODS TO MANAGE USERS LIST --
-    //-------------------------------------
-    // -- QUERY :: GET ALL USERS -->
-    public CollectionReference getUsersCollection() {
-        return this.fFirebaseUserRepository.getUsersCollection();
+    //-----------------------------------
+    // 4 -- QUERY DATABASE :: PROPERTIES
+    //-----------------------------------
+    // -- QUERIES : -->
+    //-----------------------
+    // -- GET ALL PROPERTIES IN FIREBASE DATABASE -->
+    public LiveData<List<PropertyModel>> getAllProperties() {
+        return this.propertiesList;
     }
 
-    // -- QUERY :: GET USER IN FIREBASE DATABASE -->
-    public Task<DocumentSnapshot> getUser(String userId){
-        return this.fFirebaseUserRepository.getUser(userId);
+    //---------------------------------------------------------------------------------------
+    // -- CREATE - UPDATE - DELETE -->
+    //------------------------------------
+    // -- CREATE :: PROPERTY IN FIREBASE DATABASE -->
+    public void createProperty(String propertyId, PropertyModel property) {
+        fFirebasePropertyRepository.createProperty(propertyId, property);
+    }
+    // -- UPDATE :: PROPERTY IN FIREBASE DATABASE -->
+    public Task<Void> updateProperty(String propertyId, PropertyModel property) {
+        return fFirebasePropertyRepository.updateProperty(propertyId, property);
+    }
+    // -- DELETE :: PROPERTY FROM FIREBASE DATABASE -->
+    public Task<Void> deleteProperty(String propertyId) {
+        return fFirebasePropertyRepository.deleteProperty(propertyId);
     }
 
-    // -- INSERT :: USER -->
-    public Task<Void> createUser(String userId, UserModel user) {
-        return this.fFirebaseUserRepository.createUser(userId, user);
-    }
+    //------------------------------
+    // 5 -- QUERY DATABASE :: USERS
+    //------------------------------
+    // -- QUERIES : -->
+    //-----------------------
 
-    //------------------------------------------
-    // 5 -- METHODS TO MANAGE PROPERTIES LIST --
-    //------------------------------------------
 
-    // -- QUERY :: GET PROPERTIES COLLECTION INTO USER COLLECTION -->
-    public CollectionReference getPropertiesCollection(String userId) {
-        return this.fFirebasePropertyRepository.getPropertiesCollection(userId);
-    }
-
-    // -- QUERY :: GET ALL PROPERTIES IN FIREBASE DATABASE (A TESTER) -->
-    public Task<QuerySnapshot> getAllProperties() {
-        return this.fFirebasePropertyRepository.getAllProperties();
-    }
-
-    // -- QUERY :: GET PROPERTY IN FIREBASE DATABASE -->
-    public Task<DocumentSnapshot> getProperty(String userId, String propertyId) {
-        return this.fFirebasePropertyRepository.getProperty(userId, propertyId);
-    }
-
-    // -- QUERY :: GET ALL PROPERTIES ACCORDING TO USER IN FIREBASE DATABASE -->
-    public Task<QuerySnapshot> getPropertyDocuments(String userId) {
-        return this.fFirebasePropertyRepository.getPropertyDocuments(userId);
-    }
-
-    // -- INSERT :: PROPERTY -->
-    public Task<Void> createProperty(String propertyId, PropertyModel property, String userId) {
-        return this.fFirebasePropertyRepository.createProperty(propertyId,property,userId);
-    }
-
-    // -- UPDATE :: PROPERTY -->
-    public Task<Void> updateProperty(String propertyId, String userId, PropertyModel property) {
-        return this.fFirebasePropertyRepository.updateProperty(propertyId,userId,property);
-    }
-
-    // -- DELETE :: PROPERTY -->
-    public Task<Void> deleteProperty(String propertyId, PropertyModel property, String userId) {
-        return this.fFirebasePropertyRepository.deleteProperty(propertyId,property,userId);
-    }
+    //---------------------------------------------------------------------------------------
+    // -- CREATE - UPDATE - DELETE -->
+    //----------------------------------------------------
 }

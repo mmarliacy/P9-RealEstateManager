@@ -1,6 +1,7 @@
 package com.openclassrooms.realestatemanager.local.injection;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.openclassrooms.realestatemanager.local.factory.LocalViewModelFactory;
 import com.openclassrooms.realestatemanager.local.database.RemDatabase;
@@ -12,27 +13,27 @@ import java.util.concurrent.Executors;
 
 public class LocalInjection {
 
-    //----------------------------------------
-    //-- Inject Objects for unique instance --
-    //----------------------------------------
-    // -- PROPERTY REPOSITORY -->
+    //-------------------
+    // OBJECTS INJECTION
+    //-------------------
+    // 1 -- PROPERTY REPOSITORY -->
     public static LocalPropertyRepository providePropertyDataSource(Context context){
         RemDatabase database = RemDatabase.getInstance(context);
         return new LocalPropertyRepository(database.propertyDAO());
     }
 
-    // -- USER REPOSITORY -->
+    // 2 -- USER REPOSITORY -->
     public static LocalUserRepository provideUserDataSource(Context context){
         RemDatabase database = RemDatabase.getInstance(context);
         return new LocalUserRepository(database.userDAO());
     }
 
-    // -- EXECUTOR FOR CREATE A NEW THREAD -->
+    // 3 -- EXECUTOR FOR CREATE A NEW THREAD -->
     public static Executor provideExecutor(){
         return Executors.newSingleThreadExecutor();
     }
 
-    // -- VIEW MODEL FACTORY OBJECTS -->
+    // 4 -- LOCAL VIEW MODEL FACTORY - INJECT OBJECTS -->
     public static LocalViewModelFactory provideViewModelFactory(Context pContext){
         LocalPropertyRepository propertyRepository = providePropertyDataSource(pContext);
         LocalUserRepository userRepository = provideUserDataSource(pContext);

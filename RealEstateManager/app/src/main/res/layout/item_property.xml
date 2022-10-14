@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
@@ -73,8 +73,8 @@
                 android:layout_marginTop="@dimen/ai_marginTop"
                 android:layout_marginEnd="@dimen/ai_marginRight"
                 android:backgroundTintMode="@color/black"
-                android:src="@drawable/round_roofing_24"
-                android:contentDescription="@string/content_description_icon_item_property" />
+                android:contentDescription="@string/content_description_icon_item_property"
+                android:src="@drawable/round_roofing_24" />
 
             <TextView
                 android:id="@+id/prop_cost"

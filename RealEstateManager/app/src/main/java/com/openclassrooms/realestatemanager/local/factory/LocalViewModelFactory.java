@@ -13,21 +13,19 @@ import java.util.concurrent.Executor;
 
 public class LocalViewModelFactory implements ViewModelProvider.Factory {
 
-    //-- REPOSITORIES & EXECUTOR -->
+    // 1 -- REPOSITORIES & EXECUTOR -->
     private final LocalPropertyRepository fPropertyRepository;
     private final LocalUserRepository fUserRepository;
     private final Executor fExecutor;
 
-    /**
-     * Constructor
-     */
+    /** CONSTRUCTOR */
     public LocalViewModelFactory(LocalPropertyRepository pPropertyRepository, LocalUserRepository pUserRepository, Executor pExecutor) {
         this.fPropertyRepository = pPropertyRepository;
         this.fUserRepository = pUserRepository;
         this.fExecutor = pExecutor;
     }
 
-    //-- UNIQUE INSTANCE OF VIEW MODEL -->
+    // 2 -- UNIQUE INSTANCE OF LOCAL VIEW MODEL -->
     @NotNull
     public <T extends ViewModel> T create(Class<T>  modelClass){
         if(modelClass.isAssignableFrom(LocalPropertyViewModel.class)){
