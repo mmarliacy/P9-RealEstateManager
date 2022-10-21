@@ -5,26 +5,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.adapters.PropertyListAdapter;
-import com.openclassrooms.realestatemanager.firebase.factory.FirebaseViewModelFactory;
-import com.openclassrooms.realestatemanager.firebase.injection.FirebaseInjection;
-import com.openclassrooms.realestatemanager.firebase.viewmodel.FirebaseViewModel;
-import com.openclassrooms.realestatemanager.local.factory.LocalViewModelFactory;
-import com.openclassrooms.realestatemanager.local.injection.LocalInjection;
-import com.openclassrooms.realestatemanager.local.viewmodel.LocalPropertyViewModel;
-
+import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseViewModelFactory;
+import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseInjection;
+import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
+import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomViewModelFactory;
+import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomInjection;
+import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
+import com.openclassrooms.realestatemanager.model.PropertyModel;
 import org.jetbrains.annotations.NotNull;
 
-public class PropertyListFragment extends Fragment {
+public class PropertyListFragment extends Fragment implements PropertyListAdapter.OnItemClickListener{
 
     //---------------
     // DATA - FIELDS
@@ -33,7 +31,7 @@ public class PropertyListFragment extends Fragment {
     RecyclerView propertiesRecyclerView;
     /** LIVE DATA - VIEW MODELS */
     FirebaseViewModel varFirebaseViewModel;
-    LocalPropertyViewModel varLocalViewModel;
+    RoomViewModel roomViewModel;
     /** Tools */
     PropertyListAdapter adapter;
 
@@ -42,9 +40,10 @@ public class PropertyListFragment extends Fragment {
         return new PropertyListFragment();
     }
 
-    //----------------
-    // ON CREATE VIEW
-    //----------------
+    //-----------
+    // LIFECYCLE
+    //-----------
+    // 1 -- ON CREATE VIEW -->
     @Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,14 +51,21 @@ public class PropertyListFragment extends Fragment {
         View view = inflater.inflate(R.layout.property_list_home_screen, container, false);
         this.configureRecyclerView(view);
 
+        //--:: Firebase View Model Methods ::--
+         //configureFirebaseViewModel();
+         //observeFirebaseProperties();
+
         //--:: Local ROOM View Model Methods ::--
         configureLocalRoomViewModel();
         getAndObserveProperties();
-
-        //--:: Firebase View Model Methods ::--
-         configureFirebaseViewModel();
-         observeFirebaseProperties();
         return view;
+    }
+
+    // 2 -- ON STOP -->
+    @Override
+    public void onStop() {
+        super.onStop();
+        //--:: Local ROOM View Model Methods ::--
     }
 
     //---------------
@@ -70,11 +76,8 @@ public class PropertyListFragment extends Fragment {
         //--:: Set layout Manager to set the items in position ::--
         this.propertiesRecyclerView = view.findViewById(R.id.properties_recyclerView);
         this.propertiesRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        this.propertiesRecyclerView.addItemDecoration(new DividerItemDecoration(requireActivity(),
-                DividerItemDecoration.VERTICAL));
         propertiesRecyclerView.setAdapter(adapter);
     }
-
 
     //---------------------
     // FIREBASE VIEW MODEL
@@ -91,7 +94,7 @@ public class PropertyListFragment extends Fragment {
     private void observeFirebaseProperties(){
         varFirebaseViewModel.getAllProperties().observe(getViewLifecycleOwner(), pPropertyModels -> {
             //--:: Configuring adapter according to new list ::--
-            adapter = new PropertyListAdapter(requireActivity(), pPropertyModels);
+            adapter = new PropertyListAdapter(requireActivity(), pPropertyModels, this);
             //--:: Attach the adapter to the recycler view to inflate items ::--
             propertiesRecyclerView.setAdapter(adapter);
         });
@@ -102,21 +105,33 @@ public class PropertyListFragment extends Fragment {
     //-----------------------
     // 1 -- Configure ROOM View Model & Retrieve all properties stuck on phone and last connected User -->
     private void configureLocalRoomViewModel(){
-        LocalViewModelFactory varLocalViewModelFactory = LocalInjection.provideViewModelFactory(requireActivity());
-        varLocalViewModel = varLocalViewModelFactory.create(LocalPropertyViewModel.class);
-        varLocalViewModel.initPropertiesList();
+        RoomViewModelFactory roomViewModelFactory = RoomInjection.provideViewModelFactory(requireActivity());
+        roomViewModel = roomViewModelFactory.create(RoomViewModel.class);
+        roomViewModel.initPropertiesList();
     }
 
     // 2 -- Get, update on phone & keep observing properties changes to get last save of app state -->
     private void getAndObserveProperties() {
-        this.varLocalViewModel.getAllProperties().observe(getViewLifecycleOwner(), pPropertyModels -> {
+        this.roomViewModel.getAllProperties().observe(getViewLifecycleOwner(), pPropertyModels -> {
             //--:: Configuring adapter according to last list known by the app ::--
-            adapter = new PropertyListAdapter(requireContext(), pPropertyModels);
+            adapter = new PropertyListAdapter(requireActivity(), pPropertyModels, this);
             //--:: Keep updating adapter according to list ::--
             adapter.updateProperties(pPropertyModels);
             //--:: Setting adapter after updated it ::--
             propertiesRecyclerView.setAdapter(adapter);
             Log.d("PROPERTIES : ", "properties have been loaded : " + pPropertyModels.size());
         });
+    }
+
+    //-------------------
+    // HANDLE ITEM CLICK
+    //-------------------
+    @Override
+    public void onItemClick(PropertyModel property) {
+        Fragment sheetFragment = PropertySheetFragment.getInstance(property);
+        FragmentTransaction varTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
+        varTransaction.replace(R.id.main_container, sheetFragment, "Replace PropertyList Fragment by SheetProperty Fragment according to item Click");
+        varTransaction.addToBackStack(null);
+        varTransaction.commit();
     }
 }

@@ -39,16 +39,18 @@
                 android:layout_toEndOf="@+id/prop_photo"
                 android:fontFamily="@font/aref_regular"
                 android:text="@string/property_name"
-                android:textColor="@color/black"
+                android:textColor="@color/dark_blue_sea"
                 android:textSize="@dimen/pn_textSize"
                 tools:ignore="RelativeOverlap" />
 
             <TextView
                 android:id="@+id/prop_place"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/prop_name"
                 android:layout_marginStart="@dimen/ppl_marginLeft"
+                android:layout_marginEnd="1dp"
+                android:layout_toStartOf="@+id/line"
                 android:layout_toEndOf="@+id/prop_photo"
                 android:fontFamily="@font/spectral_extralight_italic"
                 android:text="@string/property_address"
@@ -69,9 +71,9 @@
                 android:id="@+id/availability_icon"
                 android:layout_width="@dimen/ai_width"
                 android:layout_height="@dimen/ai_height"
-                android:layout_alignParentEnd="true"
+                android:layout_alignEnd="@+id/prop_cost"
+                android:layout_above="@id/prop_cost"
                 android:layout_marginTop="@dimen/ai_marginTop"
-                android:layout_marginEnd="@dimen/ai_marginRight"
                 android:backgroundTintMode="@color/black"
                 android:contentDescription="@string/content_description_icon_item_property"
                 android:src="@drawable/round_roofing_24" />
@@ -84,9 +86,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginEnd="@dimen/pc_marginRight"
                 android:layout_marginBottom="@dimen/pc_marginBottom"
-                android:fontFamily="@font/aref_bold"
+                android:fontFamily="sans-serif"
                 android:text="@string/property_cost"
-                android:textColor="@color/primary_dark"
+                android:textColor="@color/black"
                 android:textSize="@dimen/pc_textSize" />
 
         </RelativeLayout>

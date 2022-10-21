@@ -11,6 +11,10 @@ import com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment;
 
 public class MainActivity_HomeScreen extends AppCompatActivity {
 
+    //-----------
+    // LIFECYCLE
+    //-----------
+    // 1 -- ON CREATE -->
     @SuppressLint({"UseSupportActionBar", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +27,6 @@ public class MainActivity_HomeScreen extends AppCompatActivity {
         //--:: 2 -- Toolbar ::-->
         Toolbar fToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(fToolbar);
-
     }
 
     //-------------------

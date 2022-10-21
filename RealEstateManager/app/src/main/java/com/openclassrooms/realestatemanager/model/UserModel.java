@@ -1,8 +1,10 @@
 package com.openclassrooms.realestatemanager.model;
 
+import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
+
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import java.util.Arrays;
 import java.util.List;
 
 @Entity(tableName = "user_table")
@@ -39,19 +41,22 @@ public class UserModel {
         propertyId = pPropertyId;
     }
 
-    //-------------
-    // DUMMY_USERS
-    //-------------
-    public static List<UserModel> FAKE_USERS = Arrays.asList(
-            new UserModel(1, "Patrick Markov", "patrick.marcov@gmail.com", "https://images.app.goo.gl/kz16xd9BkwMC7MnUA"),
-            new UserModel(2, "Charlotte Claire", "cha.claire@orange.fr", "https://images.app.goo.gl/ubgV5t9YCvxGAc7x5"),
-            new UserModel(3, "Klaus Michelson", "mick_klaus@yahoo.fr", "https://images.app.goo.gl/q61vHLYZLwgJMX886"));
-
-    /**
-     * Getters
-     */
+    /** Getters */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Returns the user with the given unique identifier, or null if no user with that
+     * identifier can be found.
+     */
+    @Nullable
+    public static UserModel getUserById(long id) {
+        for (UserModel user : getDummyUsers()) {
+            if (user.id == id)
+                return user;
+        }
+        return null;
     }
 
     public String getName() {
@@ -70,9 +75,7 @@ public class UserModel {
         return propertyId;
     }
 
-    /**
-     * Setters
-     */
+    /** Setters */
     public void setId(int pId) {
         id = pId;
     }

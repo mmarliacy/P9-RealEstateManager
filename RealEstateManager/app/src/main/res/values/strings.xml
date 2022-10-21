@@ -78,6 +78,7 @@
     <string name="helperText_property_type_input">Example : House, Apartment, Castle, Room…</string>
     <string name="helperText_property_land_area_input">Living area in square meters</string>
     <string name="helperText_property_address_input">Example: 2250 N Ocean Ave, Farmingville, États-Unis</string>
+    <string name="available_status">Available</string>
 
     <!--:: Floating Action Buttons ::-->
     <!--:: Switch Buttons ::-->

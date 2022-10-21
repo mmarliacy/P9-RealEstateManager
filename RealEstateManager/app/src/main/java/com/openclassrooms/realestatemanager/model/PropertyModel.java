@@ -3,18 +3,16 @@ package com.openclassrooms.realestatemanager.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import java.util.Arrays;
 import java.util.List;
 
-/**
- * This model class implement Parcelable
- */
-@Entity(tableName = "property_table", foreignKeys = @ForeignKey(
+
+@Entity(tableName = "property_table", foreignKeys =
+        @ForeignKey(
         entity = UserModel.class,
         parentColumns = "id",
         childColumns = "userId",
@@ -26,31 +24,46 @@ public class PropertyModel implements Parcelable {
     // VARIABLES
     //-----------
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "prop_id", index = true)
     private long id;
-    @ColumnInfo(name = "userId", index = true)
+
+    @ColumnInfo(name = "userId")
     private int userId;
 
     @ColumnInfo(name = "name")
     private String name;
+
     @ColumnInfo(name = "type")
     private String type;
+
     @ColumnInfo(name = "address")
     private String address;
+
     @ColumnInfo(name = "description")
     private String description;
+
     @ColumnInfo(name = "total_living_area")
     private int totalLeavingArea;
+
     @ColumnInfo(name = "room_number")
     private int rooms;
+
     @ColumnInfo(name = "price")
     private int price;
+
+    @ColumnInfo(name = "status")
+    private String status;
+
     @ColumnInfo(name = "photos_list")
     private List<String> photoProperty;
-    @ColumnInfo(name = "interest_list")
+
+    @ColumnInfo(name = "property_interest")
     private List<String> propertyInterest;
+
     @ColumnInfo(name = "on_sale_date")
     private String onSaleDate;
+
+
     @ColumnInfo(name = "sold_date")
     private String soldDate;
 
@@ -61,7 +74,7 @@ public class PropertyModel implements Parcelable {
     /** CONSTRUCTOR */
     public PropertyModel(long pId, int pUserId, String pName, String pType, String pAddress,
                          String pDescription, int pTotalLeavingArea, int pRooms, int pPrice,
-                         List<String> pPhotoProperty, List<String> pPropertyInterest,
+                         String pStatus, List<String> pPhotoProperty, List<String> pPropertyInterest,
                          String pOnSaleDate, String pSoldDate) {
         id = pId;
         userId = pUserId;
@@ -72,31 +85,25 @@ public class PropertyModel implements Parcelable {
         totalLeavingArea = pTotalLeavingArea;
         rooms = pRooms;
         price = pPrice;
+        status = pStatus;
         photoProperty = pPhotoProperty;
         propertyInterest = pPropertyInterest;
         onSaleDate = pOnSaleDate;
         soldDate = pSoldDate;
     }
 
-    //------------------
-    // DUMMY_PROPERTIES
-    //------------------
-    public static List<PropertyModel> DUMMY_PROPERTIES = Arrays.asList(
-            new PropertyModel(1,1,"La Marquise", "Loft", "3, road Winston Churchill, 34029 London", "Greatful",115, 4, 175000, Arrays.asList("",""), Arrays.asList("",""),  "01/10/2021","23/04/2022"),
-            new PropertyModel(2,2,"Black Shield", "Castle", "15, avenue 415-420 Broadway Coast East", "Fabulous",735, 10, 1567000, Arrays.asList("",""), Arrays.asList("",""),  "12/12/2021",""),
-            new PropertyModel(3,3,"Run town", "House", "671, palace Wil Town, 837 Island", "Place to live",311, 3, 160000, Arrays.asList("",""), Arrays.asList("",""),  "30/12/2021","")
-    );
-
-
-    /**
-     * Getters
-     */
+    /** Getters */
     public long getId() {
         return id;
     }
 
     public int getUserId() {
         return userId;
+    }
+
+    /** Returns the project associated to the task */
+    public UserModel getUser() {
+        return UserModel.getUserById(userId);
     }
 
     public String getName() {
@@ -127,6 +134,10 @@ public class PropertyModel implements Parcelable {
         return price;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public List<String> getPhotoProperty() {
         return photoProperty;
     }
@@ -143,14 +154,7 @@ public class PropertyModel implements Parcelable {
         return soldDate;
     }
 
-    public static List<PropertyModel> getDummyProperties() {
-        return DUMMY_PROPERTIES;
-    }
-
-    /**
-     * Setters
-     */
-
+    /** Setters */
     public void setId(long pId) {
         id = pId;
     }
@@ -187,6 +191,10 @@ public class PropertyModel implements Parcelable {
         price = pPrice;
     }
 
+    public void setStatus(String pStatus) {
+        status = pStatus;
+    }
+
     public void setPhotoProperty(List<String> pPhotoProperty) {
         photoProperty = pPhotoProperty;
     }
@@ -203,9 +211,6 @@ public class PropertyModel implements Parcelable {
         soldDate = pSoldDate;
     }
 
-    public static void setDummyProperties(List<PropertyModel> pDummyProperties) {
-        DUMMY_PROPERTIES = pDummyProperties;
-    }
 
     /**
      * PARCELABLE IMPLEMENTATION
@@ -221,8 +226,8 @@ public class PropertyModel implements Parcelable {
         totalLeavingArea = in.readInt();
         rooms = in.readInt();
         price = in.readInt();
+        status = in.readString();
         photoProperty = in.createStringArrayList();
-        propertyInterest = in.createStringArrayList();
         onSaleDate = in.readString();
         soldDate = in.readString();
     }
@@ -238,8 +243,8 @@ public class PropertyModel implements Parcelable {
         dest.writeInt(totalLeavingArea);
         dest.writeInt(rooms);
         dest.writeInt(price);
+        dest.writeString(status);
         dest.writeStringList(photoProperty);
-        dest.writeStringList(propertyInterest);
         dest.writeString(onSaleDate);
         dest.writeString(soldDate);
     }

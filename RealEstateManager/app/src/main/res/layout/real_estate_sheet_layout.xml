@@ -21,29 +21,30 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/ctl_height"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="@string/property_name"
-            app:collapsedTitleTextAppearance="@style/CollapseTitleTextAppearanceActionBar_RealEstateSheetLayout"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"            app:collapsedTitleTextAppearance="@style/CollapseTitleTextAppearanceActionBar_RealEstateSheetLayout"
             app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearanceActionBar_RealEstateSheetLayout"
             app:statusBarScrim="@color/primary"
             app:toolbarId="@id/sheet_toolbar">
 
-            <ImageView
-                android:id="@+id/sheet_prop_photo"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/sheet_view_pager_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/a1"
                 app:layout_collapseMode="parallax"
-                android:contentDescription="@string/content_description_prop_photos" />
+                android:contentDescription="@string/content_description_prop_photos" >
 
-            <androidx.appcompat.widget.Toolbar
+            </androidx.viewpager2.widget.ViewPager2>
+
+            <Toolbar
                 android:id="@+id/sheet_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@android:color/transparent"
                 app:layout_collapseMode="pin"
+                app:title="@string/property_name"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -170,10 +171,11 @@
                 android:orientation="horizontal">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/sheet_prop_interest_recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:itemCount="1"
-                    tools:listitem="@layout/item_interest_list" />
+                    tools:listitem="@layout/item_interest_row" />
             </LinearLayout>
 
 

@@ -7,6 +7,8 @@ import androidx.lifecycle.Observer;
 import java.util.concurrent.CountDownLatch;
 
 public class LiveDataTestUtils {
+
+    /** For test */
     public static <T> T getValue(final LiveData<T> liveData){
         final Object[] data = new Object[1];
         final CountDownLatch latch = new CountDownLatch(1);

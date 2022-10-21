@@ -17,10 +17,9 @@
     <dimen name="pp_width">120dip</dimen>
     --------------------------------
     Id --> availability_icon
-    <dimen name="ai_width">20dip</dimen>
-    <dimen name="ai_height">20dip</dimen>
-    <dimen name="ai_marginTop">40dip</dimen>
-    <dimen name="ai_marginRight">10dip</dimen>
+    <dimen name="ai_width">30dip</dimen>
+    <dimen name="ai_height">30dip</dimen>
+    <dimen name="ai_marginTop">20dip</dimen>
 
     ---** TextView **---
     Id --> prop_name
@@ -34,7 +33,7 @@
     Id --> prop_cost
     <dimen name="pc_marginRight">10dip</dimen>
     <dimen name="pc_marginBottom">10dip</dimen>
-    <dimen name="pc_textSize">20sp</dimen>
+    <dimen name="pc_textSize">18sp</dimen>
 
     ---** View **---
     Id --> line
@@ -304,10 +303,10 @@
         <dimen name="pp_width_land">120dip</dimen>
         --------------------------------
         Id --> availability_icon
-        <dimen name="ai_width_land">20dip</dimen>
-        <dimen name="ai_height_land">20dip</dimen>
-        <dimen name="ai_marginTop_land">40dip</dimen>
-        <dimen name="ai_marginRight_land">10dip</dimen>
+        <dimen name="ai_width_land">40dip</dimen>
+        <dimen name="ai_height_land">40dip</dimen>
+        <dimen name="ai_marginTop_land">10dip</dimen>
+
 
         ---** TextView **---
         Id --> prop_name
@@ -344,7 +343,7 @@
         --------------------------------
         Id --> sheet_prop_cost
         <dimen name="spc_marginEnd_land">10dip</dimen>
-        <dimen name="spc_textSize_land">30sp</dimen>
+        <dimen name="spc_textSize_land">25sp</dimen>
         --------------------------------
         Id --> sheet_prop_status
         <dimen name="sps_marginEnd_land">10dip</dimen>

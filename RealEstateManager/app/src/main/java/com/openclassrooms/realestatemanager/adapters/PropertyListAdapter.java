@@ -5,16 +5,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.bumptech.glide.Glide;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapter.PropertyViewHolder> {
@@ -22,21 +20,22 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     //---------------
     // DATA - FIELDS
     //---------------
-
     /** Lists */
-    List<PropertyModel> propertiesList;
+    private List<PropertyModel> propertiesList;
     /** Application */
-    Context context;
+    private final Context context;
+    private final OnItemClickListener fItemClickListener;
 
     /** CONSTRUCTOR */
-    public PropertyListAdapter(Context context, List<PropertyModel> propertiesList) {
+    public PropertyListAdapter(Context context, List<PropertyModel> propertiesList, OnItemClickListener clickListener) {
         this.propertiesList = propertiesList;
         this.context = context;
+        this.fItemClickListener = clickListener;
     }
 
-    //----------
-    //  ADAPTER
-    //----------
+    //---------
+    // ADAPTER
+    //---------
     // 1 -- ON CREATE VIEW -->
     @NotNull
     @Override
@@ -50,7 +49,8 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull PropertyViewHolder holder, int position) {
         PropertyModel item = propertiesList.get(position);
-        holder.bind(item);
+        holder.bind(item, context);
+        holder.itemView.setOnClickListener(pView -> fItemClickListener.onItemClick(item));
     }
 
     // 3 -- ITEM COUNT -->
@@ -70,7 +70,7 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     }
 
     //---------------------------
-    // INNER CLASS - VIEW HOLDER (((--:: /!\ Missing graphics data ::--)))
+    // INNER CLASS - VIEW HOLDER
     //---------------------------
     public static class PropertyViewHolder extends RecyclerView.ViewHolder {
 
@@ -81,12 +81,8 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
         private final TextView property_name;
         private final TextView property_address;
         private final TextView property_cost;
-
-        //--:: /!\ Need to be connected ::--
-       // private final ImageView property_photo;
-       //private ImageView property_availability;
-
-
+        private final ImageView property_photo;
+        private final ImageView property_availability;
 
         /** CONSTRUCTOR */
         public PropertyViewHolder(@NonNull @NotNull View itemView) {
@@ -96,16 +92,32 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
             property_name = itemView.findViewById(R.id.prop_name);
             property_address = itemView.findViewById(R.id.prop_place);
             property_cost = itemView.findViewById(R.id.prop_cost);
-            //--:: /!\ Need to be connected ::--
-            //property_photo = itemView.findViewById(R.id.prop_photo);
+            property_photo = itemView.findViewById(R.id.prop_photo);
+            property_availability = itemView.findViewById(R.id.availability_icon);
         }
 
         // 2 --:: Code binding ::--
-        public void bind(PropertyModel pPropertyModel) {
+        @SuppressLint("SetTextI18n")
+        public void bind(PropertyModel pPropertyModel, Context pContext) {
             property_name.setText(pPropertyModel.getName());
             property_address.setText(pPropertyModel.getAddress());
-            property_cost.setText(pPropertyModel.getType());
+            property_cost.setText("" + pPropertyModel.getPrice() + " $");
+            Glide.with(pContext)
+                    .load(pPropertyModel.getPhotoProperty().get(0))
+                    .into(property_photo);
+            if (pPropertyModel.getStatus().matches("Available")){
+                property_availability.setColorFilter(itemView.getResources().getColor(R.color.green));
+            } else {
+                property_availability.setColorFilter(itemView.getResources().getColor(R.color.red));
+            }
         }
+    }
+
+    //--------------------------------
+    // INTERFACE - ITEM CLICK LISTENER
+    //--------------------------------
+    public interface OnItemClickListener {
+        void onItemClick(PropertyModel property);
     }
 
 }

@@ -28,8 +28,8 @@
             app:statusBarScrim="@color/primary"
             app:toolbarId="@id/sheet_toolbar">
 
-            <ImageView
-                android:id="@+id/sheet_prop_photo"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/sheet_view_pager_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:itemCount="1"
-                    tools:listitem="@layout/item_interest_list" />
+                    tools:listitem="@layout/item_interest_row" />
             </LinearLayout>
 
 
