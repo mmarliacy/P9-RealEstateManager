@@ -1,27 +1,31 @@
 package com.openclassrooms.realestatemanager.view.fragments;
 
+import static com.openclassrooms.realestatemanager.view.activities.MainActivity_HomeScreen.api_key;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.adapters.InterestListAdapter;
 import com.openclassrooms.realestatemanager.adapters.PhotoListAdapter;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
-
+import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
 
 public class PropertySheetFragment extends Fragment {
@@ -45,6 +49,7 @@ public class PropertySheetFragment extends Fragment {
     TextView propertyDescription;
     TextView propertyForSale;
     TextView propertySold;
+    ImageView mapContainer;
 
     //-------------------
     // FRAGMENT INSTANCE
@@ -88,14 +93,15 @@ public class PropertySheetFragment extends Fragment {
         propertyDescription = pView.findViewById(R.id.sheet_prop_description);
         propertyForSale = pView.findViewById(R.id.property_for_sale_since);
         propertySold = pView.findViewById(R.id.property_sold_since);
+        mapContainer = pView.findViewById(R.id.container_static_maps);
     }
 
     // 2 -- Connect graphics data to real data in fragment -->
     @SuppressLint("SetTextI18n")
     private void connectViewToData(PropertyModel pPropertyModel) {
-        Log.d("Property photo is ", pPropertyModel.getPhotoProperty().get(0));
         defineUserName(pPropertyModel);
         definePropertyStatus(pPropertyModel);
+        defineMapPicture(pPropertyModel);
         propertyCost.setText("" + pPropertyModel.getPrice() + " $");
         propertyFirstProperties.setText(
                                         pPropertyModel.getType()
@@ -126,9 +132,19 @@ public class PropertySheetFragment extends Fragment {
         if (pPropertyModel.getStatus().matches(getString(R.string.available_status))) {
             propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.grass_green));
         } else {
-            propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.red));
+            propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.chain_grey));
         }
         propertyStatus.setText(pPropertyModel.getStatus());
+    }
+
+    private void defineMapPicture(PropertyModel pPropertyModel){
+        try{
+            String BASE_URL = "https://maps.googleapis.com/maps/";
+            String url = BASE_URL + "api/staticmap?center=" + pPropertyModel.getAddress() + "&zoom=" + 14 + "&size=400x400" + "&key=" + api_key;
+            Picasso.get().load(url).into(mapContainer);
+        } catch (Exception pException) {
+            pException.printStackTrace();
+        }
     }
 
     //-----------------
@@ -146,7 +162,6 @@ public class PropertySheetFragment extends Fragment {
     private void configureViewPager(View pView, PropertyModel property) {
         ViewPager2 fViewPager = pView.findViewById(R.id.sheet_view_pager_photo);
         PhotoListAdapter photoListAdapter = new PhotoListAdapter(property.getPhotoProperty(), fViewPager);
-        Log.d("Photo is ", property.getPhotoProperty().get(0));
         fViewPager.setAdapter(photoListAdapter);
     }
 

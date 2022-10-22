@@ -19,7 +19,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
-@Database(entities = {UserModel.class, PropertyModel.class}, version = 1, exportSchema = false)
+@Database(entities = {UserModel.class, PropertyModel.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class RemDatabase extends RoomDatabase {
 
@@ -85,7 +85,6 @@ public abstract class RemDatabase extends RoomDatabase {
         List<PropertyModel> propertyList = getDummyProperties();
         for (PropertyModel properties : propertyList) {
             ContentValues propertiesValues = new ContentValues();
-            propertiesValues.put("prop_id", properties.getId());
             propertiesValues.put("userId", properties.getUserId());
             propertiesValues.put("name", properties.getName());
             propertiesValues.put("type", properties.getType());

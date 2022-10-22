@@ -102,13 +102,21 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
             property_name.setText(pPropertyModel.getName());
             property_address.setText(pPropertyModel.getAddress());
             property_cost.setText("" + pPropertyModel.getPrice() + " $");
-            Glide.with(pContext)
-                    .load(pPropertyModel.getPhotoProperty().get(0))
-                    .into(property_photo);
+            if (pPropertyModel.getPhotoProperty().size() == 0){
+                Glide.with(pContext)
+                        .load(R.drawable.long_island)
+                        .into(property_photo);
+
+            }else {
+                Glide.with(pContext)
+                        .load(pPropertyModel.getPhotoProperty().get(0))
+                        .into(property_photo);
+            }
+
             if (pPropertyModel.getStatus().matches("Available")){
                 property_availability.setColorFilter(itemView.getResources().getColor(R.color.green));
             } else {
-                property_availability.setColorFilter(itemView.getResources().getColor(R.color.red));
+                property_availability.setColorFilter(itemView.getResources().getColor(R.color.chain_grey));
             }
         }
     }

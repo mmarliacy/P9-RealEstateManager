@@ -1,7 +1,13 @@
 package com.openclassrooms.realestatemanager.view.activities;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Window;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -10,6 +16,8 @@ import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment;
 
 public class MainActivity_HomeScreen extends AppCompatActivity {
+
+    public static String api_key;
 
     //-----------
     // LIFECYCLE
@@ -27,6 +35,8 @@ public class MainActivity_HomeScreen extends AppCompatActivity {
         //--:: 2 -- Toolbar ::-->
         Toolbar fToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(fToolbar);
+
+        getMapApiKey();
     }
 
     //-------------------
@@ -37,5 +47,17 @@ public class MainActivity_HomeScreen extends AppCompatActivity {
         FragmentTransaction varTransaction = getSupportFragmentManager().beginTransaction();
         varTransaction.replace(R.id.main_container, varFragment);
         varTransaction.commit();
+    }
+
+    //-----------------
+    // MAPS STATIC API
+    //-----------------
+    public void getMapApiKey() {
+        try {
+            ApplicationInfo varInfo_key = getPackageManager().getApplicationInfo(getApplicationContext().getPackageName(), PackageManager.GET_META_DATA);
+            api_key = varInfo_key.metaData.getString("com.google.android.geo.API_KEY");
+        } catch (PackageManager.NameNotFoundException pE) {
+            pE.printStackTrace();
+        }
     }
 }

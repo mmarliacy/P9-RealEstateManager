@@ -3,11 +3,11 @@ package com.openclassrooms.realestatemanager.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
 import java.util.List;
 
 
@@ -43,13 +43,13 @@ public class PropertyModel implements Parcelable {
     private String description;
 
     @ColumnInfo(name = "total_living_area")
-    private int totalLeavingArea;
+    private String totalLeavingArea;
 
     @ColumnInfo(name = "room_number")
-    private int rooms;
+    private String rooms;
 
     @ColumnInfo(name = "price")
-    private int price;
+    private String price;
 
     @ColumnInfo(name = "status")
     private String status;
@@ -72,25 +72,26 @@ public class PropertyModel implements Parcelable {
     }
 
     /** CONSTRUCTOR */
-    public PropertyModel(long pId, int pUserId, String pName, String pType, String pAddress,
-                         String pDescription, int pTotalLeavingArea, int pRooms, int pPrice,
+    public PropertyModel(int pUserId, String pName, String pType, String pAddress,
+                         String pDescription, String pTotalLeavingArea, String pRooms, String pPrice,
                          String pStatus, List<String> pPhotoProperty, List<String> pPropertyInterest,
                          String pOnSaleDate, String pSoldDate) {
-        id = pId;
-        userId = pUserId;
-        name = pName;
-        type = pType;
-        address = pAddress;
-        description = pDescription;
-        totalLeavingArea = pTotalLeavingArea;
-        rooms = pRooms;
-        price = pPrice;
-        status = pStatus;
-        photoProperty = pPhotoProperty;
-        propertyInterest = pPropertyInterest;
-        onSaleDate = pOnSaleDate;
-        soldDate = pSoldDate;
+        this.setUserId(pUserId);
+        this.setName(pName);
+        this.setType(pType);
+        this.setAddress(pAddress);
+        this.setPrice(pPrice);
+        this.setDescription(pDescription);
+        this.setTotalLeavingArea(pTotalLeavingArea);
+        this.setRooms(pRooms);
+        this.setStatus(pStatus);
+        this.setPhotoProperty(pPhotoProperty);
+        this.setPropertyInterest(pPropertyInterest);
+        this.setOnSaleDate(pOnSaleDate);
+        this.setSoldDate(pSoldDate);
     }
+
+
 
     /** Getters */
     public long getId() {
@@ -101,7 +102,7 @@ public class PropertyModel implements Parcelable {
         return userId;
     }
 
-    /** Returns the project associated to the task */
+    /** Returns the user associated to the property */
     public UserModel getUser() {
         return UserModel.getUserById(userId);
     }
@@ -122,15 +123,15 @@ public class PropertyModel implements Parcelable {
         return description;
     }
 
-    public int getTotalLeavingArea() {
+    public String getTotalLeavingArea() {
         return totalLeavingArea;
     }
 
-    public int getRooms() {
+    public String getRooms() {
         return rooms;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
@@ -179,15 +180,15 @@ public class PropertyModel implements Parcelable {
         description = pDescription;
     }
 
-    public void setTotalLeavingArea(int pTotalLeavingArea) {
-        totalLeavingArea = pTotalLeavingArea;
-    }
-
-    public void setRooms(int pRooms) {
+    public void setRooms(String pRooms) {
         rooms = pRooms;
     }
 
-    public void setPrice(int pPrice) {
+    public void setTotalLeavingArea(String pTotalLeavingArea) {
+        totalLeavingArea = pTotalLeavingArea;
+    }
+
+    public void setPrice(String pPrice) {
         price = pPrice;
     }
 
@@ -215,7 +216,6 @@ public class PropertyModel implements Parcelable {
     /**
      * PARCELABLE IMPLEMENTATION
      */
-
     protected PropertyModel(Parcel in) {
         id = in.readLong();
         userId = in.readInt();
@@ -223,11 +223,12 @@ public class PropertyModel implements Parcelable {
         type = in.readString();
         address = in.readString();
         description = in.readString();
-        totalLeavingArea = in.readInt();
-        rooms = in.readInt();
-        price = in.readInt();
+        totalLeavingArea = in.readString();
+        rooms = in.readString();
+        price = in.readString();
         status = in.readString();
         photoProperty = in.createStringArrayList();
+        propertyInterest = in.createStringArrayList();
         onSaleDate = in.readString();
         soldDate = in.readString();
     }
@@ -240,11 +241,12 @@ public class PropertyModel implements Parcelable {
         dest.writeString(type);
         dest.writeString(address);
         dest.writeString(description);
-        dest.writeInt(totalLeavingArea);
-        dest.writeInt(rooms);
-        dest.writeInt(price);
+        dest.writeString(totalLeavingArea);
+        dest.writeString(rooms);
+        dest.writeString(price);
         dest.writeString(status);
         dest.writeStringList(photoProperty);
+        dest.writeStringList(propertyInterest);
         dest.writeString(onSaleDate);
         dest.writeString(soldDate);
     }

@@ -379,7 +379,22 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
-                android:id="@+id/form_confirm_cancelling"
+                android:id="@+id/form_confirm"
+                android:layout_width="@dimen/fca_width"
+                android:layout_height="@dimen/fca_height"
+                android:layout_below="@id/form_property_description_input"
+                android:layout_marginStart="@dimen/fca_marginStart"
+                android:layout_marginTop="@dimen/fca_marginTop"
+                android:layout_marginEnd="@dimen/fca_marginEnd"
+                android:layout_marginBottom="@dimen/fca_marginBottom"
+                android:layout_toStartOf="@id/form_cancel"
+                android:background="@drawable/adding_shape"
+                android:contentDescription="@string/content_description_form_confirm_adding"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_baseline_arrow_forward_24" />
+
+            <ImageButton
+                android:id="@+id/form_cancel"
                 android:layout_width="@dimen/fcc_width"
                 android:layout_height="@dimen/fcc_height"
                 android:layout_below="@id/form_property_description_input"
@@ -391,21 +406,6 @@
                 android:contentDescription="@string/content_description_stop_adding_sign"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_baseline_close_24" />
-
-            <ImageButton
-                android:id="@+id/form_confirm_adding"
-                android:layout_width="@dimen/fca_width"
-                android:layout_height="@dimen/fca_height"
-                android:layout_below="@id/form_property_description_input"
-                android:layout_marginStart="@dimen/fca_marginStart"
-                android:layout_marginTop="@dimen/fca_marginTop"
-                android:layout_marginEnd="@dimen/fca_marginEnd"
-                android:layout_marginBottom="@dimen/fca_marginBottom"
-                android:layout_toStartOf="@id/form_confirm_cancelling"
-                android:background="@drawable/adding_shape"
-                android:contentDescription="@string/content_description_form_confirm_adding"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_baseline_arrow_forward_24" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

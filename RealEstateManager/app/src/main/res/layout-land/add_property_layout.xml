@@ -393,7 +393,7 @@
                 android:src="@drawable/ic_baseline_close_24" />
 
             <ImageButton
-                android:id="@+id/form_confirm_adding"
+                android:id="@+id/form_confirm"
                 android:layout_width="@dimen/fca_width_land"
                 android:layout_height="@dimen/fca_height_land"
                 android:layout_below="@id/form_property_description_input"

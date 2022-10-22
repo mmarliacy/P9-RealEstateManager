@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:theme="@style/Theme.Secondary.RealEstateManager">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -194,15 +195,15 @@
                 android:textStyle="bold" />
 
             <!--:: Need to add : MAPS STATIC API ::-->
-            <LinearLayout
+            <ImageView
                 android:id="@+id/container_static_maps"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="300dp"
                 android:layout_below="@+id/sheet_location_property_title"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/long_island"
+                android:scaleType="fitXY"
                 android:orientation="horizontal">
-            </LinearLayout>
+            </ImageView>
 
             <LinearLayout
                 android:id="@+id/container_duration_sale"
