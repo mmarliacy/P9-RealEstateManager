@@ -318,7 +318,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_back/baseline_arrow_back_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/close/baseline_close_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -328,8 +328,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_back_arrow_action" />
+                            <entry key="outputName" value="ic_baseline_close_24" />
                             <entry key="sourceFile" value="C:\Users\Mel\Documents\FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID\PROJET A RENDRE\P9_MARLIACY_MELANIE\PROJET_9\RealEstateManager" />
                           </map>
                         </option>

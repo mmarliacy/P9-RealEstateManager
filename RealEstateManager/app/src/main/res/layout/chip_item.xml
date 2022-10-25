@@ -1,0 +1,18 @@
+<com.google.android.material.chip.Chip
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chip_item"
+    style="@style/Widget.MaterialComponents.Chip.Entry"
+    app:chipIcon="@drawable/baseline_church_24"
+    app:closeIconTint="@color/white"
+    app:chipIconTint="@color/white"
+    app:chipBackgroundColor="@color/primary_dark"
+    app:closeIcon="@drawable/ic_baseline_close_24"
+    app:iconStartPadding="@dimen/ci_iconStartPadding"
+    android:text="@string/chip_string_indicator"
+    android:textStyle="bold"
+    android:textColor="@color/white"
+    android:layout_width="@dimen/ci_width"
+    android:layout_height="@dimen/ci_height"
+    android:textSize="@dimen/ci_textSize">
+</com.google.android.material.chip.Chip>

@@ -11,7 +11,7 @@
 
     // ---------------------:: BY TYPE OF WIDGETS AND FUNCTIONS ::----------------------
 
-    <!--:: Text Views / Titles / No Editable ::-->
+    <!--:: Text Views / Titles / Not Editable ::-->
     <string name="app_name">Real Estate Manager</string>
     <string name="description_title">Description</string>
     <string name="around_title">Around</string>
@@ -29,6 +29,8 @@
     <string name="add_lot_sold_out_since_title">Sold out since</string>
     <string name="rooms_indicator_title">room(s)</string>
     <string name="add_lot_property_description_title">Description</string>
+    <string name="add_lot_property_seller_title">Seller</string>
+    <string name="add_lot_property_price_title">Price</string>
 
     <!--:: Text Views / Editable ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -50,6 +52,7 @@
     <string name="on_sale_date">24/06/2022</string>
     <string name="interest_name">Shop Store</string>
     <string name="form_total_rooms_number_count">1</string>
+    <string name="available_status">Available</string>
 
     <!--:: Content Descriptions / Image Views ::-->
     <string name="content_description_prop_photos">View pager introducing property photos</string>
@@ -61,6 +64,7 @@
     <string name="content_description_add_new_property_button">Add new property button</string>
 
     <!--:: Hint ::-->
+    <string name="hint_property_seller_input">Select the seller name</string>
     <string name="hint_property_name_input">My name is…</string>
     <string name="hint_property_type_input">My type is…</string>
     <string name="hint_property_land_area_input">The living area is…</string>
@@ -68,6 +72,7 @@
     <string name="hint_form_for_sale_since">Since..</string>
     <string name="hint_form_sol_out_since">Since..</string>
     <string name="hint_tell_me_more_about_it_description_property">Tell more about it…</string>
+    <string name="hint_property_price_input">My value..</string>
 
     <!--:: Buttons ::-->
     <string name="form_add_rooms_sign">+</string>
@@ -78,10 +83,14 @@
     <string name="helperText_property_type_input">Example : House, Apartment, Castle, Room…</string>
     <string name="helperText_property_land_area_input">Living area in square meters</string>
     <string name="helperText_property_address_input">Example: 2250 N Ocean Ave, Farmingville, États-Unis</string>
-    <string name="available_status">Available</string>
+    <string name="helperText_property_price_input">In dollars $</string>
 
-    <!--:: Floating Action Buttons ::-->
-    <!--:: Switch Buttons ::-->
+    <!--:: ChipGroup ::-->
+    <string name="chip_string_indicator">Church</string>
+
+    <!--:: Dropdown Menu ::-->
+    <string name="dropdown_menu_user_id_indicator">1</string>
+
     <!--:: Bottom Navigation Menu ::-->
     <!--:: Navigation Drawer Menu ::-->
     <!--:: Toolbar Menu ::-->

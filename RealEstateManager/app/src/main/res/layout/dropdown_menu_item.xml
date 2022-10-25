@@ -1,0 +1,17 @@
+<TextView
+    android:id="@+id/tv_ddm_item"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:text="@string/dropdown_menu_user_id_indicator"
+    android:textColor="@color/black"
+    android:textSize="25sp"
+    android:padding="10dp"
+    android:layout_marginStart="10dp"
+    android:textStyle="bold"
+    android:drawablePadding="10dp"
+    app:drawableLeftCompat="@drawable/ic_baseline_person_24"
+    app:drawableTint="@color/black">
+
+</TextView>

@@ -146,6 +146,11 @@
     <dimen name="csoc_elevation">10dip</dimen>
 
     ---** TextView **---
+    Id --> form_property_seller_title
+    <dimen name="fpst_marginStart">10dip</dimen>
+    <dimen name="fpst_marginTop">10dip</dimen>
+    <dimen name="fpst_textSize">20sp</dimen>
+    --------------------------------
     Id --> form_property_name_title
     <dimen name="fpnt_marginStart">10dip</dimen>
     <dimen name="fpnt_marginTop">10dip</dimen>
@@ -155,6 +160,11 @@
     <dimen name="fptt_marginStart">10dip</dimen>
     <dimen name="fptt_marginTop">10dip</dimen>
     <dimen name="fptt_textSize">20sp</dimen>
+    --------------------------------
+    Id --> form_property_price_title
+    <dimen name="fppt_marginStart">10dip</dimen>
+    <dimen name="fppt_marginTop">10dip</dimen>
+    <dimen name="fppt_textSize">20sp</dimen>
     --------------------------------
     Id --> form_property_land_area_title
     <dimen name="fplat_marginStart">10dip</dimen>
@@ -201,33 +211,39 @@
 
 
     ---** TextInputLayout/TextInputEditText **---
-    Id --> form_property_name_input
-    <dimen name="fpni_margin">10dip</dimen>
+    Id --> form_property_seller_layout
+    <dimen name="fpsl_margin">10dip</dimen>
     --------------------------------
-    Id --> form_property_type_input
-    <dimen name="fpti_margin">10dip</dimen>
+    Id --> form_property_name_layout
+    <dimen name="fpnl_margin">10dip</dimen>
     --------------------------------
-    Id --> form_property_land_area_input
-    <dimen name="fplai_margin">10dip</dimen>
+    Id --> form_property_type_layout
+    <dimen name="fptl_margin">10dip</dimen>
     --------------------------------
-    Id --> form_address_input
-    <dimen name="fai_margin">10dip</dimen>
+    Id --> form_property_price_layout
+    <dimen name="fppl_margin">10dip</dimen>
     --------------------------------
-    Id --> form_for_sale_since_input
-    <dimen name="ffssi_marginStart">100dip</dimen>
-    <dimen name="ffssi_marginTop">20dip</dimen>
-    <dimen name="ffssi_marginEnd">10dip</dimen>
-    <dimen name="ffssi_marginBottom">10dip</dimen>
+    Id --> form_property_land_area_layout
+    <dimen name="fplal_margin">10dip</dimen>
     --------------------------------
-    Id --> form_sold_out_since_input
-    <dimen name="fsosi_marginStart">100dip</dimen>
-    <dimen name="fsosi_marginTop">20dip</dimen>
-    <dimen name="fsosi_marginEnd">10dip</dimen>
-    <dimen name="fsosi_marginBottom">10dip</dimen>
+    Id --> form_address_layout
+    <dimen name="fal_margin">10dip</dimen>
     --------------------------------
-    Id --> form_property_description_input
-    <dimen name="fpdi_height">200dip</dimen>
-    <dimen name="fpdi_margin">10dip</dimen>
+    Id --> form_for_sale_since_layout
+    <dimen name="ffssl_marginStart">60dip</dimen>
+    <dimen name="ffssl_marginTop">20dip</dimen>
+    <dimen name="ffssl_marginEnd">10dip</dimen>
+    <dimen name="ffssl_marginBottom">10dip</dimen>
+    --------------------------------
+    Id --> form_sold_out_since_layout
+    <dimen name="fsosl_marginStart">60dip</dimen>
+    <dimen name="fsosl_marginTop">20dip</dimen>
+    <dimen name="fsosl_marginEnd">10dip</dimen>
+    <dimen name="fsosl_marginBottom">10dip</dimen>
+    --------------------------------
+    Id --> form_property_description_layout
+    <dimen name="fpdl_height">200dip</dimen>
+    <dimen name="fpdl_margin">10dip</dimen>
 
     ---** Cardview **---
     Id --> container_total_rooms
@@ -254,10 +270,16 @@
     <dimen name="bltr_textSize">30sp</dimen>
     <dimen name="bltr_elevation">10dip</dimen>
 
-    ---** ChipGroup **---
+    ---** ChipGroup / Chip **---
     Id --> chip_group_form_list_interest
     <dimen name="cgfli_height">200dip</dimen>
     <dimen name="cgfli_marginTop">10dip</dimen>
+
+    Id --> chip_item
+    <dimen name="ci_width">150dip</dimen>
+    <dimen name="ci_height">70dip</dimen>
+    <dimen name="ci_textSize">18sp</dimen>
+    <dimen name="ci_iconStartPadding">10dip</dimen>
 
     ---** ImageButton **---
     Id --> form_confirm_cancelling
@@ -501,13 +523,13 @@
         <dimen name="fai_margin_land">10dip</dimen>
         --------------------------------
         Id --> form_for_sale_since_input
-        <dimen name="ffssi_marginStart_land">100dip</dimen>
+        <dimen name="ffssi_marginStart_land">60dip</dimen>
         <dimen name="ffssi_marginTop_land">20dip</dimen>
         <dimen name="ffssi_marginEnd_land">10dip</dimen>
         <dimen name="ffssi_marginBottom_land">10dip</dimen>
         --------------------------------
         Id --> form_sold_out_since_input
-        <dimen name="fsosi_marginStart_land">100dip</dimen>
+        <dimen name="fsosi_marginStart_land">60dip</dimen>
         <dimen name="fsosi_marginTop_land">20dip</dimen>
         <dimen name="fsosi_marginEnd_land">10dip</dimen>
         <dimen name="fsosi_marginBottom_land">10dip</dimen>
