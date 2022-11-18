@@ -9,6 +9,10 @@
     <!--:: Other indicators ::-->
     <string name="chip_group_indicator">ChipGroup</string>
 
+    <!--:: TAG / LOG / Messages ::-->
+    <string name="cancelled_authentication_because_of">The authentication has been cancelled for</string>
+    <string name="cancelled_authentication">Operation has failed</string>
+
     // ---------------------:: BY TYPE OF WIDGETS AND FUNCTIONS ::----------------------
 
     <!--:: Text Views / Titles / Not Editable ::-->
@@ -31,6 +35,7 @@
     <string name="add_lot_property_description_title">Description</string>
     <string name="add_lot_property_seller_title">Seller</string>
     <string name="add_lot_property_price_title">Price</string>
+    <string name="add_lot_property_photo_title">Photos</string>
 
     <!--:: Text Views / Editable ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -62,6 +67,8 @@
     <string name="content_description_form_confirm_adding">Confirm adding sign</string>
     <string name="content_description_stop_adding_sign">Cancel adding sign</string>
     <string name="content_description_add_new_property_button">Add new property button</string>
+    <string name="content_description_add_new_photo">Photos to add in recycler view</string>
+    <string name="content_description_add_first_item_btn">Add first item</string>
 
     <!--:: Hint ::-->
     <string name="hint_property_seller_input">Select the seller name</string>
@@ -90,6 +97,9 @@
 
     <!--:: Dropdown Menu ::-->
     <string name="dropdown_menu_user_id_indicator">1</string>
+
+
+
 
     <!--:: Bottom Navigation Menu ::-->
     <!--:: Navigation Drawer Menu ::-->

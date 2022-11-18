@@ -76,7 +76,7 @@
                 app:helperText="@string/helperText_property_name_input"
                 app:helperTextEnabled="true"
                 app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
-                app:startIconDrawable="@drawable/round_roofing_24">
+                app:startIconDrawable="@drawable/round_roofing">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

@@ -19,7 +19,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
-@Database(entities = {UserModel.class, PropertyModel.class}, version = 2, exportSchema = false)
+@Database(entities = {UserModel.class, PropertyModel.class}, version = 4, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class RemDatabase extends RoomDatabase {
 
@@ -29,7 +29,6 @@ public abstract class RemDatabase extends RoomDatabase {
     // 2 -- DAO -->
     public abstract PropertyDAO propertyDAO();
     public abstract UserDAO userDAO();
-
 
     // 3 -- SINGLETON PATTERN -->
     public static RemDatabase getInstance(Context context) {
@@ -53,18 +52,13 @@ public abstract class RemDatabase extends RoomDatabase {
             @Override
             public void onCreate(@NonNull SupportSQLiteDatabase db) {
                 super.onCreate(db);
+                prepopulateDatabaseWithUsers(db);
+                prepopulateDatabase(db);
                 //--:: /!\ Prepopulate methods don't work in onCreate method ::--
                 Log.d("DATABASE : " ,"prepopulateDatabase(db) has been called successfully ");
             }
-
-            @Override
-            public void onOpen(@NonNull @NotNull SupportSQLiteDatabase db) {
-                super.onOpen(db);
-                prepopulateDatabaseWithUsers(db);
-                prepopulateDatabase(db);
-                Log.i("CALLBACK : ", "CALLBACK has been called");
-            }
         };
+
     }
 
     // 5 -- Insert Content Values in table : DUMMY_USERS -->
@@ -75,7 +69,6 @@ public abstract class RemDatabase extends RoomDatabase {
             usersValues.put("id", user.getId());
             usersValues.put("name", user.getName());
             usersValues.put("mail", user.getMail());
-            usersValues.put("photo", user.getPhoto());
             db.insert("user_table", OnConflictStrategy.IGNORE, usersValues);
         }
     }

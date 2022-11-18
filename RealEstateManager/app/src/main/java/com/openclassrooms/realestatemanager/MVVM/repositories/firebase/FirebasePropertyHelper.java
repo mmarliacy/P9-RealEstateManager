@@ -49,8 +49,8 @@ public class FirebasePropertyHelper {
     // CREATE - UPDATE - DELETE
     //---------------------------
     // -- CREATE :: PROPERTY IN FIREBASE DATABASE -->
-    public Task<Void> createProperty(String propertyId, PropertyModel property) {
-        return getPropertiesCollection().document(propertyId).set(property);
+    public Task<Void> createProperty(String propertyName, PropertyModel property) {
+        return getPropertiesCollection().document(propertyName).set(property);
     }
     // -- UPDATE :: PROPERTY IN FIREBASE DATABASE -->
     public Task<Void> updateProperty(String propertyId, PropertyModel property) {

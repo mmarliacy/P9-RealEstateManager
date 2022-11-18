@@ -1,6 +1,7 @@
 package com.openclassrooms.realestatemanager.view.viewmodel;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.openclassrooms.realestatemanager.MVVM.repositories.room.RoomPropertyRepository;
 import com.openclassrooms.realestatemanager.MVVM.repositories.room.RoomUserRepository;
@@ -17,8 +18,8 @@ public class RoomViewModel extends ViewModel {
     private final Executor fExecutor;
 
     // 2 -- DATA -->
+    private LiveData<List<UserModel>> allUsers;
     private LiveData<List<PropertyModel>> allProperties;
-    private List<UserModel> allUsers;
 
     /** CONSTRUCTOR */
     public RoomViewModel(RoomPropertyRepository pPropertyRepository, RoomUserRepository pUserRepository, Executor pExecutor) {
@@ -28,13 +29,20 @@ public class RoomViewModel extends ViewModel {
     }
 
     // 3 -- GET LAST DATA -->
-    // -- PROPERTIES -->
-    public void initPropertiesList() {
-        if (this.allProperties != null) {
+    public void initAllUsers(){
+        if(this.allUsers != null){
             return;
         }
-            allProperties = fPropertyRepository.getAllProperties();
+        allUsers = fUserRepository.getAllUsers();
     }
+
+    public void initAllProperties() {
+        if(this.allProperties != null) {
+            return;
+        }
+        allProperties = fPropertyRepository.getAllProperties();
+        //Comment faire en sorte que l'init renvoie les propriétés de firebase.
+        }
 
     //-----------------------------------
     // 4 -- QUERY DATABASE :: PROPERTIES
@@ -75,8 +83,13 @@ public class RoomViewModel extends ViewModel {
     // -- QUERIES : -->
     //-----------------------
     // -- QUERY :: GET ALL USERS -->
-    public List<UserModel> getUsers() {
+    public LiveData<List<UserModel>> getAllUsers() {
         return this.allUsers;
+    }
+
+    // -- QUERY :: GET USER -->
+    public UserModel getUser(String userId){
+        return this.fUserRepository.getUser(userId);
     }
     //---------------------------------------------------------------------------------------
     // -- CREATE - UPDATE - DELETE -->
@@ -90,4 +103,6 @@ public class RoomViewModel extends ViewModel {
     public void deleteUser(UserModel user) {
         fExecutor.execute(() -> this.fUserRepository.deleteUser(user));
     }
+
+
 }

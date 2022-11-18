@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/ctl_height"
             android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"            app:collapsedTitleTextAppearance="@style/CollapseTitleTextAppearanceActionBar_RealEstateSheetLayout"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:collapsedTitleTextAppearance="@style/CollapseTitleTextAppearanceActionBar_RealEstateSheetLayout"
             app:expandedTitleTextAppearance="@style/ExpandedTitleTextAppearanceActionBar_RealEstateSheetLayout"
             app:statusBarScrim="@color/primary"
             app:toolbarId="@id/sheet_toolbar">
@@ -233,7 +234,7 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/pfsst_textSize"
                         android:textStyle="bold"
-                        app:drawableTopCompat="@drawable/round_roofing_24" />
+                        app:drawableTopCompat="@drawable/round_roofing_black" />
 
                     <TextView
                         android:id="@+id/property_for_sale_since"

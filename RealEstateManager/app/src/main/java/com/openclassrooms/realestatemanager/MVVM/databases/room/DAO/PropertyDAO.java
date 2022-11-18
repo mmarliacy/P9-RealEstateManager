@@ -1,6 +1,7 @@
 package com.openclassrooms.realestatemanager.MVVM.databases.room.DAO;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -13,10 +14,10 @@ import java.util.List;
 @Dao
 public interface PropertyDAO {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert (onConflict = OnConflictStrategy.IGNORE)
     void insertProperty(PropertyModel property);
 
-    @Update
+    @Update (onConflict = OnConflictStrategy.IGNORE)
     void updateProperty(PropertyModel property);
 
     @Delete

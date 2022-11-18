@@ -7,20 +7,30 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.ACTION_OPEN_DOCUMENT" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION " />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Primary.RealEstateManager"
+        android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
         <activity
-            android:name="com.openclassrooms.realestatemanager.view.activities.MainActivity_HomeScreen"
-            android:exported="true">
+            android:name=".view.activities.LoginActivity"
+            android:exported="true"
+            tools:ignore="MissingClass">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,18 +38,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.openclassrooms.realestatemanager.view.activities.AddPropertyActivity"
-            android:theme="@style/Theme.Secondary.RealEstateManager">
+            android:name=".view.activities.MainActivity_HomeScreen"
+            android:exported="false"
+            tools:ignore="MissingClass">
         </activity>
-        <!-- :: Map key :: -->
-        <meta-data
-            android:name = "com.google.android.geo.API_KEY"
-            android:value = "${MAP_KEYS}"/>
+        <activity
+            android:name=".view.activities.AddPropertyActivity"
+            android:theme="@style/Theme.Secondary.RealEstateManager">
 
+        </activity> <!-- :: Map key :: -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAP_KEYS}" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

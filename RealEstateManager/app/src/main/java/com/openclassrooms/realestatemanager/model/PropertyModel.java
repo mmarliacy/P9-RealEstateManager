@@ -8,6 +8,8 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.openclassrooms.realestatemanager.view.fragments.PropertySheetFragment;
+
 import java.util.List;
 
 
@@ -28,7 +30,7 @@ public class PropertyModel implements Parcelable {
     private long id;
 
     @ColumnInfo(name = "userId")
-    private int userId;
+    private String userId;
 
     @ColumnInfo(name = "name")
     private String name;
@@ -63,48 +65,63 @@ public class PropertyModel implements Parcelable {
     @ColumnInfo(name = "on_sale_date")
     private String onSaleDate;
 
-
     @ColumnInfo(name = "sold_date")
     private String soldDate;
 
-    /** EMPTY CONSTRUCTOR */
+
+    /**
+     * EMPTY CONSTRUCTOR
+     */
     public PropertyModel() {
     }
 
-    /** CONSTRUCTOR */
-    public PropertyModel(int pUserId, String pName, String pType, String pAddress,
-                         String pDescription, String pTotalLeavingArea, String pRooms, String pPrice,
-                         String pStatus, List<String> pPhotoProperty, List<String> pPropertyInterest,
-                         String pOnSaleDate, String pSoldDate) {
-        this.setUserId(pUserId);
-        this.setName(pName);
-        this.setType(pType);
-        this.setAddress(pAddress);
-        this.setPrice(pPrice);
-        this.setDescription(pDescription);
-        this.setTotalLeavingArea(pTotalLeavingArea);
-        this.setRooms(pRooms);
-        this.setStatus(pStatus);
-        this.setPhotoProperty(pPhotoProperty);
-        this.setPropertyInterest(pPropertyInterest);
-        this.setOnSaleDate(pOnSaleDate);
-        this.setSoldDate(pSoldDate);
+    /** FIREBASE CONSTRUCTOR */
+    public PropertyModel(long id,String userId, String name, String type, String address,
+                         String description, String totalLeavingArea, String rooms, String price,
+                         String status, List<String> photoProperty, List<String> propertyInterest,
+                         String onSaleDate, String soldDate) {
+        this.id = id;
+        this.setUserId(userId);
+        this.setName(name);
+        this.setType(type);
+        this.setAddress(address);
+        this.setPrice(price);
+        this.setDescription(description);
+        this.setTotalLeavingArea(totalLeavingArea);
+        this.setRooms(rooms);
+        this.setStatus(status);
+        this.setPhotoProperty(photoProperty);
+        this.setPropertyInterest(propertyInterest);
+        this.setOnSaleDate(onSaleDate);
+        this.setSoldDate(soldDate);
     }
-
-
+    /** CONSTRUCTOR */
+    public PropertyModel(String userId, String name, String type, String address,
+                         String description, String totalLeavingArea, String rooms, String price,
+                         String status, List<String> photoProperty, List<String> propertyInterest,
+                         String onSaleDate, String soldDate) {
+        this.setUserId(userId);
+        this.setName(name);
+        this.setType(type);
+        this.setAddress(address);
+        this.setPrice(price);
+        this.setDescription(description);
+        this.setTotalLeavingArea(totalLeavingArea);
+        this.setRooms(rooms);
+        this.setStatus(status);
+        this.setPhotoProperty(photoProperty);
+        this.setPropertyInterest(propertyInterest);
+        this.setOnSaleDate(onSaleDate);
+        this.setSoldDate(soldDate);
+    }
 
     /** Getters */
     public long getId() {
         return id;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
-    }
-
-    /** Returns the user associated to the property */
-    public UserModel getUser() {
-        return UserModel.getUserById(userId);
     }
 
     public String getName() {
@@ -157,10 +174,10 @@ public class PropertyModel implements Parcelable {
 
     /** Setters */
     public void setId(long pId) {
-        id = pId;
+        this.id = pId;
     }
 
-    public void setUserId(int pUserId) {
+    public void setUserId(String pUserId) {
         userId = pUserId;
     }
 
@@ -218,7 +235,7 @@ public class PropertyModel implements Parcelable {
      */
     protected PropertyModel(Parcel in) {
         id = in.readLong();
-        userId = in.readInt();
+        userId = in.readString();
         name = in.readString();
         type = in.readString();
         address = in.readString();
@@ -236,7 +253,7 @@ public class PropertyModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeLong(id);
-        dest.writeInt(userId);
+        dest.writeString(userId);
         dest.writeString(name);
         dest.writeString(type);
         dest.writeString(address);
@@ -256,7 +273,7 @@ public class PropertyModel implements Parcelable {
         return 0;
     }
 
-    public static final Creator<PropertyModel> CREATOR = new Creator<>() {
+    public static final Creator<PropertyModel> CREATOR = new Creator<PropertyModel>() {
         @Override
         public PropertyModel createFromParcel(Parcel in) {
             return new PropertyModel(in);

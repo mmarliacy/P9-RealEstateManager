@@ -1,6 +1,8 @@
 package com.openclassrooms.realestatemanager.MVVM.repositories.room;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.PropertyDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import java.util.List;

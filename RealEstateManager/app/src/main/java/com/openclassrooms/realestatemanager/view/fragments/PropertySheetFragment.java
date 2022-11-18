@@ -1,5 +1,7 @@
 package com.openclassrooms.realestatemanager.view.fragments;
 
+import static android.os.Build.VERSION_CODES.O;
+import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
 import static com.openclassrooms.realestatemanager.view.activities.MainActivity_HomeScreen.api_key;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -17,16 +19,26 @@ import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseInjection;
+import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseViewModelFactory;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.adapters.InterestListAdapter;
 import com.openclassrooms.realestatemanager.adapters.PhotoListAdapter;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
+import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
+import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 import com.squareup.picasso.Picasso;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class PropertySheetFragment extends Fragment {
 
@@ -37,6 +49,13 @@ public class PropertySheetFragment extends Fragment {
      * Data
      */
     private static PropertyModel property;
+    static List<UserModel> allUsers ;
+
+    /**
+     * LIVE DATA - VIEW MODELS
+     */
+    RoomViewModel roomViewModel;
+    FirebaseViewModel firebaseViewModel;
 
     /**
      * Graphics
@@ -73,12 +92,15 @@ public class PropertySheetFragment extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.real_estate_sheet_layout, container, false);
         bindView(view);
-        connectViewToData(property);
+        configureFirebaseViewModel();
+        getAndObserveFirebaseUsers();
         configureToolbar(view, property);
         configureViewPager(view, property);
         this.configureInterestRecyclerView(view, property);
+        connectViewToData(property);
         return view;
     }
+
 
     //----------------------
     // BINDING VIEWS & DATA
@@ -99,31 +121,33 @@ public class PropertySheetFragment extends Fragment {
     // 2 -- Connect graphics data to real data in fragment -->
     @SuppressLint("SetTextI18n")
     private void connectViewToData(PropertyModel pPropertyModel) {
-        defineUserName(pPropertyModel);
         definePropertyStatus(pPropertyModel);
         defineMapPicture(pPropertyModel);
         propertyCost.setText("" + pPropertyModel.getPrice() + " $");
         propertyFirstProperties.setText(
-                                        pPropertyModel.getType()
-                                        + " - "
-                                        + pPropertyModel.getRooms() + " P"
-                                        + " - "
-                                        + pPropertyModel.getTotalLeavingArea() + " m²");
+                pPropertyModel.getType()
+                        + " - "
+                        + pPropertyModel.getRooms() + " P"
+                        + " - "
+                        + pPropertyModel.getTotalLeavingArea() + " m²");
         propertyAddress.setText(pPropertyModel.getAddress());
         propertyDescription.setText(pPropertyModel.getDescription());
         propertyForSale.setText(pPropertyModel.getOnSaleDate());
         propertySold.setText(pPropertyModel.getSoldDate());
+
     }
 
     // 3 -- Logics methods for other graphic data -->
 
     // 3a -- Define seller name according to id -->
+    @SuppressLint("SetTextI18n")
     private void defineUserName(PropertyModel pPropertyModel) {
-        UserModel user = pPropertyModel.getUser();
-        if (user != null) {
-            sellerName.setText(user.getName());
-        } else {
-            sellerName.setText(String.valueOf(pPropertyModel.getUserId()));
+        for (UserModel user : allUsers) {
+            if (Objects.equals(user.getId(), pPropertyModel.getUserId())) {
+                sellerName.setText("By " + user.getName());
+            } else {
+                sellerName.setText("By Unknown Seller");
+            }
         }
     }
 
@@ -137,8 +161,8 @@ public class PropertySheetFragment extends Fragment {
         propertyStatus.setText(pPropertyModel.getStatus());
     }
 
-    private void defineMapPicture(PropertyModel pPropertyModel){
-        try{
+    private void defineMapPicture(PropertyModel pPropertyModel) {
+        try {
             String BASE_URL = "https://maps.googleapis.com/maps/";
             String url = BASE_URL + "api/staticmap?center=" + pPropertyModel.getAddress() + "&zoom=" + 14 + "&size=400x400" + "&key=" + api_key;
             Picasso.get().load(url).into(mapContainer);
@@ -175,5 +199,41 @@ public class PropertySheetFragment extends Fragment {
         propertyInterestRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
         InterestListAdapter adapter = new InterestListAdapter(pProperty);
         propertyInterestRecyclerView.setAdapter(adapter);
+    }
+    //---------------------
+    // FIREBASE VIEW MODEL
+    //---------------------
+    // 1 -- Configure Firebase View Model & Retrieve all properties and connected User -->
+    private void configureFirebaseViewModel() {
+        FirebaseViewModelFactory varFirebaseViewModelFactory = FirebaseInjection.provideFirebaseViewModelFactory();
+        firebaseViewModel = varFirebaseViewModelFactory.create(FirebaseViewModel.class);
+        firebaseViewModel.retrieveAllUsers();
+        firebaseViewModel.retrieveAllProperties();
+    }
+
+    // 2 -- Get, update & observe users changes -->
+    private void getAndObserveFirebaseUsers() {
+        this.firebaseViewModel.getAllUsers().observe(requireActivity(), this::getFirebaseUsers);
+    }
+
+    // 2a -- Get & update users changes -->
+    private void getFirebaseUsers(List<UserModel> users) {
+        allUsers = new ArrayList<>();
+        allUsers.addAll(users);
+        defineUserName(property);
+    }
+
+    /**
+     * Returns the user with the given unique identifier, or null if no user with that
+     * identifier can be found.
+     */
+    public UserModel getUserById(String id) {
+
+        return null;
+    }
+
+    /** Returns the user associated to the property */
+    public UserModel getUser(String userId) {
+        return getUserById(userId);
     }
 }

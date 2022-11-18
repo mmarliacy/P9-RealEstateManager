@@ -45,7 +45,7 @@ public class InterestListAdapter extends RecyclerView.Adapter<InterestListAdapte
     @Override
     public void onBindViewHolder(@NonNull @NotNull InterestListAdapter.InterestViewHolder holder, int position) {
         String interest = interestList.get(position);
-        holder.bind(interest, holder.itemView.getContext(), position);
+        holder.bind(interest, holder.itemView.getContext());
     }
 
     // 3 -- ITEM COUNT -->
@@ -78,21 +78,21 @@ public class InterestListAdapter extends RecyclerView.Adapter<InterestListAdapte
         }
 
         // 3 --:: Code binding ::--
-        public void bind(String interestModel, Context pContext, int position) {
+        public void bind(String interestModel, Context pContext) {
             name.setText(interestModel);
-            getGoodIcon(interestModel, position);
+            getGoodIcon(interestModel);
             Glide.with(pContext)
                     .load(iconData)
                     .into(icon);
         }
 
         // 2 --:: Get right icon for interest  ::--
-        public void getGoodIcon(String interestModel, int position) {
-            List<InterestModel> interestsList = DummyListCallback.setInterestsNameListToIcon();
+        public void getGoodIcon(String interestModel) {
+            List<InterestModel> interestsList = DummyListCallback.getInterestList();
             try {
-                for(InterestModel interest : interestsList) {
-                    if (interestModel.equals(interest.getName())) {
-                        iconData = interestsList.get(position).getIcon();
+                for(int i = 0; i<interestsList.size(); i++) {
+                    if (interestModel.equals(interestsList.get(i).getName())) {
+                        iconData = interestsList.get(i).getIcon();
                         return;
                     }
                 }

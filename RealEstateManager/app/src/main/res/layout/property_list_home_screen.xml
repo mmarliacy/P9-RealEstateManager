@@ -29,6 +29,8 @@
         android:layout_height="match_parent"
         android:layout_below="@id/app_bar_layout">
 
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/properties_recyclerView"
             android:layout_width="0dp"
@@ -53,8 +55,4 @@
             app:maxImageSize="@dimen/cpfb_maxImageSize"
             tools:ignore="RedundantDescriptionCheck,ImageContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 </RelativeLayout>

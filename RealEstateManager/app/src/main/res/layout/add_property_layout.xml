@@ -105,12 +105,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/form_property_name_title"
-                android:layout_margin="@dimen/fpnl_margin"
+                android:layout_marginStart="@dimen/fpnl_margin"
+                android:layout_marginTop="@dimen/fpnl_margin"
+                android:layout_marginEnd="@dimen/fpnl_margin"
+                android:layout_marginBottom="@dimen/fpnl_margin"
                 android:hint="@string/hint_property_name_input"
                 app:helperText="@string/helperText_property_name_input"
                 app:helperTextEnabled="true"
                 app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
-                app:startIconDrawable="@drawable/round_roofing_24">
+                app:startIconDrawable="@drawable/round_roofing">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_name_input"
@@ -119,11 +122,54 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/form_property_type_title"
+                android:id="@+id/form_property_photo_title"
                 style="@style/FormCustomPropertyTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_name_layout"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/fpnt_marginStart"
+                android:layout_marginTop="@dimen/fpnt_marginTop"
+                android:text="@string/add_lot_property_photo_title"
+                android:textSize="@dimen/fpnt_textSize" />
+
+            <ImageButton
+                android:id="@+id/next_item"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/form_property_photo_title"
+                android:layout_below="@+id/form_property_name_layout"
+                android:background="@drawable/item_interest_shape"
+                android:contentDescription="@string/content_description_add_first_item_btn"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_add_24" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/form_property_photos_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/form_property_photo_title"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                app:startIconDrawable="@drawable/round_roofing_24">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/form_recyclerView_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_photo"
+                    tools:itemCount="1"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/form_property_type_title"
+                style="@style/FormCustomPropertyTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/form_property_photos_linearLayout"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/fptt_marginStart"
                 android:layout_marginTop="@dimen/fptt_marginTop"
@@ -343,16 +389,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/cgfli_height"
                 android:layout_below="@id/form_around_property_title"
-                android:layout_marginTop="@dimen/cgfli_marginTop"
-                android:background="@color/primary_light">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/chip_group_indicator"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
+                android:layout_marginTop="@dimen/cgfli_marginTop">
             </com.google.android.material.chip.ChipGroup>
 
             <TextView
@@ -437,7 +474,7 @@
                 android:id="@+id/form_property_description_layout"
                 style="@style/CustomTextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/fpdl_height"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_description_title"
                 android:layout_margin="@dimen/fpdl_margin"
                 android:hint="@string/hint_tell_me_more_about_it_description_property"

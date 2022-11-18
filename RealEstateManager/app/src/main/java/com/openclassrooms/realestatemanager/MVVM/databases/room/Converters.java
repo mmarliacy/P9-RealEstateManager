@@ -23,39 +23,6 @@ public class Converters implements Serializable {
     }
 
     //-----------------------------
-    // ARRAYLIST<STRING> CONVERTER
-    //-----------------------------
-    @TypeConverter
-    public List<String> gettingListFromString(String genreIds) {
-        List<String> list = new ArrayList<>();
-
-        String[] array = genreIds.split(",");
-        for (String s : array) {
-            if (!s.isEmpty()) {
-                int Position = 0;
-                s = s.substring(0, Position) + s.substring(Position + 1);
-                s = s.replaceAll("(^\\[|]$)", "");
-                list.add(s);
-                Log.d("The list contains ", "" + s);
-            }
-        }
-        return list;
-    }
-
-    @TypeConverter
-    public String writingStringFromListInt(List<String> list) {
-        StringBuilder genreIds = new StringBuilder();
-        for (String i : list) {
-            int Position = 0;
-            i = i.substring(0, Position) + i.substring(Position + 1);
-            i = i.replaceAll("(^\\[|]$)", "");
-            genreIds.append(",").append(i);
-            Log.d("GenreIds contains ", "" + i);
-        }
-        return genreIds.toString();
-    }
-
-    //-----------------------------
     // ARRAYLIST<INT> CONVERTER
     //-----------------------------
     @TypeConverter
@@ -79,6 +46,49 @@ public class Converters implements Serializable {
             genreIds.append(",").append(i);
         }
         return genreIds.toString();
+    }
+
+    //-----------------------------
+    // ARRAYLIST<STRING> CONVERTER
+    //-----------------------------
+    @TypeConverter
+    public List<String> gettingListFromString(String genreIds) {
+        List<String> list = new ArrayList<>();
+        CharSequence pattern = "[";
+        CharSequence pattern2 = "]";
+        String[] array = genreIds.split(",");
+        if (genreIds.contains(pattern) && genreIds.contains(pattern2)) {
+            for (String s : array) {
+                if (!s.isEmpty()) {
+                    int Position = 0;
+                    s = s.substring(0, Position) + s.substring(Position + 1);
+                    s = s.replaceAll("(^\\[|]$)", "");
+                    list.add(s);
+                    Log.d("The list contains ", "" + s);
+                }
+            }
+        } else {
+            for (String s : array) {
+                if (!s.isEmpty()) {
+                    list.add(s);
+                }
+            }
+        }
+
+        return list;
+    }
+
+    @TypeConverter
+    public String writingStringFromListInt(List<String> list) {
+        String genreIds = "";
+        if (list != null) {
+            for (String i : list) {
+                genreIds += "," + i;
+            }
+        }else {
+                genreIds = "";
+            }
+            return genreIds;
     }
 }
 
