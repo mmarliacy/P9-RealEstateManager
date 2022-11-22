@@ -41,8 +41,4 @@ public class RoomUserRepository {
         this.userDAO.insertUser(user);
     }
 
-    // -- DELETE :: USER -->
-    public void deleteUser(UserModel user){
-        this.userDAO.deleteUser(user);
-    }
 }

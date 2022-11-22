@@ -92,10 +92,10 @@ public class DummyListCallback {
         INTERESTS_NAME_LIST.add("School");
         INTERESTS_NAME_LIST.add("Bakery");
         INTERESTS_NAME_LIST.add("Hospital");
-        INTERESTS_NAME_LIST.add("City Hall");
+        INTERESTS_NAME_LIST.add("Hall");
         INTERESTS_NAME_LIST.add("Mall");
         INTERESTS_NAME_LIST.add("Park");
-        INTERESTS_NAME_LIST.add("Bank Center");
+        INTERESTS_NAME_LIST.add("Bank");
         INTERESTS_NAME_LIST.add("Pool");
         INTERESTS_NAME_LIST.add("Church");
         return INTERESTS_NAME_LIST;

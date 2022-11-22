@@ -7,9 +7,6 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-
-import com.openclassrooms.realestatemanager.view.fragments.PropertySheetFragment;
-
 import java.util.List;
 
 
@@ -28,6 +25,8 @@ public class PropertyModel implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "prop_id", index = true)
     private long id;
+
+    private String propertyId;
 
     @ColumnInfo(name = "userId")
     private String userId;
@@ -76,11 +75,11 @@ public class PropertyModel implements Parcelable {
     }
 
     /** FIREBASE CONSTRUCTOR */
-    public PropertyModel(long id,String userId, String name, String type, String address,
+    public PropertyModel(String id,String userId, String name, String type, String address,
                          String description, String totalLeavingArea, String rooms, String price,
                          String status, List<String> photoProperty, List<String> propertyInterest,
                          String onSaleDate, String soldDate) {
-        this.id = id;
+        this.propertyId = id;
         this.setUserId(userId);
         this.setName(name);
         this.setType(type);
@@ -95,7 +94,8 @@ public class PropertyModel implements Parcelable {
         this.setOnSaleDate(onSaleDate);
         this.setSoldDate(soldDate);
     }
-    /** CONSTRUCTOR */
+
+    /** ROOM CONSTRUCTOR */
     public PropertyModel(String userId, String name, String type, String address,
                          String description, String totalLeavingArea, String rooms, String price,
                          String status, List<String> photoProperty, List<String> propertyInterest,
@@ -118,6 +118,10 @@ public class PropertyModel implements Parcelable {
     /** Getters */
     public long getId() {
         return id;
+    }
+
+    public String getPropertyId() {
+        return propertyId;
     }
 
     public String getUserId() {
@@ -175,6 +179,10 @@ public class PropertyModel implements Parcelable {
     /** Setters */
     public void setId(long pId) {
         this.id = pId;
+    }
+
+    public void setPropertyId(String pPropertyId) {
+        propertyId = pPropertyId;
     }
 
     public void setUserId(String pUserId) {
@@ -273,7 +281,7 @@ public class PropertyModel implements Parcelable {
         return 0;
     }
 
-    public static final Creator<PropertyModel> CREATOR = new Creator<PropertyModel>() {
+    public static final Creator<PropertyModel> CREATOR = new Creator<>() {
         @Override
         public PropertyModel createFromParcel(Parcel in) {
             return new PropertyModel(in);

@@ -62,109 +62,154 @@ public class AddPropertyActivity extends AppCompatActivity {
     //---------------
     // DATA - FIELDS
     //---------------
-    /**
-     * Graphics
-     */
-    TextInputLayout propSellerLayout;
-    TextInputEditText propTitleInput;
-    TextInputEditText propTypeInput;
-    TextInputEditText propTotalAreaInput;
-    TextInputEditText propAddressInput;
-    TextInputEditText forSaleSinceInput;
-    TextInputEditText soldSinceInput;
-    TextInputEditText descInput;
-    TextInputEditText priceInput;
-    AutoCompleteTextView atvUserInput;
-    LinearLayout linearLayout;
-    LayoutInflater inflater;
-    ImageButton addPhotoBtn;
-    ImageButton addNextPhotoBtn;
+    /** Graphics */
+    private TextInputEditText propTitleInput;
+    private TextInputEditText propTypeInput;
+    private TextInputEditText propTotalAreaInput;
+    private TextInputEditText propAddressInput;
+    private TextInputEditText forSaleSinceInput;
+    private TextInputEditText soldSinceInput;
+    private TextInputEditText descInput;
+    private TextInputEditText priceInput;
+    private TextView totalRooms;
+    private AutoCompleteTextView atvUserInput;
+    private ImageButton confirmBtn;
+    private ImageButton cancelBtn;
+    private ImageButton addPhotoBtn;
+    private ImageButton addNextPhotoBtn;
+    private Button moreBtn;
+    private Button lessBtn;
+    RecyclerView recyclerView;
 
-    TextView totalRooms;
-    Button moreBtn;
-    Button lessBtn;
-    int rooms;
-    String sellerIdForPropertyToUpdate;
-    String title;
-    String type;
-    String totalArea;
-    String address;
-    String saleSince;
-    String soldSince;
-    String description;
-    String allRooms;
-    ImageButton confirmBtn;
-    ImageButton cancelBtn;
+    /** Data */
+    // -- List -->
+    private final List<UserModel> users = new ArrayList<>();
+    private final List<PropertyModel> properties = new ArrayList<>();
+    private final List<String> usersNameList = new ArrayList<>();
+    private final List<String> photoProperty = new ArrayList<>();
+    private final List<InterestModel> interestList = getInterestList();
+    private final List<String> selectedInterest = new ArrayList<>();
 
-    String price;
-    String status;
-    String sellerName;
-    List<String> photoProperty = new ArrayList<>();
-    String sellerId;
-    List<UserModel> allUsers = new ArrayList<>();
-    List<String> selectedInterest = new ArrayList<>();
-    List<String> usersNameList = new ArrayList<>();
-    List<PropertyModel> properties = new ArrayList<>();
-    List<InterestModel> interestList = getInterestList();
-    PropertyModel propertyToUpdate;
-    PropertyModel propertyModel;
-    AddPhotoAdapter fAddPhotoAdapter = new AddPhotoAdapter(photoProperty);
+    // -- Variables -->
+    private int rooms;
+    private String sellerId;
+    private String sellerName;
+    private String propertyName;
+    private String type;
+    private String totalArea;
+    private String address;
+    private String saleSince;
+    private String soldSince;
+    private String description;
+    private String allRooms;
+    private String price;
+    private String status;
+    private String propertyNameToUpdate;
+    private PropertyModel propertyToUpdate;
+    private PropertyModel propertyModel;
+    private final AddPhotoAdapter fAddPhotoAdapter = new AddPhotoAdapter(photoProperty);
     private static final int read_permission_code = 101;
     private static final int pick_image_code = 1;
 
-    /**
-     * LIVE DATA - VIEW MODELS
-     */
+    /** LIVE DATA - VIEW MODELS */
     RoomViewModel roomViewModel;
     FirebaseViewModel firebaseViewModel;
-
 
     //-----------
     // LIFECYCLE
     //-----------
     // 1 -- ON CREATE -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_property_layout);
-        defineView();
-        if (getIntent().hasExtra("propertyToUpdate")) {
-            propertyToUpdate = getIntent().getParcelableExtra("propertyToUpdate");
-            definePropertyToUpdate();
+        // -- Configure View Models -->
+        configureViewModels();
+        if (roomViewModel != null){
+            getRoomPropertiesAndUsers();
+        } else {
+            getFirebasePropertiesAndUsers();
         }
-        setPhotosList();
-        configureLocalRoomViewModel();
-        //getAndObserveUsers();
-
-        configureFirebaseViewModel();
-        getAndObserveFirebaseUsers();
-        setOnClickConfirmAndCancelBtn();
-        setMoreAndLessButtonLogic();
+        defineViews();
+        setAddPhotoLogic();
+        // -- Configure Other methods -->
+        verifyIfPropertyToUpdateExist();
+        setConfirmAndCancelBtn();
+        setMoreAndLessBtn();
         verifyInputData();
-        connectChip();
+        initChip();
     }
 
-    private void definePropertyToUpdate() {
-        if (propertyToUpdate != null) {
-            atvUserInput.setText(sellerName);
-            propTitleInput.setText(propertyToUpdate.getName());
-            propTypeInput.setText(propertyToUpdate.getType());
-            propTotalAreaInput.setText(propertyToUpdate.getTotalLeavingArea());
-            priceInput.setText(propertyToUpdate.getPrice());
-            propAddressInput.setText(propertyToUpdate.getAddress());
-            forSaleSinceInput.setText(propertyToUpdate.getOnSaleDate());
-            soldSinceInput.setText(propertyToUpdate.getSoldDate());
-            descInput.setText(propertyToUpdate.getDescription());
-            totalRooms.setText(propertyToUpdate.getRooms());
-        }
+    //----------------------------------
+    // LOCAL ROOM & FIREBASE VIEW MODEL
+    //----------------------------------
+    // 1 -- Configure ROOM & FIREBASE View Model  -->
+    private void configureViewModels() {
+        // -- ROOM View Model  --
+        RoomViewModelFactory roomViewModelFactory = RoomInjection.provideViewModelFactory(this);
+        roomViewModel = roomViewModelFactory.create(RoomViewModel.class);
+        roomViewModel.initAllUsers();
+        roomViewModel.initAllProperties();
+        // -- FIREBASE View Model  --
+        FirebaseViewModelFactory varFirebaseViewModelFactory = FirebaseInjection.provideFirebaseViewModelFactory();
+        firebaseViewModel = varFirebaseViewModelFactory.create(FirebaseViewModel.class);
+        firebaseViewModel.retrieveAllUsers();
+        firebaseViewModel.retrieveAllProperties();
+    }
+
+    // 2 -- Get & observe ROOM PROPERTIES & USERS -->
+    private void getRoomPropertiesAndUsers() {
+        // -- ROOM Properties --
+        this.roomViewModel.getAllProperties().observe(this, pPropertyModels -> {
+            properties.clear();
+            properties.addAll(pPropertyModels);
+        });
+        // -- ROOM Users --
+        this.roomViewModel.getAllUsers().observe(this, users -> {
+            this.users.addAll(users);
+            initUsersList();
+        });
+
+    }
+
+    // 2a -- Get & observe FIREBASE PROPERTIES & USERS  -->
+    private void getFirebasePropertiesAndUsers() {
+        // -- FIREBASE Properties --
+        this.firebaseViewModel.getAllProperties().observe(this, pPropertyModels -> {
+            properties.clear();
+            properties.addAll(pPropertyModels);
+        });
+        // -- FIREBASE Users --
+        this.firebaseViewModel.getAllUsers().observe(this, users -> {
+            this.users.addAll(users);
+            initUsersList();
+        });
+    }
+
+    // 4 -- Add ROOM/FIREBASE Property -->
+    private void addProperty(@NonNull PropertyModel pPropertyModel) {
+        // -- Add property in ROOM Database --
+        this.roomViewModel.addProperty(pPropertyModel);
+        // -- Add property in FIREBASE Database & Set propertyId in Firebase --
+        this.firebaseViewModel.createProperty(pPropertyModel);
+        this.firebaseViewModel.setIdOfProperty(pPropertyModel);
+    }
+
+    // 5 -- Update ROOM Property -->
+    private void updateProperty(String propertyId, PropertyModel property) {
+        // -- Update property in ROOM Database --
+        this.roomViewModel.updateProperty(property);
+        // -- Update property in FIREBASE Database --
+        this.firebaseViewModel.updateProperty(propertyId, property);
     }
 
     //----------------------
     // BINDING VIEWS & DATA
     //----------------------
     // 1 -- Reference views to graphics data in activity -->
-    private void defineView() {
-        propSellerLayout = findViewById(R.id.form_property_seller_layout);
+    private void defineViews() {
+        recyclerView = findViewById(R.id.form_recyclerView_photo);
         propTitleInput = findViewById(R.id.form_property_name_input);
         propTypeInput = findViewById(R.id.form_property_type_input);
         priceInput = findViewById(R.id.form_property_price_input);
@@ -186,206 +231,76 @@ public class AddPropertyActivity extends AppCompatActivity {
     //--------------------
     // MINI LOGIC METHODS
     //--------------------
-    private void setOnClickConfirmAndCancelBtn() {
-        confirmBtn.setOnClickListener(pView -> collectDataFromNewProperty());
+    private void setConfirmAndCancelBtn() {
+        confirmBtn.setOnClickListener(pView -> createNewOrUpdateProperty());
         cancelBtn.setOnClickListener(v -> startActivity(new Intent(this, MainActivity_HomeScreen.class)));
     }
 
-    private void setMoreAndLessButtonLogic() {
+    private void setMoreAndLessBtn() {
         if (propertyToUpdate != null) {
             rooms = Integer.parseInt(propertyToUpdate.getRooms());
         }
-        moreBtn.setOnClickListener(v -> {
-            rooms += 1;
-            totalRooms.setText(String.valueOf(rooms));
-        });
-        lessBtn.setOnClickListener(v -> {
-            if (rooms > 0) {
-                rooms -= 1;
-            }
-            totalRooms.setText(String.valueOf(rooms));
-        });
-    }
-
-    public void verifyInputData() {
-        verifyTotalAreaInput();
-        verifyPriceInput();
-        verifyInputTitleProperty();
-        initDatePicker();
-    }
-
-    public void setPhotosList() {
-        linearLayout = findViewById(R.id.form_property_photos_linearLayout);
-        inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.photo_add_first_item, linearLayout, true);
-        addPhotoBtn = view.findViewById(R.id.first_item);
-        if (photoProperty.size() == 0) {
-            addNextPhotoBtn.setVisibility(View.GONE);
-            addPhotoBtn.setVisibility(View.VISIBLE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                addPhotoBtn.setOnClickListener(v -> {
-                    try {
-                        addPhoto();
-                    } catch (IOException pE) {
-                        pE.printStackTrace();
-                    }
-                });
-            }
-        }
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.Q)
-    private void addPhoto() throws IOException {
-        if (ContextCompat.checkSelfPermission(AddPropertyActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(AddPropertyActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, read_permission_code);
-        }
-        /*
-        //First method with MediaCollection
-        String[] projection = new String[] {
-        };
-        String selection = sql-where-clause-with-placeholder-variables;
-        String[] selectionArgs = new String[] {
-
-        };
-        String sortOrder = "ORDER BY NAME";
-
-        Cursor cursor = getApplicationContext().getContentResolver().query(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                projection,
-                selection,
-                selectionArgs,
-                sortOrder
-        );
-
-        while (cursor.moveToNext()) {
-            // Use an ID column from the projection to get
-            // a URI representing the media item itself.
-        }
-        Uri photoUri = Uri.withAppendedPath(
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                cursor.getString(idColumnIndex));
-
-        final double[] latLong;
-
-// Get location data using the Exif interface library.
-// Exception occurs if ACCESS_MEDIA_LOCATION permission isn't granted.
-        photoUri = MediaStore.setRequireOriginal(photoUri);
-        InputStream stream = getContentResolver().openInputStream(photoUri);
-        if (stream != null) {
-            ExifInterface exifInterface = new ExifInterface(stream);
-            double[] returnedLatLong = exifInterface.getLatLong();
-
-            // If lat/long is null, fall back to the coordinates (0, 0).
-            latLong = returnedLatLong != null ? returnedLatLong : new double[2];
-
-            // Don't reuse the stream associated with
-            // the instance of "ExifInterface".
-            stream.close();
-        } else {
-            // Failed to load the stream, so return the coordinates (0, 0).
-            latLong = new double[2];
-        }
-
-        ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
-                registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
-                    // Callback is invoked after the user selects a media item or closes the
-                    // photo picker.
-                    if (uri != null) {
-                        Log.d("PhotoPicker", "Selected URI: " + uri);
-                    } else {
-                        Log.d("PhotoPicker", "No media selected");
-                    }
-                });
-
-        // Launch the photo picker and allow the user to choose only images.
-        pickMedia.launch(new PickVisualMediaRequest.Builder()
-                .setMediaType(PickVisualMedia.ImageOnly.INSTANCE)
-                .build());     */
-
-        // Second method with Intent
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        startActivityForResult(Intent.createChooser(intent, "Select picture"), pick_image_code);
-
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.Q)
-    @SuppressLint("NotifyDataSetChanged")
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == pick_image_code && resultCode == RESULT_OK && data != null) {
-            if (data.getClipData() != null) {
-                int countOfImages = data.getClipData().getItemCount();
-                for (int i = 0; i < countOfImages; i++) {
-                    Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                    String imageString = imageUri.toString();
-                    photoProperty.add(imageString);
-                    fAddPhotoAdapter.notifyDataSetChanged();
-                }
-                addPhotoBtn.setVisibility(View.GONE);
-                displayPhotoSelectedInRecyclerView();
-            } else {
-                Uri imageUri = data.getData();
-                String imageString = imageUri.toString();
-                photoProperty.add(imageString);
-                fAddPhotoAdapter.notifyDataSetChanged();
-            }
-        } else {
-            Toast.makeText(this, "You haven't picked any images !", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.Q)
-    @SuppressLint("NotifyDataSetChanged")
-    private void displayPhotoSelectedInRecyclerView() {
-        RecyclerView recyclerView = findViewById(R.id.form_recyclerView_photo);
-        recyclerView.setVisibility(View.VISIBLE);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setAdapter(fAddPhotoAdapter);
-        fAddPhotoAdapter.notifyDataSetChanged();
-        //ConnectBtn
-        if (photoProperty.size() > 0) {
-            addNextPhotoBtn.setVisibility(View.VISIBLE);
-            addNextPhotoBtn.setOnClickListener(v -> {
-                try {
-                    addPhoto();
-                } catch (IOException pE) {
-                    pE.printStackTrace();
-                }
+            moreBtn.setOnClickListener(v -> {
+                rooms += 1;
+                totalRooms.setText(String.valueOf(rooms));
             });
-        } else {
-            addNextPhotoBtn.setVisibility(View.GONE);
+            lessBtn.setOnClickListener(v -> {
+                if (rooms > 0) {
+                    rooms -= 1;
+                }
+                totalRooms.setText(String.valueOf(rooms));
+            });
+    }
+
+    //-------------------
+    // INIT DATA METHODS
+    //-------------------
+    // 1 -- Set user's list -->
+    private void initUsersList() {
+        for (UserModel user : users) {
+            String userName = user.getName();
+            usersNameList.add(userName);
+            //-- Find user position in Drop down list --
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_item, usersNameList);
+            atvUserInput.setAdapter(arrayAdapter);
+            arrayAdapter.notifyDataSetChanged();
+            atvUserInput.setOnItemClickListener((adapterView, view, position, l) -> sellerName = arrayAdapter.getItem(position));
+        }
+        //-- Get user for propertyToUpdate if possible --
+        if (propertyToUpdate != null) {
+            String propertyToUpdateSellerId = propertyToUpdate.getUserId();
+            for (UserModel user : users) {
+                if (user.getId().equals(propertyToUpdateSellerId)) {
+                    sellerName = user.getName();
+                    atvUserInput.setText(sellerName);
+                }
+            }
         }
     }
 
-    public void connectChip() {
+    // 2 -- Init & Get Interest List (checked or not) in ChipGroup -->
+    @SuppressLint({"UseCompatLoadingForDrawables","InflateParams"})
+    public void initChip() {
         ChipGroup chipGroup = findViewById(R.id.chip_group_form_list_interest);
         String[] tags;
+        //-- Split all interest into tags --
         for (int i = 0; i < interestList.size(); i++) {
             tags = interestList.get(i).getName().split(" ");
+            //-- Set interest icon --
             int interestIcon = interestList.get(i).getIcon();
-            @SuppressLint("UseCompatLoadingForDrawables")
             Drawable drawableIcon = getApplicationContext().getDrawable(interestIcon);
-
+            //-- For each tag associate chip to an interest --
             LayoutInflater layoutInflater = LayoutInflater.from(AddPropertyActivity.this);
-            //-- For each new tag associate Chip to a text --
             for (String text : tags) {
-                @SuppressLint("InflateParams")
                 Chip chip = (Chip) layoutInflater.inflate(R.layout.chip_item, null, true);
                 chip.setText(text);
-
-                //-- On-click add new Chip --
                 chipGroup.addView(chip);
+                //-- Set chip params --
                 chip.setCheckable(true);
                 chip.setCloseIconVisible(false);
                 chip.setChipIcon(drawableIcon);
                 chipGroup.setVisibility(View.VISIBLE);
-
+                //-- Get chip list of property --
                 if (propertyToUpdate != null) {
                     List<String> propertyInterestList = propertyToUpdate.getPropertyInterest();
                     for (int j = 0; j < propertyInterestList.size(); j++) {
@@ -397,13 +312,13 @@ public class AddPropertyActivity extends AppCompatActivity {
                         }
                     }
                 }
-                getCheckedChip(chip, text);
+                //-- Set checked chip logic --
+                setCheckedChip(chip, text);
             }
         }
-
     }
-
-    public void getCheckedChip(Chip chip, String text) {
+    // 2a -- Set checked Interest List of chip in ChipGroup -->
+    public void setCheckedChip(Chip chip, String text) {
         chip.setOnClickListener(pView -> {
             if (chip.isChecked()) {
                 selectedInterest.add(text);
@@ -414,16 +329,14 @@ public class AddPropertyActivity extends AppCompatActivity {
                 Log.d("Chip count :", selectedInterest.size() + " items : " + selectedInterest.get(i));
             }
         });
-
     }
 
-    //-- Init & get Time Picker Dialog Value -- /!\ Correct all setText
+    // 3 -- Init & get date for sold and onSale date property -->
     private void initDatePicker() {
         Calendar cal = Calendar.getInstance();
         int day = cal.get(Calendar.DAY_OF_MONTH);
         int month = cal.get(Calendar.MONTH);
         int year = cal.get(Calendar.YEAR);
-
         forSaleSinceInput.setOnClickListener(view -> {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddPropertyActivity.this, (datePicker, year1, month1, day1) -> {
@@ -444,68 +357,163 @@ public class AddPropertyActivity extends AppCompatActivity {
         });
     }
 
+    //---------------------
+    // PHOTOS RECYCLERVIEW
+    //---------------------
+    // 1 -- Set logic for adding new photos for property in database -->
+    public void setAddPhotoLogic() {
+        // -- Configure place holder --
+        LinearLayout varLinearLayout = findViewById(R.id.form_property_photos_linearLayout);
+        LayoutInflater varInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = varInflater.inflate(R.layout.photo_add_first_item, varLinearLayout, true);
+        addPhotoBtn = view.findViewById(R.id.first_item);
+        if (photoProperty.size() == 0) {
+            // -- Make add button appear --
+            addNextPhotoBtn.setVisibility(View.GONE);
+            addPhotoBtn.setVisibility(View.VISIBLE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                addPhotoBtn.setOnClickListener(v -> {
+                    try {
+                        addPhoto();
+                    } catch (IOException pE) {
+                        pE.printStackTrace();
+                    }
+                });
+            }
+        }
+    }
+
+    // 2 -- Require permission to access data phone & Get access to phone data -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void addPhoto() throws IOException {
+        if (ContextCompat.checkSelfPermission(AddPropertyActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(AddPropertyActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, read_permission_code);
+        }
+        // -- Create intent to get one or many pictures --
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        startActivityForResult(Intent.createChooser(intent, "Select picture"), pick_image_code);
+    }
+
+    // 3 -- Get pictures & Set it into adapter -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @SuppressLint("NotifyDataSetChanged")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == pick_image_code && resultCode == RESULT_OK && data != null) {
+            if (data.getClipData() != null) {
+                int countOfImages = data.getClipData().getItemCount();
+                photoProperty.clear();
+                for (int i = 0; i < countOfImages; i++) {
+                    Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                    String imageString = imageUri.toString();
+                    photoProperty.add(imageString);
+                    fAddPhotoAdapter.notifyDataSetChanged();
+                }
+                addPhotoBtn.setVisibility(View.GONE);
+                displayPhotoSelectedInRecyclerView();
+            } else {
+                Uri imageUri = data.getData();
+                String imageString = imageUri.toString();
+                photoProperty.add(imageString);
+                fAddPhotoAdapter.notifyDataSetChanged();
+            }
+        } else {
+            Toast.makeText(this, "You haven't picked any images !", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 3a -- Set recycler view configuration and display photo list -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @SuppressLint("NotifyDataSetChanged")
+    private void displayPhotoSelectedInRecyclerView() {
+        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(fAddPhotoAdapter);
+        fAddPhotoAdapter.notifyDataSetChanged();
+        //ConnectBtn
+        if (photoProperty.size() > 0) {
+            addPhotoBtn.setVisibility(View.GONE);
+            addNextPhotoBtn.setVisibility(View.VISIBLE);
+            addNextPhotoBtn.setOnClickListener(v -> {
+                try {
+                    addPhoto();
+                } catch (IOException pE) {
+                    pE.printStackTrace();
+                }
+            });
+        } else {
+            addNextPhotoBtn.setVisibility(View.GONE);
+        }
+    }
+
     //----------------------
     // VERIFY INPUT METHODS
     //----------------------
+    // 1 -- Generic method to verify inputs in form -->
+    public void verifyInputData() {
+        verifyTotalAreaInput();
+        verifyPriceInput();
+        verifyInputTitleProperty();
+        initDatePicker();
+    }
+
+    // 2 -- Verify total area input -->
     private void verifyTotalAreaInput() {
         propTotalAreaInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
-
             @Override
             public void onTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
-
             @Override
             public void afterTextChanged(Editable pEditable) {
                 TextInputLayout propTotalAreaLayout = findViewById(R.id.form_property_land_area_layout);
                 Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
                 if (!pattern.matcher(pEditable).matches()) {
-                    propTotalAreaInput.setError("Use only numbers in that section");
-                }
-                if (pattern.matcher(pEditable).matches()) {
+                    propTotalAreaInput.setError("Write only numbers in that section");
+                } else {
                     propTotalAreaLayout.setErrorEnabled(false);
                 }
             }
         });
     }
 
+    // 3 -- Verify price input -->
     private void verifyPriceInput() {
         priceInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
-
             @Override
             public void onTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
-
             @Override
             public void afterTextChanged(Editable pEditable) {
                 TextInputLayout propPriceLayout = findViewById(R.id.form_property_price_layout);
                 Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
                 if (!pattern.matcher(pEditable).matches()) {
                     priceInput.setError("Use only numbers in that section");
-                }
-                if (pattern.matcher(pEditable).matches()) {
+                } else {
                     propPriceLayout.setErrorEnabled(false);
                 }
             }
         });
     }
 
+    // 4 -- Verify title/propertyName input -->
     private void verifyInputTitleProperty() {
-        observeFirebaseProperties();
         propTitleInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
-
             @Override
             public void onTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
-
             @Override
             public void afterTextChanged(Editable pEditable) {
                 for (PropertyModel property : properties) {
@@ -520,16 +528,64 @@ public class AddPropertyActivity extends AppCompatActivity {
 
     }
 
+    //------------------------------
+    // IN CASE OF : UPDATE PROPERTY
+    //------------------------------
+    // 1 -- Verify if Property to update is not null -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void verifyIfPropertyToUpdateExist(){
+        if (getIntent().hasExtra("propertyToUpdate")) {
+            propertyToUpdate = getIntent().getParcelableExtra("propertyToUpdate");
+            propertyNameToUpdate = getIntent().getStringExtra("propertyNameToUpdate");
+            definePropertyToUpdate();
+        }
+    }
 
+    // 2 -- Define in views property to update -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void definePropertyToUpdate() {
+        if (propertyToUpdate != null) {
+            atvUserInput.setText(sellerName);
+            propTitleInput.setText(propertyToUpdate.getName());
+            propTypeInput.setText(propertyToUpdate.getType());
+            propTotalAreaInput.setText(propertyToUpdate.getTotalLeavingArea());
+            priceInput.setText(propertyToUpdate.getPrice());
+            photoProperty.addAll(propertyToUpdate.getPhotoProperty());
+            displayPhotoSelectedInRecyclerView();
+            propAddressInput.setText(propertyToUpdate.getAddress());
+            forSaleSinceInput.setText(propertyToUpdate.getOnSaleDate());
+            soldSinceInput.setText(propertyToUpdate.getSoldDate());
+            descInput.setText(propertyToUpdate.getDescription());
+            totalRooms.setText(propertyToUpdate.getRooms());
+        }
+    }
+
+    //--------------------------
+    // CREATE / UPDATE PROPERTY
+    //--------------------------
+    // 1 -- Apply changes or create new Property and return to Main Activity -->
+    @SuppressLint("SetTextI18n")
+    private void createNewOrUpdateProperty() {
+        connectGraphicsToData();
+        if (propertyToUpdate == null) {
+            setNewProperty();
+            addProperty(propertyModel);
+        } else {
+            setChangeOnPropertyToUpdate();
+            updateProperty(propertyNameToUpdate, propertyToUpdate);
+        }
+        Intent varIntent = new Intent(this, MainActivity_HomeScreen.class);
+        startActivity(varIntent);
+    }
 
     // 2 -- Connect graphics data to real data in fragment -->
-    @SuppressLint("SetTextI18n")
-    private void collectDataFromNewProperty() {
-        for (UserModel user : allUsers) {
+    private void connectGraphicsToData() {
+        // -- Set seller Id --
+        for (UserModel user : users) {
             if (sellerName.equals(user.getName())) {
                 sellerId = user.getId();
             }
-            title = Objects.requireNonNull(propTitleInput.getText()).toString();
+            propertyName = Objects.requireNonNull(propTitleInput.getText()).toString();
             type = Objects.requireNonNull(propTypeInput.getText()).toString();
             totalArea = Objects.requireNonNull(propTotalAreaInput.getText()).toString();
             price = Objects.requireNonNull(priceInput.getText()).toString();
@@ -538,159 +594,41 @@ public class AddPropertyActivity extends AppCompatActivity {
             soldSince = Objects.requireNonNull(soldSinceInput.getText()).toString();
             description = Objects.requireNonNull(descInput.getText()).toString();
             allRooms = totalRooms.getText().toString();
+            // -- Set status of the property according to date --
             if (soldSince.equals("")) {
                 status = "Available";
             } else {
                 status = "Unavailable";
             }
-
-            if (propertyToUpdate == null) {
-                propertyModel = new PropertyModel(
-                        sellerId, title, type, address,
-                        description, totalArea, allRooms,
-                        price, status, photoProperty,
-                        selectedInterest, saleSince, soldSince);
-                observeFirebaseProperties();
-                for (PropertyModel property : properties) {
-                    if (!property.getName().equals(title)) {
-                        addRoomProperty(propertyModel);
-                        addFirebaseProperty(propertyModel.getName(), propertyModel);
-                    } else {
-                        updateRoomProperty(propertyModel);
-                        updateFirebaseProperty(propertyModel.getName(), propertyModel);
-                    }
-                }
-
-                //updateUserAccordingToProperty(sellerName, String.valueOf(propertyModel.getId()));
-            } else {
-                propertyToUpdate.setUserId(sellerId);
-                propertyToUpdate.setName(title);
-                propertyToUpdate.setType(type);
-                propertyToUpdate.setAddress(address);
-                propertyToUpdate.setDescription(description);
-                propertyToUpdate.setTotalLeavingArea(totalArea);
-                propertyToUpdate.setRooms(allRooms);
-                propertyToUpdate.setPrice(price);
-                propertyToUpdate.setStatus(status);
-                propertyToUpdate.setPhotoProperty(photoProperty);
-                propertyToUpdate.setPropertyInterest(selectedInterest);
-                propertyToUpdate.setOnSaleDate(saleSince);
-                propertyToUpdate.setSoldDate(soldSince);
-                updateRoomProperty(propertyToUpdate);
-                //updateFirebaseProperty(propertyToUpdate.getName(), propertyToUpdate);
-            }
         }
-        Intent varIntent = new Intent(this, MainActivity_HomeScreen.class);
-        startActivity(varIntent);
     }
 
-    //-----------------------
-    // LOCAL ROOM VIEW MODEL
-    //-----------------------
-    // 1 -- Configure ROOM View Model & Retrieve all properties stuck on phone and last connected User -->
-    private void configureLocalRoomViewModel() {
-        RoomViewModelFactory roomViewModelFactory = RoomInjection.provideViewModelFactory(this);
-        roomViewModel = roomViewModelFactory.create(RoomViewModel.class);
-        roomViewModel.initAllUsers();
-    }
-
-    private void getAndObserveUsers() {
-        this.roomViewModel.getAllUsers().observe(this, this::getRoomUsers);
-    }
-
-    public void getRoomUsers(List<UserModel> users) {
-        allUsers = new ArrayList<>();
-        allUsers.addAll(users);
-        initListOfUsers();
-    }
-
-    /**
-     * Property methods for RoomViewModel.
-     */
-    private void addRoomProperty(@NonNull PropertyModel pPropertyModel) {
-        this.roomViewModel.addProperty(pPropertyModel);
-    }
-
-    private void updateRoomProperty(PropertyModel pPropertyModel) {
-        this.roomViewModel.updateProperty(pPropertyModel);
-    }
-
-    //---------------------
-    // FIREBASE VIEW MODEL
-    //---------------------
-    // 1 -- Configure Firebase View Model & Retrieve all properties and connected User -->
-    private void configureFirebaseViewModel() {
-        FirebaseViewModelFactory varFirebaseViewModelFactory = FirebaseInjection.provideFirebaseViewModelFactory();
-        firebaseViewModel = varFirebaseViewModelFactory.create(FirebaseViewModel.class);
-        firebaseViewModel.retrieveAllUsers();
-        firebaseViewModel.retrieveAllProperties();
-    }
-
-    // 2 -- Get, update & observe users changes -->
-    private void getAndObserveFirebaseUsers() {
-        this.firebaseViewModel.getAllUsers().observe(this, this::getFirebaseUsers);
-    }
-
-    // 2a -- Get & update users changes -->
-    private void getFirebaseUsers(List<UserModel> users) {
-        allUsers.addAll(users);
-        initListOfUsers();
-    }
-
-    // 2 -- Get, update & observe properties changes, by paying attention to the adapter -->
-    private void observeFirebaseProperties() {
-        firebaseViewModel.getAllProperties().observe(this, pPropertyModels -> {
-            //--:: Attach the adapter to the recycler view to inflate items ::--
-            properties.addAll(pPropertyModels);
-        });
-    }
-
-    //Get firebase properties
-    //Add all in a list
-    // if one of the property as document has the same name then one
-    // that is in the collection so update property, if else create
-
-    /**
-     * Property methods for FirebaseViewModel.
-     */
-    private void addFirebaseProperty(String propertyName, PropertyModel pPropertyModel) {
-        this.firebaseViewModel.createProperty(propertyName, pPropertyModel);
-    }
-
-    private void updateFirebaseProperty(String propertyName, PropertyModel pPropertyModel) {
-        this.firebaseViewModel.updateProperty(propertyName, pPropertyModel);
-    }
-
-    private void updateUserAccordingToProperty(String userId, String propertyId) {
-        this.firebaseViewModel.updateUser(userId, propertyId);
-    }
-
-    //-------------------
-    // INIT DATA METHODS
-    //-------------------
-    private void initListOfUsers() {
-        for (UserModel user : allUsers) {
-            String userName = user.getName();
-            usersNameList.add(userName);
-
-            //-- Find user position in Drop down list --
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_item, usersNameList);
-            atvUserInput.setAdapter(arrayAdapter);
-            arrayAdapter.notifyDataSetChanged();
-
-            atvUserInput.setOnItemClickListener((adapterView, view, position, l) -> {
-                sellerName = arrayAdapter.getItem(position);
-                //-- get user for propertyToUpdate --
-            });
+    // 3 -- Set Property to create in both database -->
+    private void setNewProperty(){
+        if (propertyToUpdate == null) {
+            propertyModel = new PropertyModel(
+                    sellerId, propertyName, type, address,
+                    description, totalArea, allRooms,
+                    price, status, photoProperty,
+                    selectedInterest, saleSince, soldSince);
         }
-        if (propertyToUpdate != null) {
-            sellerIdForPropertyToUpdate = propertyToUpdate.getUserId();
-            for (UserModel user : allUsers) {
-                if (user.getId().equals(sellerIdForPropertyToUpdate)) {
-                    sellerName = user.getName();
-                    atvUserInput.setText(sellerName);
-                }
-            }
-        }
+    }
+
+    // 4 -- Set changes on Property to update in both database -->
+    public void setChangeOnPropertyToUpdate(){
+        propertyToUpdate.setUserId(sellerId);
+        propertyToUpdate.setName(propertyName);
+        propertyToUpdate.setType(type);
+        propertyToUpdate.setAddress(address);
+        propertyToUpdate.setDescription(description);
+        propertyToUpdate.setTotalLeavingArea(totalArea);
+        propertyToUpdate.setRooms(allRooms);
+        propertyToUpdate.setPrice(price);
+        propertyToUpdate.setPropertyId(propertyNameToUpdate);
+        propertyToUpdate.setStatus(status);
+        propertyToUpdate.setPhotoProperty(photoProperty);
+        propertyToUpdate.setPropertyInterest(selectedInterest);
+        propertyToUpdate.setOnSaleDate(saleSince);
+        propertyToUpdate.setSoldDate(soldSince);
     }
 }

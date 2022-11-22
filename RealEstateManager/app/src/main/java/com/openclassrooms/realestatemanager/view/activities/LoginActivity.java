@@ -34,9 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     // FOR DATA
     //----------
     private static final String TAG = "Problem in : " + LoginActivity.class.getName();
+    private UserModel userModel;
 
-        List<UserModel> allUsers = new ArrayList<>();
-    UserModel userModel;
     /**
      * LIVE DATA - VIEW MODELS
      */
@@ -90,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             userModel = new UserModel(user.getUid(), user.getDisplayName(), user.getEmail());
             //--::> Create User in both databases
             getAndObserveUsers();
-            fFirebaseViewModel.createUser(user != null ? user.getDisplayName() : null, new UserModel(user.getUid(), user.getDisplayName(), user.getEmail()));
+            fFirebaseViewModel.createUser(user.getDisplayName(), new UserModel(user.getUid(), user.getDisplayName(), user.getEmail()));
             //--::> Launch intent
             Intent loginIntent = new Intent(this, MainActivity_HomeScreen.class);
             startActivity(loginIntent);
@@ -127,8 +126,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void getRoomUsers(List<UserModel> users) {
-        allUsers = new ArrayList<>();
-        allUsers.addAll(users);
+        List<UserModel> allUsers = new ArrayList<>(users);
         for (UserModel user : allUsers){
             if (!user.getId().equals(userModel.getId())){
                 roomViewModel.insertUser(userModel);

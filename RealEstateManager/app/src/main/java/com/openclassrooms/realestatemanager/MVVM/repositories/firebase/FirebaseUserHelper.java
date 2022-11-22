@@ -11,7 +11,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
 
 import java.util.ArrayList;
@@ -19,8 +18,8 @@ import java.util.List;
 
 public class FirebaseUserHelper {
 
-
     private final String USERS_COLLECTION = "Sellers";
+
     //-------------
     // QUERY - GET
     //-------------
@@ -48,6 +47,7 @@ public class FirebaseUserHelper {
         Log.d("FIRESTORE DATA", "MUTABLE LIVE DATA : has been called  " + mutableUsersList.getValue());
         return mutableUsersList;
     }
+
     //---------------------------
     // CREATE - UPDATE - DELETE
     //---------------------------
@@ -60,6 +60,4 @@ public class FirebaseUserHelper {
         return FirebaseFirestore.getInstance().collection(USERS_COLLECTION).document(userId)
                 .update("propertyId", FieldValue.arrayUnion(propertyId));
     }
-
-
 }

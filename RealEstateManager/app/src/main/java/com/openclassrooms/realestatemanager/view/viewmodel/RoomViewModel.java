@@ -41,7 +41,6 @@ public class RoomViewModel extends ViewModel {
             return;
         }
         allProperties = fPropertyRepository.getAllProperties();
-        //Comment faire en sorte que l'init renvoie les propriétés de firebase.
         }
 
     //-----------------------------------
@@ -98,11 +97,4 @@ public class RoomViewModel extends ViewModel {
     public void insertUser(UserModel user) {
         fExecutor.execute(() -> fUserRepository.createUser(user));
     }
-
-    // -- DELETE :: USER -->
-    public void deleteUser(UserModel user) {
-        fExecutor.execute(() -> this.fUserRepository.deleteUser(user));
-    }
-
-
 }

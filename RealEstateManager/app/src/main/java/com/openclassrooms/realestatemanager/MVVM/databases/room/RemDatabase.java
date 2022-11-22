@@ -19,7 +19,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
-@Database(entities = {UserModel.class, PropertyModel.class}, version = 4, exportSchema = false)
+@Database(entities = {UserModel.class, PropertyModel.class}, version = 5, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class RemDatabase extends RoomDatabase {
 

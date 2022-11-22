@@ -14,6 +14,12 @@ import java.util.List;
 @Dao
 public interface PropertyDAO {
 
+    @Query("SELECT * FROM property_table WHERE userId == :userId")
+    LiveData<List<PropertyModel>> getAllPropertiesByUser (long userId);
+
+    @Query("SELECT * FROM property_table")
+    LiveData<List<PropertyModel>> getAllProperties();
+
     @Insert (onConflict = OnConflictStrategy.IGNORE)
     void insertProperty(PropertyModel property);
 
@@ -22,10 +28,4 @@ public interface PropertyDAO {
 
     @Delete
     void deleteProperty(PropertyModel property);
-
-    @Query("SELECT * FROM property_table WHERE userId == :userId")
-    LiveData<List<PropertyModel>> getAllPropertiesByUser (long userId);
-
-    @Query("SELECT * FROM property_table")
-    LiveData<List<PropertyModel>> getAllProperties();
 }

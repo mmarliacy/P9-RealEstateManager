@@ -112,11 +112,12 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
                         .load(pPropertyModel.getPhotoProperty().get(0))
                         .into(property_photo);
             }
-
-            if (pPropertyModel.getStatus().matches("Available")){
-                property_availability.setColorFilter(itemView.getResources().getColor(R.color.green));
-            } else {
-                property_availability.setColorFilter(itemView.getResources().getColor(R.color.chain_grey));
+            if (pPropertyModel.getStatus() != null){
+                if (pPropertyModel.getStatus().matches("Available")){
+                    property_availability.setColorFilter(itemView.getResources().getColor(R.color.green));
+                } else if (pPropertyModel.getStatus().matches("")) {
+                    property_availability.setColorFilter(itemView.getResources().getColor(R.color.chain_grey));
+                }
             }
         }
     }

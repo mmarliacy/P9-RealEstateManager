@@ -2,10 +2,9 @@ package com.openclassrooms.realestatemanager.view.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
+
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.openclassrooms.realestatemanager.MVVM.repositories.firebase.FirebasePropertyHelper;
 import com.openclassrooms.realestatemanager.MVVM.repositories.firebase.FirebaseUserHelper;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
@@ -34,14 +33,18 @@ public class FirebaseViewModel extends ViewModel {
     // 3 -- GET LAST DATA -->
     // -- PROPERTIES -->
     public void retrieveAllProperties(){
+        if(this.propertiesList != null) {
+            return;
+        }
             propertiesList = fFirebasePropertyRepository.getPropertiesData();
     }
     // -- CONNECTED USER-->
-    pub le cas où aurait prit le relais comment ajouter à firebase
-    // les derlic void retrieveAllUsers(){
+    public void retrieveAllUsers(){
+        if(this.usersList != null){
+            return;
+        }
         usersList = fFirebaseUserRepository.getAllUsers();
     }
-    // Dansnières propriétés ajoutées à Room.
 
     //-----------------------------------
     // 4 -- QUERY DATABASE :: PROPERTIES
@@ -57,16 +60,20 @@ public class FirebaseViewModel extends ViewModel {
     // -- CREATE - UPDATE - DELETE -->
     //------------------------------------
     // -- CREATE :: PROPERTY IN FIREBASE DATABASE -->
-    public void createProperty(String propertyName, PropertyModel property) {
-        fFirebasePropertyRepository.createProperty(propertyName, property);
+    public Task<Void> createProperty(PropertyModel property) {
+        return fFirebasePropertyRepository.createProperty(property);
+    }
+
+    public void setIdOfProperty(PropertyModel pPropertyModel){
+        fFirebasePropertyRepository.setIdOfProperty(pPropertyModel);
     }
     // -- UPDATE :: PROPERTY IN FIREBASE DATABASE -->
-    public Task<Void> updateProperty(String propertyId, PropertyModel property) {
-        return fFirebasePropertyRepository.updateProperty(propertyId, property);
+    public void updateProperty(String propertyName, PropertyModel property) {
+        fFirebasePropertyRepository.updateProperty(propertyName, property);
     }
     // -- DELETE :: PROPERTY FROM FIREBASE DATABASE -->
-    public Task<Void> deleteProperty(String propertyId) {
-        return fFirebasePropertyRepository.deleteProperty(propertyId);
+    public void deleteProperty(String propertyId) {
+        fFirebasePropertyRepository.deleteProperty(propertyId);
     }
 
     //------------------------------
@@ -87,9 +94,5 @@ public class FirebaseViewModel extends ViewModel {
     // -- CREATE :: USER IN FIREBASE DATABASE -->
     public Task<Void> createUser(String uid, UserModel user) {
         return fFirebaseUserRepository.createUser(uid, user);
-    }
-    // -- UPDATE :: USER IN FIREBASE DATABASE -->
-    public Task<Void> updateUser(String userId, String propertyId) {
-        return fFirebaseUserRepository.updateUser(userId, propertyId);
     }
 }
