@@ -1,11 +1,5 @@
 <resources>
     // ---------------------:: BY UTILITY ::----------------------
-    <string name="dummy_text">dzaujjipdzaojoibhodzanxoibcuhiaiozbqsoniohcqsoihuobcsdnioqnosucxcioni
-        osqcnhioqhqcsoheozcbiosnqobncouiqsbubqduybcaqiiohcenuvbzudsjkbdscuibcqsjbkceaquiqbsjbuqocbs
-        jbjkqsbcuebjbkqshbcsuonjkqsbdhiazjqsdbjksqbdhbscoejqbsbckjhqsbhkdjqsbcjknqsjbhqsjbchqksjcbj
-        qsbnjbqsjbcnbsqbhjbqhschkqcjsbhkjbqscjkbqcsjkqsbcjkbqcshjbcqs</string>
-
-
     <!--:: Other indicators ::-->
     <string name="chip_group_indicator">ChipGroup</string>
 
@@ -36,6 +30,20 @@
     <string name="add_lot_property_seller_title">Seller</string>
     <string name="add_lot_property_price_title">Price</string>
     <string name="add_lot_property_photo_title">Photos</string>
+    <string name="title_search">Search</string>
+    <string name="title_type_filter">I\'m searching for</string>
+    <string name="title_filter_type">Type of property</string>
+    <string name="title_with_at_least">With at least</string>
+    <string name="title_filter_rooms">Rooms</string>
+    <string name="title_and">and</string>
+    <string name="title_filter_price">Price between</string>
+    <string name="title_area_between">Area between</string>
+    <string name="title_filter_on_sale_since">On sale since</string>
+    <string name="title_oops">OOPS</string>
+    <string name="title_no_connection_detected">No connection detected</string>
+    <string name="title_retry">Retry</string>
+    <string name="check_your_internet_connection">Please check your Internet connection</string>
+    <string name="no_wifi">no_wifi</string>
 
     <!--:: Text Views / Editable ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -69,6 +77,8 @@
     <string name="content_description_add_new_property_button">Add new property button</string>
     <string name="content_description_add_new_photo">Photos to add in recycler view</string>
     <string name="content_description_add_first_item_btn">Add first item</string>
+    <string name="content_description_view_pager_photo_container">view_pager_photo_container</string>
+    <string name="content_description_container_static_maps">container_static_maps</string>
 
     <!--:: Hint ::-->
     <string name="hint_property_seller_input">Select the seller name</string>
@@ -80,6 +90,11 @@
     <string name="hint_form_sol_out_since">Since..</string>
     <string name="hint_tell_me_more_about_it_description_property">Tell more about it…</string>
     <string name="hint_property_price_input">My value..</string>
+    <string name="hint_filter_rooms_min">1,2,3…</string>
+    <string name="hint_filter_area">m²</string>
+    <string name="hint_dollars">$</string>
+    <string name="hint_start_date">Start date</string>
+    <string name="hint_end_date">End date</string>
 
     <!--:: Buttons ::-->
     <string name="form_add_rooms_sign">+</string>
@@ -97,29 +112,10 @@
 
     <!--:: Dropdown Menu ::-->
     <string name="dropdown_menu_user_id_indicator">1</string>
-    <string name="title_search">Search</string>
-    <string name="title_type_filter">I\'m searching for</string>
-    <string name="title_filter_type">Type of property</string>
-    <string name="title_with_at_least">With at least</string>
-    <string name="title_filter_rooms_min">1,2,3...</string>
-    <string name="title_filter_rooms">Rooms</string>
-    <string name="hint_filter_area">m²</string>
-    <string name="title_and">and</string>
-    <string name="title_filter_price">Price between</string>
-    <string name="title_area_between">Area between</string>
-    <string name="hint_dollars">$</string>
-    <string name="title_filter_on_sale_since">On sale since</string>
-    <string name="hint_start_date">Start date</string>
-    <string name="hint_end_date">End date</string>
+
+    <!--:: CheckBox ::-->
     <string name="checkbox_filter_sold">Sold</string>
+
+    <!--:: Button ::-->
     <string name="btn_title_search">Search</string>
-    <string name="no_wifi">no_wifi</string>
-    <string name="title_oops">OOPS</string>
-    <string name="title_no_connection_detected">No connection detected</string>
-    <string name="title_retry">Retry</string>
-
-
-    <!--:: Bottom Navigation Menu ::-->
-    <!--:: Navigation Drawer Menu ::-->
-    <!--:: Toolbar Menu ::-->
 </resources>

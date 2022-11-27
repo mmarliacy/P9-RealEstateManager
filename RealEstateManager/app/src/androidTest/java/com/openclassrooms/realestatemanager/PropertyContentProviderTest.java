@@ -41,19 +41,20 @@ public class PropertyContentProviderTest {
 
     @Test
     public void getItemsWhenNoItemInserted() {
-        final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID), null, null, null, null);
+        final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID),
+                null, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(3));
         cursor.close();
     }
 
     @Test
-
     public void insertAndGetItem() {
         // BEFORE : Adding demo item
         final Uri userUri = mContentResolver.insert(PropertyContentProvider.URI_PROPERTY, generateItem());
         // TEST
-        final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID), null, null, null, null);
+        final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID),
+                null, null, null, null);
         assertThat(cursor, notNullValue());
         assertThat(cursor.getCount(), is(1));
         assertThat(cursor.moveToFirst(), is(true));
@@ -61,7 +62,6 @@ public class PropertyContentProviderTest {
     }
 
     // ---
-
     private ContentValues generateItem() {
         final ContentValues values = new ContentValues();
         values.put("userId", "1");
@@ -92,6 +92,5 @@ public class PropertyContentProviderTest {
         values.put("onSaleDate", "24/11/2022");
         values.put("onSaleDate", "");
         return values;
-
     }
 }

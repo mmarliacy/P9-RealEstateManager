@@ -9,13 +9,9 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
-
 import com.bumptech.glide.Glide;
 import com.openclassrooms.realestatemanager.R;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 public class AddPhotoAdapter extends RecyclerView.Adapter<AddPhotoAdapter.AddPhotoViewHolder> {
@@ -24,7 +20,7 @@ public class AddPhotoAdapter extends RecyclerView.Adapter<AddPhotoAdapter.AddPho
     // DATA - FIELDS
     //---------------
     /** List */
-    List<String> photosList;
+    private final List<String> photosList;
 
     /** CONSTRUCTOR */
     public AddPhotoAdapter(List<String> photosList) {

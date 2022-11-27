@@ -1,41 +1,23 @@
 package com.openclassrooms.realestatemanager.view.activities;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomInjection;
-import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomViewModelFactory;
 import com.openclassrooms.realestatemanager.R;
-import com.openclassrooms.realestatemanager.adapters.PropertyListAdapter;
-import com.openclassrooms.realestatemanager.model.PropertyModel;
-import com.openclassrooms.realestatemanager.model.UserModel;
 import com.openclassrooms.realestatemanager.utils.WifiListener.NetworkChangeListener;
 import com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment;
-import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity_HomeScreen extends AppCompatActivity{
 
     public static String api_key;
+    private final NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
-    private NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     //-----------
     // LIFECYCLE
     //-----------

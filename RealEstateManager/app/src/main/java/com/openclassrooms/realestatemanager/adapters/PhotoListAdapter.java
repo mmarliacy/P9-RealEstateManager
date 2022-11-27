@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.Target;
 import com.openclassrooms.realestatemanager.R;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;

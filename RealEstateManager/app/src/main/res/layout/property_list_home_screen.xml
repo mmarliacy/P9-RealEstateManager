@@ -20,8 +20,7 @@
         android:titleTextColor="@color/white"
         android:background="@color/primary_dark"
         android:layout_height="match_parent"
-        app:title="@string/property_name"
-        tools:targetApi="m" />
+        app:title="@string/property_name" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,8 +30,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/properties_recyclerView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/pr_width"
+            android:layout_height="@dimen/pr_height"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

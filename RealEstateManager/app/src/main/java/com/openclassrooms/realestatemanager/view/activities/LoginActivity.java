@@ -1,13 +1,12 @@
 package com.openclassrooms.realestatemanager.view.activities;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
@@ -25,8 +24,8 @@ import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -86,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             //--::> Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             assert FirebaseAuth.getInstance().getCurrentUser() != null;
+            assert user != null;
             userModel = new UserModel(user.getUid(), user.getDisplayName(), user.getEmail());
             //--::> Create User in both databases
             getAndObserveUsers();
@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         List<UserModel> allUsers = new ArrayList<>(users);
         if (allUsers.size() != 0){
             for (UserModel user : allUsers){
-                if (user.getId() != userModel.getId()){
+                if (!Objects.equals(user.getId(), userModel.getId())){
                     roomViewModel.getUser(userModel.getId());
                 } else {
                     roomViewModel.insertUser(userModel);

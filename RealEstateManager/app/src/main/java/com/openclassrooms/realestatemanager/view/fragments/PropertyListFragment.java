@@ -3,7 +3,6 @@ package com.openclassrooms.realestatemanager.view.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Canvas;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -24,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseInjection;
 import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseViewModelFactory;
@@ -35,11 +34,11 @@ import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.view.activities.AddPropertyActivity;
 import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
+
 import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class PropertyListFragment extends Fragment implements PropertyListAdapter.OnItemClickListener {
@@ -122,7 +121,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     //------------------------
     //--:: 1 -- Create search icon by implemented a menu ::-->
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search_filter, menu);
         super.onCreateOptionsMenu(menu,inflater);
     }
@@ -141,7 +140,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     //-------------------
     private void openSearchByFilterDialog() {
             MultipleFilterFragment filterFrag = new MultipleFilterFragment();
-            filterFrag.show(getFragmentManager(), "My filter dialog");
+            filterFrag.show(requireFragmentManager(), "My filter dialog");
     }
 
     //---------------
@@ -166,9 +165,9 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
             getFirebaseProperties();
         }
         //--:: Configuring adapter according to last list known by the app ::--
-        this.adapter = new PropertyListAdapter(requireActivity(), properties, this);
+        adapter = new PropertyListAdapter(requireActivity(), properties, this);
         //--:: Setting adapter after updated it ::--
-        propertiesRecyclerView.setAdapter(this.adapter);
+        propertiesRecyclerView.setAdapter(adapter);
     }
 
     //----------------------------

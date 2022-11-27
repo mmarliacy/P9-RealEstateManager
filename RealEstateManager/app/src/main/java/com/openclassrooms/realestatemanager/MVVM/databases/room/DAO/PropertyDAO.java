@@ -27,10 +27,10 @@ public interface PropertyDAO {
     Cursor getPropertyWithCursor(String userId);
 
     @Insert (onConflict = OnConflictStrategy.IGNORE)
-    void insertProperty(PropertyModel property);
+    long insertProperty(PropertyModel property);
 
     @Update (onConflict = OnConflictStrategy.IGNORE)
-    void updateProperty(PropertyModel property);
+    int updateProperty(PropertyModel property);
 
     @Delete
     void deleteProperty(PropertyModel property);
@@ -38,23 +38,13 @@ public interface PropertyDAO {
     //--------------------------------------
     // -- QUERY DATABASE : MULTIPLE FILTERS
     //--------------------------------------
-    @Query("SELECT * FROM property_table WHERE type= :type " +
-            "AND room_number >= :minRooms " +
-            "AND total_living_area BETWEEN :minArea AND :maxArea " +
-            "AND address LIKE '%' + :address + '%'" +
-            "AND price BETWEEN :minPrice AND :maxPrice " +
-            "AND status == :status ")
-    LiveData<List<PropertyModel>> getAllPropertiesByType (
-            String type, String minRooms, String minArea, String maxArea, String address,
-            String minPrice, String maxPrice, String status);
-
     @Query("SELECT * FROM property_table WHERE type= :type "+
             "AND room_number >= :minRooms " +
             "AND total_living_area BETWEEN :minArea AND :maxArea "+
             "AND price BETWEEN :minPrice AND :maxPrice "+
             "AND status= :status " +
             "AND on_sale_date BETWEEN :onSaleAfter AND :onSaleBefore ")
-    LiveData<List<PropertyModel>> getAllPropertiesOneByOne (
+    LiveData<List<PropertyModel>> getAllPropertiesFiltered(
             String type, String minRooms, String minArea, String maxArea, String minPrice,
             String maxPrice, String status, String onSaleAfter, String onSaleBefore);
 

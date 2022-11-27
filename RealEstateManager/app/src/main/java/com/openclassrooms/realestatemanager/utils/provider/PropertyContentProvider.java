@@ -5,10 +5,8 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.openclassrooms.realestatemanager.MVVM.databases.room.RemDatabase;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 
@@ -48,37 +46,26 @@ public class PropertyContentProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues contentValues) {
         if (getContext() != null && contentValues != null) {
-            /*
             final long id = RemDatabase.getInstance(getContext()).propertyDAO().insertProperty(PropertyModel.fromContentValues(contentValues));
             if (id != 0) {
                 getContext().getContentResolver().notifyChange(uri, null);
                 return ContentUris.withAppendedId(uri, id);
             }
-             */
         }
         throw new IllegalArgumentException("Failed to insert row into " + uri);
     }
 
     @Override
     public int delete(@NonNull Uri uri, @Nullable String s, @Nullable String[] strings) {
-        if (getContext() != null) {
-            /*
-            final int count = (int) RemDatabase.getInstance(getContext()).propertyDAO().deleteProperty((int) ContentUris.parseId(uri));
-            getContext().getContentResolver().notifyChange(uri, null);
-            return count;
-            */
-        }
         throw new IllegalArgumentException("Failed to delete row into " + uri);
     }
 
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
         if (getContext() != null && contentValues != null) {
-            /*
             final int count = RemDatabase.getInstance(getContext()).propertyDAO().updateProperty(PropertyModel.fromContentValues(contentValues));
             getContext().getContentResolver().notifyChange(uri, null);
             return count;
-             */
         }
         throw new IllegalArgumentException("Failed to update row into " + uri);
     }

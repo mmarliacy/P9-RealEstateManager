@@ -1,12 +1,11 @@
 package com.openclassrooms.realestatemanager.model;
 
-import androidx.annotation.NonNull;
+import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
+
+import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
-import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "user_table")
 public class UserModel {
@@ -16,7 +15,6 @@ public class UserModel {
     //-----------
     @PrimaryKey
     @ColumnInfo(name = "id", index = true)
-    @NonNull
     private String id;
     private String name;
     private String mail;
@@ -44,6 +42,15 @@ public class UserModel {
 
     public String getMail() {
         return mail;
+    }
+
+    @Nullable
+    public static UserModel getUserById(String id) {
+        for (UserModel user :  getDummyUsers()) {
+            if (user.id.equals(id))
+                return user;
+        }
+        return null;
     }
 
     /** Setters */

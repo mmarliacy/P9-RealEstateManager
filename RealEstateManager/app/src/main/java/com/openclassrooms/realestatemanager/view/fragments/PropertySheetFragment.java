@@ -1,31 +1,27 @@
 package com.openclassrooms.realestatemanager.view.fragments;
 
-import static android.os.Build.VERSION_CODES.O;
-import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
 import static com.openclassrooms.realestatemanager.view.activities.MainActivity_HomeScreen.api_key;
+
 import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseInjection;
 import com.openclassrooms.realestatemanager.MVVM.injection.firebase.FirebaseViewModelFactory;
+import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomInjection;
+import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomViewModelFactory;
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.adapters.InterestListAdapter;
 import com.openclassrooms.realestatemanager.adapters.PhotoListAdapter;
@@ -34,6 +30,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 import com.squareup.picasso.Picasso;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -92,8 +89,12 @@ public class PropertySheetFragment extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.real_estate_sheet_layout, container, false);
         bindView(view);
-        configureFirebaseViewModel();
-        getAndObserveFirebaseUsers();
+        configureViewModels();
+        if (roomViewModel != null) {
+            getRoomPropertiesAndUsers();
+        } else {
+            getFirebasePropertiesAndUsers();
+        }
         configureToolbar(view, property);
         configureViewPager(view, property);
         this.configureInterestRecyclerView(view, property);
@@ -200,40 +201,42 @@ public class PropertySheetFragment extends Fragment {
         InterestListAdapter adapter = new InterestListAdapter(pProperty);
         propertyInterestRecyclerView.setAdapter(adapter);
     }
-    //---------------------
-    // FIREBASE VIEW MODEL
-    //---------------------
-    // 1 -- Configure Firebase View Model & Retrieve all properties and connected User -->
-    private void configureFirebaseViewModel() {
+    //----------------------------------
+    // LOCAL ROOM & FIREBASE VIEW MODEL
+    //----------------------------------
+    // 1 -- Configure ROOM & FIREBASE View Model  -->
+    private void configureViewModels() {
+        // -- ROOM View Model  --
+        RoomViewModelFactory roomViewModelFactory = RoomInjection.provideViewModelFactory(requireActivity());
+        roomViewModel = roomViewModelFactory.create(RoomViewModel.class);
+        roomViewModel.initAllUsers();
+        roomViewModel.initAllProperties();
+        // -- FIREBASE View Model  --
         FirebaseViewModelFactory varFirebaseViewModelFactory = FirebaseInjection.provideFirebaseViewModelFactory();
         firebaseViewModel = varFirebaseViewModelFactory.create(FirebaseViewModel.class);
         firebaseViewModel.retrieveAllUsers();
         firebaseViewModel.retrieveAllProperties();
     }
 
-    // 2 -- Get, update & observe users changes -->
-    private void getAndObserveFirebaseUsers() {
-        this.firebaseViewModel.getAllUsers().observe(requireActivity(), this::getFirebaseUsers);
+    // 2a -- Get & observe ROOM USERS -->
+    private void getRoomPropertiesAndUsers() {
+        // -- ROOM Users --
+        this.roomViewModel.getAllUsers().observe(requireActivity(), users -> {
+            allUsers = new ArrayList<>();
+            allUsers.addAll(users);
+            defineUserName(property);
+        });
+
     }
 
-    // 2a -- Get & update users changes -->
-    private void getFirebaseUsers(List<UserModel> users) {
-        allUsers = new ArrayList<>();
-        allUsers.addAll(users);
-        defineUserName(property);
+    // 2b -- Get & observe FIREBASE USERS  -->
+    private void getFirebasePropertiesAndUsers() {
+        // -- FIREBASE Users --
+        this.firebaseViewModel.getAllUsers().observe(requireActivity(), users -> {
+            allUsers = new ArrayList<>();
+            allUsers.addAll(users);
+            defineUserName(property);
+        });
     }
 
-    /**
-     * Returns the user with the given unique identifier, or null if no user with that
-     * identifier can be found.
-     */
-    public UserModel getUserById(String id) {
-
-        return null;
-    }
-
-    /** Returns the user associated to the property */
-    public UserModel getUser(String userId) {
-        return getUserById(userId);
-    }
 }

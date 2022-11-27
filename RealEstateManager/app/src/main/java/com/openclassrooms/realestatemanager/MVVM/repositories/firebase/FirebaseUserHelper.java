@@ -8,7 +8,6 @@ import androidx.lifecycle.MutableLiveData;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.openclassrooms.realestatemanager.model.UserModel;
@@ -54,10 +53,5 @@ public class FirebaseUserHelper {
     // -- CREATE :: USER IN FIREBASE DATABASE -->
     public Task<Void> createUser(String uid, UserModel user) {
         return FirebaseFirestore.getInstance().collection(USERS_COLLECTION).document(uid).set(user);
-    }
-    // -- UPDATE :: USER IN FIREBASE DATABASE -->
-    public Task<Void> updateUser(String userId, String propertyId) {
-        return FirebaseFirestore.getInstance().collection(USERS_COLLECTION).document(userId)
-                .update("propertyId", FieldValue.arrayUnion(propertyId));
     }
 }

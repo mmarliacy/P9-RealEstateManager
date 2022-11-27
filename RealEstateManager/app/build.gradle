@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.openclassrooms.realestatemanager"
-        minSdk 26
-        targetSdk 32
+        minSdk 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -37,7 +37,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    buildToolsVersion '30.0.3'
+    buildToolsVersion '33.0.1'
     sourceSets {
         main {
             assets {
@@ -45,6 +45,7 @@ android {
             }
         }
     }
+    namespace 'com.openclassrooms.realestatemanager'
 }
 
 dependencies {
@@ -53,13 +54,16 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'androidx.databinding:databinding-common:7.3.1'
+    implementation 'androidx.test:monitor:1.6.0'
 
-    //-- TESTS  -->
+
+    //-- UNIT TEST -->
+    implementation 'androidx.test.ext:junit:1.1.4'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
-    implementation 'org.mockito:mockito-core:2.19.0'
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0'
 
     //-- GRAPHICS  -->
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -108,6 +112,4 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.9.0'
-
-
 }

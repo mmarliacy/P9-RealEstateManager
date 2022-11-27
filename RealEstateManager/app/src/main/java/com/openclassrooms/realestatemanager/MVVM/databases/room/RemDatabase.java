@@ -16,7 +16,6 @@ import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.PropertyDAO;
 import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
-import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @Database(entities = {UserModel.class, PropertyModel.class}, version = 7, exportSchema = false)
@@ -54,7 +53,6 @@ public abstract class RemDatabase extends RoomDatabase {
                 super.onCreate(db);
                 prepopulateDatabaseWithUsers(db);
                 prepopulateDatabase(db);
-                //--:: /!\ Prepopulate methods don'The cosy one work in onCreate method ::--
                 Log.d("DATABASE : " ,"prepopulateDatabase(db) has been called successfully ");
             }
         };

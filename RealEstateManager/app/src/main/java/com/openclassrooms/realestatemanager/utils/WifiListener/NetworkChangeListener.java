@@ -27,12 +27,9 @@ public class NetworkChangeListener extends BroadcastReceiver {
 
             // - Configure retry button --
             Button retryBtn = layoutDialog.findViewById(R.id.retry);
-            retryBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View pView) {
-                        dialog.dismiss();
-                        onReceive(context, intent);
-                }
+            retryBtn.setOnClickListener(pView -> {
+                    dialog.dismiss();
+                    onReceive(context, intent);
             });
         }
     }

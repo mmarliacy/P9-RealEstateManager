@@ -17,7 +17,7 @@ public class InterestModel implements Serializable {
     @ColumnInfo(name = "name")
     private String name;
     @ColumnInfo(name = "icon")
-    private int icon;
+    private final int icon;
 
     /** CONSTRUCTOR */
     public InterestModel(int pId, String pName, int pIcon) {

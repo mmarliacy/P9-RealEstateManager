@@ -90,7 +90,6 @@
                 android:text="@string/property_cost"
                 android:textColor="@color/black"
                 android:textSize="@dimen/pc_textSize" />
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

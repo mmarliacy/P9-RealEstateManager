@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:id="@+id/no_wifi_connection_icon"
+        android:layout_width="@dimen/nwci_width"
+        android:layout_height="@dimen/nwci_height"
         android:contentDescription="@string/no_wifi"
         android:src="@drawable/ic_baseline_wifi_off_24"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,46 +17,45 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/oops"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_oops"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="@dimen/oo_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/no_wifi_connection_icon" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/no_connection_detected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_no_connection_detected"
         android:textColor="@color/primary"
-        android:textSize="30sp"
+        android:textSize="@dimen/ncd_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/oops" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/please_check_it"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please check your Internet connection"
-        android:textSize="20sp"
+        android:text="@string/check_your_internet_connection"
+        android:textSize="@dimen/pci_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/no_connection_detected" />
 
     <Button
         android:id="@+id/retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_retry"
-        android:textSize="30sp"
+        android:textSize="@dimen/re_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
+        app:layout_constraintTop_toBottomOf="@+id/please_check_it" />
 </androidx.constraintlayout.widget.ConstraintLayout>

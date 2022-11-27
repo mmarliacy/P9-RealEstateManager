@@ -235,7 +235,7 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     }
 
     private void applyFilter(){
-        roomViewModel.getAllPropertiesOneByOne(type, minRooms, minArea, maxArea, minPrice,
+        roomViewModel.getAllPropertiesFiltered(type, minRooms, minArea, maxArea, minPrice,
                 maxPrice, status, onSaleAfter, onSaleBefore).observe(requireActivity(), pPropertyModels -> {
             properties.clear();
             properties.addAll(pPropertyModels);

@@ -1,12 +1,8 @@
 package com.openclassrooms.realestatemanager.MVVM.repositories.room;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.room.Query;
-
 import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.PropertyDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
-
 import java.util.List;
 
 public class RoomPropertyRepository {
@@ -54,20 +50,9 @@ public class RoomPropertyRepository {
 
     // 3 -- QUERIES : --> MULTIPLE FILTERS
     //--------------------------------------
-    // -- By type -->
-    public LiveData<List<PropertyModel>> getAllPropertiesByType(
-            String type, String minRooms,String minArea,String maxArea,String address,
-            String minPrice,String maxPrice, String status) {
-        return this.propertyDAO.getAllPropertiesByType(
-                type, minRooms, minArea, maxArea, address,
-                minPrice, maxPrice, status);
-    }
-
-    public LiveData<List<PropertyModel>> getAllPropertiesOneByOne (
+    public LiveData<List<PropertyModel>> getAllPropertiesFiltered(
             String type, String minRooms , String minArea, String maxArea,
             String minPrice, String maxPrice, String status, String onSaleAfter, String onSaleBefore){
-        return this.propertyDAO.getAllPropertiesOneByOne(type, minRooms,minArea, maxArea,  minPrice,  maxPrice, status, onSaleAfter, onSaleBefore);
+        return this.propertyDAO.getAllPropertiesFiltered(type, minRooms,minArea, maxArea,  minPrice,  maxPrice, status, onSaleAfter, onSaleBefore);
     }
-
-
 }

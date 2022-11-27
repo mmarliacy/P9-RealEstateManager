@@ -40,7 +40,7 @@
 
             </androidx.viewpager2.widget.ViewPager2>
 
-            <Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/sheet_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -203,7 +203,8 @@
                 android:layout_below="@+id/sheet_location_property_title"
                 android:layout_marginTop="10dp"
                 android:scaleType="fitXY"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:contentDescription="@string/content_description_container_static_maps">
             </ImageView>
 
             <LinearLayout

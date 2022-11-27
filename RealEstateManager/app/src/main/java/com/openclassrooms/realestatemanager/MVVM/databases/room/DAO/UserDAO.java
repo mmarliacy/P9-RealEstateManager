@@ -2,8 +2,10 @@ package com.openclassrooms.realestatemanager.MVVM.databases.room.DAO;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+
 import com.openclassrooms.realestatemanager.model.UserModel;
 
 import java.util.List;
@@ -19,4 +21,8 @@ public interface UserDAO {
 
     @Insert
     void insertUser(UserModel user);
+
+    //- For test -->
+    @Delete
+    void deleteUser(UserModel user);
 }
