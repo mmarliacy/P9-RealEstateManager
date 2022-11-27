@@ -48,8 +48,4 @@ public class InterestModel implements Serializable {
     public void setName(String pName) {
         name = pName;
     }
-
-    public void setIcon(int pIcon) {
-        icon = pIcon;
-    }
 }

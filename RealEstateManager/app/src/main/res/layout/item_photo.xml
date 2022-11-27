@@ -11,7 +11,7 @@
         android:padding="2dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/a2"
+        android:src="@drawable/round_roofing"
         android:scaleType="fitXY"
         android:contentDescription="@string/content_description_add_new_photo" />
 </LinearLayout>

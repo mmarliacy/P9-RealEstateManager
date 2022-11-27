@@ -5,7 +5,7 @@
     //-------------------------------------------------------------------------------------------------->>
     //-------------------------------------------------------------------------------------------------->>
     <!-- PRIMARY THEME :: HOME SCREEN (RECYCLERVIEW) LAYOUT -->
-    <style name="Theme.Primary.RealEstateManager" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Primary.RealEstateManager" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
@@ -16,6 +16,8 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/secondary_text</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
 
     </style>
     //-------------------------------------------------------------------------------------------------->>

@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.openclassrooms.realestatemanager"
-        minSdk 21
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -53,9 +53,6 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'androidx.databinding:databinding-common:7.3.1'
-
-    //-- ANDROIDX-ACTIVITY  -->
-    implementation 'androidx.activity:activity:1.6.1'
 
     //-- TESTS  -->
     testImplementation 'junit:junit:4.13.2'

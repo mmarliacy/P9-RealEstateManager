@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Entity(tableName = "property_table", foreignKeys =
-        @ForeignKey(
+@ForeignKey(
         entity = UserModel.class,
         parentColumns = "id",
         childColumns = "userId",
@@ -75,11 +75,11 @@ public class PropertyModel implements Parcelable {
     }
 
     /** FIREBASE CONSTRUCTOR */
-    public PropertyModel(String id,String userId, String name, String type, String address,
+    public PropertyModel(String propertyId,String userId, String name, String type, String address,
                          String description, String totalLeavingArea, String rooms, String price,
                          String status, List<String> photoProperty, List<String> propertyInterest,
                          String onSaleDate, String soldDate) {
-        this.propertyId = id;
+        this.setPropertyId(propertyId);
         this.setUserId(userId);
         this.setName(name);
         this.setType(type);
@@ -243,6 +243,7 @@ public class PropertyModel implements Parcelable {
      */
     protected PropertyModel(Parcel in) {
         id = in.readLong();
+        propertyId = in.readString();
         userId = in.readString();
         name = in.readString();
         type = in.readString();
@@ -261,6 +262,7 @@ public class PropertyModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeLong(id);
+        dest.writeString(propertyId);
         dest.writeString(userId);
         dest.writeString(name);
         dest.writeString(type);

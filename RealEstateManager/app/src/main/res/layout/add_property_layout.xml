@@ -81,7 +81,6 @@
 
                 <AutoCompleteTextView
                     android:id="@+id/form_property_seller_input"
-                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:ignore="LabelFor" />
@@ -178,7 +177,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_type_layout"
-                style="@style/CustomTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_type_title"
@@ -186,13 +185,17 @@
                 android:hint="@string/hint_property_type_input"
                 app:helperText="@string/helperText_property_type_input"
                 app:helperTextEnabled="true"
+                app:hintTextAppearance="@style/CustomTextInputLayout"
                 app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
+                app:startIconTint="@color/primary"
                 app:startIconDrawable="@drawable/ic_lots">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <AutoCompleteTextView
                     android:id="@+id/form_property_type_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="match_parent"
+                    android:inputType="none"
+                    tools:ignore="LabelFor" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -213,7 +216,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_price_title"
-                android:layout_margin="@dimen/fppl_margin"
+                android:layout_marginStart="@dimen/fppl_margin"
+                android:layout_marginTop="@dimen/fppl_margin"
+                android:layout_marginEnd="@dimen/fppl_margin"
+                android:layout_marginBottom="@dimen/fppl_margin"
                 android:hint="@string/hint_property_price_input"
                 app:helperText="@string/helperText_property_price_input"
                 app:helperTextEnabled="true"
@@ -223,7 +229,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_price_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -245,7 +252,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_land_area_title"
-                android:layout_margin="@dimen/fplal_margin"
+                android:layout_marginStart="@dimen/fplal_margin"
+                android:layout_marginTop="@dimen/fplal_margin"
+                android:layout_marginEnd="@dimen/fplal_margin"
+                android:layout_marginBottom="@dimen/fplal_margin"
                 android:hint="@string/hint_property_land_area_input"
                 app:helperText="@string/helperText_property_land_area_input"
                 app:helperTextEnabled="true"
@@ -255,7 +265,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_land_area_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -358,7 +369,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_address_title"
-                android:layout_margin="@dimen/fal_margin"
+                android:layout_marginStart="@dimen/fal_margin"
+                android:layout_marginTop="@dimen/fal_margin"
+                android:layout_marginEnd="@dimen/fal_margin"
+                android:layout_marginBottom="@dimen/fal_margin"
                 android:hint="@string/hint_property_address_input"
                 app:helperText="@string/helperText_property_address_input"
                 app:helperTextEnabled="true"
@@ -368,7 +382,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_address_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -422,7 +437,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_for_sale_since_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -455,7 +471,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_sold_out_since_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -484,7 +501,8 @@
                     android:id="@+id/form_property_description_input"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="top" />
+                    android:gravity="top"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton

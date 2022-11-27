@@ -3,14 +3,21 @@ package com.openclassrooms.realestatemanager.view.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Canvas;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -31,6 +38,8 @@ import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class PropertyListFragment extends Fragment implements PropertyListAdapter.OnItemClickListener {
@@ -51,7 +60,8 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     /**
      * Tools
      */
-    PropertyListAdapter adapter;
+    @SuppressLint("StaticFieldLeak")
+    static PropertyListAdapter adapter;
     ItemTouchHelper.SimpleCallback itemTouchHelper;
     PropertyModel deletedProperty = null;
     PropertyModel updatedProperty = null;
@@ -74,6 +84,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
         //--:: Set View & RecyclerView with Options (Layout Manager) ::--
         View view = inflater.inflate(R.layout.property_list_home_screen, container, false);
         addButtonClick(view);
+        setHasOptionsMenu(true);
         configureToolbar(view);
         //--:: Local ROOM View Model Methods ::--
         configureRecyclerView(view);
@@ -100,8 +111,37 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     // TOOLBAR & TITLE
     //-----------------
     private void configureToolbar(View pView) {
+        //--:: 2 -- Toolbar ::-->
         Toolbar fToolbar = pView.findViewById(R.id.list_toolbar);
-        requireActivity().setActionBar(fToolbar);
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(fToolbar);
+        fToolbar.setTitle(R.string.app_name);
+    }
+
+    //------------------------
+    // MULTIPLE SEARCH FILTER
+    //------------------------
+    //--:: 1 -- Create search icon by implemented a menu ::-->
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search_filter, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+
+    //--:: 2 -- Connect search icon to "get places procedure" ::-->
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int search_id = R.id.search;
+        if (item.getItemId() == search_id) {
+            openSearchByFilterDialog();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //-------------------
+    // HANDLING FRAGMENT
+    //-------------------
+    private void openSearchByFilterDialog() {
+            MultipleFilterFragment filterFrag = new MultipleFilterFragment();
+            filterFrag.show(getFragmentManager(), "My filter dialog");
     }
 
     //---------------
@@ -236,5 +276,4 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     }
 
 }
-
 

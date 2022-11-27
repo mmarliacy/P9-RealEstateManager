@@ -97,8 +97,26 @@
 
     <!--:: Dropdown Menu ::-->
     <string name="dropdown_menu_user_id_indicator">1</string>
-
-
+    <string name="title_search">Search</string>
+    <string name="title_type_filter">I\'m searching for</string>
+    <string name="title_filter_type">Type of property</string>
+    <string name="title_with_at_least">With at least</string>
+    <string name="title_filter_rooms_min">1,2,3...</string>
+    <string name="title_filter_rooms">Rooms</string>
+    <string name="hint_filter_area">m²</string>
+    <string name="title_and">and</string>
+    <string name="title_filter_price">Price between</string>
+    <string name="title_area_between">Area between</string>
+    <string name="hint_dollars">$</string>
+    <string name="title_filter_on_sale_since">On sale since</string>
+    <string name="hint_start_date">Start date</string>
+    <string name="hint_end_date">End date</string>
+    <string name="checkbox_filter_sold">Sold</string>
+    <string name="btn_title_search">Search</string>
+    <string name="no_wifi">no_wifi</string>
+    <string name="title_oops">OOPS</string>
+    <string name="title_no_connection_detected">No connection detected</string>
+    <string name="title_retry">Retry</string>
 
 
     <!--:: Bottom Navigation Menu ::-->

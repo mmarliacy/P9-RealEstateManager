@@ -3,11 +3,15 @@ package com.openclassrooms.realestatemanager.view.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
 import com.openclassrooms.realestatemanager.MVVM.repositories.room.RoomPropertyRepository;
 import com.openclassrooms.realestatemanager.MVVM.repositories.room.RoomUserRepository;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.Executor;
 
 public class RoomViewModel extends ViewModel {
@@ -21,7 +25,9 @@ public class RoomViewModel extends ViewModel {
     private LiveData<List<UserModel>> allUsers;
     private LiveData<List<PropertyModel>> allProperties;
 
-    /** CONSTRUCTOR */
+    /**
+     * CONSTRUCTOR
+     */
     public RoomViewModel(RoomPropertyRepository pPropertyRepository, RoomUserRepository pUserRepository, Executor pExecutor) {
         fPropertyRepository = pPropertyRepository;
         fUserRepository = pUserRepository;
@@ -29,19 +35,19 @@ public class RoomViewModel extends ViewModel {
     }
 
     // 3 -- GET LAST DATA -->
-    public void initAllUsers(){
-        if(this.allUsers != null){
+    public void initAllUsers() {
+        if (this.allUsers != null) {
             return;
         }
         allUsers = fUserRepository.getAllUsers();
     }
 
     public void initAllProperties() {
-        if(this.allProperties != null) {
+        if (this.allProperties != null) {
             return;
         }
         allProperties = fPropertyRepository.getAllProperties();
-        }
+    }
 
     //-----------------------------------
     // 4 -- QUERY DATABASE :: PROPERTIES
@@ -50,14 +56,15 @@ public class RoomViewModel extends ViewModel {
     //-----------------------
 
     // -- QUERY :: GET ALL PROPERTIES -->
-    public LiveData<List<PropertyModel>> getAllProperties(){
+    public LiveData<List<PropertyModel>> getAllProperties() {
         return this.allProperties;
     }
 
     // -- QUERY :: GET ALL PROPERTIES ACCORDING TO USER -->
-    public LiveData<List<PropertyModel>> getAllPropertiesByUser(long userId){
+    public LiveData<List<PropertyModel>> getAllPropertiesByUser(long userId) {
         return this.fPropertyRepository.getAllPropertiesByUser(userId);
     }
+
     //---------------------------------------------------------------------------------------
     // -- CREATE - UPDATE - DELETE -->
     //------------------------------------
@@ -87,14 +94,30 @@ public class RoomViewModel extends ViewModel {
     }
 
     // -- QUERY :: GET USER -->
-    public UserModel getUser(String userId){
+    public UserModel getUser(String userId) {
         return this.fUserRepository.getUser(userId);
     }
+
     //---------------------------------------------------------------------------------------
     // -- CREATE - UPDATE - DELETE -->
     //------------------------------------
     // -- INSERT :: USER -->
     public void insertUser(UserModel user) {
         fExecutor.execute(() -> fUserRepository.createUser(user));
+    }
+
+    // 6 -- QUERIES : --> MULTIPLE FILTERS
+    //---------------------------------------
+    // -- By type -->
+    public LiveData<List<PropertyModel>> getAllPropertiesByFilter(
+            String type, String minRooms, String minArea, String maxArea, String address,
+            String minPrice, String maxPrice, String status) {
+        return this.fPropertyRepository.getAllPropertiesByType(type, minRooms, minArea, maxArea, address,
+                minPrice, maxPrice, status);
+    }
+
+    public LiveData<List<PropertyModel>> getAllPropertiesOneByOne(String type, String minRooms, String minArea, String maxArea,
+                                                                  String minPrice, String maxPrice, String status, String onSaleAfter, String onSaleBefore) {
+        return this.fPropertyRepository.getAllPropertiesOneByOne(type, minRooms, minArea, maxArea, minPrice, maxPrice,  status, onSaleAfter, onSaleBefore);
     }
 }

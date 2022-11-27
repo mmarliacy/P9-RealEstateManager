@@ -39,20 +39,26 @@
         </activity>
         <activity
             android:name=".view.activities.MainActivity_HomeScreen"
-            android:exported="false"
             tools:ignore="MissingClass">
         </activity>
         <activity
             android:name=".view.activities.AddPropertyActivity"
             android:theme="@style/Theme.Secondary.RealEstateManager">
 
-        </activity> <!-- :: Map key :: -->
+        </activity>
+        <!-- :: Map key :: -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="${MAP_KEYS}" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <provider
+            android:name=".utils.provider.PropertyContentProvider"
+            android:authorities="com.openclassrooms.realestatemanager"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider" />
     </application>
 
 </manifest>

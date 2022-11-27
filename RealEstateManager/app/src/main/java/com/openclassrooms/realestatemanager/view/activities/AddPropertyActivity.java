@@ -52,6 +52,7 @@ import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -62,9 +63,10 @@ public class AddPropertyActivity extends AppCompatActivity {
     //---------------
     // DATA - FIELDS
     //---------------
-    /** Graphics */
+    /**
+     * Graphics
+     */
     private TextInputEditText propTitleInput;
-    private TextInputEditText propTypeInput;
     private TextInputEditText propTotalAreaInput;
     private TextInputEditText propAddressInput;
     private TextInputEditText forSaleSinceInput;
@@ -72,6 +74,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     private TextInputEditText descInput;
     private TextInputEditText priceInput;
     private TextView totalRooms;
+    private AutoCompleteTextView propTypeInput;
     private AutoCompleteTextView atvUserInput;
     private ImageButton confirmBtn;
     private ImageButton cancelBtn;
@@ -81,7 +84,9 @@ public class AddPropertyActivity extends AppCompatActivity {
     private Button lessBtn;
     RecyclerView recyclerView;
 
-    /** Data */
+    /**
+     * Data
+     */
     // -- List -->
     private final List<UserModel> users = new ArrayList<>();
     private final List<PropertyModel> properties = new ArrayList<>();
@@ -111,7 +116,9 @@ public class AddPropertyActivity extends AppCompatActivity {
     private static final int read_permission_code = 101;
     private static final int pick_image_code = 1;
 
-    /** LIVE DATA - VIEW MODELS */
+    /**
+     * LIVE DATA - VIEW MODELS
+     */
     RoomViewModel roomViewModel;
     FirebaseViewModel firebaseViewModel;
 
@@ -126,7 +133,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         setContentView(R.layout.add_property_layout);
         // -- Configure View Models -->
         configureViewModels();
-        if (roomViewModel != null){
+        if (roomViewModel != null) {
             getRoomPropertiesAndUsers();
         } else {
             getFirebasePropertiesAndUsers();
@@ -139,6 +146,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         setMoreAndLessBtn();
         verifyInputData();
         initChip();
+        initTypeList();
     }
 
     //----------------------------------
@@ -202,6 +210,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         this.roomViewModel.updateProperty(property);
         // -- Update property in FIREBASE Database --
         this.firebaseViewModel.updateProperty(propertyId, property);
+        this.firebaseViewModel.setIdOfProperty(property);
     }
 
     //----------------------
@@ -240,28 +249,28 @@ public class AddPropertyActivity extends AppCompatActivity {
         if (propertyToUpdate != null) {
             rooms = Integer.parseInt(propertyToUpdate.getRooms());
         }
-            moreBtn.setOnClickListener(v -> {
-                rooms += 1;
-                totalRooms.setText(String.valueOf(rooms));
-            });
-            lessBtn.setOnClickListener(v -> {
-                if (rooms > 0) {
-                    rooms -= 1;
-                }
-                totalRooms.setText(String.valueOf(rooms));
-            });
+        moreBtn.setOnClickListener(v -> {
+            rooms += 1;
+            totalRooms.setText(String.valueOf(rooms));
+        });
+        lessBtn.setOnClickListener(v -> {
+            if (rooms > 0) {
+                rooms -= 1;
+            }
+            totalRooms.setText(String.valueOf(rooms));
+        });
     }
 
     //-------------------
     // INIT DATA METHODS
     //-------------------
-    // 1 -- Set user's list -->
+    // 1 -- Set users' list -->
     private void initUsersList() {
         for (UserModel user : users) {
             String userName = user.getName();
             usersNameList.add(userName);
             //-- Find user position in Drop down list --
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_item, usersNameList);
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_user_seller, usersNameList);
             atvUserInput.setAdapter(arrayAdapter);
             arrayAdapter.notifyDataSetChanged();
             atvUserInput.setOnItemClickListener((adapterView, view, position, l) -> sellerName = arrayAdapter.getItem(position));
@@ -278,8 +287,23 @@ public class AddPropertyActivity extends AppCompatActivity {
         }
     }
 
-    // 2 -- Init & Get Interest List (checked or not) in ChipGroup -->
-    @SuppressLint({"UseCompatLoadingForDrawables","InflateParams"})
+    // 2 -- Set types' list -->
+    private void initTypeList() {
+        List<String> typeList = new ArrayList<>(Arrays.asList("House", "Apartment", "Penthouse", "Villa", "Chalet", "Mobil-home", "Building", "Castle", "Loft"));
+            //-- Find user position in Drop down list --
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_type, typeList);
+            propTypeInput.setAdapter(arrayAdapter);
+            arrayAdapter.notifyDataSetChanged();
+            propTypeInput.setOnItemClickListener((adapterView, view, position, l) -> type = arrayAdapter.getItem(position));
+        //-- Get type for propertyToUpdate if possible --
+        if (propertyToUpdate != null) {
+            String typePropertyToUpdate = propertyToUpdate.getType();
+            propTypeInput.setText(typePropertyToUpdate);
+        }
+    }
+
+    // 3 -- Init & Get Interest List (checked or not) in ChipGroup -->
+    @SuppressLint({"UseCompatLoadingForDrawables", "InflateParams"})
     public void initChip() {
         ChipGroup chipGroup = findViewById(R.id.chip_group_form_list_interest);
         String[] tags;
@@ -317,7 +341,8 @@ public class AddPropertyActivity extends AppCompatActivity {
             }
         }
     }
-    // 2a -- Set checked Interest List of chip in ChipGroup -->
+
+    // 3a -- Set checked Interest List of chip in ChipGroup -->
     public void setCheckedChip(Chip chip, String text) {
         chip.setOnClickListener(pView -> {
             if (chip.isChecked()) {
@@ -331,7 +356,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         });
     }
 
-    // 3 -- Init & get date for sold and onSale date property -->
+    // 4 -- Init & get date for sold and onSale date property -->
     private void initDatePicker() {
         Calendar cal = Calendar.getInstance();
         int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -341,8 +366,14 @@ public class AddPropertyActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddPropertyActivity.this, (datePicker, year1, month1, day1) -> {
                 month1 += 1;
-                String date = day1 + "/" + month1 + "/" + year1;
-                forSaleSinceInput.setText(date);
+                if (day1 < 10){
+                    String day2 = "0" + day1;
+                    String date = day2 + "/" + month1 + "/" + year1;
+                    forSaleSinceInput.setText(date);
+                } else{
+                    String date = day1 + "/" + month1 + "/" + year1;
+                    forSaleSinceInput.setText(date);
+                }
             }, year, month, day);
             datePickerDialog.show();
         });
@@ -350,8 +381,14 @@ public class AddPropertyActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddPropertyActivity.this, (datePicker, year1, month1, day1) -> {
                 month1 += 1;
-                String date = day1 + "/" + month1 + "/" + year1;
-                soldSinceInput.setText(date);
+                if (day1 < 10){
+                    String day2 = "0" + day1;
+                    String date = day2 + "/" + month1 + "/" + year1;
+                    soldSinceInput.setText(date);
+                } else{
+                    String date = day1 + "/" + month1 + "/" + year1;
+                    soldSinceInput.setText(date);
+                }
             }, year, month, day);
             datePickerDialog.show();
         });
@@ -467,9 +504,11 @@ public class AddPropertyActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
+
             @Override
             public void onTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
+
             @Override
             public void afterTextChanged(Editable pEditable) {
                 TextInputLayout propTotalAreaLayout = findViewById(R.id.form_property_land_area_layout);
@@ -489,9 +528,11 @@ public class AddPropertyActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
+
             @Override
             public void onTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
+
             @Override
             public void afterTextChanged(Editable pEditable) {
                 TextInputLayout propPriceLayout = findViewById(R.id.form_property_price_layout);
@@ -511,9 +552,11 @@ public class AddPropertyActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
+
             @Override
             public void onTextChanged(CharSequence pCharSequence, int pI, int pI1, int pI2) {
             }
+
             @Override
             public void afterTextChanged(Editable pEditable) {
                 for (PropertyModel property : properties) {
@@ -533,7 +576,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     //------------------------------
     // 1 -- Verify if Property to update is not null -->
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private void verifyIfPropertyToUpdateExist(){
+    private void verifyIfPropertyToUpdateExist() {
         if (getIntent().hasExtra("propertyToUpdate")) {
             propertyToUpdate = getIntent().getParcelableExtra("propertyToUpdate");
             propertyNameToUpdate = getIntent().getStringExtra("propertyNameToUpdate");
@@ -604,7 +647,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     }
 
     // 3 -- Set Property to create in both database -->
-    private void setNewProperty(){
+    private void setNewProperty() {
         if (propertyToUpdate == null) {
             propertyModel = new PropertyModel(
                     sellerId, propertyName, type, address,
@@ -615,7 +658,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     }
 
     // 4 -- Set changes on Property to update in both database -->
-    public void setChangeOnPropertyToUpdate(){
+    public void setChangeOnPropertyToUpdate() {
         propertyToUpdate.setUserId(sellerId);
         propertyToUpdate.setName(propertyName);
         propertyToUpdate.setType(type);
@@ -624,7 +667,6 @@ public class AddPropertyActivity extends AppCompatActivity {
         propertyToUpdate.setTotalLeavingArea(totalArea);
         propertyToUpdate.setRooms(allRooms);
         propertyToUpdate.setPrice(price);
-        propertyToUpdate.setPropertyId(propertyNameToUpdate);
         propertyToUpdate.setStatus(status);
         propertyToUpdate.setPhotoProperty(photoProperty);
         propertyToUpdate.setPropertyInterest(selectedInterest);

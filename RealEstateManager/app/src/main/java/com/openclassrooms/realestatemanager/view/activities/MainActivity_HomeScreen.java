@@ -2,10 +2,13 @@ package com.openclassrooms.realestatemanager.view.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -21,6 +24,7 @@ import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.adapters.PropertyListAdapter;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
+import com.openclassrooms.realestatemanager.utils.WifiListener.NetworkChangeListener;
 import com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 
@@ -29,11 +33,9 @@ import java.util.List;
 
 public class MainActivity_HomeScreen extends AppCompatActivity{
 
-    /** Graphics */
-
     public static String api_key;
 
-
+    private NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     //-----------
     // LIFECYCLE
     //-----------
@@ -45,10 +47,6 @@ public class MainActivity_HomeScreen extends AppCompatActivity{
         setContentView(R.layout.main_activity_home_screen);
         //--:: 1 -- PropertyListFragment ::-->
         setUpPropertyListFragment();
-        //--:: 2 -- Toolbar ::-->
-        Toolbar fToolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(fToolbar);
-
         getMapApiKey();
     }
 
@@ -74,6 +72,16 @@ public class MainActivity_HomeScreen extends AppCompatActivity{
         }
     }
 
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, filter);
+        super.onStart();
+    }
 
-
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
 }

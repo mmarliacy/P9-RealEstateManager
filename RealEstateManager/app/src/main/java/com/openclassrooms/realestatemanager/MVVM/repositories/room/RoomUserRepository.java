@@ -30,7 +30,7 @@ public class RoomUserRepository {
 
     // -- QUERY :: GET USER -->
     public UserModel getUser(String userId){
-    AsyncTask.execute(() -> user = userDAO.getUser(userId));
+        AsyncTask.execute(() -> user = userDAO.getUser(userId));
         return user;
     }
 

@@ -1,14 +1,12 @@
 package com.openclassrooms.realestatemanager.model;
 
-import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import java.util.List;
-import java.util.Objects;
+
+import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "user_table")
 public class UserModel {
@@ -17,11 +15,11 @@ public class UserModel {
     // VARIABLES
     //-----------
     @PrimaryKey
+    @ColumnInfo(name = "id", index = true)
     @NonNull
     private String id;
     private String name;
     private String mail;
-    private List<String> propertyId;
 
 
     public UserModel() {
@@ -40,18 +38,12 @@ public class UserModel {
         return id;
     }
 
-
-
     public String getName() {
         return name;
     }
 
     public String getMail() {
         return mail;
-    }
-
-    public List<String> getPropertyId() {
-        return propertyId;
     }
 
     /** Setters */
@@ -65,9 +57,5 @@ public class UserModel {
 
     public void setMail(String pMail) {
         mail = pMail;
-    }
-
-    public void setPropertyId(List<String> pPropertyId) {
-        propertyId = pPropertyId;
     }
 }

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/type_filter_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/title_type_filter"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_type_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/filter_type_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_type_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/title_filter_type"
+            android:inputType="number"
+            app:hintTextAppearance="@style/CustomTextInputLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/type_filter_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:startIconDrawable="@drawable/round_roofing"
+            app:startIconTint="@color/primary">
+
+            <AutoCompleteTextView
+                android:id="@+id/filter_type_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/title_at_least1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/title_with_at_least"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/type_filter_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_rooms_min_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/title_filter_rooms_min"
+            app:layout_constraintBottom_toBottomOf="@+id/title_at_least1"
+            app:layout_constraintStart_toStartOf="@+id/filter_type_layout"
+            app:layout_constraintTop_toTopOf="@+id/title_at_least1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_rooms_min_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/title_filter_rooms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/title_filter_rooms"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_rooms_min_layout"
+            app:layout_constraintStart_toEndOf="@+id/filter_rooms_min_layout"
+            app:layout_constraintTop_toTopOf="@+id/filter_rooms_min_layout" />
+
+        <TextView
+            android:id="@+id/area_filter_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/title_area_between"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_at_least1" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_area_min_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_filter_area"
+            app:layout_constraintBottom_toBottomOf="@+id/area_filter_title"
+            app:layout_constraintStart_toStartOf="@+id/filter_type_layout"
+            app:layout_constraintTop_toTopOf="@+id/area_filter_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_area_min_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/title_filter_and1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_and"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_area_min_layout"
+            app:layout_constraintEnd_toStartOf="@+id/filter_area_max_layout"
+            app:layout_constraintStart_toEndOf="@+id/filter_area_min_layout"
+            app:layout_constraintTop_toTopOf="@+id/filter_area_min_layout" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_area_max_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/hint_filter_area"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/filter_area_min_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_area_max_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/filter_price_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/title_filter_price"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/area_filter_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_price_min_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_dollars"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_price_title"
+            app:layout_constraintStart_toStartOf="@+id/filter_area_min_layout"
+            app:layout_constraintTop_toTopOf="@+id/filter_price_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_price_min_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/title_filter_and2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_and"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_price_min_layout"
+            app:layout_constraintEnd_toStartOf="@+id/filter_price_max_layout"
+            app:layout_constraintStart_toEndOf="@+id/filter_price_min_layout"
+            app:layout_constraintTop_toTopOf="@+id/filter_price_min_layout" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_price_max_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/hint_dollars"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_price_min_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/filter_price_min_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_price_max_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/title_filter_on_sale_since"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:text="@string/title_filter_on_sale_since"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_price_title" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_on_sale_since_min_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="@string/hint_start_date"
+            app:layout_constraintBottom_toBottomOf="@+id/title_filter_on_sale_since"
+            app:layout_constraintStart_toEndOf="@+id/title_filter_on_sale_since"
+            app:layout_constraintTop_toTopOf="@+id/title_filter_on_sale_since">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_on_sale_since_min_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/filter_on_sale_since_max_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:hint="@string/hint_end_date"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_on_sale_since_min_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/filter_on_sale_since_min_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/filter_on_sale_since_max_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/filter_sold_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/checkbox_filter_sold"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_on_sale_since_min_layout" />
+
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape"
+            android:text="@string/btn_title_search"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_sold_input" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

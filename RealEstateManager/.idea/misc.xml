@@ -19,6 +19,7 @@
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_landscape_24.xml" value="0.155" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.155" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_sell_24.xml" value="0.14" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_baseline_wifi_off_24.xml" value="0.12" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/ic_lots.xml" value="0.14" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/round_local_atm_20.xml" value="0.229" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/drawable/round_roofing_24.xml" value="0.214" />
@@ -37,12 +38,15 @@
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout-land/real_estate_sheet_layout.xml" value="0.1" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/activity_second.xml" value="0.1109375" />
-        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/add_property_layout.xml" value="0.2642543859649123" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/add_property_layout.xml" value="0.25" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/chip_item.xml" value="0.22037037037037038" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/connection_is_off.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/dropdown_menu_item.xml" value="0.264" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/dropdown_menu_type.xml" value="0.24739583333333334" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/filter_search_fragment.xml" value="0.264" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_interest_list.xml" value="0.4" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_interest_row.xml" value="0.25104166666666666" />
-        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_photo.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_photo.xml" value="0.8484848484848485" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/item_property.xml" value="0.4" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/main_activity_home_screen.xml" value="0.24739583333333334" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/photo_add_first_item.xml" value="0.25" />
@@ -51,6 +55,7 @@
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/property_list_home_screen.xml" value="0.2" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/real_estate_sheet_layout.xml" value="0.264" />
         <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/layout/test.xml" value="0.2" />
+        <entry key="..\:/Users/Mel/Documents/FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID/PROJET A RENDRE/P9_MARLIACY_MELANIE/PROJET_9/RealEstateManager/app/src/main/res/menu/search_filter.xml" value="0.22685185185185186" />
       </map>
     </option>
   </component>

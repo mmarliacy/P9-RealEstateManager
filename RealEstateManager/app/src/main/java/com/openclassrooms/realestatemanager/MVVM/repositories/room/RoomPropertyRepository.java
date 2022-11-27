@@ -1,6 +1,9 @@
 package com.openclassrooms.realestatemanager.MVVM.repositories.room;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.room.Query;
+
 import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.PropertyDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 
@@ -13,7 +16,9 @@ public class RoomPropertyRepository {
     //-----------
     private final PropertyDAO propertyDAO;
 
-    /** CONSTRUCTOR */
+    /**
+     * CONSTRUCTOR
+     */
     public RoomPropertyRepository(PropertyDAO pPropertyDAO) {
         this.propertyDAO = pPropertyDAO;
     }
@@ -46,4 +51,23 @@ public class RoomPropertyRepository {
     public void deleteProperty(PropertyModel property) {
         this.propertyDAO.deleteProperty(property);
     }
+
+    // 3 -- QUERIES : --> MULTIPLE FILTERS
+    //--------------------------------------
+    // -- By type -->
+    public LiveData<List<PropertyModel>> getAllPropertiesByType(
+            String type, String minRooms,String minArea,String maxArea,String address,
+            String minPrice,String maxPrice, String status) {
+        return this.propertyDAO.getAllPropertiesByType(
+                type, minRooms, minArea, maxArea, address,
+                minPrice, maxPrice, status);
+    }
+
+    public LiveData<List<PropertyModel>> getAllPropertiesOneByOne (
+            String type, String minRooms , String minArea, String maxArea,
+            String minPrice, String maxPrice, String status, String onSaleAfter, String onSaleBefore){
+        return this.propertyDAO.getAllPropertiesOneByOne(type, minRooms,minArea, maxArea,  minPrice,  maxPrice, status, onSaleAfter, onSaleBefore);
+    }
+
+
 }
