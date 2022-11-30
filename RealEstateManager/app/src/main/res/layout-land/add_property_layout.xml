@@ -28,8 +28,8 @@
             <LinearLayout
                 android:id="@+id/container_space_of_collapsing"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/csoc_height"
-                android:elevation="@dimen/csoc_elevation"
+                android:layout_height="@dimen/csoc_height_land"
+                android:elevation="@dimen/csoc_elevation_land"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical" />
 
@@ -61,10 +61,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fpst_marginStart"
+                android:layout_marginStart="@dimen/fpst_marginStart_land"
                 android:layout_marginTop="@dimen/fpst_marginTop"
                 android:text="@string/add_lot_property_seller_title"
-                android:textSize="@dimen/fpst_textSize" />
+                android:textSize="@dimen/fpst_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_seller_layout"
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/form_property_seller_title"
-                android:layout_margin="@dimen/fpsl_margin"
+                android:layout_margin="@dimen/fpsl_margin_land"
                 android:inputType="number"
                 android:hint="@string/hint_property_seller_input"
                 app:hintTextAppearance="@style/CustomTextInputLayout"
@@ -93,10 +93,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/form_property_seller_layout"
-                android:layout_marginStart="@dimen/fpnt_marginStart"
-                android:layout_marginTop="@dimen/fpnt_marginTop"
+                android:layout_marginStart="@dimen/fpnt_marginStart_land"
+                android:layout_marginTop="@dimen/fpnt_marginTop_land"
                 android:text="@string/add_lot_property_name_title"
-                android:textSize="@dimen/fpnt_textSize" />
+                android:textSize="@dimen/fpnt_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_name_layout"
@@ -104,10 +104,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/form_property_name_title"
-                android:layout_marginStart="@dimen/fpnl_margin"
-                android:layout_marginTop="@dimen/fpnl_margin"
-                android:layout_marginEnd="@dimen/fpnl_margin"
-                android:layout_marginBottom="@dimen/fpnl_margin"
+                android:layout_marginStart="@dimen/fpnl_margin_land"
+                android:layout_marginTop="@dimen/fpnl_margin_land"
+                android:layout_marginEnd="@dimen/fpnl_margin_land"
+                android:layout_marginBottom="@dimen/fpnl_margin_land"
                 android:hint="@string/hint_property_name_input"
                 app:helperText="@string/helperText_property_name_input"
                 app:helperTextEnabled="true"
@@ -127,17 +127,17 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_name_layout"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fpnt_marginStart"
-                android:layout_marginTop="@dimen/fpnt_marginTop"
+                android:layout_marginStart="@dimen/fpnt_marginStart_land"
+                android:layout_marginTop="@dimen/fpnt_marginTop_land"
                 android:text="@string/add_lot_property_photo_title"
-                android:textSize="@dimen/fpnt_textSize" />
+                android:textSize="@dimen/fpnt_textSize_land" />
 
             <ImageButton
                 android:id="@+id/next_item"
-                android:layout_width="@dimen/ni_width"
-                android:layout_height="@dimen/ni_height"
-                android:layout_marginStart="@dimen/ni_marginStart"
-                android:layout_marginTop="@dimen/ni_marginTop"
+                android:layout_width="@dimen/ni_width_land"
+                android:layout_height="@dimen/ni_height_land"
+                android:layout_marginStart="@dimen/ni_marginStart_land"
+                android:layout_marginTop="@dimen/ni_marginTop_land"
                 android:layout_toEndOf="@+id/form_property_photo_title"
                 android:layout_below="@+id/form_property_name_layout"
                 android:background="@drawable/item_interest_shape"
@@ -151,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/form_property_photo_title"
-                android:layout_marginTop="@dimen/fprpl_marginTop"
+                android:layout_marginTop="@dimen/fprpl_marginTop_land"
                 android:background="@color/white"
                 app:startIconDrawable="@drawable/round_roofing_24">
 
@@ -170,10 +170,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_photos_linearLayout"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fptt_marginStart"
-                android:layout_marginTop="@dimen/fptt_marginTop"
+                android:layout_marginStart="@dimen/fptt_marginStart_land"
+                android:layout_marginTop="@dimen/fptt_marginTop_land"
                 android:text="@string/add_lot_property_type_title"
-                android:textSize="@dimen/fptt_textSize" />
+                android:textSize="@dimen/fptt_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_type_layout"
@@ -181,7 +181,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_type_title"
-                android:layout_margin="@dimen/fptl_margin"
+                android:layout_margin="@dimen/fptl_margin_land"
                 android:hint="@string/hint_property_type_input"
                 app:helperText="@string/helperText_property_type_input"
                 app:helperTextEnabled="true"
@@ -205,10 +205,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_type_layout"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fppt_marginStart"
-                android:layout_marginTop="@dimen/fppt_marginTop"
+                android:layout_marginStart="@dimen/fppt_marginStart_land"
+                android:layout_marginTop="@dimen/fppt_marginTop_land"
                 android:text="@string/add_lot_property_price_title"
-                android:textSize="@dimen/fppt_textSize" />
+                android:textSize="@dimen/fppt_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_price_layout"
@@ -216,10 +216,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_price_title"
-                android:layout_marginStart="@dimen/fppl_margin"
-                android:layout_marginTop="@dimen/fppl_margin"
-                android:layout_marginEnd="@dimen/fppl_margin"
-                android:layout_marginBottom="@dimen/fppl_margin"
+                android:layout_marginStart="@dimen/fppl_margin_land"
+                android:layout_marginTop="@dimen/fppl_margin_land"
+                android:layout_marginEnd="@dimen/fppl_margin_land"
+                android:layout_marginBottom="@dimen/fppl_margin_land"
                 android:hint="@string/hint_property_price_input"
                 app:helperText="@string/helperText_property_price_input"
                 app:helperTextEnabled="true"
@@ -241,10 +241,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_price_layout"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fplat_marginStart"
-                android:layout_marginTop="@dimen/fplat_marginTop"
+                android:layout_marginStart="@dimen/fplat_marginStart_land"
+                android:layout_marginTop="@dimen/fplat_marginTop_land"
                 android:text="@string/add_lot_property_total_land_area_title"
-                android:textSize="@dimen/fplat_textSize" />
+                android:textSize="@dimen/fplat_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_land_area_layout"
@@ -252,10 +252,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_land_area_title"
-                android:layout_marginStart="@dimen/fplal_margin"
-                android:layout_marginTop="@dimen/fplal_margin"
-                android:layout_marginEnd="@dimen/fplal_margin"
-                android:layout_marginBottom="@dimen/fplal_margin"
+                android:layout_marginStart="@dimen/fplal_margin_land"
+                android:layout_marginTop="@dimen/fplal_margin_land"
+                android:layout_marginEnd="@dimen/fplal_margin_land"
+                android:layout_marginBottom="@dimen/fplal_margin_land"
                 android:hint="@string/hint_property_land_area_input"
                 app:helperText="@string/helperText_property_land_area_input"
                 app:helperTextEnabled="true"
@@ -276,21 +276,21 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_land_area_layout"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fptrt_marginStart"
-                android:layout_marginTop="@dimen/fptrt_marginTop"
+                android:layout_marginStart="@dimen/fptrt_marginStart_land"
+                android:layout_marginTop="@dimen/fptrt_marginTop_land"
                 android:text="@string/add_lot_property_total_rooms_title"
-                android:textSize="@dimen/fptrt_textSize" />
+                android:textSize="@dimen/fptrt_textSize_land" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/container_total_rooms"
-                android:layout_width="@dimen/ctr_width"
-                android:layout_height="@dimen/ctr_height"
+                android:layout_width="@dimen/ctr_width_land"
+                android:layout_height="@dimen/ctr_height_land"
                 android:layout_below="@id/form_property_total_rooms_title"
-                android:layout_marginStart="@dimen/ctr_marginStart"
-                android:layout_marginTop="@dimen/ctr_marginTop"
-                android:layout_marginBottom="@dimen/ctr_marginBottom"
-                android:elevation="@dimen/ctr_elevation"
-                app:cardCornerRadius="@dimen/ctr_cardCornerRadius">
+                android:layout_marginStart="@dimen/ctr_marginStart_land"
+                android:layout_marginTop="@dimen/ctr_marginTop_land"
+                android:layout_marginBottom="@dimen/ctr_marginBottom_land"
+                android:elevation="@dimen/ctr_elevation_land"
+                app:cardCornerRadius="@dimen/ctr_cardCornerRadius_land">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -304,7 +304,7 @@
                         android:gravity="center"
                         android:text="@string/form_total_rooms_number_count"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/ftrn_textSize" />
+                        android:textSize="@dimen/ftrn_textSize_land" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -313,41 +313,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_total_rooms_title"
-                android:layout_marginStart="@dimen/rit_marginStart"
-                android:layout_marginTop="@dimen/rit_marginTop"
+                android:layout_marginStart="@dimen/rit_marginStart_land"
+                android:layout_marginTop="@dimen/rit_marginTop_land"
                 android:layout_toEndOf="@id/container_total_rooms"
                 android:text="@string/rooms_indicator_title"
                 android:textColor="@color/black"
-                android:textSize="@dimen/rit_textSize" />
+                android:textSize="@dimen/rit_textSize_land" />
 
             <Button
                 android:id="@+id/button_more_total_rooms"
-                android:layout_width="@dimen/bmtr_width"
+                android:layout_width="@dimen/bmtr_width_land"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_total_rooms_title"
-                android:layout_marginStart="@dimen/bmtr_marginStart"
-                android:layout_marginTop="@dimen/bmtr_marginTop"
+                android:layout_marginStart="@dimen/bmtr_marginStart_land"
+                android:layout_marginTop="@dimen/bmtr_marginTop_land"
                 android:layout_toEndOf="@id/rooms_indicator_title"
                 android:backgroundTint="@color/green"
-                android:elevation="@dimen/bmtr_elevation"
+                android:elevation="@dimen/bmtr_elevation_land"
                 android:text="@string/form_add_rooms_sign"
                 android:textColor="@color/white"
-                android:textSize="@dimen/bmtr_textSize"
+                android:textSize="@dimen/bmtr_textSize_land"
                 android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button_less_total_rooms"
-                android:layout_width="@dimen/bltr_width"
+                android:layout_width="@dimen/bltr_width_land"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_total_rooms_title"
-                android:layout_marginStart="@dimen/bltr_marginStart"
-                android:layout_marginTop="@dimen/bltr_marginTop"
+                android:layout_marginStart="@dimen/bltr_marginStart_land"
+                android:layout_marginTop="@dimen/bltr_marginTop_land"
                 android:layout_toEndOf="@id/button_more_total_rooms"
                 android:backgroundTint="@color/red"
-                android:elevation="@dimen/bltr_elevation"
+                android:elevation="@dimen/bltr_elevation_land"
                 android:text="@string/form_remove_rooms_sign"
                 android:textColor="@color/white"
-                android:textSize="@dimen/bltr_textSize"
+                android:textSize="@dimen/bltr_textSize_land"
                 android:textStyle="bold" />
 
 
@@ -358,10 +358,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/container_total_rooms"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fpat_marginStart"
-                android:layout_marginTop="@dimen/fpat_marginTop"
+                android:layout_marginStart="@dimen/fpat_marginStart_land"
+                android:layout_marginTop="@dimen/fpat_marginTop_land"
                 android:text="@string/add_lot_property_address_title"
-                android:textSize="@dimen/fpat_textSize" />
+                android:textSize="@dimen/fpat_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_address_layout"
@@ -369,10 +369,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_address_title"
-                android:layout_marginStart="@dimen/fal_margin"
-                android:layout_marginTop="@dimen/fal_margin"
-                android:layout_marginEnd="@dimen/fal_margin"
-                android:layout_marginBottom="@dimen/fal_margin"
+                android:layout_marginStart="@dimen/fal_margin_land"
+                android:layout_marginTop="@dimen/fal_margin_land"
+                android:layout_marginEnd="@dimen/fal_margin_land"
+                android:layout_marginBottom="@dimen/fal_margin_land"
                 android:hint="@string/hint_property_address_input"
                 app:helperText="@string/helperText_property_address_input"
                 app:helperTextEnabled="true"
@@ -393,18 +393,18 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_address_layout"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fapt_marginStart"
-                android:layout_marginTop="@dimen/fapt_marginTop"
+                android:layout_marginStart="@dimen/fapt_marginStart_land"
+                android:layout_marginTop="@dimen/fapt_marginTop_land"
                 android:text="@string/add_lot_around_property_title"
-                android:textSize="@dimen/fapt_textSize" />
+                android:textSize="@dimen/fapt_textSize_land" />
 
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_form_list_interest"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/cgfli_height"
+                android:layout_height="@dimen/cgfli_height_land"
                 android:layout_below="@id/form_around_property_title"
-                android:layout_marginTop="@dimen/cgfli_marginTop">
+                android:layout_marginTop="@dimen/cgfli_marginTop_land">
             </com.google.android.material.chip.ChipGroup>
 
             <TextView
@@ -414,10 +414,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/chip_group_form_list_interest"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/ffsst_marginStart"
-                android:layout_marginTop="@dimen/ffsst_marginTop"
+                android:layout_marginStart="@dimen/ffsst_marginStart_land"
+                android:layout_marginTop="@dimen/ffsst_marginTop_land"
                 android:text="@string/add_lot_for_sale_since_title"
-                android:textSize="@dimen/ffsst_textSize" />
+                android:textSize="@dimen/ffsst_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_for_sale_since_layout"
@@ -425,10 +425,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/chip_group_form_list_interest"
-                android:layout_marginStart="@dimen/ffssl_marginStart"
-                android:layout_marginTop="@dimen/ffssl_marginTop"
-                android:layout_marginEnd="@dimen/ffssl_marginEnd"
-                android:layout_marginBottom="@dimen/ffssl_marginBottom"
+                android:layout_marginStart="@dimen/ffssl_marginStart_land"
+                android:layout_marginTop="@dimen/ffssl_marginTop_land"
+                android:layout_marginEnd="@dimen/ffssl_marginEnd_land"
+                android:layout_marginBottom="@dimen/ffssl_marginBottom_land"
                 android:layout_toEndOf="@id/form_for_sale_since_title"
                 android:hint="@string/hint_form_for_sale_since"
                 app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
@@ -448,10 +448,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_for_sale_since_title"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fsost_marginStart"
-                android:layout_marginTop="@dimen/fsost_marginTop"
+                android:layout_marginStart="@dimen/fsost_marginStart_land"
+                android:layout_marginTop="@dimen/fsost_marginTop_land"
                 android:text="@string/add_lot_sold_out_since_title"
-                android:textSize="@dimen/fsost_textSize" />
+                android:textSize="@dimen/fsost_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_sold_out_since_layout"
@@ -459,10 +459,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_for_sale_since_layout"
-                android:layout_marginStart="@dimen/fsosl_marginStart"
-                android:layout_marginTop="@dimen/fsosl_marginTop"
-                android:layout_marginEnd="@dimen/fsosl_marginEnd"
-                android:layout_marginBottom="@dimen/fsosl_marginBottom"
+                android:layout_marginStart="@dimen/fsosl_marginStart_land"
+                android:layout_marginTop="@dimen/fsosl_marginTop_land"
+                android:layout_marginEnd="@dimen/fsosl_marginEnd_land"
+                android:layout_marginBottom="@dimen/fsosl_marginBottom_land"
                 android:layout_toEndOf="@id/form_sold_out_since_title"
                 android:hint="@string/hint_form_sol_out_since"
                 app:shapeAppearance="?attr/shapeAppearanceSmallComponent"
@@ -482,10 +482,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_sold_out_since_title"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/fpdt_marginStart"
-                android:layout_marginTop="@dimen/fpdt_marginTop"
+                android:layout_marginStart="@dimen/fpdt_marginStart_land"
+                android:layout_marginTop="@dimen/fpdt_marginTop_land"
                 android:text="@string/add_lot_property_description_title"
-                android:textSize="@dimen/fpdt_textSize" />
+                android:textSize="@dimen/fpdt_textSize_land" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/form_property_description_layout"
@@ -493,7 +493,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/form_property_description_title"
-                android:layout_margin="@dimen/fpdl_margin"
+                android:layout_margin="@dimen/fpdl_margin_land"
                 android:hint="@string/hint_tell_me_more_about_it_description_property"
                 app:shapeAppearance="?attr/shapeAppearanceSmallComponent">
 
@@ -507,13 +507,13 @@
 
             <ImageButton
                 android:id="@+id/form_confirm"
-                android:layout_width="@dimen/fca_width"
-                android:layout_height="@dimen/fca_height"
+                android:layout_width="@dimen/fca_width_land"
+                android:layout_height="@dimen/fca_height_land"
                 android:layout_below="@id/form_property_description_layout"
-                android:layout_marginStart="@dimen/fca_marginStart"
-                android:layout_marginTop="@dimen/fca_marginTop"
-                android:layout_marginEnd="@dimen/fca_marginEnd"
-                android:layout_marginBottom="@dimen/fca_marginBottom"
+                android:layout_marginStart="@dimen/fca_marginStart_land"
+                android:layout_marginTop="@dimen/fca_marginTop_land"
+                android:layout_marginEnd="@dimen/fca_marginEnd_land"
+                android:layout_marginBottom="@dimen/fca_marginBottom_land"
                 android:layout_toStartOf="@id/form_cancel"
                 android:background="@drawable/adding_shape"
                 android:contentDescription="@string/content_description_form_confirm_adding"
@@ -522,13 +522,13 @@
 
             <ImageButton
                 android:id="@+id/form_cancel"
-                android:layout_width="@dimen/fcc_width"
-                android:layout_height="@dimen/fcc_height"
+                android:layout_width="@dimen/fcc_width_land"
+                android:layout_height="@dimen/fcc_height_land"
                 android:layout_below="@id/form_property_description_layout"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="@dimen/fcc_marginTop"
-                android:layout_marginEnd="@dimen/fcc_marginEnd"
-                android:layout_marginBottom="@dimen/fcc_marginBottom"
+                android:layout_marginTop="@dimen/fcc_marginTop_land"
+                android:layout_marginEnd="@dimen/fcc_marginEnd_land"
+                android:layout_marginBottom="@dimen/fcc_marginBottom_land"
                 android:background="@drawable/stop_adding_shape"
                 android:contentDescription="@string/content_description_stop_adding_sign"
                 android:scaleType="fitCenter"

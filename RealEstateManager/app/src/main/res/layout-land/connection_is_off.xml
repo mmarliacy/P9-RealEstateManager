@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape">
+
+    <ImageView
+        android:id="@+id/no_wifi_connection_icon"
+        android:layout_width="@dimen/nwci_width_land"
+        android:layout_height="@dimen/nwci_height_land"
+        android:contentDescription="@string/no_wifi"
+        android:src="@drawable/ic_baseline_wifi_off_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/oops"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_oops"
+        android:textColor="@color/black"
+        android:textSize="@dimen/oo_textSize_land"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_wifi_connection_icon" />
+
+    <TextView
+        android:id="@+id/no_connection_detected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_no_connection_detected"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/ncd_textSize_land"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oops" />
+
+    <TextView
+        android:id="@+id/please_check_it"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/check_your_internet_connection"
+        android:textSize="@dimen/pci_textSize_land"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_connection_detected" />
+
+    <Button
+        android:id="@+id/retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_retry"
+        android:textSize="@dimen/re_textSize_land"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/please_check_it" />
+</androidx.constraintlayout.widget.ConstraintLayout>

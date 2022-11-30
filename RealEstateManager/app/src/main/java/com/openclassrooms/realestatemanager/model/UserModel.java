@@ -2,10 +2,13 @@ package com.openclassrooms.realestatemanager.model;
 
 import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 @Entity(tableName = "user_table")
 public class UserModel {
@@ -15,7 +18,8 @@ public class UserModel {
     //-----------
     @PrimaryKey
     @ColumnInfo(name = "id", index = true)
-    private String id;
+    @NonNull
+    private String id = "";
     private String name;
     private String mail;
 
@@ -24,7 +28,7 @@ public class UserModel {
     }
 
     /** ROOM CONSTRUCTOR */
-    public UserModel(String id, String name, String mail) {
+    public UserModel(@NotNull String id, String name, String mail) {
         this.id = id;
         this.name = name;
         this.mail = mail;
@@ -32,6 +36,7 @@ public class UserModel {
 
 
     /** Getters */
+    @NotNull
     public String getId() {
         return id;
     }
@@ -54,7 +59,7 @@ public class UserModel {
     }
 
     /** Setters */
-    public void setId(String pId) {
+    public void setId(@NotNull String pId) {
         id = pId;
     }
 

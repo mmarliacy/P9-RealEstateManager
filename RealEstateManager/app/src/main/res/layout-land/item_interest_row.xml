@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_interest_item"
+    android:layout_width="@dimen/cii_width_land"
+    android:layout_height="@dimen/cii_height_land"
+    android:layout_margin="@dimen/cii_margin_land"
+    app:cardCornerRadius="@dimen/cii_cardCornerRadius_land"
+    app:cardElevation="@dimen/cii_cardElevation_land">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_interest_shape"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/interest_icon"
+            android:layout_width="@dimen/ii_width_land"
+            android:layout_height="@dimen/ii_height_land"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/ii_marginTop_land"
+            android:contentDescription="@string/content_description_icon_interest"
+            android:src="@drawable/baseline_shopping_cart_24"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/interest_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/arima_madurai_extrabold"
+            android:text="@string/interest_name"
+            android:textSize="@dimen/in_textSize_land"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

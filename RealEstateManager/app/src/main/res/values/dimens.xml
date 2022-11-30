@@ -8,7 +8,9 @@
     Id --> container_space_of_collapsing
     <dimen name="csoc_height">150dip</dimen>
     <dimen name="csoc_elevation">10dip</dimen>
-
+    --------------------------------
+    Id --> form_property_photos_linearLayout
+    <dimen name="fprpl_marginTop">10dip</dimen>
 
     ---** TextView **---
     Id --> form_property_seller_title
@@ -121,6 +123,12 @@
     <dimen name="ctr_cardCornerRadius">15dip</dimen>
     <dimen name="ctr_elevation">10dip</dimen>
 
+    ---** ImageButton **---
+    Id --> next_item
+    <dimen name="ni_width">40dip</dimen>
+    <dimen name="ni_height">40dip</dimen>
+    <dimen name="ni_marginStart">10dip</dimen>
+    <dimen name="ni_marginTop">5dip</dimen>
 
     ---** Button **---
     Id --> button_more_total_rooms
@@ -467,6 +475,11 @@
     Id --> container_sold_out_since
     <dimen name="csos_marginStart">10dip</dimen>
 
+    ---** ImageView **---
+    Id --> container_static_maps
+    <dimen name="csm_height">300dip</dimen>
+    <dimen name="csm_marginTop">10dip</dimen>
+
     ------------------------------------------------------------------------------------------------
     -------------------------------------*** LANDSCAPE MODE ***-------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -477,8 +490,17 @@
     Id --> container_space_of_collapsing
     <dimen name="csoc_height_land">150dip</dimen>
     <dimen name="csoc_elevation_land">10dip</dimen>
+    --------------------------------
+    Id --> form_property_photos_linearLayout
+    <dimen name="fprpl_marginTop_land">10dip</dimen>
+
 
     ---** TextView **---
+    Id --> form_property_seller_title
+    <dimen name="fpst_marginStart_land">10dip</dimen>
+    <dimen name="fpst_marginTop_land">10dip</dimen>
+    <dimen name="fpst_textSize_land">20sp</dimen>
+    --------------------------------
     Id --> form_property_name_title
     <dimen name="fpnt_marginStart_land">10dip</dimen>
     <dimen name="fpnt_marginTop_land">10dip</dimen>
@@ -488,6 +510,11 @@
     <dimen name="fptt_marginStart_land">10dip</dimen>
     <dimen name="fptt_marginTop_land">10dip</dimen>
     <dimen name="fptt_textSize_land">20sp</dimen>
+    --------------------------------
+    Id --> form_property_price_title
+    <dimen name="fppt_marginStart_land">10dip</dimen>
+    <dimen name="fppt_marginTop_land">10dip</dimen>
+    <dimen name="fppt_textSize_land">20sp</dimen>
     --------------------------------
     Id --> form_property_land_area_title
     <dimen name="fplat_marginStart_land">10dip</dimen>
@@ -534,33 +561,40 @@
 
 
     ---** TextInputLayout/TextInputEditText **---
-    Id --> form_property_name_input
-    <dimen name="fpni_margin_land">10dip</dimen>
+    Id --> form_property_seller_layout
+    <dimen name="fpsl_margin_land">10dip</dimen>
     --------------------------------
-    Id --> form_property_type_input
-    <dimen name="fpti_margin_land">10dip</dimen>
+    Id --> form_property_name_layout
+    <dimen name="fpnl_margin_land">10dip</dimen>
     --------------------------------
-    Id --> form_property_land_area_input
-    <dimen name="fplai_margin_land">10dip</dimen>
+    Id --> form_property_type_layout
+    <dimen name="fptl_margin_land">10dip</dimen>
     --------------------------------
-    Id --> form_address_input
-    <dimen name="fai_margin_land">10dip</dimen>
+    Id --> form_property_price_layout
+    <dimen name="fppl_margin_land">10dip</dimen>
     --------------------------------
-    Id --> form_for_sale_since_input
-    <dimen name="ffssi_marginStart_land">60dip</dimen>
-    <dimen name="ffssi_marginTop_land">20dip</dimen>
-    <dimen name="ffssi_marginEnd_land">10dip</dimen>
-    <dimen name="ffssi_marginBottom_land">10dip</dimen>
+    Id --> form_property_land_area_layout
+    <dimen name="fplal_margin_land">10dip</dimen>
     --------------------------------
-    Id --> form_sold_out_since_input
-    <dimen name="fsosi_marginStart_land">60dip</dimen>
-    <dimen name="fsosi_marginTop_land">20dip</dimen>
-    <dimen name="fsosi_marginEnd_land">10dip</dimen>
-    <dimen name="fsosi_marginBottom_land">10dip</dimen>
+    Id --> form_address_layout
+    <dimen name="fal_margin_land">10dip</dimen>
     --------------------------------
-    Id --> form_property_description_input
-    <dimen name="fpdi_height_land">200dip</dimen>
-    <dimen name="fpdi_margin_land">10dip</dimen>
+    Id --> form_for_sale_since_layout
+    <dimen name="ffssl_marginStart_land">60dip</dimen>
+    <dimen name="ffssl_marginTop_land">20dip</dimen>
+    <dimen name="ffssl_marginEnd_land">400dip</dimen>
+    <dimen name="ffssl_marginBottom_land">10dip</dimen>
+    --------------------------------
+    Id --> form_sold_out_since_layout
+    <dimen name="fsosl_marginStart_land">60dip</dimen>
+    <dimen name="fsosl_marginTop_land">20dip</dimen>
+    <dimen name="fsosl_marginEnd_land">400dip</dimen>
+    <dimen name="fsosl_marginBottom_land">10dip</dimen>
+    --------------------------------
+    Id --> form_property_description_layout
+    <dimen name="fpdl_height_land">200dip</dimen>
+    <dimen name="fpdl_margin_land">10dip</dimen>
+
 
     ---** Cardview **---
     Id --> container_total_rooms
@@ -571,6 +605,13 @@
     <dimen name="ctr_marginBottom_land">10dip</dimen>
     <dimen name="ctr_cardCornerRadius_land">15dip</dimen>
     <dimen name="ctr_elevation_land">10dip</dimen>
+
+    ---** ImageButton **---
+    Id --> next_item
+    <dimen name="ni_width_land">40dip</dimen>
+    <dimen name="ni_height_land">40dip</dimen>
+    <dimen name="ni_marginStart_land">10dip</dimen>
+    <dimen name="ni_marginTop_land">5dip</dimen>
 
     ---** Button **---
     Id --> button_more_total_rooms
@@ -587,10 +628,12 @@
     <dimen name="bltr_textSize_land">30sp</dimen>
     <dimen name="bltr_elevation_land">10dip</dimen>
 
-    ---** ChipGroup **---
+
+    ---** ChipGroup / Chip **---
     Id --> chip_group_form_list_interest
     <dimen name="cgfli_height_land">200dip</dimen>
     <dimen name="cgfli_marginTop_land">10dip</dimen>
+
 
     ---** ImageButton **---
     Id --> form_confirm_cancelling
@@ -704,26 +747,26 @@
     <dimen name="frml_width_land">100dip</dimen>
     --------------------------------
     Id --> filter_area_min_layout
-    <dimen name="faml_width_land">100dip</dimen>
+    <dimen name="faml_width_land">150dip</dimen>
     --------------------------------
     Id --> filter_area_max_layout
-    <dimen name="famax_width_land">100dip</dimen>
-    <dimen name="famax_marginEnd_land">5dip</dimen>
+    <dimen name="famax_width_land">150dip</dimen>
+    <dimen name="famax_marginEnd_land">100dip</dimen>
     --------------------------------
     Id --> filter_price_min_layout
-    <dimen name="fpmin_width_land">100dip</dimen>
+    <dimen name="fpmin_width_land">150dip</dimen>
     --------------------------------
     Id --> filter_price_max_layout
-    <dimen name="fpmax_width_land">100dip</dimen>
-    <dimen name="fpmax_marginEnd_land">5dip</dimen>
+    <dimen name="fpmax_width_land">150dip</dimen>
+    <dimen name="fpmax_marginEnd_land">100dip</dimen>
     --------------------------------
     Id --> filter_on_sale_since_min_layout
-    <dimen name="fossmin_width_land">120dip</dimen>
-    <dimen name="fossmin_marginStart_land">10dip</dimen>
+    <dimen name="fossmin_width_land">150dip</dimen>
+    <dimen name="fossmin_marginStart_land">40dip</dimen>
     --------------------------------
     Id --> filter_on_sale_since_max_layout
-    <dimen name="fossmax_width_land">120dip</dimen>
-    <dimen name="fossmax_marginEnd_land">5dip</dimen>
+    <dimen name="fossmax_width_land">150dip</dimen>
+    <dimen name="fossmax_marginEnd_land">100dip</dimen>
 
 
     ---** CheckBox **---
@@ -734,7 +777,7 @@
 
     ---** Button **---
     Id --> button_search
-    <dimen name="bs_marginTop_land">20dip</dimen>
+    <dimen name="bs_marginTop_land">60dip</dimen>
     <dimen name="bs_textSize_land">20sp</dimen>
 
     ------------------------------------------------------------------------------------------------
@@ -919,4 +962,10 @@
     --------------------------------
     Id --> container_sold_out_since
     <dimen name="csos_marginStart_land">10dip</dimen>
+
+
+    ---** ImageView **---
+    Id --> container_static_maps
+    <dimen name="csm_height_land">400dip</dimen>
+    <dimen name="csm_marginTop_land">10dip</dimen>
 </resources>
