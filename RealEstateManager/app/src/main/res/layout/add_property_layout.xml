@@ -82,7 +82,9 @@
                 <AutoCompleteTextView
                     android:id="@+id/form_property_seller_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/fpsl_height"
+                    android:textSize="@dimen/fpsl_textSize"
+                    android:textColor="@color/black"
                     tools:ignore="LabelFor" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +119,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_name_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="@dimen/fpnl_height"
+                    android:textSize="@dimen/fpnl_textSize"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -193,8 +197,10 @@
                 <AutoCompleteTextView
                     android:id="@+id/form_property_type_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:inputType="none"
+                    android:layout_height="@dimen/fptl_height"
+                    android:textSize="@dimen/fptl_textSize"
+                    android:textColor="@color/black"
                     tools:ignore="LabelFor" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -229,8 +235,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_price_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:layout_height="@dimen/fppl_height"
+                    android:inputType="number"
+                    android:textSize="@dimen/fppl_textSize"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -265,8 +273,11 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_land_area_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:layout_height="@dimen/fplal_height"
+                    android:textSize="@dimen/fplal_textSize"
+                    android:textColor="@color/black"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -382,7 +393,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_address_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fal_height"
+                    android:textSize="@dimen/fal_textSize"
+                    android:textColor="@color/black"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -437,7 +450,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_for_sale_since_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/ffssl_height"
+                    android:textSize="@dimen/ffssl_textSize"
+                    android:textColor="@color/black"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -471,7 +486,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_sold_out_since_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fsosl_height"
+                    android:textSize="@dimen/fsosl_textSize"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -500,7 +516,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_description_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fpdl_height"
+                    android:textSize="@dimen/fpdl_textSize"
                     android:gravity="top"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>

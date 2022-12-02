@@ -1,5 +1,7 @@
 package com.openclassrooms.realestatemanager.view.fragments;
 
+import static com.openclassrooms.realestatemanager.view.fragments.PropertySheetFragment.property;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -16,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -51,6 +54,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
      * Graphics
      */
     RecyclerView propertiesRecyclerView;
+    ConstraintLayout containerSheetLayout;
     /**
      * LIVE DATA - VIEW MODELS
      */
@@ -226,9 +230,17 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     public void onItemClick(PropertyModel property) {
         Fragment sheetFragment = PropertySheetFragment.getInstance(property);
         FragmentTransaction varTransaction = requireActivity().getSupportFragmentManager().beginTransaction();
-        varTransaction.replace(R.id.main_container, sheetFragment, "Replace PropertyList Fragment by SheetProperty Fragment according to item Click");
-        varTransaction.addToBackStack(null);
-        varTransaction.commit();
+        containerSheetLayout = requireActivity().findViewById(R.id.fragment_real_sheet_layout);
+        if (property != null && containerSheetLayout != null) {
+            containerSheetLayout.setVisibility(View.VISIBLE);
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_real_sheet_layout, sheetFragment);
+            transaction.commit();
+        } else {
+            varTransaction.replace(R.id.fragment_list_properties, sheetFragment, "Replace PropertyList Fragment by SheetProperty Fragment according to item Click");
+            varTransaction.addToBackStack(null);
+            varTransaction.commit();
+        }
     }
 
 

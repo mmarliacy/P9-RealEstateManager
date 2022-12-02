@@ -41,7 +41,8 @@
             <AutoCompleteTextView
                 android:id="@+id/filter_type_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/ftl_height"
+                android:textSize="@dimen/ftl_textSize"
                 android:inputType="none"
                 tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +72,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_rooms_min_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/frml_height"
+                android:textSize="@dimen/frml_textSize"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +114,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_area_min_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/faml_height"
+                android:textSize="@dimen/faml_textSize"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,7 +144,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_area_max_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/famax_height"
+                android:textSize="@dimen/famax_textSize"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -171,7 +175,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_price_min_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/fpmin_height"
+                android:textSize="@dimen/fpmin_textSize"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -202,7 +207,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_price_max_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/fpmax_height"
+                android:textSize="@dimen/fpmax_textSize"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -233,7 +239,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_on_sale_since_min_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/fossmin_height"
+                android:textSize="@dimen/fossmin_textSize"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -251,7 +258,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/filter_on_sale_since_max_input"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/fossmax_height"
+                android:textSize="@dimen/fossmax_textSize"
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 

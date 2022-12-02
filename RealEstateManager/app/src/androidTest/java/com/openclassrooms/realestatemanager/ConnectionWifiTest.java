@@ -39,7 +39,7 @@ public class ConnectionWifiTest {
             //get the devices location
             e.printStackTrace();
         }
-        onView(withId(R.id.main_container)).check(matches(isDisplayed()));
+        onView(withId(R.id.fragment_list_properties)).check(matches(isDisplayed()));
         isInternetAvailable(mActivityRule.getActivity().getApplicationContext());
         assertEquals(true, Utils.isInternetAvailable(mActivityRule.getActivity().getApplicationContext()));
         assertTrue(isInternetAvailable(mActivityRule.getActivity().getApplicationContext()));

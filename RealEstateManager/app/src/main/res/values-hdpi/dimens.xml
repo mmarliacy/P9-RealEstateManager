@@ -73,63 +73,62 @@
     --------------------------------
     Id --> form_property_description_title
     <dimen name="fpdt_marginStart">10dip</dimen>
-    <dimen name="fpdt_marginTop">30dip</dimen>
+    <dimen name="fpdt_marginTop">50dip</dimen>
     <dimen name="fpdt_textSize">20sp</dimen>
 
 
     ---** TextInputLayout/TextInputEditText **---
     Id --> form_property_seller_layout
     <dimen name="fpsl_margin">10dip</dimen>
-    <dimen name="fpsl_height">80dip</dimen>
-    <dimen name="fpsl_textSize">20sp</dimen>
+    <dimen name="fpsl_height">60dip</dimen>
+    <dimen name="fpsl_textSize">13sp</dimen>
 
     --------------------------------
     Id --> form_property_name_layout
     <dimen name="fpnl_margin">10dip</dimen>
-    <dimen name="fpnl_height">80dip</dimen>
-    <dimen name="fpnl_textSize">20sp</dimen>
+    <dimen name="fpnl_height">60dip</dimen>
+    <dimen name="fpnl_textSize">13sp</dimen>
     --------------------------------
     Id --> form_property_type_layout
     <dimen name="fptl_margin">10dip</dimen>
-    <dimen name="fptl_height">80dip</dimen>
-    <dimen name="fptl_textSize">20sp</dimen>
+    <dimen name="fptl_height">60dip</dimen>
+    <dimen name="fptl_textSize">13sp</dimen>
 
     --------------------------------
     Id --> form_property_price_layout
     <dimen name="fppl_margin">10dip</dimen>
-    <dimen name="fppl_height">80dip</dimen>
-    <dimen name="fppl_textSize">20sp</dimen>
+    <dimen name="fppl_height">60dip</dimen>
+    <dimen name="fppl_textSize">13sp</dimen>
     --------------------------------
     Id --> form_property_land_area_layout
     <dimen name="fplal_margin">10dip</dimen>
-    <dimen name="fplal_height">80dip</dimen>
-    <dimen name="fplal_textSize">20sp</dimen>
+    <dimen name="fplal_height">60dip</dimen>
+    <dimen name="fplal_textSize">13sp</dimen>
     --------------------------------
     Id --> form_address_layout
     <dimen name="fal_margin">10dip</dimen>
-    <dimen name="fal_height">80dip</dimen>
-    <dimen name="fal_textSize">20sp</dimen>
+    <dimen name="fal_height">60dip</dimen>
+    <dimen name="fal_textSize">13sp</dimen>
     --------------------------------
     Id --> form_for_sale_since_layout
-    <dimen name="ffssl_marginStart">60dip</dimen>
+    <dimen name="ffssl_marginStart">30dip</dimen>
     <dimen name="ffssl_marginTop">20dip</dimen>
     <dimen name="ffssl_marginEnd">10dip</dimen>
     <dimen name="ffssl_marginBottom">10dip</dimen>
-    <dimen name="ffssl_height">80dip</dimen>
-    <dimen name="ffssl_textSize">20sp</dimen>
+    <dimen name="ffssl_height">60dip</dimen>
+    <dimen name="ffssl_textSize">13sp</dimen>
     --------------------------------
     Id --> form_sold_out_since_layout
-    <dimen name="fsosl_marginStart">60dip</dimen>
+    <dimen name="fsosl_marginStart">27dip</dimen>
     <dimen name="fsosl_marginTop">20dip</dimen>
     <dimen name="fsosl_marginEnd">10dip</dimen>
     <dimen name="fsosl_marginBottom">10dip</dimen>
-    <dimen name="fsosl_height">80dip</dimen>
-    <dimen name="fsosl_textSize">20sp</dimen>
+    <dimen name="fsosl_height">60dip</dimen>
+    <dimen name="fsosl_textSize">13sp</dimen>
     --------------------------------
     Id --> form_property_description_layout
     <dimen name="fpdl_margin">10dip</dimen>
-    <dimen name="fpdl_height">100dip</dimen>
-    <dimen name="fpdl_textSize">20sp</dimen>
+    <dimen name="fpdl_textSize">13sp</dimen>
 
 
     ---** Cardview **---
@@ -152,7 +151,7 @@
     ---** Button **---
     Id --> button_more_total_rooms
     <dimen name="bmtr_width">50dip</dimen>
-    <dimen name="bmtr_marginStart">90dip</dimen>
+    <dimen name="bmtr_marginStart">20dip</dimen>
     <dimen name="bmtr_marginTop">5dip</dimen>
     <dimen name="bmtr_textSize">30sp</dimen>
     <dimen name="bmtr_elevation">10dip</dimen>
@@ -173,15 +172,15 @@
 
     ---** ImageButton **---
     Id --> form_confirm_cancelling
-    <dimen name="fcc_width">60dip</dimen>
-    <dimen name="fcc_height">60dip</dimen>
+    <dimen name="fcc_width">40dip</dimen>
+    <dimen name="fcc_height">40dip</dimen>
     <dimen name="fcc_marginTop">30dip</dimen>
     <dimen name="fcc_marginEnd">20dip</dimen>
     <dimen name="fcc_marginBottom">30dip</dimen>
     --------------------------------
     Id --> form_confirm_adding
-    <dimen name="fca_width">60dip</dimen>
-    <dimen name="fca_height">60dip</dimen>
+    <dimen name="fca_width">40dip</dimen>
+    <dimen name="fca_height">40dip</dimen>
     <dimen name="fca_marginStart">40dip</dimen>
     <dimen name="fca_marginTop">30dip</dimen>
     <dimen name="fca_marginEnd">20dip</dimen>
@@ -195,7 +194,7 @@
     Id --> chip_item
     <dimen name="ci_width">150dip</dimen>
     <dimen name="ci_height">70dip</dimen>
-    <dimen name="ci_textSize">18sp</dimen>
+    <dimen name="ci_textSize">14sp</dimen>
     <dimen name="ci_iconStartPadding">10dip</dimen>
 
     ------------------------------------------------------------------------------------------------
@@ -229,7 +228,7 @@
 
     ---** TextView **---
     Id --> tv_ddm_item
-    <dimen name="tdi_textSize">20sp</dimen>
+    <dimen name="tdi_textSize">13sp</dimen>
     <dimen name="tdi_padding">10dip</dimen>
     <dimen name="tdi_marginStart">10dip</dimen>
     <dimen name="tdi_drawablePadding">15dip</dimen>
@@ -240,37 +239,37 @@
     ---** TextView **---
     Id --> type_filter_title
     <dimen name="tft_marginStart">20dip</dimen>
-    <dimen name="tft_textSize">15sp</dimen>
+    <dimen name="tft_textSize">13sp</dimen>
     --------------------------------
     Id --> title_at_least1
     <dimen name="tal_marginStart">20dip</dimen>
     <dimen name="tal_marginTop">70dip</dimen>
-    <dimen name="tal_textSize">15sp</dimen>
+    <dimen name="tal_textSize">13sp</dimen>
     --------------------------------
     Id --> title_filter_rooms
     <dimen name="tfr_marginStart">20dip</dimen>
-    <dimen name="tfr_textSize">15sp</dimen>
+    <dimen name="tfr_textSize">13sp</dimen>
     --------------------------------
     Id --> area_filter_title
     <dimen name="aft_marginStart">20dip</dimen>
     <dimen name="aft_marginTop">70dip</dimen>
-    <dimen name="aft_textSize">15sp</dimen>
+    <dimen name="aft_textSize">13sp</dimen>
     --------------------------------
     Id --> title_filter_and1
-    <dimen name="tfa_textSize">15sp</dimen>
+    <dimen name="tfa_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_price_title
     <dimen name="fpt_marginStart">20dip</dimen>
     <dimen name="fpt_marginTop">70dip</dimen>
-    <dimen name="fpt_textSize">15sp</dimen>
+    <dimen name="fpt_textSize">13sp</dimen>
     --------------------------------
     Id --> title_filter_and2
-    <dimen name="tfa2_textSize">15sp</dimen>
+    <dimen name="tfa2_textSize">13sp</dimen>
     --------------------------------
     Id --> title_filter_on_sale_since
     <dimen name="tfoss_marginStart">20dip</dimen>
     <dimen name="tfoss_marginTop">70dip</dimen>
-    <dimen name="tfoss_textSize">15sp</dimen>
+    <dimen name="tfoss_textSize">13sp</dimen>
 
 
     ---** TextInputLayout/TextInputEditText **---
@@ -278,47 +277,47 @@
     <dimen name="ftl_width">0dip</dimen>
     <dimen name="ftl_marginStart">20dip</dimen>
     <dimen name="ftl_marginEnd">5dip</dimen>
-    <dimen name="ftl_height">80dip</dimen>
-    <dimen name="ftl_textSize">20sp</dimen>
+    <dimen name="ftl_height">50dip</dimen>
+    <dimen name="ftl_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_rooms_min_layout
     <dimen name="frml_width">100dip</dimen>
-    <dimen name="frml_height">80dip</dimen>
-    <dimen name="frml_textSize">20sp</dimen>
+    <dimen name="frml_height">50dip</dimen>
+    <dimen name="frml_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_area_min_layout
-    <dimen name="faml_width">100dip</dimen>
-    <dimen name="faml_height">80dip</dimen>
-    <dimen name="faml_textSize">20sp</dimen>
+    <dimen name="faml_width">70dip</dimen>
+    <dimen name="faml_height">50dip</dimen>
+    <dimen name="faml_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_area_max_layout
-    <dimen name="famax_width">100dip</dimen>
+    <dimen name="famax_width">70dip</dimen>
     <dimen name="famax_marginEnd">5dip</dimen>
-    <dimen name="famax_height">80dip</dimen>
-    <dimen name="famax_textSize">20sp</dimen>
+    <dimen name="famax_height">50dip</dimen>
+    <dimen name="famax_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_price_min_layout
-    <dimen name="fpmin_width">100dip</dimen>
-    <dimen name="fpmin_height">80dip</dimen>
-    <dimen name="fpmin_textSize">20sp</dimen>
+    <dimen name="fpmin_width">70dip</dimen>
+    <dimen name="fpmin_height">50dip</dimen>
+    <dimen name="fpmin_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_price_max_layout
-    <dimen name="fpmax_width">100dip</dimen>
+    <dimen name="fpmax_width">70dip</dimen>
     <dimen name="fpmax_marginEnd">5dip</dimen>
-    <dimen name="fpmax_height">80dip</dimen>
-    <dimen name="fpmax_textSize">20sp</dimen>
+    <dimen name="fpmax_height">50dip</dimen>
+    <dimen name="fpmax_textSize">13sp</dimen>
     --------------------------------
     Id --> filter_on_sale_since_min_layout
-    <dimen name="fossmin_width">120dip</dimen>
-    <dimen name="fossmin_marginStart">10dip</dimen>
-    <dimen name="fossmin_height">80dip</dimen>
-    <dimen name="fossmin_textSize">20sp</dimen>
+    <dimen name="fossmin_width">90dip</dimen>
+    <dimen name="fossmin_marginStart">20dip</dimen>
+    <dimen name="fossmin_height">50dip</dimen>
+    <dimen name="fossmin_textSize">10sp</dimen>
     --------------------------------
     Id --> filter_on_sale_since_max_layout
-    <dimen name="fossmax_width">120dip</dimen>
+    <dimen name="fossmax_width">90dip</dimen>
     <dimen name="fossmax_marginEnd">5dip</dimen>
-    <dimen name="fossmax_height">80dip</dimen>
-    <dimen name="fossmax_textSize">20sp</dimen>
+    <dimen name="fossmax_height">50dip</dimen>
+    <dimen name="fossmax_textSize">10sp</dimen>
 
 
     ---** CheckBox **---
@@ -338,16 +337,16 @@
 
     ---** Cardview **---
     Id --> container_interest_item
-    <dimen name="cii_width">100dip</dimen>
-    <dimen name="cii_height">100dip</dimen>
+    <dimen name="cii_width">90dip</dimen>
+    <dimen name="cii_height">90dip</dimen>
     <dimen name="cii_margin">10dip</dimen>
     <dimen name="cii_cardCornerRadius">15dip</dimen>
     <dimen name="cii_cardElevation">10dip</dimen>
 
     ---** Imageview **---
     Id --> interest_icon
-    <dimen name="ii_width">40dip</dimen>
-    <dimen name="ii_height">40dip</dimen>
+    <dimen name="ii_width">30dip</dimen>
+    <dimen name="ii_height">30dip</dimen>
     <dimen name="ii_marginTop">20dip</dimen>
 
     ---** TextView **---
@@ -365,8 +364,8 @@
 
     ---** Image View **---
     Id --> added_photo
-    <dimen name="ap_width">100dip</dimen>
-    <dimen name="ap_height">100dip</dimen>
+    <dimen name="ap_width">80dip</dimen>
+    <dimen name="ap_height">80dip</dimen>
     <dimen name="ap_padding">2dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -374,14 +373,14 @@
 
     ---** Cardview **---
     Id --> item_cardview
-    <dimen name="ic_height">100dip</dimen>
+    <dimen name="ic_height">80dip</dimen>
     <dimen name="ic_elevation">10dip</dimen>
     <dimen name="ic_margin">10dip</dimen>
     <dimen name="ic_cornerRadius">15dip</dimen>
 
     ---** Image View **---
     Id --> prop_photo
-    <dimen name="pp_width">120dip</dimen>
+    <dimen name="pp_width">100dip</dimen>
     --------------------------------
     Id --> availability_icon
     <dimen name="ai_width">30dip</dimen>
@@ -391,16 +390,16 @@
     ---** TextView **---
     Id --> prop_name
     <dimen name="pn_marginLeft">10dip</dimen>
-    <dimen name="pn_textSize">20sp</dimen>
+    <dimen name="pn_textSize">16sp</dimen>
     --------------------------------
     Id --> prop_place
     <dimen name="ppl_marginLeft">10dip</dimen>
-    <dimen name="ppl_textSize">20sp</dimen>
+    <dimen name="ppl_textSize">10sp</dimen>
     --------------------------------
     Id --> prop_cost
     <dimen name="pc_marginRight">10dip</dimen>
     <dimen name="pc_marginBottom">10dip</dimen>
-    <dimen name="pc_textSize">18sp</dimen>
+    <dimen name="pc_textSize">12sp</dimen>
 
     ---** View **---
     Id --> line
@@ -420,8 +419,8 @@
 
     ---** ImageButton **---
     Id --> first_item
-    <dimen name="fi_width">100dip</dimen>
-    <dimen name="fi_height">100dip</dimen>
+    <dimen name="fi_width">80dip</dimen>
+    <dimen name="fi_height">80dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
     //-- PROPERTY_LIST_HOME_SCREEN -->>
@@ -434,24 +433,24 @@
     ---** Floating Action Button **---
     Id --> create_property_fab_button
     <dimen name="cpfb_margin">30dip</dimen>
-    <dimen name="cpfb_fabCustomSize">70dip</dimen>
-    <dimen name="cpfb_maxImageSize">40dip</dimen>
+    <dimen name="cpfb_fabCustomSize">50dip</dimen>
+    <dimen name="cpfb_maxImageSize">30dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
     //-- REAL_ESTATE_SHEET_LAYOUT -->>
 
     ---** Collapsing Toolbar Layout **---
     Id -->collapsing_toolbar_layout
-    <dimen name="ctl_height">300dip</dimen>
+    <dimen name="ctl_height">250dip</dimen>
 
     ---** TextView **---
     Id --> seller_name
     <dimen name="sn_marginEnd">10dip</dimen>
-    <dimen name="sn_textSize">20sp</dimen>
+    <dimen name="sn_textSize">18sp</dimen>
     --------------------------------
     Id --> sheet_prop_cost
     <dimen name="spc_marginEnd">10dip</dimen>
-    <dimen name="spc_textSize">30sp</dimen>
+    <dimen name="spc_textSize">20sp</dimen>
     --------------------------------
     Id --> sheet_prop_status
     <dimen name="sps_marginEnd">10dip</dimen>
@@ -459,46 +458,46 @@
     --------------------------------
     Id --> sheet_prop_properties
     <dimen name="spp_marginStart">10dip</dimen>
-    <dimen name="spp_textSize">20sp</dimen>
+    <dimen name="spp_textSize">18sp</dimen>
     --------------------------------
     Id --> sheet_prop_address
     <dimen name="spa_marginStart">10dip</dimen>
-    <dimen name="spa_textSize">20sp</dimen>
+    <dimen name="spa_textSize">16sp</dimen>
     --------------------------------
     Id --> sheet_prop_description_title
     <dimen name="spdt_marginStart">10dip</dimen>
     <dimen name="spdt_marginTop">20dip</dimen>
-    <dimen name="spdt_textSize">20sp</dimen>
+    <dimen name="spdt_textSize">16sp</dimen>
     --------------------------------
     Id --> sheet_prop_description
     <dimen name="spd_margin">15dip</dimen>
-    <dimen name="spd_textSize">18sp</dimen>
+    <dimen name="spd_textSize">16sp</dimen>
     --------------------------------
     Id --> sheet_prop_around_title
     <dimen name="spat_marginStart">10dip</dimen>
     <dimen name="spat_marginTop">20dip</dimen>
-    <dimen name="spat_textSize">20sp</dimen>
+    <dimen name="spat_textSize">18sp</dimen>
     --------------------------------
     Id --> sheet_location_property_title
     <dimen name="slpt_marginStart">10dip</dimen>
     <dimen name="slpt_marginTop">20dip</dimen>
-    <dimen name="slpt_textSize">20sp</dimen>
+    <dimen name="slpt_textSize">18sp</dimen>
     --------------------------------
     Id --> property_for_sale_since_title
     <dimen name="pfsst_marginTop">10dip</dimen>
-    <dimen name="pfsst_textSize">20sp</dimen>
+    <dimen name="pfsst_textSize">18sp</dimen>
     --------------------------------
     Id --> property_for_sale_since
     <dimen name="pfss_marginTop">10dip</dimen>
-    <dimen name="pfss_textSize">18sp</dimen>
+    <dimen name="pfss_textSize">16sp</dimen>
     --------------------------------
     Id --> property_sold_since_title
     <dimen name="psst_marginTop">10dip</dimen>
-    <dimen name="psst_textSize">20sp</dimen>
+    <dimen name="psst_textSize">18sp</dimen>
     --------------------------------
     Id --> property_sold_since
     <dimen name="pss_marginTop">10dip</dimen>
-    <dimen name="pss_textSize">18sp</dimen>
+    <dimen name="pss_textSize">16sp</dimen>
 
     ---** LinearLayout **---
     Id --> container_duration_sale
@@ -591,61 +590,73 @@
     --------------------------------
     Id --> form_property_description_title
     <dimen name="fpdt_marginStart_land">10dip</dimen>
-    <dimen name="fpdt_marginTop_land">30dip</dimen>
+    <dimen name="fpdt_marginTop_land">50dip</dimen>
     <dimen name="fpdt_textSize_land">20sp</dimen>
 
 
     ---** TextInputLayout/TextInputEditText **---
     Id --> form_property_seller_layout
     <dimen name="fpsl_margin_land">10dip</dimen>
-    <dimen name="fpsl_height_land">80dip</dimen>
-    <dimen name="fpsl_textSize_land">20sp</dimen>
+    <dimen name="fpsl_height_land">60dip</dimen>
+    <dimen name="fpsl_textSize_land">13sp</dimen>
+
     --------------------------------
     Id --> form_property_name_layout
     <dimen name="fpnl_margin_land">10dip</dimen>
-    <dimen name="fpnl_height_land">80dip</dimen>
-    <dimen name="fpnl_textSize_land">20sp</dimen>
+    <dimen name="fpnl_height_land">60dip</dimen>
+    <dimen name="fpnl_textSize_land">13sp</dimen>
     --------------------------------
     Id --> form_property_type_layout
     <dimen name="fptl_margin_land">10dip</dimen>
-    <dimen name="fptl_height_land">80dip</dimen>
-    <dimen name="fptl_textSize_land">20sp</dimen>
+    <dimen name="fptl_height_land">60dip</dimen>
+    <dimen name="fptl_textSize_land">13sp</dimen>
+
     --------------------------------
     Id --> form_property_price_layout
     <dimen name="fppl_margin_land">10dip</dimen>
-    <dimen name="fppl_height_land">80dip</dimen>
-    <dimen name="fppl_textSize_land">20sp</dimen>
+    <dimen name="fppl_height_land">60dip</dimen>
+    <dimen name="fppl_textSize_land">13sp</dimen>
     --------------------------------
     Id --> form_property_land_area_layout
     <dimen name="fplal_margin_land">10dip</dimen>
-    <dimen name="fplal_height_land">80dip</dimen>
-    <dimen name="fplal_textSize_land">20sp</dimen>
+    <dimen name="fplal_height_land">60dip</dimen>
+    <dimen name="fplal_textSize_land">13sp</dimen>
     --------------------------------
     Id --> form_address_layout
     <dimen name="fal_margin_land">10dip</dimen>
-    <dimen name="fal_height_land">80dip</dimen>
-    <dimen name="fal_textSize_land">20sp</dimen>
+    <dimen name="fal_height_land">60dip</dimen>
+    <dimen name="fal_textSize_land">13sp</dimen>
     --------------------------------
     Id --> form_for_sale_since_layout
-    <dimen name="ffssl_marginStart_land">60dip</dimen>
+    <dimen name="ffssl_marginStart_land">30dip</dimen>
     <dimen name="ffssl_marginTop_land">20dip</dimen>
     <dimen name="ffssl_marginEnd_land">10dip</dimen>
     <dimen name="ffssl_marginBottom_land">10dip</dimen>
-    <dimen name="ffssl_height_land">80dip</dimen>
-    <dimen name="ffssl_textSize_land">20sp</dimen>
+    <dimen name="ffssl_height_land">60dip</dimen>
+    <dimen name="ffssl_textSize_land">13sp</dimen>
     --------------------------------
     Id --> form_sold_out_since_layout
-    <dimen name="fsosl_marginStart_land">60dip</dimen>
+    <dimen name="fsosl_marginStart_land">27dip</dimen>
     <dimen name="fsosl_marginTop_land">20dip</dimen>
     <dimen name="fsosl_marginEnd_land">10dip</dimen>
     <dimen name="fsosl_marginBottom_land">10dip</dimen>
-    <dimen name="fsosl_height_land">80dip</dimen>
-    <dimen name="fsosl_textSize_land">20sp</dimen>
+    <dimen name="fsosl_height_land">60dip</dimen>
+    <dimen name="fsosl_textSize_land">13sp</dimen>
     --------------------------------
     Id --> form_property_description_layout
     <dimen name="fpdl_margin_land">10dip</dimen>
-    <dimen name="fpdl_height_land">90dip</dimen>
-    <dimen name="fpdl_textSize_land">20sp</dimen>
+    <dimen name="fpdl_textSize_land">13sp</dimen>
+
+
+    ---** Cardview **---
+    Id --> container_total_rooms
+    <dimen name="ctr_width_land">50dip</dimen>
+    <dimen name="ctr_height_land">50dip</dimen>
+    <dimen name="ctr_marginStart_land">30dip</dimen>
+    <dimen name="ctr_marginTop_land">10dip</dimen>
+    <dimen name="ctr_marginBottom_land">10dip</dimen>
+    <dimen name="ctr_cardCornerRadius_land">15dip</dimen>
+    <dimen name="ctr_elevation_land">10dip</dimen>
 
     ---** ImageButton **---
     Id --> next_item
@@ -657,7 +668,7 @@
     ---** Button **---
     Id --> button_more_total_rooms
     <dimen name="bmtr_width_land">50dip</dimen>
-    <dimen name="bmtr_marginStart_land">90dip</dimen>
+    <dimen name="bmtr_marginStart_land">20dip</dimen>
     <dimen name="bmtr_marginTop_land">5dip</dimen>
     <dimen name="bmtr_textSize_land">30sp</dimen>
     <dimen name="bmtr_elevation_land">10dip</dimen>
@@ -672,21 +683,21 @@
 
     ---** ChipGroup / Chip **---
     Id --> chip_group_form_list_interest
-    <dimen name="cgfli_height_land">200dip</dimen>
+    <dimen name="cgfli_height_land">150dip</dimen>
     <dimen name="cgfli_marginTop_land">10dip</dimen>
 
 
     ---** ImageButton **---
     Id --> form_confirm_cancelling
-    <dimen name="fcc_width_land">60dip</dimen>
-    <dimen name="fcc_height_land">60dip</dimen>
+    <dimen name="fcc_width_land">40dip</dimen>
+    <dimen name="fcc_height_land">40dip</dimen>
     <dimen name="fcc_marginTop_land">30dip</dimen>
     <dimen name="fcc_marginEnd_land">20dip</dimen>
     <dimen name="fcc_marginBottom_land">30dip</dimen>
     --------------------------------
     Id --> form_confirm_adding
-    <dimen name="fca_width_land">60dip</dimen>
-    <dimen name="fca_height_land">60dip</dimen>
+    <dimen name="fca_width_land">40dip</dimen>
+    <dimen name="fca_height_land">40dip</dimen>
     <dimen name="fca_marginStart_land">40dip</dimen>
     <dimen name="fca_marginTop_land">30dip</dimen>
     <dimen name="fca_marginEnd_land">20dip</dimen>
@@ -694,18 +705,18 @@
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- CHIP_ITEM -->>
+    //-- CHIP_ITEM (LAND) -->>
 
     ---** Chip **---
     Id --> chip_item
     <dimen name="ci_width_land">150dip</dimen>
     <dimen name="ci_height_land">70dip</dimen>
-    <dimen name="ci_textSize_land">18sp</dimen>
+    <dimen name="ci_textSize_land">14sp</dimen>
     <dimen name="ci_iconStartPadding_land">10dip</dimen>
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- CONNECTION_IS_OFF -->>
+    //-- CONNECTION_IS_OFF (LAND) -->>
 
     ---** ImageView **---
     Id --> no_wifi_connection_icon
@@ -730,7 +741,7 @@
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- DROPDOWN_MENU_TYPE -->>
+    //-- DROPDOWN_MENU_TYPE (LAND) -->>
 
     ---** TextView **---
     Id --> tv_ddm_item
@@ -740,91 +751,90 @@
     <dimen name="tdi_drawablePadding_land">15dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- FILTER_SEARCH_FRAGMENT -->>
+    //-- FILTER_SEARCH_FRAGMENT (LAND)-->>
 
     ---** TextView **---
     Id --> type_filter_title
     <dimen name="tft_marginStart_land">20dip</dimen>
-    <dimen name="tft_textSize_land">15sp</dimen>
+    <dimen name="tft_textSize_land">13sp</dimen>
     --------------------------------
     Id --> title_at_least1
     <dimen name="tal_marginStart_land">20dip</dimen>
     <dimen name="tal_marginTop_land">70dip</dimen>
-    <dimen name="tal_textSize_land">15sp</dimen>
+    <dimen name="tal_textSize_land">13sp</dimen>
     --------------------------------
     Id --> title_filter_rooms
     <dimen name="tfr_marginStart_land">20dip</dimen>
-    <dimen name="tfr_textSize_land">15sp</dimen>
+    <dimen name="tfr_textSize_land">13sp</dimen>
     --------------------------------
     Id --> area_filter_title
     <dimen name="aft_marginStart_land">20dip</dimen>
     <dimen name="aft_marginTop_land">70dip</dimen>
-    <dimen name="aft_textSize_land">15sp</dimen>
+    <dimen name="aft_textSize_land">13sp</dimen>
     --------------------------------
     Id --> title_filter_and1
-    <dimen name="tfa_textSize_land">15sp</dimen>
+    <dimen name="tfa_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_price_title
     <dimen name="fpt_marginStart_land">20dip</dimen>
     <dimen name="fpt_marginTop_land">70dip</dimen>
-    <dimen name="fpt_textSize_land">15sp</dimen>
+    <dimen name="fpt_textSize_land">13sp</dimen>
     --------------------------------
     Id --> title_filter_and2
-    <dimen name="tfa2_textSize_land">15sp</dimen>
+    <dimen name="tfa2_textSize_land">13sp</dimen>
     --------------------------------
     Id --> title_filter_on_sale_since
     <dimen name="tfoss_marginStart_land">20dip</dimen>
     <dimen name="tfoss_marginTop_land">70dip</dimen>
-    <dimen name="tfoss_textSize_land">15sp</dimen>
+    <dimen name="tfoss_textSize_land">13sp</dimen>
 
 
     ---** TextInputLayout/TextInputEditText **---
     Id --> filter_type_layout
     <dimen name="ftl_width_land">0dip</dimen>
-    <dimen name="ftl_marginStart_land">20dip</dimen>
+    <dimen name="ftl_marginStart_land">30dip</dimen>
     <dimen name="ftl_marginEnd_land">5dip</dimen>
-    <dimen name="ftl_height_land">80dip</dimen>
-    <dimen name="ftl_textSize_land">20sp</dimen>
+    <dimen name="ftl_height_land">50dip</dimen>
+    <dimen name="ftl_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_rooms_min_layout
     <dimen name="frml_width_land">100dip</dimen>
-    <dimen name="frml_height_land">80dip</dimen>
-    <dimen name="frml_textSize_land">20sp</dimen>
+    <dimen name="frml_height_land">50dip</dimen>
+    <dimen name="frml_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_area_min_layout
     <dimen name="faml_width_land">100dip</dimen>
-    <dimen name="faml_height_land">80dip</dimen>
-    <dimen name="faml_textSize_land">20sp</dimen>
+    <dimen name="faml_height_land">50dip</dimen>
+    <dimen name="faml_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_area_max_layout
     <dimen name="famax_width_land">100dip</dimen>
-    <dimen name="famax_marginEnd_land">5dip</dimen>
-    <dimen name="famax_height_land">80dip</dimen>
-    <dimen name="famax_textSize_land">20sp</dimen>
+    <dimen name="famax_marginEnd_land">100dip</dimen>
+    <dimen name="famax_height_land">50dip</dimen>
+    <dimen name="famax_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_price_min_layout
     <dimen name="fpmin_width_land">100dip</dimen>
-    <dimen name="fpmin_height_land">80dip</dimen>
-    <dimen name="fpmin_textSize_land">20sp</dimen>
+    <dimen name="fpmin_height_land">50dip</dimen>
+    <dimen name="fpmin_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_price_max_layout
     <dimen name="fpmax_width_land">100dip</dimen>
-    <dimen name="fpmax_marginEnd_land">5dip</dimen>
-    <dimen name="fpmax_height_land">80dip</dimen>
-    <dimen name="fpmax_textSize_land">20sp</dimen>
+    <dimen name="fpmax_marginEnd_land">100dip</dimen>
+    <dimen name="fpmax_height_land">50dip</dimen>
+    <dimen name="fpmax_textSize_land">13sp</dimen>
     --------------------------------
     Id --> filter_on_sale_since_min_layout
-    <dimen name="fossmin_width_land">120dip</dimen>
-    <dimen name="fossmin_marginStart_land">10dip</dimen>
-    <dimen name="fossmin_height_land">80dip</dimen>
-    <dimen name="fossmin_textSize_land">20sp</dimen>
+    <dimen name="fossmin_width_land">110dip</dimen>
+    <dimen name="fossmin_marginStart_land">20dip</dimen>
+    <dimen name="fossmin_height_land">50dip</dimen>
+    <dimen name="fossmin_textSize_land">10sp</dimen>
     --------------------------------
     Id --> filter_on_sale_since_max_layout
-    <dimen name="fossmax_width_land">120dip</dimen>
-    <dimen name="fossmax_marginEnd_land">5dip</dimen>
-    <dimen name="fossmax_height_land">80dip</dimen>
-    <dimen name="fossmax_textSize_land">20sp</dimen>
-
+    <dimen name="fossmax_width_land">110dip</dimen>
+    <dimen name="fossmax_marginEnd_land">100dip</dimen>
+    <dimen name="fossmax_height_land">50dip</dimen>
+    <dimen name="fossmax_textSize_land">10sp</dimen>
 
     ---** CheckBox **---
     Id --> filter_sold_input
@@ -834,7 +844,7 @@
 
     ---** Button **---
     Id --> button_search
-    <dimen name="bs_marginTop_land">60dip</dimen>
+    <dimen name="bs_marginTop_land">40dip</dimen>
     <dimen name="bs_textSize_land">20sp</dimen>
 
     ------------------------------------------------------------------------------------------------
@@ -843,27 +853,24 @@
 
     ---** Cardview **---
     Id --> container_interest_item
-    <dimen name="cii_width_land">100dip</dimen>
-    <dimen name="cii_height_land">100dip</dimen>
+    <dimen name="cii_width_land">90dip</dimen>
+    <dimen name="cii_height_land">90dip</dimen>
     <dimen name="cii_margin_land">10dip</dimen>
     <dimen name="cii_cardCornerRadius_land">15dip</dimen>
     <dimen name="cii_cardElevation_land">10dip</dimen>
 
-
     ---** Imageview **---
     Id --> interest_icon
-    <dimen name="ii_width_land">40dip</dimen>
-    <dimen name="ii_height_land">40dip</dimen>
+    <dimen name="ii_width_land">30dip</dimen>
+    <dimen name="ii_height_land">30dip</dimen>
     <dimen name="ii_marginTop_land">20dip</dimen>
-
 
     ---** TextView **---
     Id --> interest_name
     <dimen name="in_textSize_land">15sp</dimen>
-
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- ITEM_PHOTO -->>
+    //-- ITEM_PHOTO (LAND)-->>
 
     ---** LinearLayout **---
     Id --> container_added_photo
@@ -872,8 +879,8 @@
 
     ---** Image View **---
     Id --> added_photo
-    <dimen name="ap_width_land">100dip</dimen>
-    <dimen name="ap_height_land">100dip</dimen>
+    <dimen name="ap_width_land">80dip</dimen>
+    <dimen name="ap_height_land">80dip</dimen>
     <dimen name="ap_padding_land">2dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
@@ -930,8 +937,8 @@
 
     ---** ImageButton **---
     Id --> first_item
-    <dimen name="fi_width_land">100dip</dimen>
-    <dimen name="fi_height_land">100dip</dimen>
+    <dimen name="fi_width_land">80dip</dimen>
+    <dimen name="fi_height_land">80dip</dimen>
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
     //-- PROPERTY_LIST_HOME_SCREEN (LAND) -->>
@@ -952,16 +959,16 @@
 
     ---** Collapsing Toolbar Layout **---
     Id -->collapsing_toolbar_layout
-    <dimen name="ctl_height_land">300dip</dimen>
+    <dimen name="ctl_height_land">250dip</dimen>
 
     ---** TextView **---
     Id --> seller_name
     <dimen name="sn_marginEnd_land">10dip</dimen>
-    <dimen name="sn_textSize_land">20sp</dimen>
+    <dimen name="sn_textSize_land">18sp</dimen>
     --------------------------------
     Id --> sheet_prop_cost
     <dimen name="spc_marginEnd_land">10dip</dimen>
-    <dimen name="spc_textSize_land">25sp</dimen>
+    <dimen name="spc_textSize_land">20sp</dimen>
     --------------------------------
     Id --> sheet_prop_status
     <dimen name="sps_marginEnd_land">10dip</dimen>
@@ -969,46 +976,46 @@
     --------------------------------
     Id --> sheet_prop_properties
     <dimen name="spp_marginStart_land">10dip</dimen>
-    <dimen name="spp_textSize_land">20sp</dimen>
+    <dimen name="spp_textSize_land">18sp</dimen>
     --------------------------------
     Id --> sheet_prop_address
     <dimen name="spa_marginStart_land">10dip</dimen>
-    <dimen name="spa_textSize_land">20sp</dimen>
+    <dimen name="spa_textSize_land">16sp</dimen>
     --------------------------------
     Id --> sheet_prop_description_title
     <dimen name="spdt_marginStart_land">10dip</dimen>
     <dimen name="spdt_marginTop_land">20dip</dimen>
-    <dimen name="spdt_textSize_land">20sp</dimen>
+    <dimen name="spdt_textSize_land">16sp</dimen>
     --------------------------------
     Id --> sheet_prop_description
     <dimen name="spd_margin_land">15dip</dimen>
-    <dimen name="spd_textSize_land">18sp</dimen>
+    <dimen name="spd_textSize_land">16sp</dimen>
     --------------------------------
     Id --> sheet_prop_around_title
     <dimen name="spat_marginStart_land">10dip</dimen>
     <dimen name="spat_marginTop_land">20dip</dimen>
-    <dimen name="spat_textSize_land">20sp</dimen>
+    <dimen name="spat_textSize_land">18sp</dimen>
     --------------------------------
     Id --> sheet_location_property_title
     <dimen name="slpt_marginStart_land">10dip</dimen>
     <dimen name="slpt_marginTop_land">20dip</dimen>
-    <dimen name="slpt_textSize_land">20sp</dimen>
+    <dimen name="slpt_textSize_land">18sp</dimen>
     --------------------------------
     Id --> property_for_sale_since_title
     <dimen name="pfsst_marginTop_land">10dip</dimen>
-    <dimen name="pfsst_textSize_land">20sp</dimen>
+    <dimen name="pfsst_textSize_land">18sp</dimen>
     --------------------------------
     Id --> property_for_sale_since
     <dimen name="pfss_marginTop_land">10dip</dimen>
-    <dimen name="pfss_textSize_land">18sp</dimen>
+    <dimen name="pfss_textSize_land">16sp</dimen>
     --------------------------------
     Id --> property_sold_since_title
     <dimen name="psst_marginTop_land">10dip</dimen>
-    <dimen name="psst_textSize_land">20sp</dimen>
+    <dimen name="psst_textSize_land">18sp</dimen>
     --------------------------------
     Id --> property_sold_since
     <dimen name="pss_marginTop_land">10dip</dimen>
-    <dimen name="pss_textSize_land">18sp</dimen>
+    <dimen name="pss_textSize_land">16sp</dimen>
 
     ---** LinearLayout **---
     Id --> container_duration_sale
@@ -1020,9 +1027,8 @@
     Id --> container_sold_out_since
     <dimen name="csos_marginStart_land">10dip</dimen>
 
-
     ---** ImageView **---
     Id --> container_static_maps
-    <dimen name="csm_height_land">400dip</dimen>
+    <dimen name="csm_height_land">300dip</dimen>
     <dimen name="csm_marginTop_land">10dip</dimen>
 </resources>

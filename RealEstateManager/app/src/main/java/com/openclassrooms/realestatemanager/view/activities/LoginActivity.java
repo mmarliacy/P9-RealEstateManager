@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         List<UserModel> allUsers = new ArrayList<>(users);
         if (allUsers.size() != 0){
             for (UserModel user : allUsers){
-                if (!Objects.equals(user.getId(), userModel.getId())){
+                if (Objects.equals(user.getId(), userModel.getId())){
                     roomViewModel.getUser(userModel.getId());
                 } else {
                     roomViewModel.insertUser(userModel);

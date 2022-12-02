@@ -20,7 +20,8 @@
         android:titleTextColor="@color/white"
         android:background="@color/primary_dark"
         android:layout_height="match_parent"
-        app:title="@string/property_name" />
+        app:title="@string/property_name"
+        tools:targetApi="m" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

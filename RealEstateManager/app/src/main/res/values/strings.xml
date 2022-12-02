@@ -31,8 +31,8 @@
     <string name="add_lot_property_price_title">Price</string>
     <string name="add_lot_property_photo_title">Photos</string>
     <string name="title_search">Search</string>
-    <string name="title_type_filter">I\'m searching for</string>
-    <string name="title_filter_type">Type of property</string>
+    <string name="title_type_filter">I\'m searching</string>
+    <string name="title_filter_type">Type</string>
     <string name="title_with_at_least">With at least</string>
     <string name="title_filter_rooms">Rooms</string>
     <string name="title_and">and</string>

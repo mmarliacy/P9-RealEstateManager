@@ -45,7 +45,7 @@ public class PropertySheetFragment extends Fragment {
     /**
      * Data
      */
-    private static PropertyModel property;
+    public static PropertyModel property;
     static List<UserModel> allUsers ;
 
     /**
@@ -146,6 +146,7 @@ public class PropertySheetFragment extends Fragment {
         for (UserModel user : allUsers) {
             if (Objects.equals(user.getId(), pPropertyModel.getUserId())) {
                 sellerName.setText("By " + user.getName());
+                return;
             } else {
                 sellerName.setText("By Unknown Seller");
             }

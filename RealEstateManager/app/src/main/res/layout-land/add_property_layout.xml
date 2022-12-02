@@ -82,7 +82,8 @@
                 <AutoCompleteTextView
                     android:id="@+id/form_property_seller_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/fpsl_height_land"
+                    android:textSize="@dimen/fpsl_textSize_land"
                     tools:ignore="LabelFor" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +118,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_name_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="@dimen/fpnl_height_land"
+                    android:textSize="@dimen/fpnl_textSize_land"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -193,7 +195,8 @@
                 <AutoCompleteTextView
                     android:id="@+id/form_property_type_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fptl_height_land"
+                    android:textSize="@dimen/fptl_textSize_land"
                     android:inputType="none"
                     tools:ignore="LabelFor" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -229,7 +232,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_price_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/fppl_height_land"
+                    android:textSize="@dimen/fppl_textSize_land"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -265,7 +269,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_land_area_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/fplal_height_land"
+                    android:textSize="@dimen/fplal_textSize_land"
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -382,7 +387,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_address_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fal_height_land"
+                    android:textSize="@dimen/fal_textSize_land"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -437,7 +443,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_for_sale_since_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/ffssl_height_land"
+                    android:textSize="@dimen/ffssl_textSize_land"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -471,7 +478,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_sold_out_since_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fsosl_height_land"
+                    android:textSize="@dimen/fsosl_textSize_land"
                     android:inputType="none"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -500,7 +508,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/form_property_description_input"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="@dimen/fpdl_height_land"
+                    android:textSize="@dimen/fpdl_textSize_land"
                     android:gravity="top"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
