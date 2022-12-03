@@ -7,6 +7,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import java.util.Collections;
 import java.util.List;
 
 
@@ -309,16 +311,16 @@ public class PropertyModel implements Parcelable {
         if (values.containsKey("userId")) property.setUserId(values.getAsString("userId"));
         if (values.containsKey("name")) property.setName(values.getAsString("name"));
         if (values.containsKey("type")) property.setType(values.getAsString("type"));
-        if (values.containsKey("address")) property.setUserId(values.getAsString("address"));
-        if (values.containsKey("description")) property.setUserId(values.getAsString("description"));
-        if (values.containsKey("total_living_area")) property.setUserId(values.getAsString("total_living_area"));
-        if (values.containsKey("room_number")) property.setUserId(values.getAsString("room_number"));
-        if (values.containsKey("price")) property.setUserId(values.getAsString("price"));
-        if (values.containsKey("status")) property.setUserId(values.getAsString("status"));
-        if (values.containsKey("photos_list")) property.setUserId(values.getAsString("photos_list"));
-        if (values.containsKey("property_interest")) property.setUserId(values.getAsString("property_interest"));
-        if (values.containsKey("on_sale_date")) property.setUserId(values.getAsString("on_sale_date"));
-        if (values.containsKey("sold_date")) property.setUserId(values.getAsString("sold_date"));
+        if (values.containsKey("address")) property.setAddress(values.getAsString("address"));
+        if (values.containsKey("description")) property.setDescription(values.getAsString("description"));
+        if (values.containsKey("total_living_area")) property.setTotalLeavingArea(values.getAsString("total_living_area"));
+        if (values.containsKey("room_number")) property.setRooms(values.getAsString("room_number"));
+        if (values.containsKey("price")) property.setPrice(values.getAsString("price"));
+        if (values.containsKey("status")) property.setStatus(values.getAsString("status"));
+        if (values.containsKey("photos_list")) property.setPhotoProperty(Collections.singletonList(values.getAsString("photos_list")));
+        if (values.containsKey("property_interest")) property.setPropertyInterest(Collections.singletonList(values.getAsString("property_interest")));
+        if (values.containsKey("on_sale_date")) property.setOnSaleDate(values.getAsString("on_sale_date"));
+        if (values.containsKey("sold_date")) property.setSoldDate(values.getAsString("sold_date"));
         return property;
     }
 }

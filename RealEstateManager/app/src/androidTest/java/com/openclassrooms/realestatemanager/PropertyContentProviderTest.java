@@ -9,7 +9,6 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.net.Uri;
 
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -27,7 +26,7 @@ public class PropertyContentProviderTest {
     // FOR DATA
     private ContentResolver mContentResolver;
     // DATA SET FOR TEST
-    private static final long USER_ID = 7;
+    private static final long USER_ID = 1;
 
     @Before
     public void setUp() {
@@ -44,14 +43,14 @@ public class PropertyContentProviderTest {
         final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID),
                 null, null, null, null);
         assertThat(cursor, notNullValue());
-        assertThat(cursor.getCount(), is(3));
+        assertThat(cursor.getCount(), is(0));
         cursor.close();
     }
 
     @Test
-    public void insertAndGetItem() {
+    public void insertAndGetProperty() {
         // BEFORE : Adding demo item
-        final Uri userUri = mContentResolver.insert(PropertyContentProvider.URI_PROPERTY, generateItem());
+        mContentResolver.insert(PropertyContentProvider.URI_PROPERTY, generateItem());
         // TEST
         final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID),
                 null, null, null, null);
@@ -64,7 +63,6 @@ public class PropertyContentProviderTest {
     // ---
     private ContentValues generateItem() {
         final ContentValues values = new ContentValues();
-        values.put("userId", "1");
         values.put("name", "Chocolate");
         values.put("type", "Loft");
         values.put("address", "1900-1300 Bondsview Rd, Macon, GA 31217, États-Unis");
@@ -91,6 +89,7 @@ public class PropertyContentProviderTest {
                         )));
         values.put("onSaleDate", "24/11/2022");
         values.put("onSaleDate", "");
+        values.put("userId", "1");
         return values;
     }
 }

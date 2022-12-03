@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.openclassrooms.realestatemanager"
         minSdk 21
-        targetSdk 33
+        targetSdk 31
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -36,6 +36,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
+    }
+    configurations.all() { configuration ->
+        //exclude group: "com.google.protobuf", module: "protobuf-javalite"
+        exclude group: "com.google.protobuf", module: "protobuf-java"
     }
     buildToolsVersion '33.0.1'
     sourceSets {

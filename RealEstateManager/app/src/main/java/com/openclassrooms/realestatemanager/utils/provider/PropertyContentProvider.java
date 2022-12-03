@@ -12,9 +12,9 @@ import com.openclassrooms.realestatemanager.model.PropertyModel;
 
 public class PropertyContentProvider extends ContentProvider {
 
-    public static final String AUTHORITY = "com.openclassrooms.realestatemanager.utils.provider";
+    public static final String AUTHORITY = "com.openclassrooms.realestatemanager";
 
-    public static final String TABLE_NAME = PropertyModel.class.getSimpleName();
+    public static final String TABLE_NAME = "property_table";
 
     public static final Uri URI_PROPERTY = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
 
