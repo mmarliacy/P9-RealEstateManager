@@ -1,12 +1,12 @@
 package com.openclassrooms.realestatemanager;
 
-import static org.junit.Assert.assertEquals;
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import android.content.Context;
+import android.net.ConnectivityManager;
 
-import androidx.lifecycle.Lifecycle;
-import androidx.test.core.app.ActivityScenario;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-
-import com.openclassrooms.realestatemanager.view.activities.MainActivity_HomeScreen;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +16,8 @@ public class ConnectionWifiTest {
 
     @Test
     public void verifyIfWifiIsConnected() {
-        try (ActivityScenario<MainActivity_HomeScreen> scenario =
-                     ActivityScenario.launch(MainActivity_HomeScreen.class)) {
-            assertEquals(scenario.getState(), Lifecycle.State.RESUMED);
-        }
+        ConnectivityManager connectivityManager = ((ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE));
+        assertNotEquals( connectivityManager.getActiveNetworkInfo(), null);
+        assertTrue(connectivityManager.getActiveNetworkInfo().isConnected());
     }
 }

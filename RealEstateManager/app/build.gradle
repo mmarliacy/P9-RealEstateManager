@@ -60,13 +60,17 @@ dependencies {
     implementation 'androidx.test:monitor:1.6.0'
 
 
-    //-- UNIT TEST -->
+    //-- TESTS -->
     implementation 'androidx.test.ext:junit:1.1.4'
     testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
     androidTestImplementation 'androidx.test:rules:1.5.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.5.0'
+    androidTestImplementation 'org.robolectric:robolectric:4.7.3'
+    androidTestImplementation 'androidx.test.ext:truth:1.5.0'
+
 
     //-- GRAPHICS  -->
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -96,9 +100,7 @@ dependencies {
 
     //-- FIREBASE - FIRESTORE -->
     implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.9.2'
-    implementation 'com.google.firebase:firebase-firestore:24.4.1'
     implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.1'
 
     //-- Firebase UI -->

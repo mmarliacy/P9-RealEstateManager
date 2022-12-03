@@ -3,6 +3,19 @@
   <component name="AndroidTestResultsUserPreferences">
     <option name="androidTestResultsTableState">
       <map>
+        <entry key="-2040389206">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="Duration" value="90" />
+                  <entry key="Pixel_3_API_30_-_440_dpi" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-1961595974">
           <value>
             <AndroidTestResultsTableState>
@@ -63,10 +76,14 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="3.2_QVGA_ADP2_API_30_-_mdpi_ok" value="120" />
                   <entry key="Duration" value="90" />
+                  <entry key="Nexus_4_API_30_-_xhdpi_ok" value="120" />
                   <entry key="Pixel_2_API_30" value="120" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Pixel_3_API_30" value="120" />
+                  <entry key="Pixel_3_API_30_-_440_dpi" value="120" />
+                  <entry key="Pixel_C_API_30_-_tablet_ok" value="120" />
                   <entry key="R5CR92BG3LP" value="120" />
                   <entry key="Tests" value="360" />
                   <entry key="samsung&#10; SM-G991B" value="120" />
@@ -82,6 +99,7 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
+                  <entry key="Pixel_3_API_30_-_440_dpi" value="120" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
