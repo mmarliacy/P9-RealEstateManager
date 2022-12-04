@@ -25,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -661,12 +662,15 @@ public class AddPropertyActivity extends AppCompatActivity {
         if (propertyToUpdate == null) {
             setNewProperty();
             addProperty(propertyModel);
+            Toast.makeText(this, propertyModel.getName() + " has been added", Toast.LENGTH_LONG).show();
         } else {
             setChangeOnPropertyToUpdate();
             updateProperty(propertyNameToUpdate, propertyToUpdate);
+            Toast.makeText(this, propertyToUpdate.getName() + " has been updated", Toast.LENGTH_LONG).show();
         }
         Intent varIntent = new Intent(this, MainActivity_HomeScreen.class);
         startActivity(varIntent);
+
     }
 
     // 2 -- Connect graphics data to real data in fragment -->
