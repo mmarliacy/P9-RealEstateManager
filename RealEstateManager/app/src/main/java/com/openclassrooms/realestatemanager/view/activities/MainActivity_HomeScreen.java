@@ -1,6 +1,7 @@
 package com.openclassrooms.realestatemanager.view.activities;
 
 import static com.openclassrooms.realestatemanager.view.fragments.PropertySheetFragment.property;
+
 import android.annotation.SuppressLint;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
@@ -12,13 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.utils.WifiListener.NetworkChangeListener;
 import com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment;
 import com.openclassrooms.realestatemanager.view.fragments.PropertySheetFragment;
 
-public class MainActivity_HomeScreen extends AppCompatActivity{
+public class MainActivity_HomeScreen extends AppCompatActivity {
 
     public static String api_key;
     private final NetworkChangeListener networkChangeListener = new NetworkChangeListener();
@@ -89,5 +91,14 @@ public class MainActivity_HomeScreen extends AppCompatActivity{
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

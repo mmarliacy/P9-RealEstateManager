@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
-    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' apply false
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' apply true
 }
 
 android {
@@ -16,11 +16,6 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-            Properties properties = new Properties()
-            properties.load(project.rootProject.file('local.properties').newDataInputStream())
-            manifestPlaceholders = [MAP_KEYS :"${properties.getProperty('MAP_KEYS')}"]
-            def MAPS_KEYS = properties.getProperty('MAP_KEYS')
     }
 
     buildFeatures {
@@ -31,6 +26,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            resValue "string", "MAP_KEYS", "Release_API_KEY"
+        }
+        debug {
+//          KL MBP debug Key
+            resValue "string", "MAP_KEYS", "DEBUG_API_KEY"
+//          KL Old Machine debug Key
+//          resValue "string", "google_maps_api_key", "DEBUG_API_KEY"
         }
     }
     compileOptions {
@@ -58,10 +60,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.1.0'
     implementation 'androidx.databinding:databinding-common:7.3.1'
     implementation 'androidx.test:monitor:1.6.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'androidx.fragment:fragment:1.5.4'
 
 
     //-- TESTS -->
     implementation 'androidx.test.ext:junit:1.1.4'
+    implementation 'com.google.android.libraries.places:places:2.7.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'

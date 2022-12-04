@@ -318,7 +318,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/add_a_photo/baseline_add_a_photo_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/gps_fixed/baseline_gps_fixed_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -328,8 +328,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="258d8d" />
-                            <entry key="outputName" value="ic_baseline_add_a_photo_24" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_baseline_gps_fixed_24" />
                             <entry key="sourceFile" value="C:\Users\Mel\Documents\FORMATION - DEVELOPPEMENT D'APPLICATIONS ANDROID\PROJET A RENDRE\P9_MARLIACY_MELANIE\PROJET_9\RealEstateManager" />
                           </map>
                         </option>

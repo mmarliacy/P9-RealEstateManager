@@ -44,6 +44,7 @@
     <string name="title_retry">Retry</string>
     <string name="check_your_internet_connection">Please check your Internet connection</string>
     <string name="no_wifi">no_wifi</string>
+    <string name="here">You\'re here</string>
 
     <!--:: Text Views / Editable ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -119,4 +120,5 @@
 
     <!--:: Button ::-->
     <string name="btn_title_search">Search</string>
+    <string name="content_description_see_map">TODO</string>
 </resources>

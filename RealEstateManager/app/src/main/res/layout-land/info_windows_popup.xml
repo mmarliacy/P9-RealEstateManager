@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/property_name_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name of the property"
+        android:textSize="25sp"
+        android:textColor="@color/primary_dark"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/property_address_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Property address"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/property_name_popup"
+        android:textStyle="italic"
+        android:layout_centerInParent="true"
+        />
+
+</RelativeLayout>

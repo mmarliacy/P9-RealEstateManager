@@ -48,7 +48,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     //---------------
     // DATA - FIELDS
     //---------------
-    List<PropertyModel> properties = new ArrayList<>();
+
     /**
      * Graphics
      */
@@ -59,6 +59,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
      */
     FirebaseViewModel firebaseViewModel;
     RoomViewModel roomViewModel;
+    List<PropertyModel> properties = new ArrayList<>();
     /**
      * Tools
      */
@@ -85,6 +86,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
         //--:: Set View & RecyclerView with Options (Layout Manager) ::--
         View view = inflater.inflate(R.layout.property_list_home_screen, container, false);
         addButtonClick(view);
+        mapButtonClick(view);
         setHasOptionsMenu(true);
         configureToolbar(view);
         //--:: Local ROOM View Model Methods ::--
@@ -106,6 +108,18 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     public void addButtonClick(View view) {
         FloatingActionButton addBtn = view.findViewById(R.id.create_property_fab_button);
         addBtn.setOnClickListener(v -> startActivity(new Intent(requireActivity(), AddPropertyActivity.class)));
+    }
+
+    //-------------------
+    // HANDLE MAP BUTTON
+    //-------------------
+    public void mapButtonClick(View view) {
+        FloatingActionButton mapBtn = view.findViewById(R.id.go_on_map);
+        mapBtn.setOnClickListener(v -> {
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_list_properties, new MapFragment()).addToBackStack("fragment_list");
+            transaction.commit();
+        });
     }
 
     //-----------------
@@ -162,11 +176,8 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
 
     // 2 -- Init list of properties and set it to the adapter -->
     private void initList() {
-        if (roomViewModel != null){
-            getRoomProperties();
-        } else {
             getFirebaseProperties();
-        }
+
         //--:: Configuring adapter according to last list known by the app ::--
         adapter = new PropertyListAdapter(requireActivity(), properties, this);
         //--:: Setting adapter after updated it ::--
