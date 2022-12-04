@@ -138,8 +138,6 @@ public class PropertySheetFragment extends Fragment {
 
     }
 
-    // 3 -- Logics methods for other graphic data -->
-
     // 3a -- Define seller name according to id -->
     @SuppressLint("SetTextI18n")
     private void defineUserName(PropertyModel pPropertyModel) {

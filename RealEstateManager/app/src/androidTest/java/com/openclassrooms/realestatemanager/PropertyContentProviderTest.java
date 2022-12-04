@@ -23,8 +23,15 @@ import java.util.Arrays;
 
 public class PropertyContentProviderTest {
 
+    /**
+     * /!\/!\/!\
+     * These tests were created to be executed on a empty database,
+     * Take it in consideration when launching the tests
+     *  */
+
     // FOR DATA
     private ContentResolver mContentResolver;
+
     // DATA SET FOR TEST
     private static final long USER_ID = 1;
 

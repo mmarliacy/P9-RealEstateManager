@@ -77,7 +77,7 @@ public class InterestListAdapter extends RecyclerView.Adapter<InterestListAdapte
             icon = itemView.findViewById(R.id.interest_icon);
         }
 
-        // 3 --:: Code binding ::--
+        // 2 --:: Code binding ::--
         public void bind(String interestModel, Context pContext) {
             name.setText(interestModel);
             getGoodIcon(interestModel);
@@ -86,7 +86,7 @@ public class InterestListAdapter extends RecyclerView.Adapter<InterestListAdapte
                     .into(icon);
         }
 
-        // 2 --:: Get right icon for interest  ::--
+        // 3 --:: Get right icon for interest  ::--
         public void getGoodIcon(String interestModel) {
             List<InterestModel> interestsList = DummyListCallback.getInterestList();
             try {

@@ -81,7 +81,9 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     // 1 -- ON CREATE VIEW -->
     @Nullable
     @Override
-    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull @NotNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         //--:: Set View & RecyclerView with Options (Layout Manager) ::--
         View view = inflater.inflate(R.layout.filter_search_fragment, container, false);
         defineViews(view);

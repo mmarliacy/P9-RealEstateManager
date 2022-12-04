@@ -40,15 +40,15 @@ public class Converters implements Serializable {
 
     @TypeConverter
     public String writingStringFromListInt(List<String> list) {
-        String genreIds = "";
+        StringBuilder genreIds = new StringBuilder();
         if (list != null) {
             for (String i : list) {
-                genreIds += "," + i;
+                genreIds.append(",").append(i);
             }
         }else {
-                genreIds = "";
+                genreIds = new StringBuilder();
             }
-            return genreIds;
+            return genreIds.toString();
     }
 }
 

@@ -3,7 +3,6 @@ package com.openclassrooms.realestatemanager.view.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.openclassrooms.realestatemanager.MVVM.repositories.firebase.FirebasePropertyHelper;
 import com.openclassrooms.realestatemanager.MVVM.repositories.firebase.FirebaseUserHelper;
@@ -60,8 +59,8 @@ public class FirebaseViewModel extends ViewModel {
     // -- CREATE - UPDATE - DELETE -->
     //------------------------------------
     // -- CREATE :: PROPERTY IN FIREBASE DATABASE -->
-    public Task<Void> createProperty(PropertyModel property) {
-        return fFirebasePropertyRepository.createProperty(property);
+    public void createProperty(PropertyModel property) {
+        fFirebasePropertyRepository.createProperty(property);
     }
 
     public void setIdOfProperty(PropertyModel pPropertyModel){
@@ -70,10 +69,6 @@ public class FirebaseViewModel extends ViewModel {
     // -- UPDATE :: PROPERTY IN FIREBASE DATABASE -->
     public void updateProperty(String propertyName, PropertyModel property) {
         fFirebasePropertyRepository.updateProperty(propertyName, property);
-    }
-    // -- DELETE :: PROPERTY FROM FIREBASE DATABASE -->
-    public void deleteProperty(String propertyId) {
-        fFirebasePropertyRepository.deleteProperty(propertyId);
     }
 
     //------------------------------
@@ -92,7 +87,7 @@ public class FirebaseViewModel extends ViewModel {
     // -- CREATE - UPDATE - DELETE -->
     //----------------------------------------------------
     // -- CREATE :: USER IN FIREBASE DATABASE -->
-    public Task<Void> createUser(String uid, UserModel user) {
-        return fFirebaseUserRepository.createUser(uid, user);
+    public void createUser(String uid, UserModel user) {
+        fFirebaseUserRepository.createUser(uid, user);
     }
 }

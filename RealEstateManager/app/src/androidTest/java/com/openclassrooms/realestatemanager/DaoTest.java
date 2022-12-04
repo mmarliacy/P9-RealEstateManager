@@ -33,7 +33,7 @@ public class DaoTest {
     private RemDatabase dataBase;
     private UserDAO fUserDAO;
     private PropertyDAO fPropertyDAO;
-    List<PropertyModel> properties;
+    private List<PropertyModel> properties;
     private static final UserModel USER_DEMO = new UserModel("1", "Patrick Markov", "patrick.marcov@gmail.com");
     private static final PropertyModel PROPERTY_DEMO = new PropertyModel("1", "Brown Champagne",
             "Chalet", "2025 Bainbridge Ave, North Charleston, SC 29405, États-Unis",
@@ -72,10 +72,11 @@ public class DaoTest {
     //-- Test : insert property into property_table and check with assert function --
     @Test
     public void insertProperty(){
+        fUserDAO.insertUser(USER_DEMO);
         fPropertyDAO.insertProperty(PROPERTY_DEMO);
         properties = LiveDataTestUtils.getValue(this.dataBase.propertyDAO().getAllProperties());
         assertEquals(1, properties.size());
-        assertEquals("test",properties.get(0).getName());
+        assertEquals("Brown Champagne",properties.get(0).getName());
     }
 
 
@@ -116,15 +117,17 @@ public class DaoTest {
         assertEquals(PROPERTY_DEMO.getName(), propertyDemo.getName());
     }
 
-    //-- Test : delete property from property_table and check with assert function --
+    //-- Test : update property from property_table and check with assert function --
     @Test
-    public void deleteProperty(){
+    public void updateProperty(){
         fUserDAO.insertUser(USER_DEMO);
         fPropertyDAO.insertProperty(PROPERTY_DEMO);
         PropertyModel propertyDemo = LiveDataTestUtils.getValue(fPropertyDAO.getAllProperties()).get(0);
-        fPropertyDAO.deleteProperty(propertyDemo);
+        propertyDemo.setName("Brown");
+        fPropertyDAO.updateProperty(propertyDemo);
         properties = LiveDataTestUtils.getValue(fPropertyDAO.getAllProperties());
-        assertEquals(0, properties.size());
+        assertEquals(1, properties.size());
+        assertEquals(propertyDemo.getName(), "Brown");
+        assertEquals(propertyDemo.getType(), "Chalet");
     }
-
 }

@@ -26,11 +26,6 @@ public class RoomPropertyRepository {
         return this.propertyDAO.getAllProperties();
     }
 
-    // -- QUERY :: GET ALL PROPERTIES ACCORDING TO USER -->
-    public LiveData<List<PropertyModel>> getAllPropertiesByUser(long userId) {
-        return this.propertyDAO.getAllPropertiesByUser(userId);
-    }
-
     // 2 -- CREATE - UPDATE - DELETE -->
     //------------------------------------
     // -- INSERT :: PROPERTY -->
@@ -41,11 +36,6 @@ public class RoomPropertyRepository {
     // -- UPDATE :: PROPERTY -->
     public void updateProperty(PropertyModel property) {
         this.propertyDAO.updateProperty(property);
-    }
-
-    // -- DELETE :: PROPERTY -->
-    public void deleteProperty(PropertyModel property) {
-        this.propertyDAO.deleteProperty(property);
     }
 
     // 3 -- QUERIES : --> MULTIPLE FILTERS

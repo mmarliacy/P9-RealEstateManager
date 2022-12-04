@@ -70,11 +70,6 @@ public class RoomViewModel extends ViewModel {
         fExecutor.execute(() -> this.fPropertyRepository.updateProperty(property));
     }
 
-    // -- DELETE :: PROPERTY -->
-    public void deleteProperty(PropertyModel property) {
-        fExecutor.execute(() -> this.fPropertyRepository.deleteProperty(property));
-    }
-
     //------------------------------
     // 5 -- QUERY DATABASE :: USERS
     //------------------------------
@@ -86,8 +81,8 @@ public class RoomViewModel extends ViewModel {
     }
 
     // -- QUERY :: GET USER -->
-    public UserModel getUser(String userId) {
-        return this.fUserRepository.getUser(userId);
+    public void getUser(String userId) {
+        this.fUserRepository.getUser(userId);
     }
 
     //---------------------------------------------------------------------------------------

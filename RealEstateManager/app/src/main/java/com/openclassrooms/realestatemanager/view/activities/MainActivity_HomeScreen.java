@@ -33,14 +33,9 @@ public class MainActivity_HomeScreen extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_home_screen);
-        //--:: 1 -- PropertyListFragment ::-->
+        //--:: -- PropertyListFragment ::--
         setUpPropertyListFragment();
-        if(containerSheetLayout != null) {
-            containerSheetLayout = findViewById(R.id.fragment_real_sheet_layout);
-        }
-        if (property != null && containerSheetLayout != null){
-            setUpPropertySheetFragment(property);
-        }
+        setLandscapeModeOnTablet();
         getMapApiKey();
     }
 
@@ -59,6 +54,16 @@ public class MainActivity_HomeScreen extends AppCompatActivity{
         FragmentTransaction varTransaction = getSupportFragmentManager().beginTransaction();
         varTransaction.replace(R.id.fragment_real_sheet_layout, varFragment);
         varTransaction.commit();
+    }
+
+    private void setLandscapeModeOnTablet(){
+        //--:: -- Add a container for tablet view in landscape mode ::--
+        if(containerSheetLayout != null) {
+            containerSheetLayout = findViewById(R.id.fragment_real_sheet_layout);
+        }
+        if (property != null && containerSheetLayout != null){
+            setUpPropertySheetFragment(property);
+        }
     }
 
     //-----------------

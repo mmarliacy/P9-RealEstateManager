@@ -23,8 +23,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -113,8 +114,8 @@ public class AddPropertyActivity extends AppCompatActivity {
     private PropertyModel propertyToUpdate;
     private PropertyModel propertyModel;
     private final AddPhotoAdapter fAddPhotoAdapter = new AddPhotoAdapter(photoProperty);
+    private ActivityResultLauncher<String> resultPhoto;
     private static final int read_permission_code = 101;
-    private static final int pick_image_code = 1;
 
     /**
      * LIVE DATA - VIEW MODELS
@@ -140,6 +141,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         }
         defineViews();
         setAddPhotoLogic();
+        getPhotos();
         // -- Configure Other methods -->
         verifyIfPropertyToUpdateExist();
         setConfirmAndCancelBtn();
@@ -428,40 +430,40 @@ public class AddPropertyActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(AddPropertyActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, read_permission_code);
         }
         // -- Create intent to get one or many pictures --
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        startActivityForResult(Intent.createChooser(intent, "Select picture"), pick_image_code);
+        resultPhoto.launch("image/*");
     }
 
-    // 3 -- Get pictures & Set it into adapter -->
+    // 3 -- Get photos & Set it into adapter -->
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    @SuppressLint("NotifyDataSetChanged")
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == pick_image_code && resultCode == RESULT_OK && data != null) {
-            if (data.getClipData() != null) {
-                int countOfImages = data.getClipData().getItemCount();
-                photoProperty.clear();
-                for (int i = 0; i < countOfImages; i++) {
-                    Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                    String imageString = imageUri.toString();
-                    photoProperty.add(imageString);
-                    fAddPhotoAdapter.notifyDataSetChanged();
-                }
-                addPhotoBtn.setVisibility(View.GONE);
-                displayPhotoSelectedInRecyclerView();
-            } else {
-                Uri imageUri = data.getData();
-                String imageString = imageUri.toString();
-                photoProperty.add(imageString);
-                fAddPhotoAdapter.notifyDataSetChanged();
-            }
-        } else {
-            Toast.makeText(this, "You haven't picked any images !", Toast.LENGTH_SHORT).show();
+    private void getPhotos(){
+        resultPhoto = registerForActivityResult(
+                new ActivityResultContracts.GetMultipleContents(),
+                result -> {
+                    if (photoProperty.isEmpty()) {
+                        if (result != null) {
+                            int countOfImages = result.size();
+                            for (int i = 0; i < countOfImages; i++) {
+                                Uri imageUri = result.get(i);
+                                String imageString = imageUri.toString();
+                                photoProperty.add(imageString);
+                            }
+                        } else
+                            Log.i("Loaded photos", "You haven't picked any images !");
+                    } else {
+                        int countOfImages = result.size();
+                        for (int i = 0; i < countOfImages; i++) {
+                            Uri imageUri = result.get(i);
+                            String imageString = imageUri.toString();
+                            photoProperty.add(imageString);
+                        }
+                    }
+                    addPhotoBtn.setVisibility(View.GONE);
+                    displayPhotoSelectedInRecyclerView();
         }
+
+        );
     }
+
 
     // 3a -- Set recycler view configuration and display photo list -->
     @RequiresApi(api = Build.VERSION_CODES.Q)

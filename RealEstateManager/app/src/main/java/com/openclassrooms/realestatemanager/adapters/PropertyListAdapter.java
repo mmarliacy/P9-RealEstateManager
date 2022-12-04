@@ -128,5 +128,4 @@ public class PropertyListAdapter extends RecyclerView.Adapter<PropertyListAdapte
     public interface OnItemClickListener {
         void onItemClick(PropertyModel property);
     }
-
 }

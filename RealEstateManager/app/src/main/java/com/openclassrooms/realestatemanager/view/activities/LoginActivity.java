@@ -114,17 +114,19 @@ public class LoginActivity extends AppCompatActivity {
     //-----------------------
     // LOCAL ROOM VIEW MODEL
     //-----------------------
-    // 1 -- Configure ROOM View Model & Retrieve all properties stuck on phone and last connected User -->
+    // 1 -- Configure ROOM View Model & retrieve all users -->
     private void configureLocalRoomViewModel() {
         RoomViewModelFactory roomViewModelFactory = RoomInjection.provideViewModelFactory(this);
         roomViewModel = roomViewModelFactory.create(RoomViewModel.class);
         roomViewModel.initAllUsers();
     }
 
+    // 2 -- Get & observe all users -->
     private void getAndObserveUsers() {
         this.roomViewModel.getAllUsers().observe(this, this::getRoomUsers);
     }
 
+    // 3 -- Get user already registered in database or create a new one -->
     public void getRoomUsers(List<UserModel> users) {
         List<UserModel> allUsers = new ArrayList<>(users);
         if (allUsers.size() != 0){
@@ -139,6 +141,5 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             roomViewModel.insertUser(userModel);
         }
-
     }
 }

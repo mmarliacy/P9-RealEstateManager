@@ -3,7 +3,6 @@ package com.openclassrooms.realestatemanager.MVVM.repositories.firebase;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -45,8 +44,8 @@ public class FirebasePropertyHelper {
     // CREATE - UPDATE - DELETE
     //---------------------------
     // -- CREATE :: PROPERTY IN FIREBASE DATABASE -->
-    public Task<Void> createProperty(PropertyModel property) {
-        return getPropertiesCollection().document().set(property);
+    public void createProperty(PropertyModel property) {
+        getPropertiesCollection().document().set(property);
     }
 
     // -- CREATE :: SET PROPERTY ID IN FIREBASE DATABASE -->
@@ -70,20 +69,6 @@ public class FirebasePropertyHelper {
                     PropertyModel propertyModel = propertyDocument.toObject(PropertyModel.class);
                     if(propertyModel.getName().equals(propertyName)){
                         getPropertiesCollection().document(propertyDocument.getId()).set(pPropertyModel, SetOptions.merge());
-                    }
-                }
-            }
-        });
-    }
-
-    // -- DELETE :: PROPERTY FROM FIREBASE DATABASE -->
-    public void deleteProperty(String propertyId) {
-        FirebaseFirestore.getInstance().collection("Properties").get().addOnSuccessListener(pQueryDocumentSnapshots -> {
-            if (!pQueryDocumentSnapshots.isEmpty()) {
-                for (QueryDocumentSnapshot propertyDocument : pQueryDocumentSnapshots) {
-                    PropertyModel propertyModel = propertyDocument.toObject(PropertyModel.class);
-                    if(propertyModel.getPropertyId().equals(propertyId)){
-                        getPropertiesCollection().document(propertyDocument.getId()).delete();
                     }
                 }
             }

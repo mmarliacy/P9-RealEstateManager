@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -51,7 +50,7 @@ public class FirebaseUserHelper {
     // CREATE - UPDATE - DELETE
     //---------------------------
     // -- CREATE :: USER IN FIREBASE DATABASE -->
-    public Task<Void> createUser(String uid, UserModel user) {
-        return FirebaseFirestore.getInstance().collection(USERS_COLLECTION).document(uid).set(user);
+    public void createUser(String uid, UserModel user) {
+        FirebaseFirestore.getInstance().collection(USERS_COLLECTION).document(uid).set(user);
     }
 }

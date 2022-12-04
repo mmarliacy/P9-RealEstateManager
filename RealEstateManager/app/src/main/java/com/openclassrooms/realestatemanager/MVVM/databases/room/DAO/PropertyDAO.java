@@ -4,7 +4,6 @@ import android.database.Cursor;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -16,9 +15,6 @@ import java.util.List;
 
 @Dao
 public interface PropertyDAO {
-
-    @Query("SELECT * FROM property_table WHERE userId == :userId")
-    LiveData<List<PropertyModel>> getAllPropertiesByUser (long userId);
 
     @Query("SELECT * FROM property_table")
     LiveData<List<PropertyModel>> getAllProperties();
@@ -32,9 +28,6 @@ public interface PropertyDAO {
     @Update (onConflict = OnConflictStrategy.IGNORE)
     int updateProperty(PropertyModel property);
 
-    @Delete
-    void deleteProperty(PropertyModel property);
-
     //--------------------------------------
     // -- QUERY DATABASE : MULTIPLE FILTERS
     //--------------------------------------
@@ -47,5 +40,4 @@ public interface PropertyDAO {
     LiveData<List<PropertyModel>> getAllPropertiesFiltered(
             String type, String minRooms, String minArea, String maxArea, String minPrice,
             String maxPrice, String status, String onSaleAfter, String onSaleBefore);
-
 }

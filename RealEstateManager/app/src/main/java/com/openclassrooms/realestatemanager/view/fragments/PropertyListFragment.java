@@ -1,7 +1,5 @@
 package com.openclassrooms.realestatemanager.view.fragments;
 
-import static com.openclassrooms.realestatemanager.view.fragments.PropertySheetFragment.property;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -42,6 +40,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class PropertyListFragment extends Fragment implements PropertyListAdapter.OnItemClickListener {
@@ -66,7 +65,6 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     @SuppressLint("StaticFieldLeak")
     static PropertyListAdapter adapter;
     ItemTouchHelper.SimpleCallback itemTouchHelper;
-    PropertyModel deletedProperty = null;
     PropertyModel updatedProperty = null;
 
 
@@ -127,7 +125,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     @Override
     public void onCreateOptionsMenu(@NotNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search_filter, menu);
-        super.onCreateOptionsMenu(menu,inflater);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     //--:: 2 -- Connect search icon to "get places procedure" ::-->
@@ -139,12 +137,13 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
         }
         return super.onOptionsItemSelected(item);
     }
+
     //-------------------
     // HANDLING FRAGMENT
     //-------------------
     private void openSearchByFilterDialog() {
-            MultipleFilterFragment filterFrag = new MultipleFilterFragment();
-            filterFrag.show(requireFragmentManager(), "My filter dialog");
+        MultipleFilterFragment filterFrag = new MultipleFilterFragment();
+        filterFrag.show(requireActivity().getSupportFragmentManager(), "My filter dialog");
     }
 
     //---------------
@@ -162,7 +161,7 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
     }
 
     // 2 -- Init list of properties and set it to the adapter -->
-    private void initList(){
+    private void initList() {
         if (roomViewModel != null){
             getRoomProperties();
         } else {
@@ -183,27 +182,19 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
             public boolean onMove(@NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, @NonNull @NotNull RecyclerView.ViewHolder target) {
                 return false;
             }
+
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int lastPosition = viewHolder.getAbsoluteAdapterPosition();
-                switch (direction) {
-                    case ItemTouchHelper.LEFT:
-                        //--:: Delete property ::--
-                        deletedProperty = properties.get(lastPosition);
-                        deleteProperty(deletedProperty);
-                        properties.remove(deletedProperty);
-                        adapter.notifyItemRemoved(lastPosition);
-                        break;
-                    case ItemTouchHelper.RIGHT:
-                        //--:: Update property ::--
-                        updatedProperty = properties.get(lastPosition);
-                        Intent intent = new Intent(requireActivity(), AddPropertyActivity.class);
-                        intent.putExtra("propertyToUpdate",updatedProperty);
-                        intent.putExtra("propertyNameToUpdate",updatedProperty.getName());
-                        startActivity(intent);
-                        adapter.notifyItemChanged(lastPosition);
-                        break;
+                if (direction == ItemTouchHelper.RIGHT){
+                    //--:: Update property ::--
+                    updatedProperty = properties.get(lastPosition);
+                    Intent intent = new Intent(requireActivity(), AddPropertyActivity.class);
+                    intent.putExtra("propertyToUpdate", updatedProperty);
+                    intent.putExtra("propertyNameToUpdate", updatedProperty.getName());
+                    startActivity(intent);
+                    adapter.notifyItemChanged(lastPosition);
                 }
             }
 
@@ -211,8 +202,6 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
             @Override
             public void onChildDraw(@NonNull @NotNull Canvas c, @NonNull @NotNull RecyclerView recyclerView, @NonNull @NotNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                        .addSwipeLeftBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.red))
-                        .addSwipeLeftActionIcon(R.drawable.ic_baseline_delete_sweep_24 )
                         .addSwipeRightBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.accent))
                         .addSwipeRightActionIcon(R.drawable.ic_baseline_update_24)
                         .create()
@@ -279,12 +268,5 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
 
         });
     }
-
-    // 3 -- Delete property (Suppress method before presentation) -->
-    private void deleteProperty(PropertyModel deletedProperty){
-        roomViewModel.deleteProperty(deletedProperty);
-        firebaseViewModel.deleteProperty(deletedProperty.getPropertyId());
-    }
-
 }
 

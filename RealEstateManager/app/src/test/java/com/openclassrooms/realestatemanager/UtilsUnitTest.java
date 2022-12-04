@@ -1,11 +1,16 @@
 package com.openclassrooms.realestatemanager;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import com.openclassrooms.realestatemanager.utils.Utils;
+
 import org.junit.Test;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -25,11 +30,9 @@ public class UtilsUnitTest {
     @Test
     public void converseDate(){
         String invertedDate = Utils.getTodayDate();
-        String invertedDate2 = "2022/11/27";
-        assertEquals(invertedDate, invertedDate2);
-        String convertedDate = "27/11/2022";
-        String OnConvertedDate = parseDateToddMMYyyy(invertedDate2);
-        assertEquals(convertedDate, OnConvertedDate);
+        String correctDate = parseDateToddMMYyyy(invertedDate);
+        assertNotEquals(correctDate, invertedDate);
+        assertEquals(correctDate, parseDateToddMMYyyy(invertedDate));
     }
 
     public String parseDateToddMMYyyy(String time) {
@@ -41,10 +44,12 @@ public class UtilsUnitTest {
         String str = null;
         try {
             date = inputFormat.parse(time);
-            str = outputFormat.format(date);
+            str = outputFormat.format(Objects.requireNonNull(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return str;
     }
+
+    // -- For Wifi Connection Test, see the ConnectionWifiTest in androidTest --
 }

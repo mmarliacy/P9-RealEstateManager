@@ -14,7 +14,6 @@ public class RoomUserRepository {
     // VARIABLES
     //-----------
     private final UserDAO userDAO;
-    private UserModel user;
 
     /** CONSTRUCTOR */
     public RoomUserRepository(UserDAO userDAO) {
@@ -29,9 +28,8 @@ public class RoomUserRepository {
     }
 
     // -- QUERY :: GET USER -->
-    public UserModel getUser(String userId){
-        AsyncTask.execute(() -> user = userDAO.getUser(userId));
-        return user;
+    public void getUser(String userId){
+        AsyncTask.execute(() -> userDAO.getUser(userId));
     }
 
     // 2 -- CREATE - UPDATE - DELETE -->
@@ -40,5 +38,4 @@ public class RoomUserRepository {
     public void createUser(UserModel user){
         this.userDAO.insertUser(user);
     }
-
 }

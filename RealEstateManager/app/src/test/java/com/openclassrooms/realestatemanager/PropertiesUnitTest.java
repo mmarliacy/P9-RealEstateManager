@@ -3,9 +3,9 @@ package com.openclassrooms.realestatemanager;
 import static com.openclassrooms.realestatemanager.model.DummyListCallback.interestList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 
 import com.openclassrooms.realestatemanager.model.PropertyModel;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class PropertiesUnitTest {
 
     //-- Test : Create a property and verify if property has been correctly created --
     @Test
-    public void createTasks() {
+    public void createProperties() {
         assertEquals("Run House", property3.getName());
         assertNotEquals("Charmed", property3.getName());
     }
