@@ -79,6 +79,7 @@
     <string name="content_description_add_first_item_btn">Add first item</string>
     <string name="content_description_view_pager_photo_container">view_pager_photo_container</string>
     <string name="content_description_container_static_maps">container_static_maps</string>
+    <string name="content_description_take_photo">Take photo</string>
 
     <!--:: Hint ::-->
     <string name="hint_property_seller_input">Select the seller name</string>

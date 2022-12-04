@@ -93,7 +93,6 @@
     <dimen name="fptl_margin">10dip</dimen>
     <dimen name="fptl_height">60dip</dimen>
     <dimen name="fptl_textSize">13sp</dimen>
-
     --------------------------------
     Id --> form_property_price_layout
     <dimen name="fppl_margin">10dip</dimen>
@@ -147,6 +146,11 @@
     <dimen name="ni_height">40dip</dimen>
     <dimen name="ni_marginStart">10dip</dimen>
     <dimen name="ni_marginTop">5dip</dimen>
+    --------------------------------
+    Id --> takePhoto
+    <dimen name="tp_width">40dip</dimen>
+    <dimen name="tp_height">40dip</dimen>
+    <dimen name="tp_marginEnd">10dip</dimen>
 
     ---** Button **---
     Id --> button_more_total_rooms
@@ -664,6 +668,11 @@
     <dimen name="ni_height_land">40dip</dimen>
     <dimen name="ni_marginStart_land">10dip</dimen>
     <dimen name="ni_marginTop_land">5dip</dimen>
+    --------------------------------
+    Id --> takePhoto
+    <dimen name="tp_width_land">40dip</dimen>
+    <dimen name="tp_height_land">40dip</dimen>
+    <dimen name="tp_marginEnd_land">10dip</dimen>
 
     ---** Button **---
     Id --> button_more_total_rooms

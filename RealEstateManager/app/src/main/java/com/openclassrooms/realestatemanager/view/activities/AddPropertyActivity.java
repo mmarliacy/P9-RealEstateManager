@@ -8,10 +8,12 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -51,6 +53,7 @@ import com.openclassrooms.realestatemanager.model.UserModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -115,6 +118,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     private PropertyModel propertyModel;
     private final AddPhotoAdapter fAddPhotoAdapter = new AddPhotoAdapter(photoProperty);
     private ActivityResultLauncher<String> resultPhoto;
+    private ActivityResultLauncher<Intent> resultTakePhoto;
     private static final int read_permission_code = 101;
 
     /**
@@ -141,6 +145,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         }
         defineViews();
         setAddPhotoLogic();
+        takePhotos();
         getPhotos();
         // -- Configure Other methods -->
         verifyIfPropertyToUpdateExist();
@@ -292,11 +297,11 @@ public class AddPropertyActivity extends AppCompatActivity {
     // 2 -- Set types' list -->
     private void initTypeList() {
         List<String> typeList = new ArrayList<>(Arrays.asList("House", "Apartment", "Penthouse", "Villa", "Chalet", "Mobil-home", "Building", "Castle", "Loft"));
-            //-- Find user position in Drop down list --
-            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_type, typeList);
-            propTypeInput.setAdapter(arrayAdapter);
-            arrayAdapter.notifyDataSetChanged();
-            propTypeInput.setOnItemClickListener((adapterView, view, position, l) -> type = arrayAdapter.getItem(position));
+        //-- Find user position in Drop down list --
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, R.layout.dropdown_menu_type, typeList);
+        propTypeInput.setAdapter(arrayAdapter);
+        arrayAdapter.notifyDataSetChanged();
+        propTypeInput.setOnItemClickListener((adapterView, view, position, l) -> type = arrayAdapter.getItem(position));
         //-- Get type for propertyToUpdate if possible --
         if (propertyToUpdate != null) {
             String typePropertyToUpdate = propertyToUpdate.getType();
@@ -368,11 +373,11 @@ public class AddPropertyActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddPropertyActivity.this, (datePicker, year1, month1, day1) -> {
                 month1 += 1;
-                if (day1 < 10){
+                if (day1 < 10) {
                     String day2 = "0" + day1;
                     String date = day2 + "/" + month1 + "/" + year1;
                     forSaleSinceInput.setText(date);
-                } else{
+                } else {
                     String date = day1 + "/" + month1 + "/" + year1;
                     forSaleSinceInput.setText(date);
                 }
@@ -383,11 +388,11 @@ public class AddPropertyActivity extends AppCompatActivity {
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     AddPropertyActivity.this, (datePicker, year1, month1, day1) -> {
                 month1 += 1;
-                if (day1 < 10){
+                if (day1 < 10) {
                     String day2 = "0" + day1;
                     String date = day2 + "/" + month1 + "/" + year1;
                     soldSinceInput.setText(date);
-                } else{
+                } else {
                     String date = day1 + "/" + month1 + "/" + year1;
                     soldSinceInput.setText(date);
                 }
@@ -406,6 +411,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         LayoutInflater varInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = varInflater.inflate(R.layout.photo_add_first_item, varLinearLayout, true);
         addPhotoBtn = view.findViewById(R.id.first_item);
+        ImageButton takePhotoBtn = findViewById(R.id.takePhoto);
         if (photoProperty.size() == 0) {
             // -- Make add button appear --
             addNextPhotoBtn.setVisibility(View.GONE);
@@ -418,11 +424,39 @@ public class AddPropertyActivity extends AppCompatActivity {
                         pE.printStackTrace();
                     }
                 });
+                takePhotoBtn.setOnClickListener(v-> getCameraToTakePhotos());
             }
         }
     }
 
-    // 2 -- Require permission to access data phone & Get access to phone data -->
+    // 2 -- Set recycler view configuration and display photo list -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @SuppressLint("NotifyDataSetChanged")
+    private void displayPhotoSelectedInRecyclerView() {
+        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(fAddPhotoAdapter);
+        fAddPhotoAdapter.notifyDataSetChanged();
+        //ConnectBtn
+        if (photoProperty.size() > 0) {
+            addPhotoBtn.setVisibility(View.GONE);
+            addNextPhotoBtn.setVisibility(View.VISIBLE);
+            addNextPhotoBtn.setOnClickListener(v -> {
+                try {
+                    addPhoto();
+                } catch (IOException pE) {
+                    pE.printStackTrace();
+                }
+            });
+        } else {
+            addNextPhotoBtn.setVisibility(View.GONE);
+        }
+    }
+
+    //--------
+    // ADD PHOTOS PICKED FROM GALLERY
+    //----------------------------------
+    // 1 -- Require permission to access data phone & Get access to phone data -->
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private void addPhoto() throws IOException {
         if (ContextCompat.checkSelfPermission(AddPropertyActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -433,7 +467,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         resultPhoto.launch("image/*");
     }
 
-    // 3 -- Get photos & Set it into adapter -->
+    // 2 -- Get photos & Add it to photos list -->
     @RequiresApi(api = Build.VERSION_CODES.Q)
     private void getPhotos(){
         resultPhoto = registerForActivityResult(
@@ -459,34 +493,46 @@ public class AddPropertyActivity extends AppCompatActivity {
                     }
                     addPhotoBtn.setVisibility(View.GONE);
                     displayPhotoSelectedInRecyclerView();
-        }
-
+                }
         );
     }
 
-
-    // 3a -- Set recycler view configuration and display photo list -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
-    @SuppressLint("NotifyDataSetChanged")
-    private void displayPhotoSelectedInRecyclerView() {
-        recyclerView.setVisibility(View.VISIBLE);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setAdapter(fAddPhotoAdapter);
-        fAddPhotoAdapter.notifyDataSetChanged();
-        //ConnectBtn
-        if (photoProperty.size() > 0) {
-            addPhotoBtn.setVisibility(View.GONE);
-            addNextPhotoBtn.setVisibility(View.VISIBLE);
-            addNextPhotoBtn.setOnClickListener(v -> {
-                try {
-                    addPhoto();
-                } catch (IOException pE) {
-                    pE.printStackTrace();
-                }
-            });
-        } else {
-            addNextPhotoBtn.setVisibility(View.GONE);
+    //--------------------------
+    // GET CAMERA & TAKE PHOTOS
+    //----------------------------
+    // 1 -- Require permission to access data phone & Get access to phone camera -->
+    private void getCameraToTakePhotos(){
+        if (ContextCompat.checkSelfPermission(AddPropertyActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(AddPropertyActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, read_permission_code);
         }
+        // -- Create intent to get take photos --
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        resultTakePhoto.launch(intent);
+    }
+
+    // 2 -- Take photo & Add it to photos list -->
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void takePhotos(){
+        resultTakePhoto = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                        if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                            Bundle bundle = result.getData().getExtras();
+                            Bitmap bitmap = (Bitmap) bundle.get("data");
+                            Uri imageUri = getImageUri(this,bitmap);
+                            String uriString = imageUri.toString();
+                            photoProperty.add(uriString);
+                        }
+                    displayPhotoSelectedInRecyclerView();
+                });
+    }
+
+    private Uri getImageUri(Context context, Bitmap bitmap) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(), bitmap, "Title", null);
+        return Uri.parse(path);
     }
 
     //----------------------

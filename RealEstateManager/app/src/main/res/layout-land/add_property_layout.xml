@@ -147,6 +147,18 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_baseline_add_24" />
 
+            <ImageButton
+                android:id="@+id/takePhoto"
+                android:layout_width="@dimen/tp_width_land"
+                android:layout_height="@dimen/tp_height_land"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/form_property_photo_title"
+                android:layout_marginEnd="30dp"
+                android:scaleType="fitXY"
+                android:background="@color/white"
+                app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+                android:contentDescription="@string/content_description_take_photo" />
+
             <LinearLayout
                 android:orientation="vertical"
                 android:id="@+id/form_property_photos_linearLayout"

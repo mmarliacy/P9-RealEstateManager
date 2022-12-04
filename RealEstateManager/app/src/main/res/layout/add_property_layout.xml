@@ -55,6 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+
             <TextView
                 android:id="@+id/form_property_seller_title"
                 style="@style/FormCustomPropertyTitle"
@@ -148,6 +150,18 @@
                 android:contentDescription="@string/content_description_add_first_item_btn"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_baseline_add_24" />
+
+            <ImageButton
+                android:id="@+id/takePhoto"
+                android:layout_width="@dimen/tp_width"
+                android:layout_height="@dimen/tp_height"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/form_property_photo_title"
+                android:layout_marginEnd="@dimen/tp_marginEnd"
+                android:scaleType="fitXY"
+                android:background="@color/white"
+                app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+                android:contentDescription="@string/content_description_take_photo" />
 
             <LinearLayout
                 android:orientation="vertical"
