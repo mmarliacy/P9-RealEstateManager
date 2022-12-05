@@ -36,8 +36,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_9
+        targetCompatibility JavaVersion.VERSION_1_9
     }
     configurations.all() { configuration ->
         //exclude group: "com.google.protobuf", module: "protobuf-javalite"
@@ -61,7 +61,6 @@ dependencies {
     implementation 'androidx.databinding:databinding-common:7.3.1'
     implementation 'androidx.test:monitor:1.6.0'
     implementation 'com.nineoldandroids:library:2.4.0'
-    implementation 'androidx.fragment:fragment:1.5.4'
 
 
     //-- TESTS -->

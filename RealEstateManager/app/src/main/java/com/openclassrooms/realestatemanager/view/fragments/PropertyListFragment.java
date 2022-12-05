@@ -176,8 +176,11 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
 
     // 2 -- Init list of properties and set it to the adapter -->
     private void initList() {
+        if (roomViewModel != null){
+            getRoomProperties();
+        } else {
             getFirebaseProperties();
-
+        }
         //--:: Configuring adapter according to last list known by the app ::--
         adapter = new PropertyListAdapter(requireActivity(), properties, this);
         //--:: Setting adapter after updated it ::--
@@ -276,7 +279,6 @@ public class PropertyListFragment extends Fragment implements PropertyListAdapte
             properties.clear();
             properties.addAll(pPropertyModels);
             adapter.updateProperties(properties);
-
         });
     }
 }

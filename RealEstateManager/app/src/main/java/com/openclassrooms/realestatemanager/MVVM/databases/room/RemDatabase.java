@@ -2,9 +2,11 @@ package com.openclassrooms.realestatemanager.MVVM.databases.room;
 
 import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyProperties;
 import static com.openclassrooms.realestatemanager.model.DummyListCallback.getDummyUsers;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.OnConflictStrategy;
@@ -12,13 +14,17 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
+
 import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.PropertyDAO;
 import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-@Database(entities = {UserModel.class, PropertyModel.class}, version = 7, exportSchema = false)
+@Database(entities = {UserModel.class, PropertyModel.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class RemDatabase extends RoomDatabase {
 
@@ -56,8 +62,24 @@ public abstract class RemDatabase extends RoomDatabase {
                 Log.d("DATABASE : " ,"prepopulateDatabase(db) has been called successfully ");
             }
         };
-
     }
+
+/*
+    // 5 -- Recreate Callback -->
+    private static Callback afterPropertiesCallBack() {
+        return new Callback() {
+            @Override
+            public void onOpen(@NonNull @NotNull SupportSQLiteDatabase db) {
+                super.onOpen(db);
+                    prepopulateDatabaseWithUsers(db);
+                    prepopulateDatabase(db);
+                    Log.d("DATABASE : " ,"prepopulateDatabase(db) has been called successfully ");
+            }
+        };
+    }
+ */
+
+
 
     // 5 -- Insert Content Values in table : DUMMY_USERS -->
     private static void prepopulateDatabaseWithUsers(SupportSQLiteDatabase db){

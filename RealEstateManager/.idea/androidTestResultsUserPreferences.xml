@@ -140,6 +140,7 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="CP_Test_-_Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Pixel_3_API_30_-_440_dpi" value="120" />
@@ -169,6 +170,7 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="CP_Test_-_Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Pixel_XL_API_30_-_xxxhdpi" value="120" />

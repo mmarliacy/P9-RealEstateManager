@@ -15,11 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -62,7 +62,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private static Location lastKnownLocation;
     //--:: Request location permission ::--
     private final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    private FusedLocationProviderClient fFusedLocationProviderClient;
     List<String> addresses;
     double lat;
     double lng;
@@ -85,7 +84,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(fragment_map, container, false);
         //--:: Launch Task Location ::--
-        fFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
         getDeviceLocation();
         return view;
     }
@@ -98,7 +96,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         userLocationBtn = requireView().findViewById(R.id.fab_my_location);
         userLocationBtn.setOnClickListener(pView -> getDeviceLocation());
         configureViewModels();
-        getFirebaseProperties();
+        if (roomViewModel !=null){
+            getRoomProperties();
+        } else {
+            getFirebaseProperties();
+        }
+        getDeviceLocation();
     }
 
     //-----------------
@@ -109,19 +112,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(@NonNull GoogleMap pGoogleMap) {
         map = pGoogleMap;
-        double latitude = 48.707967;
-        double longitude = 2.441001;
-        LatLng latLngCurrentLocation = new LatLng(latitude, longitude);
-        //LatLng lastKnownPosition = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+        LatLng lastKnownPosition = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
         MarkerOptions marker =
                 new MarkerOptions().
-                        position(latLngCurrentLocation).
+                        position(lastKnownPosition).
                         title("You're here");
-        pGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLngCurrentLocation, 14));
+        pGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lastKnownPosition, 14));
         pGoogleMap.addMarker(marker);
         // Enable the zoom controls for the map
         pGoogleMap.getUiSettings().setZoomControlsEnabled(true);
-        getPlaces(pGoogleMap);
+        getPlaces(map);
     }
 
     //------------------------------------
@@ -172,32 +172,38 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     //--:: 1 -- Make API request to get all restaurants, add markers ::-->
     private void getPlaces(GoogleMap map) {
         addresses = new ArrayList<>();
-        for (PropertyModel property : properties) {
-            addresses.add(property.getAddress());
-        }
-        try {
-            Geocoder geocoder = new Geocoder(requireContext());
-            List<Address> addressList;
-            for (int i = 0; i < addresses.size(); i++) {
-                addressList = geocoder.getFromLocationName(addresses.get(i), 1);
-                if (addressList != null) {
-                    lat = addressList.get(0).getLatitude();
-                    lng = addressList.get(0).getLongitude();
-                }
-                if (addresses.get(i).equals(properties.get(i).getAddress())) {
-                    LatLng varLatLng = new LatLng(lat, lng);
-                    MarkerOptions marker =
-                            new MarkerOptions().
-                                    position(varLatLng).
-                                    title(properties.get(i).getName()).
-                                    snippet(properties.get(i).getAddress());
-                    Objects.requireNonNull(map.addMarker(marker)).setTag(properties.get(i));
-                    map.setInfoWindowAdapter(infoWindowAdapter);
-                }
+        if (properties != null) {
+            for (PropertyModel property : properties) {
+                addresses.add(property.getAddress());
             }
-        } catch (IOException pE) {
-            pE.printStackTrace();
         }
+            if (addresses.size() != 0) {
+                try {
+                    Geocoder geocoder = new Geocoder(requireContext());
+                    List<Address> addressList;
+                    for (int i = 0; i < addresses.size(); i++) {
+                        addressList = geocoder.getFromLocationName(addresses.get(i), 1);
+                        if (addressList != null) {
+                            lat = addressList.get(0).getLatitude();
+                            lng = addressList.get(0).getLongitude();
+                        }
+                        if (addresses.get(i).equals(properties.get(i).getAddress())) {
+                            LatLng varLatLng = new LatLng(lat, lng);
+                            MarkerOptions marker =
+                                    new MarkerOptions().
+                                            position(varLatLng).
+                                            title(properties.get(i).getName()).
+                                            snippet(properties.get(i).getAddress());
+                            Objects.requireNonNull(map.addMarker(marker)).setTag(properties.get(i));
+                            map.setInfoWindowAdapter(infoWindowAdapter);
+                        }
+                    }
+                } catch (IOException pE) {
+                    pE.printStackTrace();
+                }
+            } else {
+            Toast.makeText(requireActivity(), "There is no property place to display", Toast.LENGTH_LONG).show();
+    }
     }
 
 
@@ -256,6 +262,4 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             properties.addAll(pPropertyModels);
         });
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.openclassrooms.realestatemanager.utils.WifiListener;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -9,6 +10,7 @@ public class CheckConnectionWifi {
         ConnectivityManager varConnectivityManager = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (varConnectivityManager != null) {
+            @SuppressLint("MissingPermission")
             NetworkInfo[] info = varConnectivityManager.getAllNetworkInfo();
             if (info != null) {
                 for (NetworkInfo pNetworkInfo : info) {
