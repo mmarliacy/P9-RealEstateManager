@@ -16,6 +16,7 @@ public interface UserDAO {
     @Query("SELECT * FROM user_table")
     LiveData<List<UserModel>> getUsers();
 
+    @SuppressWarnings("UnusedReturnValue")
     @Query("SELECT * FROM user_table WHERE id == :userId")
     UserModel getUser(String userId);
 

@@ -20,8 +20,6 @@ import com.openclassrooms.realestatemanager.MVVM.databases.room.DAO.UserDAO;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.model.UserModel;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
 
 @Database(entities = {UserModel.class, PropertyModel.class}, version = 1, exportSchema = false)
