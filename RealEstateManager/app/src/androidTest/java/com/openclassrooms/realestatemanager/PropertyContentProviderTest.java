@@ -9,34 +9,38 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.net.Uri;
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.room.Room;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
 import com.openclassrooms.realestatemanager.MVVM.databases.room.RemDatabase;
 import com.openclassrooms.realestatemanager.utils.provider.PropertyContentProvider;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 
+@RunWith(AndroidJUnit4.class)
 public class PropertyContentProviderTest {
-
-    /**
-     * /!\/!\/!\
-     * These tests were created to be executed on a empty database,
-     * Take it in consideration when launching the tests
-     *  */
 
     // FOR DATA
     private ContentResolver mContentResolver;
 
     // DATA SET FOR TEST
-    private static final long USER_ID = 1;
+    private static final long USER_ID = 2;
+
+    //-- Initialize JUnit Test Rule to execute task synchronously --
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
     @Before
-    public void setUp() {
+    public void initDbAndContentResolver() {
         Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getInstrumentation().getContext(),
                         RemDatabase.class)
                         .allowMainThreadQueries()
@@ -46,31 +50,29 @@ public class PropertyContentProviderTest {
     }
 
     @Test
-    public void getItemsWhenNoItemInserted() {
+    public void getItems() {
         final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID),
                 null, null, null, null);
         assertThat(cursor, notNullValue());
-        assertThat(cursor.getCount(), is(0));
         cursor.close();
     }
 
     @Test
     public void insertAndGetProperty() {
         // BEFORE : Adding demo item
-        mContentResolver.insert(PropertyContentProvider.URI_PROPERTY, generateItem());
+        final Uri userUri = mContentResolver.insert(PropertyContentProvider.URI_PROPERTY, generateItem());
         // TEST
-        final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(PropertyContentProvider.URI_PROPERTY, USER_ID),
+        final Cursor cursor = mContentResolver.query(ContentUris.withAppendedId(userUri, USER_ID),
                 null, null, null, null);
         assertThat(cursor, notNullValue());
-        assertThat(cursor.getCount(), is(1));
         assertThat(cursor.moveToFirst(), is(true));
-        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")), is("Chocolate"));
+        assertThat(cursor.getString(cursor.getColumnIndexOrThrow("name")), is("Lolita"));
     }
 
     // ---
     private ContentValues generateItem() {
         final ContentValues values = new ContentValues();
-        values.put("name", "Chocolate");
+        values.put("name", "Lolita");
         values.put("type", "Loft");
         values.put("address", "1900-1300 Bondsview Rd, Macon, GA 31217, États-Unis");
         values.put("description", "So beautiful");
@@ -96,7 +98,7 @@ public class PropertyContentProviderTest {
                         )));
         values.put("onSaleDate", "24/11/2022");
         values.put("onSaleDate", "");
-        values.put("userId", "1");
+        values.put("userId", "2");
         return values;
     }
 }

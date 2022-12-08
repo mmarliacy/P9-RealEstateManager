@@ -16,6 +16,19 @@
             </AndroidTestResultsTableState>
           </value>
         </entry>
+        <entry key="-2116836140">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="CP_Test_-_Pixel_2_API_30_-_xxhdpi_ok" value="120" />
+                  <entry key="Duration" value="90" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
         <entry key="-2040389206">
           <value>
             <AndroidTestResultsTableState>
@@ -34,6 +47,7 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="CP_Test_-_Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Pixel_XL_API_30_-_xxxhdpi" value="120" />
@@ -61,6 +75,7 @@
             <AndroidTestResultsTableState>
               <option name="preferredColumnWidths">
                 <map>
+                  <entry key="CP_Test_-_Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
                   <entry key="Pixel_XL_API_30_-_xxxhdpi" value="120" />
@@ -107,6 +122,19 @@
                 <map>
                   <entry key="Duration" value="90" />
                   <entry key="Pixel_2_API_30_-_xxhdpi_ok" value="120" />
+                  <entry key="Tests" value="360" />
+                </map>
+              </option>
+            </AndroidTestResultsTableState>
+          </value>
+        </entry>
+        <entry key="-42565283">
+          <value>
+            <AndroidTestResultsTableState>
+              <option name="preferredColumnWidths">
+                <map>
+                  <entry key="CP_Test_-_Pixel_2_API_30_-_xxhdpi_ok" value="120" />
+                  <entry key="Duration" value="90" />
                   <entry key="Tests" value="360" />
                 </map>
               </option>
@@ -176,6 +204,7 @@
                   <entry key="Pixel_XL_API_30_-_xxxhdpi" value="120" />
                   <entry key="R5CR92BG3LP" value="120" />
                   <entry key="Tests" value="360" />
+                  <entry key="adb-R5CR92BG3LP-THeTy3._adb-tls-connect._tcp" value="120" />
                   <entry key="samsung&#10; SM-G991B" value="120" />
                 </map>
               </option>

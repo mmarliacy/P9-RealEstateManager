@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -39,6 +38,8 @@ import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.utils.permission.RequestPermissionsHelper;
 import com.openclassrooms.realestatemanager.view.viewmodel.FirebaseViewModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,17 +71,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     //----------------------------------
     // ON CREATE VIEW
     //----------------------------------
-
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        askForDeviceLocation();
+    public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            askForDeviceLocation();
+        } else {
+            Toast.makeText(requireActivity(), "Sorry, we did not get your device location considering your phone version", Toast.LENGTH_LONG).show();
+            Toast.makeText(requireActivity(), "Operation cancelled", Toast.LENGTH_SHORT).show();
+        }
         return inflater.inflate(fragment_map, container, false);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -105,7 +108,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     // CONFIGURING MAP
     //-----------------
     //--:: 1 -- On Map ready animate camera, add markers... ::-->
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onMapReady(@NonNull GoogleMap pGoogleMap) {
         LatLng lastKnownPosition = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
@@ -124,7 +126,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     // GET ACCESS TO USER DEVICE LOCATION
     //------------------------------------
     //--:: 1 -- Ask & Get current location of the device ::-->
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void askForDeviceLocation() {
         List<String> permissions = new ArrayList<>();
         permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);

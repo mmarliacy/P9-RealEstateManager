@@ -31,7 +31,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -134,7 +133,6 @@ public class AddPropertyActivity extends AppCompatActivity {
     // LIFECYCLE
     //-----------
     // 1 -- ON CREATE -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,8 +146,13 @@ public class AddPropertyActivity extends AppCompatActivity {
         }
         defineViews();
         setAddPhotoLogic();
-        takePhotos();
-        getPhotos();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            takePhotos();
+            getPhotos();
+        } else {
+            Toast.makeText(this, "Sorry your phone is not up to date, to pick or take photos", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Set photos is unavailable", Toast.LENGTH_SHORT).show();
+        }
         // -- Configure Other methods -->
         verifyIfPropertyToUpdateExist();
         setConfirmAndCancelBtn();
@@ -440,12 +443,16 @@ public class AddPropertyActivity extends AppCompatActivity {
                     }
                 });
                 takePhotoBtn.setOnClickListener(v-> getCameraToTakePhotos());
+            } else {
+                addPhotoBtn.setOnClickListener(v -> {
+                    Toast.makeText(this, "Sorry the button works, but your phone cannot give us access to your files", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Operation cancelled", Toast.LENGTH_SHORT).show();
+                });
             }
         }
     }
 
     // 2 -- Set recycler view configuration and display photo list -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @SuppressLint("NotifyDataSetChanged")
     private void displayPhotoSelectedInRecyclerView() {
         recyclerView.setVisibility(View.VISIBLE);
@@ -472,7 +479,6 @@ public class AddPropertyActivity extends AppCompatActivity {
     // ADD PHOTOS PICKED FROM GALLERY
     //----------------------------------
     // 1 -- Require permission to access data phone & Get access to phone data -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     private void addPhoto() throws IOException {
         if (ContextCompat.checkSelfPermission(AddPropertyActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -483,7 +489,6 @@ public class AddPropertyActivity extends AppCompatActivity {
     }
 
     // 2 -- Get photos & Add it to photos list -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     private void getPhotos(){
         resultPhoto = registerForActivityResult(
                 new ActivityResultContracts.GetMultipleContents(),
@@ -533,7 +538,6 @@ public class AddPropertyActivity extends AppCompatActivity {
     }
 
     // 2 -- Take photo & Add it to photos list -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     private void takePhotos(){
         resultTakePhoto = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -646,7 +650,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     // IN CASE OF : UPDATE PROPERTY
     //------------------------------
     // 1 -- Verify if Property to update is not null -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
+
     private void verifyIfPropertyToUpdateExist() {
         if (getIntent().hasExtra("propertyToUpdate")) {
             propertyToUpdate = getIntent().getParcelableExtra("propertyToUpdate");
@@ -656,7 +660,6 @@ public class AddPropertyActivity extends AppCompatActivity {
     }
 
     // 2 -- Define in views property to update -->
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     private void definePropertyToUpdate() {
         if (propertyToUpdate != null) {
             atvUserInput.setText(sellerName);

@@ -42,14 +42,11 @@ public abstract class RemDatabase extends RoomDatabase {
                                 RemDatabase.class,
                                 "database").
                         addCallback(propertiesCallBack()).
-                        fallbackToDestructiveMigration().
                         build();
             }
         }
         return instance;
     }
-
-
 
     // 4 -- Create Callback -->
     private static Callback propertiesCallBack() {
@@ -63,7 +60,6 @@ public abstract class RemDatabase extends RoomDatabase {
             }
         };
     }
-
 
     // 5 -- Insert Content Values in table : DUMMY_USERS -->
     private static void prepopulateDatabaseWithUsers(SupportSQLiteDatabase db){

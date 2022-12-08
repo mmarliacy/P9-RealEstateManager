@@ -14,9 +14,10 @@ public class PropertyContentProvider extends ContentProvider {
 
     public static final String AUTHORITY = "com.openclassrooms.realestatemanager";
 
-    public static final String TABLE_NAME = "property_table";
+    public static final String PROPERTY_TABLE_NAME = "property_table";
 
-    public static final Uri URI_PROPERTY = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
+    public static final Uri URI_PROPERTY = Uri.parse("content://" + AUTHORITY + "/" + PROPERTY_TABLE_NAME);
+
 
     @Override
     public boolean onCreate() {
@@ -39,7 +40,7 @@ public class PropertyContentProvider extends ContentProvider {
     @Nullable
     @Override
     public String getType(@NonNull Uri uri) {
-        return "vnd.android.cursor.item/" + AUTHORITY + "." + TABLE_NAME;
+        return "vnd.android.cursor.item/" + AUTHORITY + "." + PROPERTY_TABLE_NAME;
     }
 
     @Nullable

@@ -51,6 +51,7 @@ public class PropertiesUnitTest {
                     "https://lh3.googleusercontent.com/1k05SjfGJmKHFV47h3_HXvr6wqMueSd2TOAMPYpN71hTRzAuqoFgsg71mzIr1nhA_N2_b7XnLVqzuwSDVO1jemQqsg5S5etEWqVCxpXoJl8=rj-w0-h1600-l80",
                     "https://lh3.googleusercontent.com/u4zszPvBmF8OdQXLiv12QfkerSZNn4gKMB23VIdnkpNO5Bat4HWQeaXEPA3CNto-7MmNoh03RCvQOKN07fs5frSyRX_mZvALhiHzHFJ4gT24=rj-w0-h1600-l80",
                     "https://lh3.googleusercontent.com/SSSiGSEtWyWTbkCc5DNj--qWuotYQnIPZLK2hZKvvhsPnzHP1bRjQRPSpr7YQ6oHkF_UPN_sW7DFKxq7E9GpcRddVGmBqVtZfmWXoxaxcoo=rj-w0-h1600-l80"),
+            Arrays.asList("","","",""),
             Arrays.asList(interestList().get(1), interestList().get(5), interestList().get(8)),
             "01/10/2021", "");
     final PropertyModel property2 = new PropertyModel("2", "White Shield",
@@ -60,6 +61,7 @@ public class PropertiesUnitTest {
                     "https://media.vrbo.com/lodging/85000000/84160000/84153700/84153628/00d10b4a.f10.jpg",
                     "https://media.vrbo.com/lodging/85000000/84160000/84153700/84153628/ced2bc33.f10.jpg",
                     "https://media.vrbo.com/lodging/85000000/84160000/84153700/84153628/0058ae2d.f10.jpg"),
+            Arrays.asList("","","",""),
             Arrays.asList(interestList().get(2), interestList().get(8), interestList().get(11)),
             "12/12/2021", "");
     final PropertyModel property3 = new PropertyModel("3", "Run House",
@@ -70,6 +72,7 @@ public class PropertiesUnitTest {
                     "https://media.vrbo.com/lodging/86000000/85290000/85282300/85282244/5b259844.f10.jpg",
                     "https://media.vrbo.com/lodging/86000000/85290000/85282300/85282244/f9825b6e.f10.jpg",
                     "https://media.vrbo.com/lodging/86000000/85290000/85282300/85282244/1d07a8d6.f10.jpg"),
+            Arrays.asList("","","",""),
             Arrays.asList(interestList().get(3), interestList().get(4), interestList().get(7), interestList().get(6), interestList().get(3), interestList().get(10)),
             "30/12/2021", "23/04/2022");
 }

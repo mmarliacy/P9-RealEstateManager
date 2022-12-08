@@ -43,6 +43,7 @@ public class DaoTest {
                     "https://media.vrbo.com/lodging/19000000/19000000/18993200/18993178/3893b351.f10.jpg",
                     "https://media.vrbo.com/lodging/19000000/19000000/18993200/18993178/9cf9b69b.f10.jpg",
                     "https://media.vrbo.com/lodging/19000000/19000000/18993200/18993178/f6ac2f01.f10.jpg"),
+            Arrays.asList("","","",""),
             Arrays.asList(interestList().get(1), interestList().get(7), interestList().get(6), interestList().get(10), interestList().get(9)),
             "04/01/2022", "06/07/2022");
 

@@ -45,6 +45,9 @@
     <string name="check_your_internet_connection">Please check your Internet connection</string>
     <string name="no_wifi">no_wifi</string>
     <string name="here">You\'re here</string>
+    <string name="title_give_me_a_title_photo_description">Give me a title</string>
+    <string name="example">Salon</string>
+    <string name="photo_number">Photo 1</string>
 
     <!--:: Text Views / Editable ::-->
     <string name="first_property_worth">Le premier bien immobilier enregistré vaut</string>
@@ -81,6 +84,7 @@
     <string name="content_description_view_pager_photo_container">view_pager_photo_container</string>
     <string name="content_description_container_static_maps">container_static_maps</string>
     <string name="content_description_take_photo">Take photo</string>
+    <string name="content_description_see_map">TODO</string>
 
     <!--:: Hint ::-->
     <string name="hint_property_seller_input">Select the seller name</string>
@@ -97,6 +101,7 @@
     <string name="hint_dollars">$</string>
     <string name="hint_start_date">Start date</string>
     <string name="hint_end_date">End date</string>
+    <string name="hint_enter_description_photo">Bedroom</string>
 
     <!--:: Buttons ::-->
     <string name="form_add_rooms_sign">+</string>
@@ -120,11 +125,6 @@
 
     <!--:: Button ::-->
     <string name="btn_title_search">Search</string>
-    <string name="content_description_see_map">TODO</string>
-    <string name="photo_number">Photo 1</string>
-    <string name="hint_enter_description_photo">Bedroom</string>
-    <string name="title_give_me_a_title_photo_description">Give me a title</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="example">Salon</string>
 </resources>

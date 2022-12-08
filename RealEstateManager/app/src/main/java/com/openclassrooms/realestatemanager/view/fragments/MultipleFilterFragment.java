@@ -2,7 +2,6 @@ package com.openclassrooms.realestatemanager.view.fragments;
 
 import static com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment.adapter;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -80,7 +78,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     // LIFECYCLE
     //-----------
     // 1 -- ON CREATE VIEW -->
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater,
@@ -164,6 +161,7 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
         verifyData();
     }
 
+    // 3 -- Verify data parameters -->
     private void verifyData() {
         if (minRooms.equals("")) {
             minRooms = "0";
@@ -190,6 +188,7 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
         applyFilter();
     }
 
+    // 4 -- See the result on list according to parameters -->
     private void applyFilter(){
         roomViewModel.getAllPropertiesFiltered(type, Integer.parseInt(minRooms), Integer.parseInt(minArea), Integer.parseInt(maxArea), Integer.parseInt(minPrice),
                 Integer.parseInt(maxPrice), status).observe(requireActivity(), pPropertyModels -> {
