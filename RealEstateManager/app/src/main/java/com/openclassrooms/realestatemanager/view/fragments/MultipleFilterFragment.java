@@ -1,7 +1,8 @@
 package com.openclassrooms.realestatemanager.view.fragments;
 
 import static com.openclassrooms.realestatemanager.view.fragments.PropertyListFragment.adapter;
-import android.app.DatePickerDialog;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomInjection;
@@ -20,10 +24,11 @@ import com.openclassrooms.realestatemanager.MVVM.injection.room.RoomViewModelFac
 import com.openclassrooms.realestatemanager.R;
 import com.openclassrooms.realestatemanager.model.PropertyModel;
 import com.openclassrooms.realestatemanager.view.viewmodel.RoomViewModel;
+
 import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,8 +46,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     private TextInputEditText areaMaxInput;
     private TextInputEditText priceMinInput;
     private TextInputEditText priceMaxInput;
-    private TextInputEditText onSaleAfterInput;
-    private TextInputEditText onSaleBeforeInput;
     private CheckBox sold;
     private Button search;
 
@@ -59,8 +62,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     private String maxArea;
     private String minPrice;
     private String maxPrice;
-    private String onSaleAfter;
-    private String onSaleBefore;
     private String status;
 
     /**
@@ -79,6 +80,7 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     // LIFECYCLE
     //-----------
     // 1 -- ON CREATE VIEW -->
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater,
@@ -89,7 +91,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
         defineViews(view);
         configureViewModel();
         getRoomProperties();
-        initDatePicker();
         initTypeList();
         configureSearchBtn();
         return view;
@@ -106,8 +107,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
         areaMaxInput = view.findViewById(R.id.filter_area_max_input);
         priceMinInput = view.findViewById(R.id.filter_price_min_input);
         priceMaxInput = view.findViewById(R.id.filter_price_max_input);
-        onSaleAfterInput = view.findViewById(R.id.filter_on_sale_since_min_input);
-        onSaleBeforeInput = view.findViewById(R.id.filter_on_sale_since_max_input);
         sold = view.findViewById(R.id.filter_sold_input);
         search = view.findViewById(R.id.button_search);
     }
@@ -120,44 +119,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
         typeInput.setAdapter(arrayAdapter);
         arrayAdapter.notifyDataSetChanged();
         typeInput.setOnItemClickListener((adapterView, view, position, l) -> type = arrayAdapter.getItem(position));
-    }
-
-    // 3 -- Init & get date for sold and onSale date property -->
-    private void initDatePicker() {
-        Calendar cal = Calendar.getInstance();
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        int month = cal.get(Calendar.MONTH);
-        int year = cal.get(Calendar.YEAR);
-        onSaleAfterInput.setOnClickListener(view -> {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    requireActivity(), (datePicker, year1, month1, day1) -> {
-                month1 += 1;
-                if (day1 < 10){
-                    String day2 = "0" + day1;
-                    String date = day2 + "/" + month1 + "/" + year1;
-                    onSaleAfterInput.setText(date);
-                } else{
-                    String date = day1 + "/" + month1 + "/" + year1;
-                    onSaleAfterInput.setText(date);
-                }
-            }, year, month, day);
-            datePickerDialog.show();
-        });
-        onSaleBeforeInput.setOnClickListener(view -> {
-            DatePickerDialog datePickerDialog = new DatePickerDialog(
-                    requireActivity(), (datePicker, year1, month1, day1) -> {
-                month1 += 1;
-                if (day1 < 10){
-                    String day2 = "0" + day1;
-                    String date = day2 + "/" + month1 + "/" + year1;
-                    onSaleBeforeInput.setText(date);
-                } else{
-                    String date = day1 + "/" + month1 + "/" + year1;
-                    onSaleBeforeInput.setText(date);
-                }
-            }, year, month, day);
-            datePickerDialog.show();
-        });
     }
 
     //------------
@@ -195,8 +156,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
         maxArea = Objects.requireNonNull(areaMaxInput.getText()).toString();
         minPrice = Objects.requireNonNull(priceMinInput.getText()).toString();
         maxPrice = Objects.requireNonNull(priceMaxInput.getText()).toString();
-        onSaleAfter = Objects.requireNonNull(onSaleAfterInput.getText()).toString();
-        onSaleBefore = Objects.requireNonNull(onSaleBeforeInput.getText()).toString();
         if (sold.isChecked()){
             status = "Unavailable";
         } else {
@@ -224,11 +183,6 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
             return;
         }
 
-        if (onSaleBefore.equals("")) {
-            onSaleBeforeInput.setError("Missing");
-            return;
-        }
-
         if (typeInput.getText().toString().equals("")) {
             typeInput.setError("Missing");
             return;
@@ -237,8 +191,8 @@ public class MultipleFilterFragment extends BottomSheetDialogFragment {
     }
 
     private void applyFilter(){
-        roomViewModel.getAllPropertiesFiltered(type, minRooms, minArea, maxArea, minPrice,
-                maxPrice, status, onSaleAfter, onSaleBefore).observe(requireActivity(), pPropertyModels -> {
+        roomViewModel.getAllPropertiesFiltered(type, Integer.parseInt(minRooms), Integer.parseInt(minArea), Integer.parseInt(maxArea), Integer.parseInt(minPrice),
+                Integer.parseInt(maxPrice), status).observe(requireActivity(), pPropertyModels -> {
             properties.clear();
             properties.addAll(pPropertyModels);
             adapter.updateProperties(properties);

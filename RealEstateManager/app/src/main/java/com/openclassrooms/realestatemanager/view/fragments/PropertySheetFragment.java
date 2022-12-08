@@ -152,13 +152,19 @@ public class PropertySheetFragment extends Fragment {
     }
 
     // 3b -- Define status behaviour -->
+    @SuppressLint("SetTextI18n")
     private void definePropertyStatus(PropertyModel pPropertyModel) {
-        if (pPropertyModel.getStatus().matches(getString(R.string.available_status))) {
-            propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.grass_green));
+        if (pPropertyModel.getStatus() != null){
+            if (pPropertyModel.getStatus().matches(getString(R.string.available_status))) {
+                propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.grass_green));
+            } else {
+                propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.chain_grey));
+            }
+            propertyStatus.setText(pPropertyModel.getStatus());
         } else {
-            propertyStatus.setTextColor(requireActivity().getResources().getColor(R.color.chain_grey));
+            propertyStatus.setText("No status");
         }
-        propertyStatus.setText(pPropertyModel.getStatus());
+
     }
 
     private void defineMapPicture(PropertyModel pPropertyModel) {
@@ -185,7 +191,7 @@ public class PropertySheetFragment extends Fragment {
     //------------
     private void configureViewPager(View pView, PropertyModel property) {
         ViewPager2 fViewPager = pView.findViewById(R.id.sheet_view_pager_photo);
-        PhotoListAdapter photoListAdapter = new PhotoListAdapter(property.getPhotoProperty(), fViewPager);
+        PhotoListAdapter photoListAdapter = new PhotoListAdapter(property.getPhotoProperty(), property.getPhotoDescription(), fViewPager);
         fViewPager.setAdapter(photoListAdapter);
     }
 

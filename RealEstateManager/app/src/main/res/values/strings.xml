@@ -121,4 +121,10 @@
     <!--:: Button ::-->
     <string name="btn_title_search">Search</string>
     <string name="content_description_see_map">TODO</string>
+    <string name="photo_number">Photo 1</string>
+    <string name="hint_enter_description_photo">Bedroom</string>
+    <string name="title_give_me_a_title_photo_description">Give me a title</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="example">Salon</string>
 </resources>

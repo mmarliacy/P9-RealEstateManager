@@ -177,7 +177,7 @@
                     android:id="@+id/form_recyclerView_photo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/item_photo"
+                    tools:listitem="@layout/add_item_photo"
                     tools:itemCount="1"/>
             </LinearLayout>
 

@@ -49,6 +49,8 @@ public abstract class RemDatabase extends RoomDatabase {
         return instance;
     }
 
+
+
     // 4 -- Create Callback -->
     private static Callback propertiesCallBack() {
         return new Callback() {
@@ -61,22 +63,6 @@ public abstract class RemDatabase extends RoomDatabase {
             }
         };
     }
-
-/*
-    // 5 -- Recreate Callback -->
-    private static Callback afterPropertiesCallBack() {
-        return new Callback() {
-            @Override
-            public void onOpen(@NonNull @NotNull SupportSQLiteDatabase db) {
-                super.onOpen(db);
-                    prepopulateDatabaseWithUsers(db);
-                    prepopulateDatabase(db);
-                    Log.d("DATABASE : " ,"prepopulateDatabase(db) has been called successfully ");
-            }
-        };
-    }
- */
-
 
 
     // 5 -- Insert Content Values in table : DUMMY_USERS -->
@@ -106,6 +92,7 @@ public abstract class RemDatabase extends RoomDatabase {
             propertiesValues.put("price", properties.getPrice());
             propertiesValues.put("status", properties.getStatus());
             propertiesValues.put("photos_list", String.valueOf(properties.getPhotoProperty()));
+            propertiesValues.put("photos_description", String.valueOf(properties.getPhotoDescription()));
             propertiesValues.put("property_interest", String.valueOf(properties.getPropertyInterest()));
             propertiesValues.put("on_sale_date", properties.getOnSaleDate());
             propertiesValues.put("sold_date", properties.getSoldDate());

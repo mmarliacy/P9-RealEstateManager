@@ -28,8 +28,6 @@ public class PropertyModel implements Parcelable {
     @ColumnInfo(name = "prop_id", index = true)
     private long id;
 
-    private String propertyId;
-
     @ColumnInfo(name = "userId")
     private String userId;
 
@@ -60,6 +58,9 @@ public class PropertyModel implements Parcelable {
     @ColumnInfo(name = "photos_list")
     private List<String> photoProperty;
 
+    @ColumnInfo(name = "photos_description")
+    private List<String> photoDescription;
+
     @ColumnInfo(name = "property_interest")
     private List<String> propertyInterest;
 
@@ -76,31 +77,10 @@ public class PropertyModel implements Parcelable {
     public PropertyModel() {
     }
 
-    /** FIREBASE CONSTRUCTOR */
-    public PropertyModel(String propertyId,String userId, String name, String type, String address,
-                         String description, String totalLeavingArea, String rooms, String price,
-                         String status, List<String> photoProperty, List<String> propertyInterest,
-                         String onSaleDate, String soldDate) {
-        this.setPropertyId(propertyId);
-        this.setUserId(userId);
-        this.setName(name);
-        this.setType(type);
-        this.setAddress(address);
-        this.setPrice(price);
-        this.setDescription(description);
-        this.setTotalLeavingArea(totalLeavingArea);
-        this.setRooms(rooms);
-        this.setStatus(status);
-        this.setPhotoProperty(photoProperty);
-        this.setPropertyInterest(propertyInterest);
-        this.setOnSaleDate(onSaleDate);
-        this.setSoldDate(soldDate);
-    }
-
-    /** ROOM CONSTRUCTOR */
+    /** CONSTRUCTOR */
     public PropertyModel(String userId, String name, String type, String address,
                          String description, String totalLeavingArea, String rooms, String price,
-                         String status, List<String> photoProperty, List<String> propertyInterest,
+                         String status, List<String> photoProperty, List<String> photoDescription, List<String> propertyInterest,
                          String onSaleDate, String soldDate) {
         this.setUserId(userId);
         this.setName(name);
@@ -112,6 +92,7 @@ public class PropertyModel implements Parcelable {
         this.setRooms(rooms);
         this.setStatus(status);
         this.setPhotoProperty(photoProperty);
+        this.setPhotoDescription(photoDescription);
         this.setPropertyInterest(propertyInterest);
         this.setOnSaleDate(onSaleDate);
         this.setSoldDate(soldDate);
@@ -120,10 +101,6 @@ public class PropertyModel implements Parcelable {
     /** Getters */
     public long getId() {
         return id;
-    }
-
-    public String getPropertyId() {
-        return propertyId;
     }
 
     public String getUserId() {
@@ -173,6 +150,10 @@ public class PropertyModel implements Parcelable {
         return photoProperty;
     }
 
+    public List<String> getPhotoDescription() {
+        return photoDescription;
+    }
+
     public List<String> getPropertyInterest() {
         return propertyInterest;
     }
@@ -188,10 +169,6 @@ public class PropertyModel implements Parcelable {
     /** Setters */
     public void setId(long pId) {
         this.id = pId;
-    }
-
-    public void setPropertyId(String pPropertyId) {
-        propertyId = pPropertyId;
     }
 
     public void setUserId(String pUserId) {
@@ -234,6 +211,10 @@ public class PropertyModel implements Parcelable {
         photoProperty = pPhotoProperty;
     }
 
+    public void setPhotoDescription(List<String> pPhotoDescription) {
+        photoDescription = pPhotoDescription;
+    }
+
     public void setPropertyInterest(List<String> pPropertyInterest) {
         propertyInterest = pPropertyInterest;
     }
@@ -252,7 +233,6 @@ public class PropertyModel implements Parcelable {
      */
     protected PropertyModel(Parcel in) {
         id = in.readLong();
-        propertyId = in.readString();
         userId = in.readString();
         name = in.readString();
         type = in.readString();
@@ -263,6 +243,7 @@ public class PropertyModel implements Parcelable {
         price = in.readString();
         status = in.readString();
         photoProperty = in.createStringArrayList();
+        photoDescription = in.createStringArrayList();
         propertyInterest = in.createStringArrayList();
         onSaleDate = in.readString();
         soldDate = in.readString();
@@ -271,7 +252,6 @@ public class PropertyModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeLong(id);
-        dest.writeString(propertyId);
         dest.writeString(userId);
         dest.writeString(name);
         dest.writeString(type);
@@ -282,6 +262,7 @@ public class PropertyModel implements Parcelable {
         dest.writeString(price);
         dest.writeString(status);
         dest.writeStringList(photoProperty);
+        dest.writeStringList(photoDescription);
         dest.writeStringList(propertyInterest);
         dest.writeString(onSaleDate);
         dest.writeString(soldDate);

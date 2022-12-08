@@ -96,11 +96,10 @@ public class RoomViewModel extends ViewModel {
     // 6 -- QUERIES : --> MULTIPLE FILTERS
     //---------------------------------------
     public LiveData<List<PropertyModel>> getAllPropertiesFiltered(
-            String type, String minRooms, String minArea, String maxArea,
-            String minPrice, String maxPrice, String status,
-            String onSaleAfter, String onSaleBefore) {
+            String type, int minRooms, int minArea, int maxArea, int minPrice,
+            int maxPrice, String status) {
         return this.fPropertyRepository.getAllPropertiesFiltered(
                 type, minRooms, minArea, maxArea,
-                minPrice, maxPrice,  status, onSaleAfter, onSaleBefore);
+                minPrice, maxPrice,  status);
     }
 }

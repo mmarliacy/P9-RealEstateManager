@@ -63,9 +63,6 @@ public class FirebaseViewModel extends ViewModel {
         fFirebasePropertyRepository.createProperty(property);
     }
 
-    public void setIdOfProperty(PropertyModel pPropertyModel){
-        fFirebasePropertyRepository.setIdOfProperty(pPropertyModel);
-    }
     // -- UPDATE :: PROPERTY IN FIREBASE DATABASE -->
     public void updateProperty(String propertyName, PropertyModel property) {
         fFirebasePropertyRepository.updateProperty(propertyName, property);

@@ -230,6 +230,24 @@
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
+    //-- DIALOG_PHOTO_DESCRIPTION -->>
+
+    ---** TextView **---
+    Id --> give_me_title
+    <dimen name="gmt_marginTop">10dip</dimen>
+    <dimen name="gmt_textSize">25sp</dimen>
+
+    ---** EditText **---
+    Id --> enter_title_description
+    <dimen name="etd_margin">30dip</dimen>
+    <dimen name="etd_textSize">16sp</dimen>
+
+    ---** Button **---
+    Id --> validate_description / cancel_description
+    <dimen name="vdcd_textSize">20sp</dimen>
+    <dimen name="vdcd_margin">10dp</dimen>
+    ------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------
     //-- DROPDOWN_MENU_TYPE -->>
 
     ---** TextView **---
@@ -367,6 +385,9 @@
     Id --> container_added_photo
     <dimen name="cap_margin">10dip</dimen>
 
+    ---** Image View **---
+    Id --> photo_description
+    <dimen name="pd_textSize">20sp</dimen>
 
     ---** Image View **---
     Id --> added_photo
@@ -740,6 +761,24 @@
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
+    //-- DIALOG_PHOTO_DESCRIPTION -->>
+
+    ---** TextView **---
+    Id --> give_me_title
+    <dimen name="gmt_marginTop_land">10dp</dimen>
+    <dimen name="gmt_textSize_land">25sp</dimen>
+
+    ---** EditText **---
+    Id --> enter_title_description
+    <dimen name="etd_margin_land">30sp</dimen>
+    <dimen name="etd_textSize_land">16sp</dimen>
+
+    ---** Button **---
+    Id --> validate_description / cancel_description
+    <dimen name="vdcd_textSize_land">20sp</dimen>
+    <dimen name="vdcd_margin_land">10dp</dimen>
+    ------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------
     //-- DROPDOWN_MENU_TYPE -->>
 
     ---** TextView **---
@@ -873,11 +912,16 @@
 
     ------------------------------------------------------------------------------------------------
     ------------------------------------------------------------------------------------------------
-    //-- ITEM_PHOTO -->>
+    //-- ITEM_PHOTO (LAND) -->>
 
     ---** LinearLayout **---
     Id --> container_added_photo
     <dimen name="cap_margin_land">10dip</dimen>
+
+
+    ---** Image View **---
+    Id --> photo_description
+    <dimen name="pd_textSize_land">20sp</dimen>
 
 
     ---** Image View **---

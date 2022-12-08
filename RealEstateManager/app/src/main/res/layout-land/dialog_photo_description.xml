@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/give_me_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_give_me_a_title_photo_description"
+        android:textSize="@dimen/gmt_textSize_land"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/gmt_marginTop_land"/>
+
+    <EditText
+        android:id="@+id/enter_title_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_enter_description_photo"
+        android:textSize="@dimen/etd_textSize_land"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/etd_margin_land"
+        android:inputType="text"
+        android:autofillHints="name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/validate_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:textColor="@color/black"
+            android:layout_margin="@dimen/vdcd_margin"
+            android:textSize="@dimen/vdcd_textSize"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

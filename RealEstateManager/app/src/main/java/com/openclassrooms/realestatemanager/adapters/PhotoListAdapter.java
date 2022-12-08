@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
 import com.openclassrooms.realestatemanager.R;
+
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
@@ -21,12 +24,14 @@ public class PhotoListAdapter  extends RecyclerView.Adapter<PhotoListAdapter.Pho
     //---------------
     /** List */
     List<String> photosList;
+    List<String> descriptionList;
     /** Graphics */
     ViewPager2 fViewPager2;
 
     /** CONSTRUCTOR */
-    public PhotoListAdapter(List<String> photosList, ViewPager2 fViewPager2) {
+    public PhotoListAdapter(List<String> photosList, List<String> descriptionList, ViewPager2 fViewPager2) {
         this.photosList = photosList;
+        this.descriptionList = descriptionList;
         this.fViewPager2 = fViewPager2;
     }
 
@@ -43,7 +48,10 @@ public class PhotoListAdapter  extends RecyclerView.Adapter<PhotoListAdapter.Pho
     // 2 -- ON BIND VIEW -->
     @Override
     public void onBindViewHolder(@NonNull @NotNull PhotoListViewHolder holder, int position) {
-                holder.setImageView(photosList.get(position),holder.itemView.getContext());
+                holder.setViewPagerContainer(
+                        photosList.get(position),
+                        descriptionList.get(position),
+                        holder.itemView.getContext());
     }
 
     // 3 -- ITEM COUNT -->
@@ -51,6 +59,7 @@ public class PhotoListAdapter  extends RecyclerView.Adapter<PhotoListAdapter.Pho
     public int getItemCount() {
         return Math.min(photosList.size(), 5);
     }
+
 
     //---------------------------
     // INNER CLASS - VIEW HOLDER
@@ -62,15 +71,18 @@ public class PhotoListAdapter  extends RecyclerView.Adapter<PhotoListAdapter.Pho
         //---------------
         /** Graphics */
         ImageView fImageView;
+        TextView fTextView;
 
         /** CONSTRUCTOR */
         public PhotoListViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             fImageView = itemView.findViewById(R.id.view_pager_photo_container);
+            fTextView = itemView.findViewById(R.id.view_pager_description_container);
         }
 
         // -- Set image to view -->
-        void setImageView(String imageUrl, Context pContext) {
+        void setViewPagerContainer(String imageUrl, String description, Context pContext) {
+            fTextView.setText(description);
             try{
                 Uri uri = Uri.parse(imageUrl);
                 Glide.with(pContext).load(uri).into(fImageView);

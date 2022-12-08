@@ -213,56 +213,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <TextView
-            android:id="@+id/title_filter_on_sale_since"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/tfoss_marginStart"
-            android:layout_marginTop="@dimen/tfoss_marginTop"
-            android:text="@string/title_filter_on_sale_since"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tfoss_textSize"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filter_price_title" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filter_on_sale_since_min_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/fossmin_width"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fossmin_marginStart"
-            android:hint="@string/hint_start_date"
-            app:layout_constraintBottom_toBottomOf="@+id/title_filter_on_sale_since"
-            app:layout_constraintStart_toEndOf="@+id/title_filter_on_sale_since"
-            app:layout_constraintTop_toTopOf="@+id/title_filter_on_sale_since">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/filter_on_sale_since_min_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/fossmin_height"
-                android:textSize="@dimen/fossmin_textSize"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filter_on_sale_since_max_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/fossmax_width"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/fossmax_marginEnd"
-            android:hint="@string/hint_end_date"
-            app:layout_constraintBottom_toBottomOf="@+id/filter_on_sale_since_min_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/filter_on_sale_since_min_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/filter_on_sale_since_max_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/fossmax_height"
-                android:textSize="@dimen/fossmax_textSize"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <CheckBox
             android:id="@+id/filter_sold_input"
             android:layout_width="wrap_content"
@@ -272,7 +222,7 @@
             android:textSize="@dimen/fsi_textSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filter_on_sale_since_min_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/filter_price_min_layout" />
 
         <Button
             android:id="@+id/button_search"

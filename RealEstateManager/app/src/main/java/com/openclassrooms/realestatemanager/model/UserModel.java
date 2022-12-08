@@ -16,6 +16,8 @@ public class UserModel {
     //-----------
     // VARIABLES
     //-----------
+
+
     @PrimaryKey
     @ColumnInfo(name = "id", index = true)
     @NonNull

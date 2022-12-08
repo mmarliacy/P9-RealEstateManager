@@ -48,19 +48,6 @@ public class FirebasePropertyHelper {
         getPropertiesCollection().document().set(property);
     }
 
-    // -- CREATE :: SET PROPERTY ID IN FIREBASE DATABASE -->
-    public void setIdOfProperty(PropertyModel pPropertyModel){
-        getPropertiesCollection().get().addOnSuccessListener(pQueryDocumentSnapshots -> {
-            for (QueryDocumentSnapshot propertyDocument : pQueryDocumentSnapshots) {
-                PropertyModel property = propertyDocument.toObject(PropertyModel.class);
-                if (property.getName().equals(pPropertyModel.getName())){
-                    property.setPropertyId(propertyDocument.getId());
-                    getPropertiesCollection().document(propertyDocument.getId()).set(property, SetOptions.merge());
-                }
-            }
-        });
-    }
-
     // -- UPDATE :: PROPERTY IN FIREBASE DATABASE -->
     public void updateProperty(String propertyName, PropertyModel pPropertyModel) {
         FirebaseFirestore.getInstance().collection("Properties").get().addOnSuccessListener(pQueryDocumentSnapshots -> {

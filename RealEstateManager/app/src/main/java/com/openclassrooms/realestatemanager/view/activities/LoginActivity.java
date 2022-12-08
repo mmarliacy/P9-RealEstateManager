@@ -133,11 +133,10 @@ public class LoginActivity extends AppCompatActivity {
             for (UserModel user : allUsers){
                 if (Objects.equals(user.getId(), userModel.getId())){
                     this.roomViewModel.getUser(userModel.getId());
-                } else {
-                    roomViewModel.insertUser(userModel);
                     return;
                 }
             }
+            this.roomViewModel.insertUser(userModel);
         } else {
             roomViewModel.insertUser(userModel);
         }

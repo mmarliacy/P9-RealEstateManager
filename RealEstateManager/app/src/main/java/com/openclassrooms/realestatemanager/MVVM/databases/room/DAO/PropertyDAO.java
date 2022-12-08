@@ -31,13 +31,13 @@ public interface PropertyDAO {
     //--------------------------------------
     // -- QUERY DATABASE : MULTIPLE FILTERS
     //--------------------------------------
-    @Query("SELECT * FROM property_table WHERE type= :type "+
+    @Query("SELECT * FROM property_table WHERE prop_id "+
+            "AND type= :type " +
             "AND room_number >= :minRooms " +
             "AND total_living_area BETWEEN :minArea AND :maxArea "+
             "AND price BETWEEN :minPrice AND :maxPrice "+
-            "AND status= :status " +
-            "AND on_sale_date BETWEEN :onSaleAfter AND :onSaleBefore ")
+            "AND status= :status ")
     LiveData<List<PropertyModel>> getAllPropertiesFiltered(
-            String type, String minRooms, String minArea, String maxArea, String minPrice,
-            String maxPrice, String status, String onSaleAfter, String onSaleBefore);
+            String type, int minRooms, int minArea, int maxArea, int minPrice,
+            int maxPrice, String status);
 }

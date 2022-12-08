@@ -97,6 +97,7 @@ public class AddPropertyActivity extends AppCompatActivity {
     private final List<PropertyModel> properties = new ArrayList<>();
     private final List<String> usersNameList = new ArrayList<>();
     private final List<String> photoProperty = new ArrayList<>();
+    private final List<String> photoDescriptionList = new ArrayList<>();
     private final List<InterestModel> interestList = getInterestList();
     private final List<String> selectedInterest = new ArrayList<>();
 
@@ -114,10 +115,11 @@ public class AddPropertyActivity extends AppCompatActivity {
     private String allRooms;
     private String price;
     private String status;
+    String photoDescription;
     private String propertyNameToUpdate;
     private PropertyModel propertyToUpdate;
     private PropertyModel propertyModel;
-    private final AddPhotoAdapter fAddPhotoAdapter = new AddPhotoAdapter(photoProperty);
+    private final AddPhotoAdapter fAddPhotoAdapter = new AddPhotoAdapter(photoProperty, photoDescriptionList, this);
     private ActivityResultLauncher<String> resultPhoto;
     private ActivityResultLauncher<Intent> resultTakePhoto;
     private static final int read_permission_code = 101;
@@ -209,7 +211,6 @@ public class AddPropertyActivity extends AppCompatActivity {
         this.roomViewModel.addProperty(pPropertyModel);
         // -- Add property in FIREBASE Database & Set propertyId in Firebase --
         this.firebaseViewModel.createProperty(pPropertyModel);
-        this.firebaseViewModel.setIdOfProperty(pPropertyModel);
     }
 
     // 5 -- Update ROOM Property -->
@@ -218,7 +219,6 @@ public class AddPropertyActivity extends AppCompatActivity {
         this.roomViewModel.updateProperty(property);
         // -- Update property in FIREBASE Database --
         this.firebaseViewModel.updateProperty(propertyId, property);
-        this.firebaseViewModel.setIdOfProperty(property);
     }
 
     //----------------------
@@ -397,6 +397,20 @@ public class AddPropertyActivity extends AppCompatActivity {
                     String date = day1 + "/" + month1 + "/" + year1;
                     soldSinceInput.setText(date);
                 }
+                if (month1 < 10){
+                    String month2 = "0" + month1;
+                    String date = day1 + "/" + month2 + "/" + year1;
+                    soldSinceInput.setText(date);
+                } else {
+                    String date = day1 + "/" + month1 + "/" + year1;
+                    soldSinceInput.setText(date);
+                }
+                if (day1 <10 && month1 <10){
+                    String month2 = "0" + month1;
+                    String day2 = "0" + day1;
+                    String date = day2 + "/" + month2 + "/" + year1;
+                    soldSinceInput.setText(date);
+                }
             }, year, month, day);
             datePickerDialog.show();
         });
@@ -479,18 +493,24 @@ public class AddPropertyActivity extends AppCompatActivity {
                             int countOfImages = result.size();
                             for (int i = 0; i < countOfImages; i++) {
                                 Uri imageUri = result.get(i);
+                                photoDescription = "Name";
+                                photoDescriptionList.add(photoDescription);
                                 String imageString = imageUri.toString();
                                 photoProperty.add(imageString);
                             }
+                            Toast.makeText(this, "Click on photo name to give a title", Toast.LENGTH_SHORT).show();
                         } else
                             Log.i("Loaded photos", "You haven't picked any images !");
                     } else {
                         int countOfImages = result.size();
                         for (int i = 0; i < countOfImages; i++) {
                             Uri imageUri = result.get(i);
+                            photoDescription = "Name";
+                            photoDescriptionList.add(photoDescription);
                             String imageString = imageUri.toString();
                             photoProperty.add(imageString);
                         }
+                        Toast.makeText(this, "Click on photo name to give a title", Toast.LENGTH_SHORT).show();
                     }
                     addPhotoBtn.setVisibility(View.GONE);
                     displayPhotoSelectedInRecyclerView();
@@ -524,6 +544,8 @@ public class AddPropertyActivity extends AppCompatActivity {
                             Uri imageUri = getImageUri(this,bitmap);
                             String uriString = imageUri.toString();
                             photoProperty.add(uriString);
+                            photoDescription = "Name";
+                            photoDescriptionList.add(photoDescription);
                         }
                     displayPhotoSelectedInRecyclerView();
                 });
@@ -595,6 +617,7 @@ public class AddPropertyActivity extends AppCompatActivity {
         });
     }
 
+
     // 4 -- Verify title/propertyName input -->
     private void verifyInputTitleProperty() {
         propTitleInput.addTextChangedListener(new TextWatcher() {
@@ -617,7 +640,6 @@ public class AddPropertyActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     //------------------------------
@@ -643,6 +665,7 @@ public class AddPropertyActivity extends AppCompatActivity {
             propTotalAreaInput.setText(propertyToUpdate.getTotalLeavingArea());
             priceInput.setText(propertyToUpdate.getPrice());
             photoProperty.addAll(propertyToUpdate.getPhotoProperty());
+            photoDescriptionList.addAll(propertyToUpdate.getPhotoDescription());
             displayPhotoSelectedInRecyclerView();
             propAddressInput.setText(propertyToUpdate.getAddress());
             forSaleSinceInput.setText(propertyToUpdate.getOnSaleDate());
@@ -704,7 +727,7 @@ public class AddPropertyActivity extends AppCompatActivity {
             propertyModel = new PropertyModel(
                     sellerId, propertyName, type, address,
                     description, totalArea, allRooms,
-                    price, status, photoProperty,
+                    price, status, photoProperty,photoDescriptionList,
                     selectedInterest, saleSince, soldSince);
         }
     }

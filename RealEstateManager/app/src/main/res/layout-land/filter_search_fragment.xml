@@ -42,8 +42,8 @@
                 android:id="@+id/filter_type_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
                 android:inputType="none"
+                android:textSize="@dimen/ftl_textSize_land"
                 tools:ignore="LabelFor" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,8 +73,8 @@
                 android:id="@+id/filter_rooms_min_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textSize="@dimen/ftl_textSize_land" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -115,8 +115,8 @@
                 android:id="@+id/filter_area_min_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textSize="@dimen/ftl_textSize_land" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -145,8 +145,8 @@
                 android:id="@+id/filter_area_max_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textSize="@dimen/ftl_textSize_land" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -176,8 +176,8 @@
                 android:id="@+id/filter_price_min_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textSize="@dimen/ftl_textSize_land" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -208,59 +208,8 @@
                 android:id="@+id/filter_price_max_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="number" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <TextView
-            android:id="@+id/title_filter_on_sale_since"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/tfoss_marginStart_land"
-            android:layout_marginTop="@dimen/tfoss_marginTop_land"
-            android:text="@string/title_filter_on_sale_since"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tfoss_textSize_land"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/filter_price_title" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filter_on_sale_since_min_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/fossmin_width_land"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fossmin_marginStart_land"
-            android:hint="@string/hint_start_date"
-            app:layout_constraintBottom_toBottomOf="@+id/title_filter_on_sale_since"
-            app:layout_constraintStart_toEndOf="@+id/title_filter_on_sale_since"
-            app:layout_constraintTop_toTopOf="@+id/title_filter_on_sale_since">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/filter_on_sale_since_min_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="none" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/filter_on_sale_since_max_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="@dimen/fossmax_width_land"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/fossmax_marginEnd_land"
-            android:hint="@string/hint_end_date"
-            app:layout_constraintBottom_toBottomOf="@+id/filter_on_sale_since_min_layout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/filter_on_sale_since_min_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/filter_on_sale_since_max_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/ftl_height_land"
-                android:textSize="@dimen/ftl_textSize_land"
-                android:inputType="none" />
+                android:inputType="number"
+                android:textSize="@dimen/ftl_textSize_land" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
@@ -269,10 +218,9 @@
             android:layout_height="wrap_content"
             android:text="@string/checkbox_filter_sold"
             android:textSize="@dimen/fsi_textSize_land"
-            app:layout_constraintBottom_toBottomOf="@+id/filter_on_sale_since_max_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/filter_on_sale_since_max_layout"
-            app:layout_constraintTop_toTopOf="@+id/filter_on_sale_since_max_layout" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_price_min_layout" />
 
         <Button
             android:id="@+id/button_search"
