@@ -25,5 +25,13 @@ Among other things, the application had the following features:
 
 #### #Pictures of the project
 ***
-[Home screen capture](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/all-properties.jpeg) 
+* [Home screen capture](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/all-properties.jpeg) 
+* [Add a property 1 ](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/add-property-1.jpeg)
+* [Add a property 2 ](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/add-property-2.jpeg)
+* [All property on Maps](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/Real-estate-on-maps.jpeg)
+* [Head-of-property-sheet](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/Head-of-property-sheet.jpeg)
+* [Maps-Static-Api](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/Maps-Static-Api.jpeg)
+
+
+
 
