@@ -25,4 +25,4 @@ Among other things, the application had the following features:
 
 #### #Pictures of the project
 ***
-![Home screen capture](C:\Users\Mel\Desktop\P9 PHOTOS\all-properties.jpg?raw=true) "Home screen"
+![Home screen capture](https://github.com/mmarliacy/P9-RealEstateManager/blob/main/P9%20PHOTOS/all-properties.jpeg) "Home screen"
