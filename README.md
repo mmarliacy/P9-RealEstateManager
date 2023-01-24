@@ -25,4 +25,4 @@ Among other things, the application had the following features:
 
 #### #Pictures of the project
 ***
-![Home screen capture](C:\Users\Mel\Desktop\P9 PHOTOS\all-properties.jpeg) "Home screen"
+![Home screen capture](C:\Users\Mel\Desktop\P9 PHOTOS\all-properties.jpg?raw=true "Title") "Home screen"
